@@ -15,4 +15,12 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    <style name="home_text_style">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textColor">#fea73d</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

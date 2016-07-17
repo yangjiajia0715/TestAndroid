@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\workspace\\TestAndroid\\build\\intermediates\\res\\merged\\debug\\values-v14\\values-v14.xml",
+        "outputFile": "F:\\androidStudioWorkSpace\\TestAndroid\\build\\intermediates\\res\\merged\\debug\\values-v14\\values-v14.xml",
         "map": [
             {
                 "to": {
@@ -12,14 +12,14 @@
                     "endOffset": 201
                 },
                 "from": {
-                    "file": "D:\\workspace\\TestAndroid\\res\\values-v14\\styles.xml",
+                    "file": "F:\\androidStudioWorkSpace\\TestAndroid\\res\\values-v14\\styles.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 225,
+                        "startOffset": 227,
                         "endLine": 9,
                         "endColumn": 12,
-                        "endOffset": 373
+                        "endOffset": 375
                     }
                 }
             }
