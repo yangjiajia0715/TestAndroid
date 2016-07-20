@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -14,8 +13,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 //        TextView tvtestnothing11 = (TextView) findViewById(R.id.tv_test_nothing_11);
 //        TextView tvtestnothing = (TextView) findViewById(R.id.tv_test_nothing);
-        findViewById(R.id.tv_test_nothing).setOnClickListener(this);
-
+        findViewById(R.id.tv_zoom_image).setOnClickListener(this);
 
 
         //test android
@@ -25,9 +23,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intent = null;
+        Intent intent;
         switch (v.getId()) {
-            case R.id.tv_test_nothing:
+            case R.id.tv_zoom_image:
+                intent = new Intent(this, ZoomImageActivity.class);
+                startActivity(intent);
                 break;
         }
     }

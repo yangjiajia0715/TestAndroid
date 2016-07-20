@@ -13,10 +13,6 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <android:uses-permission android:name="android.permission.READ_CALL_LOG" />
 
     <application
         android:allowBackup="true"
@@ -31,6 +27,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ZoomImageActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"><!-- ATTENTION: This intent was auto-generated. Follow instructions at
+  https://g.co/AppIndexing/AndroidStudio to publish your URLs. -->
         </activity>
     </application>
 
