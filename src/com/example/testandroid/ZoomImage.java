@@ -85,5 +85,7 @@ public class ZoomImage extends ImageView implements ViewTreeObserver.OnGlobalLay
             mOnce = false;
         }
 
+
+
     }
 }
