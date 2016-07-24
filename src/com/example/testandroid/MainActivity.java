@@ -1,4 +1,4 @@
-package com.example.testandroid;
+﻿package com.example.testandroid;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,6 +22,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         //yangjiajia-company 换系统后
         //2016年7月24日14:04:11
+
+//个人电脑 写啥的 nnnname  eeemail email
     }
 
     @Override
