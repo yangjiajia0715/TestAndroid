@@ -19,6 +19,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         //test android
         //yangjiajia 家里电脑 日志 2016年6月26日19:49:18
         //
+
+        //yangjiajia-company 换系统后
+        //2016年7月24日14:04:11
     }
 
     @Override
