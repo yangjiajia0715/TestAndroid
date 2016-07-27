@@ -1,4 +1,4 @@
-package com.example.testandroid;
+package com.example.testandroid.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,12 +21,12 @@ public class ZoomImage extends ImageView implements ViewTreeObserver.OnGlobalLay
 
     public ZoomImage(Context context) {
 //        super(context);
-        this(context,null);
+        this(context, null);
     }
 
     public ZoomImage(Context context, AttributeSet attrs) {
 //        super(context, attrs);
-        this(context,attrs,0);
+        this(context, attrs, 0);
         Log.d(TAG, "ZoomImage: attrs=" + attrs.toString());
     }
 
@@ -69,7 +69,7 @@ public class ZoomImage extends ImageView implements ViewTreeObserver.OnGlobalLay
 
             int dw = d.getIntrinsicWidth();
             int dh = d.getIntrinsicHeight();
-            Log.d(TAG, "onGlobalLayout:dw="+ dw + ",dh=" + dh);
+            Log.d(TAG, "onGlobalLayout:dw=" + dw + ",dh=" + dh);
 
             if (dw > width && dh < height) {
                 scale = width * 1.0f / dw;
@@ -79,12 +79,11 @@ public class ZoomImage extends ImageView implements ViewTreeObserver.OnGlobalLay
                 scale = height * 1.0f / dh;
 
             if ((dw > width && dh < height) && (dh < height && dw < width)) {
-                scale = Math.min(width * 1.0f /dw,height* 1.0f/dh);
+                scale = Math.min(width * 1.0f / dw, height * 1.0f / dh);
             }
 
             mOnce = false;
         }
-
 
 
     }

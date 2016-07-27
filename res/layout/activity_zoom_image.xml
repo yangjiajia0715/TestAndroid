@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.testandroid.ZoomImage
+    <com.example.testandroid.activity.ZoomImage
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/liutao_big_image"/>
