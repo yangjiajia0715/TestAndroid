@@ -50,7 +50,6 @@ public class ZoomImage extends ImageView implements ViewTreeObserver.OnGlobalLay
 
     }
 
-
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
