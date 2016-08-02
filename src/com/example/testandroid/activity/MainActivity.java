@@ -17,13 +17,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.tv_zoom_image).setOnClickListener(this);
+        findViewById(R.id.tv_test_view_pager_11).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.tv_zoom_image:
-                Intent intent = new Intent(this, ZoomImageActivity.class);
+                intent = new Intent(this, ZoomImageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_test_view_pager_11:
+                 intent = new Intent(this, ViewPagerActivity.class);
                 startActivity(intent);
                 break;
         }

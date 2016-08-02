@@ -15,7 +15,7 @@
             android:text="缩放图片" />
 
         <TextView
-            android:id="@+id/tv_test_nothing_11"
+            android:id="@+id/tv_test_view_pager_11"
             style="@style/home_text_style"
             android:text="呵呵呵" />
 

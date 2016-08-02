@@ -51,7 +51,7 @@ public class ZoomImage extends ImageView implements ViewTreeObserver.OnGlobalLay
 
     public ZoomImage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
-        Log.d(TAG, "ZoomImage: attrs=" + attrs.toString());
+//        Log.d(TAG, "ZoomImage: attrs=" + attrs.toString());
     }
 
     public ZoomImage(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -227,8 +227,13 @@ public class ZoomImage extends ImageView implements ViewTreeObserver.OnGlobalLay
         }
 
         mLastPointerCount = pointerCount;
-
+        RectF rectF = getMatritRectF();
         switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (rectF.width() > getWidth() || rectF.height() > getHeight()) {
+                    getParent().requestDisallowInterceptTouchEvent(true);
+                }
+                break;
             case MotionEvent.ACTION_MOVE:
                 float dx = x - mLastX;
                 float dy = y - mLastY;
@@ -238,7 +243,9 @@ public class ZoomImage extends ImageView implements ViewTreeObserver.OnGlobalLay
                 }
 
                 if (isCanDrag) {
-                    RectF rectF = getMatritRectF();
+                    Log.d(TAG, "onTouch: getParent()="+getParent());
+
+
                     if (getDrawable() != null) {
 
                         isCheckLeftAndRight = isCheckTopAndBottom = true;
