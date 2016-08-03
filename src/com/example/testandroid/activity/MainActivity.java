@@ -11,6 +11,7 @@ import com.example.testandroid.R;
  * Created by Administrator on 2016/7/27 0027.
  */
 public class MainActivity extends Activity implements View.OnClickListener {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         findViewById(R.id.tv_zoom_image).setOnClickListener(this);
         findViewById(R.id.tv_test_view_pager_11).setOnClickListener(this);
+        findViewById(R.id.tv_parallax).setOnClickListener(this);
     }
 
     @Override
@@ -30,6 +32,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_test_view_pager_11:
                  intent = new Intent(this, ViewPagerActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_parallax:
+                 intent = new Intent(this, ParallaxActivity.class);
                 startActivity(intent);
                 break;
         }
