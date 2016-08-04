@@ -20,6 +20,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_zoom_image).setOnClickListener(this);
         findViewById(R.id.tv_test_view_pager_11).setOnClickListener(this);
         findViewById(R.id.tv_parallax).setOnClickListener(this);
+        findViewById(R.id.tv_test_listview_clip).setOnClickListener(this);
+        findViewById(R.id.tv_test_scrollview_clip).setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +38,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_parallax:
                  intent = new Intent(this, ParallaxActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_test_listview_clip:
+                 intent = new Intent(this, ListViewClipActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_test_scrollview_clip:
+                 intent = new Intent(this, ScrollViewClipActivity.class);
                 startActivity(intent);
                 break;
         }

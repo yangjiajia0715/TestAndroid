@@ -40,6 +40,12 @@
         <activity android:name=".activity.ParallaxActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             />
+        <activity android:name=".activity.ListViewClipActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            />
+        <activity android:name=".activity.ScrollViewClipActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            />
     </application>
 
 </manifest>
