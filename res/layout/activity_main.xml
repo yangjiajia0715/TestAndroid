@@ -30,6 +30,10 @@
             android:id="@+id/tv_test_scrollview_clip"
             style="@style/home_text_style"
             android:text="scrollview_clip" />
+        <TextView
+            android:id="@+id/tv_test_viewpager_all"
+            style="@style/home_text_style"
+            android:text="viewpager_sv_lv" />
 
     </LinearLayout>
 

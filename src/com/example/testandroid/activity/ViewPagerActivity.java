@@ -26,7 +26,7 @@ public class ViewPagerActivity extends Activity {
     }
 
     private void initView() {
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager_all_viewpager);
 //        viewPager.setAdapter();
         MyPagerAdapter mAdapter = new MyPagerAdapter(this);
         viewPager.setAdapter(mAdapter);
@@ -35,7 +35,7 @@ public class ViewPagerActivity extends Activity {
 
     class MyPagerAdapter extends PagerAdapter {
         View[] views = new View[3];
-        int[] ids = new int[]{R.drawable.meinv01, R.drawable.liutao_big_image, R.drawable.meinv02};
+        int[] ids = new int[]{R.drawable.img01, R.drawable.liutao_big_image, R.drawable.img02};
         private Context mContext;
 
         public MyPagerAdapter(Context context) {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_viewpager"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/viewpager_indicator_height"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/course_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mic_course_title_height"
+        android:background="#ac8424"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="#ffffff"
+        android:text="微课标题 可滑动" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/viewpager_indicator_height"
+        android:background="#5fac24"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_below="@id/course_title"
+        android:textColor="#ffffff"
+        android:text="ViewPagerIndicator 指示器" />
+</RelativeLayout>
