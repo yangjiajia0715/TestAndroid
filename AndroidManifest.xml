@@ -49,6 +49,12 @@
         <activity android:name=".activity.ViewPagerAllActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             />
+        <activity android:name=".ObservableScrollView.demo.ParallaxToolbarScrollViewActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            />
+        <activity android:name=".ObservableScrollView.viewpager.ViewPagerTabActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            />
     </application>
 
 </manifest>

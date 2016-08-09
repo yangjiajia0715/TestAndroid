@@ -18,7 +18,7 @@ public class ScrollViewFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return mMainView = inflater.inflate(R.layout.fragment_scrollview, null, false);
+        return mMainView = inflater.inflate(R.layout.fragment_scrollview_a, null, false);
     }
 
     @Override

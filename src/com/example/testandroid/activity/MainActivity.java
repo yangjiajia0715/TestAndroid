@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.testandroid.ObservableScrollView.demo.ParallaxToolbarScrollViewActivity;
+import com.example.testandroid.ObservableScrollView.viewpager.ViewPagerTabActivity;
 import com.example.testandroid.R;
 
 /**
@@ -23,6 +25,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_test_listview_clip).setOnClickListener(this);
         findViewById(R.id.tv_test_scrollview_clip).setOnClickListener(this);
         findViewById(R.id.tv_test_viewpager_all).setOnClickListener(this);
+        findViewById(R.id.tv_parallaxtoolbar_scrollview_activity).setOnClickListener(this);
+        findViewById(R.id.tv_test_view_pager_tab_dif).setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +55,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_test_viewpager_all:
                 intent = new Intent(this, ViewPagerAllActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_parallaxtoolbar_scrollview_activity:
+                intent = new Intent(this, ParallaxToolbarScrollViewActivity.class);
+                startActivity(intent);
+            case R.id.tv_test_view_pager_tab_dif:
+                intent = new Intent(this, ViewPagerTabActivity.class);
                 startActivity(intent);
                 break;
         }

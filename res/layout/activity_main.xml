@@ -34,6 +34,14 @@
             android:id="@+id/tv_test_viewpager_all"
             style="@style/home_text_style"
             android:text="viewpager_sv_lv" />
+        <TextView
+            android:id="@+id/tv_parallaxtoolbar_scrollview_activity"
+            style="@style/home_text_style"
+            android:text="ParallaxToolbarScrollViewActivity" />
+        <TextView
+            android:id="@+id/tv_test_view_pager_tab_dif"
+            style="@style/home_text_style"
+            android:text="view_pager_tab_dif" />
 
     </LinearLayout>
 

@@ -12,8 +12,10 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
---><!--com.github.ksoichiro.android.observablescrollview.ObservableListView-->
-<com.example.testandroid.ObservableScrollView.ObservableListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroll"
+-->
+<!--?attr/actionBarSize-->
+<View xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="@dimen/tool_bar_replace_temp_height"
+    android:background="@drawable/gradient_header_background"
+    android:minHeight="@dimen/tool_bar_replace_temp_height" />

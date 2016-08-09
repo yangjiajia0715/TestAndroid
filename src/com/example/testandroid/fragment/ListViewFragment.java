@@ -28,7 +28,7 @@ public class ListViewFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return mMainView = inflater.inflate(R.layout.fragment_listview, null, false);
+        return mMainView = inflater.inflate(R.layout.fragment_listview_a, null, false);
     }
 
     @Override
@@ -56,6 +56,7 @@ public class ListViewFragment extends Fragment implements SwipeRefreshLayout.OnR
 
         swipeLayout.setOnLoadListener(this);
         swipeLayout.setMode(SwipeRefreshLayout.Mode.BOTH);
+        swipeLayout.setBound(0,3* 80,swipeLayout.getMeasuredWidth(),0);
     }
 
     @Override

@@ -211,6 +211,12 @@ public class SwipeRefreshLayout extends ViewGroup {
 
     };
 
+    public void setBound(int left, int top, int right, int bottom){
+        final int width =  getMeasuredWidth();
+        final int height = getMeasuredHeight();
+        mProgressBar.setBounds(0, top, width, top + mProgressBarHeight);
+    }
+
     /**
      * Simple constructor to use when creating a SwipeRefreshLayout from code.
      * @param context
