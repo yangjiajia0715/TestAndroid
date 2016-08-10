@@ -38,10 +38,19 @@
             android:id="@+id/tv_parallaxtoolbar_scrollview_activity"
             style="@style/home_text_style"
             android:text="ParallaxToolbarScrollViewActivity" />
+
         <TextView
             android:id="@+id/tv_test_view_pager_tab_dif"
             style="@style/home_text_style"
             android:text="view_pager_tab_dif" />
+        <TextView
+            android:id="@+id/tv_animation"
+            style="@style/home_text_style"
+            android:text="animation" />
+        <TextView
+            android:id="@+id/tv_fragement_pager_adapter"
+            style="@style/home_text_style"
+            android:text="fragementPagerAdapter" />
 
     </LinearLayout>
 

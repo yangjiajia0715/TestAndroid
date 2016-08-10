@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class ListViewFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, SwipeRefreshLayout.OnLoadListener {
     private static final String TAG = "ListViewFragment";
+    public static final String KEY_POS ="frgPosition";
     private View mMainView;
     private ListView mListView;
     private SwipeRefreshLayout swipeLayout;
@@ -38,10 +39,19 @@ public class ListViewFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void initView() {
+        String[] subjects = {"语文","数学","英语","政治","历史","地理","物理","化学","生物"};
+        Bundle bundle = getArguments();
         mListView = (ListView) mMainView.findViewById(R.id.listview);
         List<String> datas = new ArrayList<>();
+        String text = "数据";
+        if (bundle != null && bundle.containsKey(KEY_POS)) {
+            int pos = bundle.getInt(KEY_POS);
+            text = subjects[pos % subjects.length];
+            Log.d(TAG, "--ListViewFragment--initView: text="+ text +"，pos＝" +pos);
+        }
+
         for (int i = 0; i < 20; i++) {
-            datas.add("数据"+ i);
+            datas.add(text+ i);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, datas);
         mListView.setAdapter(adapter);

@@ -27,6 +27,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_test_viewpager_all).setOnClickListener(this);
         findViewById(R.id.tv_parallaxtoolbar_scrollview_activity).setOnClickListener(this);
         findViewById(R.id.tv_test_view_pager_tab_dif).setOnClickListener(this);
+        findViewById(R.id.tv_animation).setOnClickListener(this);
+        findViewById(R.id.tv_fragement_pager_adapter).setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +58,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.tv_test_viewpager_all:
                 intent = new Intent(this, ViewPagerAllActivity.class);
                 startActivity(intent);
+            case R.id.tv_animation:
+                intent = new Intent(this, AnimationActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tv_parallaxtoolbar_scrollview_activity:
                 intent = new Intent(this, ParallaxToolbarScrollViewActivity.class);
@@ -63,6 +68,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.tv_test_view_pager_tab_dif:
                 intent = new Intent(this, ViewPagerTabActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.tv_fragement_pager_adapter:
+                intent = new Intent(this, FrgStatePagerAdaperActivity.class);
+                startActivity(intent);
+
                 break;
         }
     }

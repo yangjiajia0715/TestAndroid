@@ -9,14 +9,13 @@ import com.example.testandroid.fragment.ListViewFragment;
 
 /**
  * author: yangjiajia
- * create time: 2016/8/10 0010.
+ * create time: 2016/8/10 0010
  * desc:
  */
-public class FrgStatePagerAdaper extends FragmentStatePagerAdapter {
-    private static final String TAG = "FrgStatePagerAdaper";
-
-    public FrgStatePagerAdaper(FragmentManager fm) {
+public class MM extends FragmentStatePagerAdapter {
+    public MM(FragmentManager fm) {
         super(fm);
+
     }
 
     @Override
@@ -26,6 +25,7 @@ public class FrgStatePagerAdaper extends FragmentStatePagerAdapter {
         bundle.putInt(ListViewFragment.KEY_POS,position);
         fragment.setArguments(bundle);
         return fragment;
+//        return null;
     }
 
     @Override
