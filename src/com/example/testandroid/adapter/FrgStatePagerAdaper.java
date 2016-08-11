@@ -3,7 +3,9 @@ package com.example.testandroid.adapter;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v13.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 import com.example.testandroid.fragment.ListViewFragment;
 
@@ -31,5 +33,17 @@ public class FrgStatePagerAdaper extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return 9;
+    }
+
+    @Override
+    public Parcelable saveState() {
+        Log.d(TAG, "--FrgStatePagerAdaper--saveState: ");
+        return super.saveState();
+    }
+
+    @Override
+    public void restoreState(Parcelable state, ClassLoader loader) {
+        Log.d(TAG, "--FrgStatePagerAdaper--restoreState: state=" + state + ",loader=" +loader );
+        super.restoreState(state, loader);
     }
 }
