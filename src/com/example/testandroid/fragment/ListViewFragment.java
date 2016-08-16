@@ -1,6 +1,7 @@
 package com.example.testandroid.fragment;
 
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,6 +41,8 @@ public class ListViewFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private void initView() {
         String[] subjects = {"语文","数学","英语","政治","历史","地理","物理","化学","生物"};
+        int[] colors ={Color.BLUE,Color.RED,Color.GRAY,Color.GREEN,Color.BLUE,Color.DKGRAY};
+
         Bundle bundle = getArguments();
         mListView = (ListView) mMainView.findViewById(R.id.listview);
         List<String> datas = new ArrayList<>();
@@ -47,6 +50,7 @@ public class ListViewFragment extends Fragment implements SwipeRefreshLayout.OnR
         if (bundle != null && bundle.containsKey(KEY_POS)) {
             int pos = bundle.getInt(KEY_POS);
             text = subjects[pos % subjects.length];
+            getView().setBackgroundColor(colors[pos % colors.length]);
             Log.d(TAG, "--ListViewFragment--initView: text="+ text +"，pos＝" +pos);
         }
 

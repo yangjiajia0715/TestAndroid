@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 
 import com.example.testandroid.R;
 import com.example.testandroid.adapter.FrgStatePagerAdaper;
+import com.example.testandroid.common.ZoomOutPageTransformer;
 
 /**
  * fragmentstatePagerAdapter
@@ -29,7 +30,9 @@ public class FrgStatePagerAdaperActivity extends Activity {
 
     private void initView() {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mViewPager.setPageTransformer(true,new ZoomOutPageTransformer());
         FrgStatePagerAdaper adaper = new FrgStatePagerAdaper(getFragmentManager());
+
         mViewPager.setAdapter(adaper);
 
     }
