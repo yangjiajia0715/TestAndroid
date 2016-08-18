@@ -51,6 +51,10 @@
             android:id="@+id/tv_fragement_pager_adapter"
             style="@style/home_text_style"
             android:text="fragementPagerAdapter" />
+        <TextView
+            android:id="@+id/tv_item_type_listview"
+            style="@style/home_text_style"
+            android:text="tv_item_type_listview" />
 
     </LinearLayout>
 
