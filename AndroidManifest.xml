@@ -59,6 +59,9 @@
         <activity android:name=".activity.FrgStatePagerAdaperActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             />
+        <activity android:name=".activity.ItemTypeListViewActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            />
     </application>
 
 </manifest>

@@ -29,6 +29,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_test_view_pager_tab_dif).setOnClickListener(this);
         findViewById(R.id.tv_animation).setOnClickListener(this);
         findViewById(R.id.tv_fragement_pager_adapter).setOnClickListener(this);
+        findViewById(R.id.tv_item_type_listview).setOnClickListener(this);
     }
 
     @Override
@@ -73,6 +74,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 intent = new Intent(this, FrgStatePagerAdaperActivity.class);
                 startActivity(intent);
 
+                break;
+            case R.id.tv_item_type_listview:
+                intent = new Intent(this, ItemTypeListViewActivity.class);
+                startActivity(intent);
                 break;
         }
     }
