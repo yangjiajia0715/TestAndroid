@@ -1,11 +1,11 @@
 package com.netease.nim.uikit.common.media.picker.loader;
 
+import android.graphics.Bitmap;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
-
-import android.graphics.Bitmap;
 
 public class PickerlImageLoadTool {
 

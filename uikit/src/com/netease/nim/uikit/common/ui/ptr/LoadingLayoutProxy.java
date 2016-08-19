@@ -1,9 +1,9 @@
 package com.netease.nim.uikit.common.ui.ptr;
 
-import java.util.HashSet;
-
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+
+import java.util.HashSet;
 
 public class LoadingLayoutProxy implements ILoadingLayout {
 

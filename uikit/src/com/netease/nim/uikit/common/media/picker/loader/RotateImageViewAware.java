@@ -1,18 +1,18 @@
 package com.netease.nim.uikit.common.media.picker.loader;
 
 
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.netease.nim.uikit.common.media.picker.util.BitmapUtil;
 import com.nostra13.universalimageloader.core.assist.ViewScaleType;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 
 
 public class RotateImageViewAware implements ImageAware {

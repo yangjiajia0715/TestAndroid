@@ -1,12 +1,12 @@
 package com.netease.nim.uikit.common.ui.dialog;
 
-import com.netease.nim.uikit.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+
+import com.netease.nim.uikit.R;
 
 public class EasyAlertDialogHelper {
 	public static void popClearMessageConfirmDialog(final Activity activity, final OnClearMessageListener listener,

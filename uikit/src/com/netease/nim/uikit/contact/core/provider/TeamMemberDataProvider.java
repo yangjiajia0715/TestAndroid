@@ -1,11 +1,11 @@
 package com.netease.nim.uikit.contact.core.provider;
 
-import com.netease.nim.uikit.contact.core.model.TeamMemberContact;
 import com.netease.nim.uikit.cache.TeamDataCache;
 import com.netease.nim.uikit.contact.core.item.AbsContactItem;
 import com.netease.nim.uikit.contact.core.item.ContactItem;
 import com.netease.nim.uikit.contact.core.item.ItemTypes;
 import com.netease.nim.uikit.contact.core.model.ContactGroupStrategy;
+import com.netease.nim.uikit.contact.core.model.TeamMemberContact;
 import com.netease.nim.uikit.contact.core.query.TextComparator;
 import com.netease.nim.uikit.contact.core.query.TextQuery;
 import com.netease.nimlib.sdk.team.model.TeamMember;

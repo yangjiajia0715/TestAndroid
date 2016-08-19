@@ -5,8 +5,8 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 
 import com.netease.nim.uikit.R;
-import com.netease.nim.uikit.session.helper.VideoMessageHelper;
 import com.netease.nim.uikit.session.constant.RequestCode;
+import com.netease.nim.uikit.session.helper.VideoMessageHelper;
 import com.netease.nimlib.sdk.msg.MessageBuilder;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
 

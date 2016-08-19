@@ -1,10 +1,10 @@
 package com.netease.nim.uikit.common.media.picker.util;
 
-import java.io.IOException;
-
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
+
+import java.io.IOException;
 
 
 public class BitmapUtil {

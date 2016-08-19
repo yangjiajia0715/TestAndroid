@@ -1,12 +1,12 @@
 package com.netease.nim.uikit.contact.core.query;
 
+import android.content.Context;
+import android.text.TextUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import android.content.Context;
-import android.text.TextUtils;
 
 public class PinYin {
 	private static final String ASSET = "pinyin/index.dat";

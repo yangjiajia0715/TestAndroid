@@ -1,8 +1,8 @@
 package com.netease.nim.uikit.session.audio;
 
+import com.netease.nim.uikit.common.media.audioplayer.Playable;
 import com.netease.nimlib.sdk.msg.attachment.AudioAttachment;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
-import com.netease.nim.uikit.common.media.audioplayer.Playable;
 
 public class AudioMessagePlayable implements Playable {
 

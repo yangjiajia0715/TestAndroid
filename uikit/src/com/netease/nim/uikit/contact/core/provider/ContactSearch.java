@@ -1,10 +1,10 @@
 package com.netease.nim.uikit.contact.core.provider;
 
+import com.netease.nim.uikit.cache.TeamDataCache;
 import com.netease.nim.uikit.contact.core.model.IContact;
 import com.netease.nim.uikit.contact.core.provider.ContactSearch.HitInfo.Type;
 import com.netease.nim.uikit.contact.core.query.TextQuery;
 import com.netease.nim.uikit.contact.core.query.TextSearcher;
-import com.netease.nim.uikit.cache.TeamDataCache;
 import com.netease.nimlib.sdk.team.model.Team;
 import com.netease.nimlib.sdk.team.model.TeamMember;
 import com.netease.nimlib.sdk.uinfo.UserInfoProvider;

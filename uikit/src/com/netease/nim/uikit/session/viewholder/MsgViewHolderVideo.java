@@ -1,8 +1,8 @@
 package com.netease.nim.uikit.session.viewholder;
 
 import com.netease.nim.uikit.R;
-import com.netease.nim.uikit.session.activity.WatchVideoActivity;
 import com.netease.nim.uikit.common.util.media.BitmapDecoder;
+import com.netease.nim.uikit.session.activity.WatchVideoActivity;
 import com.netease.nimlib.sdk.msg.attachment.VideoAttachment;
 
 /**

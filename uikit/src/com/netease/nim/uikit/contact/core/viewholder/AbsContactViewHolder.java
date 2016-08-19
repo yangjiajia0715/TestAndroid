@@ -4,8 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.netease.nim.uikit.contact.core.model.ContactDataAdapter;
 import com.netease.nim.uikit.contact.core.item.AbsContactItem;
+import com.netease.nim.uikit.contact.core.model.ContactDataAdapter;
 
 public abstract class AbsContactViewHolder<T extends AbsContactItem> {
     protected View view;
