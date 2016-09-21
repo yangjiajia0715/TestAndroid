@@ -65,6 +65,10 @@
         <activity android:name="com.example.testandroid.activity.DexClassLoaderActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             />
+
+        <activity android:name="com.example.testandroid.activity.ViewAnimatorActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            />
     </application>
 
 </manifest>

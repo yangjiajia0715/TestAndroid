@@ -31,6 +31,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_fragement_pager_adapter).setOnClickListener(this);
         findViewById(R.id.tv_item_type_listview).setOnClickListener(this);
         findViewById(R.id.tv_DexClassLoader).setOnClickListener(this);
+        findViewById(R.id.tv_ViewAnimator).setOnClickListener(this);
     }
 
     @Override
@@ -82,6 +83,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_DexClassLoader:
                 intent = new Intent(this, DexClassLoaderActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_ViewAnimator:
+                intent = new Intent(this, ViewAnimatorActivity.class);
                 startActivity(intent);
                 break;
         }

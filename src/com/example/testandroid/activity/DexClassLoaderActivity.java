@@ -31,6 +31,8 @@ public class DexClassLoaderActivity extends Activity implements View.OnClickList
         File file = Environment.getExternalStorageDirectory();
         Log.d(TAG, "onCreate: dataDirectory=" + dataDirectory + ",file=" + file);
 
+//        D/DexClassLoaderActivity: onCreate: dataDirectory=/data,file=/storage/emulated/0
+
         String path = Environment.getExternalStorageDirectory() + File.separator;
         String filename = "TestB.apk";
 
@@ -42,13 +44,13 @@ public class DexClassLoaderActivity extends Activity implements View.OnClickList
     }
 
     private void initView() {
-        findViewById(R.id.dex_class_loader).setOnClickListener(this);
+        findViewById(R.id.btn_viewanimator).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.dex_class_loader:
+            case R.id.btn_viewanimator:
                 Toast.makeText(this, "DexClassLoader", Toast.LENGTH_SHORT).show();
                 break;
 

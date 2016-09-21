@@ -20,4 +20,8 @@
     <color name="accent">#eeff41</color>
     <color name="accentLight">#F4FF81</color>
 
+    <color name="app_color_normal">#fea73d</color>
+    <color name="app_color_pressed">#8f5d20</color>
+
+
 </resources>

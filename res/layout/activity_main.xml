@@ -61,6 +61,11 @@
             style="@style/home_text_style"
             android:text="DexClassLoader" />
 
+        <TextView
+            android:id="@+id/tv_ViewAnimator"
+            style="@style/home_text_style"
+            android:text="ViewAnimator" />
+
     </LinearLayout>
 
 </ScrollView>
