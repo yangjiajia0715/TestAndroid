@@ -66,6 +66,11 @@
             style="@style/home_text_style"
             android:text="ViewAnimator" />
 
+        <TextView
+            android:id="@+id/tv_CheckedTextView"
+            style="@style/home_text_style"
+            android:text="CheckedTextView" />
+
     </LinearLayout>
 
 </ScrollView>
