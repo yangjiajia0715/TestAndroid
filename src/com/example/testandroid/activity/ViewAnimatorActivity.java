@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.widget.ImageSwitcher;
 import android.widget.TextSwitcher;
 import android.widget.ViewAnimator;
+import android.widget.ViewFlipper;
 
 import com.example.testandroid.R;
 
@@ -25,6 +26,8 @@ public class ViewAnimatorActivity extends Activity implements View.OnClickListen
     private TextSwitcher textSwitcher;
 
     private ImageSwitcher imageSwitcher;
+
+    private ViewFlipper viewFlipper;
 
     private boolean isShownSec = false;
 
@@ -52,9 +55,14 @@ public class ViewAnimatorActivity extends Activity implements View.OnClickListen
         imageSwitcher.setInAnimation(this, R.anim.view_animator_in);
         imageSwitcher.setOutAnimation(this, R.anim.view_animator_out);
 
+        viewFlipper = (ViewFlipper) findViewById(R.id.view_flipper_container);
+        viewFlipper.setInAnimation(this, R.anim.view_animator_in);
+        viewFlipper.setOutAnimation(this, R.anim.view_animator_out);
+
         findViewById(R.id.btn_viewanimator).setOnClickListener(this);
         findViewById(R.id.btn_textswitcher).setOnClickListener(this);
         findViewById(R.id.btn_imageswitcher).setOnClickListener(this);
+        findViewById(R.id.btn_viewFlipper).setOnClickListener(this);
     }
 
     @Override
@@ -95,6 +103,16 @@ public class ViewAnimatorActivity extends Activity implements View.OnClickListen
                     imageSwitcher.setImageResource(R.drawable.liushishi);
                 }else {
                     imageSwitcher.setImageResource(R.drawable.liutao_big_image);
+                }
+                break;
+            case R.id.btn_viewFlipper:
+                isShownSec = !isShownSec;
+
+                viewFlipper.setFlipInterval(2000);
+                if (isShownSec) {
+                    viewFlipper.startFlipping();
+                }else {
+                    viewFlipper.stopFlipping();
                 }
                 break;
 

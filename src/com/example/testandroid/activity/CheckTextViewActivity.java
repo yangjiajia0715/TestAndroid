@@ -52,6 +52,7 @@ public class CheckTextViewActivity extends Activity implements View.OnClickListe
         findViewById(R.id.checked_tectview_get_checkids).setOnClickListener(this);
 
         tvShow = (TextView) findViewById(R.id.checked_tectview_checkids_show);
+
     }
 
     @Override

@@ -99,6 +99,38 @@
                     android:layout_height="match_parent" />
             </ImageSwitcher>
 
+
+            <TextView
+                android:id="@+id/btn_viewFlipper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_click_selector"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="btn_viewFlipper 开始/暂停" />
+
+            <ViewFlipper
+                android:id="@+id/view_flipper_container"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:flipInterval="1000"
+                android:background="#fff">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/liushishi"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/liutao_big_image"
+                    android:layout_height="match_parent" />
+            </ViewFlipper>
+
+
+
+
         </LinearLayout>
 
     </ScrollView>
