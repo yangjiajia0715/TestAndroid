@@ -36,6 +36,8 @@ public class CheckTextViewActivity extends Activity implements View.OnClickListe
         setContentView(R.layout.activity_checked_textview);
         initView();
 
+        //tempBranch
+//        tttt
     }
 
     private void initView() {
