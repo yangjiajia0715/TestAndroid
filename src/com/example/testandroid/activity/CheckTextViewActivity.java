@@ -37,6 +37,8 @@ public class CheckTextViewActivity extends Activity implements View.OnClickListe
         initView();
 
         //origin branch
+        //tempBranch
+//        tttt
     }
 
     private void initView() {
