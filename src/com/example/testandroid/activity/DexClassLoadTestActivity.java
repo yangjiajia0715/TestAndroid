@@ -47,6 +47,7 @@ public class DexClassLoadTestActivity extends Activity implements View.OnClickLi
 
         DexClassLoader dexClassLoader = new DexClassLoader("", getCodeCacheDir().getAbsolutePath(), null, getClassLoader());
 //        dexClassLoader.
+        //fdsfjdfffff
     }
 
     private void initView() {
