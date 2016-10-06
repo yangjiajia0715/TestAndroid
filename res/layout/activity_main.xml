@@ -71,6 +71,11 @@
             style="@style/home_text_style"
             android:text="CheckedTextView" />
 
+        <TextView
+            android:id="@+id/tv_Dex_ClassLoader"
+            style="@style/home_text_style"
+            android:text="DexClassLoader" />
+
     </LinearLayout>
 
 </ScrollView>
