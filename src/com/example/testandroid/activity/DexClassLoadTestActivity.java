@@ -42,6 +42,7 @@ public class DexClassLoadTestActivity extends Activity implements View.OnClickLi
 
         textSwitcher = (TextSwitcher) findViewById(R.id.dex_text_switcher);
 
+        //yangjiajia
         initView();
 
         DexClassLoader dexClassLoader = new DexClassLoader("", getCodeCacheDir().getAbsolutePath(), null, getClassLoader());
