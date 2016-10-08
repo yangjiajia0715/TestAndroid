@@ -56,6 +56,26 @@
             style="@style/home_text_style"
             android:text="tv_item_type_listview" />
 
+        <TextView
+            android:id="@+id/tv_DexClassLoader"
+            style="@style/home_text_style"
+            android:text="DexClassLoader" />
+
+        <TextView
+            android:id="@+id/tv_ViewAnimator"
+            style="@style/home_text_style"
+            android:text="ViewAnimator" />
+
+        <TextView
+            android:id="@+id/tv_CheckedTextView"
+            style="@style/home_text_style"
+            android:text="CheckedTextView" />
+
+        <TextView
+            android:id="@+id/tv_Dex_ClassLoader"
+            style="@style/home_text_style"
+            android:text="DexClassLoader" />
+
     </LinearLayout>
 
 </ScrollView>

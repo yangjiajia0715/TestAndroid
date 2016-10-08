@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckedTextView;
 
 import com.example.testandroid.ObservableScrollView.demo.ParallaxToolbarScrollViewActivity;
 import com.example.testandroid.ObservableScrollView.viewpager.ViewPagerTabActivity;
@@ -30,6 +31,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_animation).setOnClickListener(this);
         findViewById(R.id.tv_fragement_pager_adapter).setOnClickListener(this);
         findViewById(R.id.tv_item_type_listview).setOnClickListener(this);
+        findViewById(R.id.tv_DexClassLoader).setOnClickListener(this);
+        findViewById(R.id.tv_ViewAnimator).setOnClickListener(this);
+        findViewById(R.id.tv_CheckedTextView).setOnClickListener(this);
+        findViewById(R.id.tv_Dex_ClassLoader).setOnClickListener(this);
+
+        new CheckedTextView(this);
     }
 
     @Override
@@ -77,6 +84,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_item_type_listview:
                 intent = new Intent(this, ItemTypeListViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_DexClassLoader:
+                intent = new Intent(this, DexClassLoaderActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_ViewAnimator:
+                intent = new Intent(this, ViewAnimatorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_CheckedTextView:
+                intent = new Intent(this, CheckTextViewActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_Dex_ClassLoader:
+                intent = new Intent(this, DexClassLoadTestActivity.class);
                 startActivity(intent);
                 break;
         }
