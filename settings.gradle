@@ -1,1 +1,3 @@
 include ':MyJavaProgrammer'
+println 'gradlehome='+gradle.gradleHomeDir.getAbsoluteFile()
+
