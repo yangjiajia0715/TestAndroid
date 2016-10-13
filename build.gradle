@@ -17,6 +17,7 @@ android {
             storeFile file("debug.keystore")
         }
 
+        
 
         myConfig {
             storeFile file("other.keystore")
