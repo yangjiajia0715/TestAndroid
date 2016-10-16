@@ -9,9 +9,25 @@ buildscript {
 apply plugin: 'com.android.application'
 
 android {
+    applicationVariants.all{
+        var ->
+            println "-----------------------applicationVariants--all--var--------------------------------"
+            println "applicationVariants--all--var name=" + var.name
+            println "applicationVariants--all--var description=" + var.description
+            println "applicationVariants--all--var dirName=" + var.dirName
+            println "applicationVariants--all--var baseName=" + var.baseName
+            println "applicationVariants--all--var outputs=" + var.outputs
+    }
+    signingConfigs {
+        yang {
+            keyAlias 'yangjiajia'
+            keyPassword 'yangjiajia'
+            storeFile file('yangjiajia.keystore')
+            storePassword 'yangjiajia'
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion '24.0.2'
-
     defaultConfig {
         applicationId "com.example.administrator.testdesignsupport"
         minSdkVersion 15
@@ -22,25 +38,53 @@ android {
         // Enabling multidex support.
 //        multiDexEnabled true
     }
-
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFile 'proguard.flags'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.yang
         }
-    }
 
+        debug{
+            applicationIdSuffix ''
+        }
+
+//        kaifa {
+//
+//        }
+    }
     productFlavors {
         // Define separate dev and prod product flavors.
+
+        flavorDimensions  "ver","abc"
+
         dev {
+            dimension "ver"
             // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
             // to pre-dex each module and produce an APK that can be tested on
             // Android Lollipop without time consuming dex merging processes.
             minSdkVersion 21
         }
+
+        dev1{
+            dimension "ver"
+        }
+
+        release1 {
+            dimension "abc"
+
+        }
+
+        baidu {
+            dimension "abc"
+
+        }
     }
 
-
+    lintOptions {
+        check 'NewApi'
+    }
 }
 
 dependencies {
@@ -48,8 +92,8 @@ dependencies {
     //    compile 'com.android.support:design:24.1.1'
     compile 'com.android.support:support-v13:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
-//    compile 'com.android.support:multidex:1.0.0'
-
+    //    compile 'com.android.support:multidex:1.0.0'
+    compile files('libs/BDAutoUpdateSDK_20150605_V1.2.0.jar')
 }
 
 android {

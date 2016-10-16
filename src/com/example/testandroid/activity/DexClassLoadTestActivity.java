@@ -45,7 +45,7 @@ public class DexClassLoadTestActivity extends Activity implements View.OnClickLi
         //yangjiajia
         initView();
 
-        DexClassLoader dexClassLoader = new DexClassLoader("", getCodeCacheDir().getAbsolutePath(), null, getClassLoader());
+//        DexClassLoader dexClassLoader = new DexClassLoader("", getCodeCacheDir().getAbsolutePath(), null, getClassLoader());
 //        dexClassLoader.
         //fdsfjdfffff
     }
