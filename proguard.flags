@@ -1,0 +1,255 @@
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+
+
+-dontwarn android.content.pm.**
+-dontwarn android.support.v13.**
+-dontwarn android.support.v4.**
+-dontwarn android.support.v7.**
+-dontwarn om.cyou.elegant.**
+-dontwarn android.database.sqlite.**
+-dontwarn android.content.**
+-dontwarn com.unicorn.downex.**
+-keep class android.content.Context { *;}
+
+-keep class android.support.v7.** { *; }
+-keep class android.support.v13.** { *; }
+-keep interface android.support.v13.app.** { *; }
+-keep public class * extends android.support.v13.**
+-keep class android.support.v4.** { *; }
+-keep class com.umeng.** { *; }
+-keep interface android.support.v4.app.** { *; }
+-keep public class * extends android.support.v4.**
+-keep class net.tsz.** { *; }
+-keep interface android.content.pm.IPackageDataObserver { *; }
+-keep interface android.content.pm.IPackageStatsObserver { *; }
+-keep interface com.cyou.cma.battery.optimization.aidl.BatteryMonitorBinder { *; }
+-keep interface net.tsz.** { *; }
+-keep public class * extends net.tsz.**
+-keep public class * extends android.app.Fragment
+-keep public class * extends android.app.Service
+-keep public class * extends com.cyou.cma.clauncher.CmaWidgetInfo
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keepclassmembers class * {
+   public <init>(org.json.JSONObject);
+}
+
+-keepclasseswithmembernames class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+
+-keepclasseswithmembernames class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+# configuration for elegant
+
+# exclude generic type and annotation
+-keepattributes Signature
+-keepattributes *Annotation*
+
+
+#-keep class com.tencent.mm.sdk.openapi.**{*;}
+
+#-dontwarn com.umeng.**
+#-dontwarn org.apache.commons.**
+#-dontwarn com.tencent.weibo.sdk.**
+#-keepattributes *Annotation*
+#-keep class com.umeng*.** {*;}
+
+#-libraryjars libs/SocialSDK_QQZone_2.jar
+#-libraryjars libs/SocialSDK_WeiXin_1.jar
+#-libraryjars libs/SocialSDK_WeiXin_2.jar
+#-libraryjars libs/umeng_social_sdk.jar
+#-keepattributes Exceptions,InnerClasses,Signature
+#-keepattributes SourceFile,LineNumberTable
+
+#-keep public class com.yangmeng.cuotiben.R$*{
+   # public static final int *;
+#}
+#-keep class com.tencent.open.TDialog$*
+#-keep class com.tencent.open.TDialog$* {*;}
+#-keep class com.tencent.open.PKDialog
+#-keep class com.tencent.open.PKDialog {*;}
+#-keep class com.tencent.open.PKDialog$*
+#-keep class com.tencent.open.PKDialogf$* {*;}
+#-keep class com.tencent.mm.sdk.openapi.WXMediaMessage {*;}
+#-keep class com.tencent.mm.sdk.openapi.** implements com.tencent.mm.sdk.openapi.WXMediaMessage$IMediaObject {*;}
+
+-dontshrink
+-dontoptimize
+-dontwarn com.google.android.maps.**
+-dontwarn android.webkit.WebView
+-dontwarn com.umeng.**
+-dontwarn com.tencent.weibo.sdk.**
+-dontwarn com.facebook.**
+
+
+-keep enum com.facebook.**
+-keepattributes Exceptions,InnerClasses,Signature
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
+
+-keep public interface com.facebook.**
+-keep public interface com.tencent.**
+-keep public interface com.umeng.socialize.**
+-keep public interface com.umeng.socialize.sensor.**
+-keep public interface com.umeng.scrshot.**
+
+-keep public class com.umeng.socialize.* {*;}
+-keep public class javax.**
+-keep public class android.webkit.**
+
+-keep class com.facebook.**
+-keep class com.umeng.scrshot.**
+-keep public class com.tencent.** {*;}
+-keep class com.umeng.socialize.sensor.**
+
+-keep class com.tencent.mm.sdk.modelmsg.WXMediaMessage {*;}
+
+-keep class com.tencent.mm.sdk.modelmsg.** implements com.tencent.mm.sdk.modelmsg.WXMediaMessage$IMediaObject {*;}
+
+-keep class im.yixin.sdk.api.YXMessage {*;}
+-keep class im.yixin.sdk.api.** implements im.yixin.sdk.api.YXMessage$YXMessageData{*;}
+
+-keep public class com.yangmeng.cuotiben.R$*{
+    public static final int *;
+}
+
+-keep class com.umeng.message.* {
+        public <fields>;
+        public <methods>;
+}
+
+-keep class com.umeng.message.protobuffer.* {
+        public <fields>;
+        public <methods>;
+}
+
+-keep class com.squareup.wire.* {
+        public <fields>;
+        public <methods>;
+}
+
+-keep class com.umeng.message.local.* {
+        public <fields>;
+        public <methods>;
+}
+-keep class org.android.agoo.impl.*{
+        public <fields>;
+        public <methods>;
+}
+
+-dontwarn com.xiaomi.**
+
+-dontwarn com.ut.mini.**
+
+-keep class org.android.agoo.service.* {*;}
+
+-keep class org.android.spdy.**{*;}
+
+-keep public class [com.yangmeng.cuotiben].R$*{
+    public static final int *;
+}
+
+-dontwarn com.bokecc.sdk.**
+-keep class com.bokecc.sdk.*{*;}
+
+# ProGuard configurations for Bugtags
+-keepattributes LineNumberTable,SourceFile
+
+-keep class com.bugtags.library.** {*;}
+-dontwarn org.apache.http.**
+-dontwarn android.net.http.AndroidHttpClient
+-dontwarn com.bugtags.library.**
+
+# End Bugtags
+
+-keep class com.tencent.mm.sdk.** {*;}
+
+# 2016-6-24 Android studio 打包注掉
+#-libraryjars libs/volley.jar
+# 2016-6-24 Android studio 打包注掉
+#-libraryjars libs/gson-2.2.2.jar
+
+# # -------------------------------------------
+# #  ############### volley混淆  ############### 
+# # -------------------------------------------
+
+-keep class com.android.volley.** {*;}
+
+-keep class com.android.volley.toolbox.** {*;}
+
+-keep class com.android.volley.Response$* { *; }
+
+-keep class com.android.volley.Request$* { *; }
+
+-keep class com.android.volley.RequestQueue$* { *; }
+
+-keep class com.android.volley.toolbox.HurlStack$* { *; }
+
+-keep class com.android.volley.toolbox.ImageLoader$* { *; }
+
+## ----------------------------------
+##   ########## Gson混淆    ##########
+## ----------------------------------
+
+-keepattributes Signature
+
+-keep class sun.misc.Unsafe { *; }
+
+-keep class com.google.gson.examples.android.model.** { *; }
+-keep public class * implements java.io.Serializable {*;}
+# 2016-6-24 Android studio 打包注掉
+ #-libraryjars libs/xUtils-2.6.14.jar
+
+-keep class com.lidroid.** { *; } 
+
+## --------------------------------------------------------------------
+##   ########## android studio 打包报错，网上找的解决办法    ##########
+## --------------------------------------------------------------------
+-keepattributes EnclosingMethod
+
+## ----------------------------------
+##   ########## 云信混淆    ##########
+## ----------------------------------
+-dontwarn com.netease.**
+-dontwarn io.netty.**
+-keep class com.netease.** {*;}
+#如果 netty 使用的官方版本，它中间用到了反射，因此需要 keep。如果使用的是我们提供的版本，则不需要 keep
+-keep class io.netty.** {*;}
+
+#如果你使用全文检索插件，需要加入
+-dontwarn org.apache.lucene.**
+-keep class org.apache.lucene.** {*;}
+
+
+#高德地图 定位
+-keep class com.amap.api.location.**{*;}
+-keep class com.amap.api.fence.**{*;}
+-keep class com.autonavi.aps.amapapi.model.**{*;}
+
+#高德地图 2D地图
+-keep class com.amap.api.maps2d.**{*;}
+-keep class com.amap.api.mapcore2d.**{*;}
+
+-dontwarn com.amap.api.mapcore2d.**
+
+#百度自动更新
+-dontwarn com.baidu.autoupdatesdk.**
