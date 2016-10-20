@@ -4,9 +4,11 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
+//        classpath 'com.tencent.tinker:tinker-patch-gradle-plugin:1.7.1'
     }
 }
 apply plugin: 'com.android.application'
+//apply plugin: 'com.tencent.tinker.patch'
 
 android {
     applicationVariants.all{
@@ -80,6 +82,12 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.2.1'
     //    compile 'com.android.support:multidex:1.0.0'
     compile files('libs/BDAutoUpdateSDK_20150605_V1.2.0.jar')
+
+
+    //optional, help to generate the final application
+//    compile('com.tencent.tinker:tinker-android-anno:1.7.1')
+    //tinker's main Android lib
+//    compile('com.tencent.tinker:tinker-android-lib:1.7.1')
 }
 
 android {
