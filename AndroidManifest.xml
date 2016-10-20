@@ -77,6 +77,10 @@
         <activity android:name="com.example.testandroid.activity.DexClassLoadTestActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             />
+        <activity
+            android:name="com.example.testandroid.activity.PhotoViewActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            />
     </application>
 
 </manifest>

@@ -76,6 +76,11 @@
             style="@style/home_text_style"
             android:text="DexClassLoader" />
 
+        <TextView
+            android:id="@+id/tv_photo_view"
+            style="@style/home_text_style"
+            android:text="tv_photo_view" />
+
     </LinearLayout>
 
 </ScrollView>
