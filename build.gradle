@@ -11,15 +11,15 @@ apply plugin: 'com.android.application'
 //apply plugin: 'com.tencent.tinker.patch'
 
 android {
-    applicationVariants.all{
-        var ->
-            println "-----------------------applicationVariants--all--var--------------------------------"
-            println "applicationVariants--all--var name=" + var.name
-            println "applicationVariants--all--var description=" + var.description
-            println "applicationVariants--all--var dirName=" + var.dirName
-            println "applicationVariants--all--var baseName=" + var.baseName
-            println "applicationVariants--all--var outputs=" + var.outputs
-    }
+//    applicationVariants.all{
+//        var ->
+//            println "-----------------------applicationVariants--all--var--------------------------------"
+//            println "applicationVariants--all--var name=" + var.name
+//            println "applicationVariants--all--var description=" + var.description
+//            println "applicationVariants--all--var dirName=" + var.dirName
+//            println "applicationVariants--all--var baseName=" + var.baseName
+//            println "applicationVariants--all--var outputs=" + var.outputs
+//    }
     signingConfigs {
         yang {
             keyAlias 'yangjiajia'
