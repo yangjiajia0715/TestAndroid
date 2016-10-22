@@ -4,19 +4,22 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
+//        classpath 'com.tencent.tinker:tinker-patch-gradle-plugin:1.7.1'
     }
 }
 apply plugin: 'com.android.application'
+//apply plugin: 'com.tencent.tinker.patch'
 
 android {
-    applicationVariants.all{
-        var ->
-            println "-----------------------applicationVariants--all--var--------------------------------"
-            println "applicationVariants--all--var name=" + var.name
-            println "applicationVariants--all--var description=" + var.description
-            println "applicationVariants--all--var dirName=" + var.dirName
-            println "applicationVariants--all--var baseName=" + var.baseName
-    }
+//    applicationVariants.all{
+//        var ->
+//            println "-----------------------applicationVariants--all--var--------------------------------"
+//            println "applicationVariants--all--var name=" + var.name
+//            println "applicationVariants--all--var description=" + var.description
+//            println "applicationVariants--all--var dirName=" + var.dirName
+//            println "applicationVariants--all--var baseName=" + var.baseName
+//            println "applicationVariants--all--var outputs=" + var.outputs
+//    }
     signingConfigs {
         yang {
             keyAlias 'yangjiajia'
@@ -44,40 +47,26 @@ android {
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.yang
         }
-
-        debug{
-            applicationIdSuffix ''
-        }
-
-//        kaifa {
-//
-//        }
     }
     productFlavors {
         // Define separate dev and prod product flavors.
 
         flavorDimensions  "ver","abc"
 
-        dev {
-            dimension "ver"
-            // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
-            // to pre-dex each module and produce an APK that can be tested on
-            // Android Lollipop without time consuming dex merging processes.
-            minSdkVersion 21
-        }
-
-        dev1{
+        freeApp {
             dimension "ver"
         }
 
-        release1 {
-            dimension "abc"
-
+        payApp{
+            dimension "ver"
         }
 
-        baidu {
+        flavor1 {
             dimension "abc"
+        }
 
+        flavor2 {
+            dimension "abc"
         }
     }
 
@@ -93,6 +82,12 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.2.1'
     //    compile 'com.android.support:multidex:1.0.0'
     compile files('libs/BDAutoUpdateSDK_20150605_V1.2.0.jar')
+
+
+    //optional, help to generate the final application
+//    compile('com.tencent.tinker:tinker-android-anno:1.7.1')
+    //tinker's main Android lib
+//    compile('com.tencent.tinker:tinker-android-lib:1.7.1')
 }
 
 android {
