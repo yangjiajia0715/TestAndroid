@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.2.2'
     }
 }
 apply plugin: 'com.android.application'
@@ -16,7 +16,6 @@ android {
             println "applicationVariants--all--var description=" + var.description
             println "applicationVariants--all--var dirName=" + var.dirName
             println "applicationVariants--all--var baseName=" + var.baseName
-            println "applicationVariants--all--var outputs=" + var.outputs
     }
     signingConfigs {
         yang {
