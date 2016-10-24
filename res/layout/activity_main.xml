@@ -80,6 +80,10 @@
             android:id="@+id/tv_photo_view"
             style="@style/home_text_style"
             android:text="tv_photo_view" />
+        <TextView
+            android:id="@+id/tv_buildconfig_field"
+            style="@style/home_text_style"
+            android:text="tv_buildconfig_field" />
 
     </LinearLayout>
 

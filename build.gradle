@@ -37,6 +37,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String","Message","\"测试buildConfigField的使用\""
         // Enabling multidex support.
 //        multiDexEnabled true
     }
