@@ -43,10 +43,12 @@ android {
     }
     buildTypes {
         release {
+
             minifyEnabled true
             proguardFile 'proguard.flags'
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.yang
+            buildConfigField "String","HHH","\"releasereleasereleaserelease\""
         }
     }
     productFlavors {
