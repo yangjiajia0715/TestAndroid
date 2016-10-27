@@ -6,7 +6,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
-        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
+//        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
+        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:1.7.1"
     }
 }
 
@@ -18,7 +19,7 @@ allprojects {
 }
 
 apply plugin: 'com.android.application'
-//apply plugin: 'com.tencent.tinker.patch'
+apply plugin: 'com.tencent.tinker.patch'
 
 android {
     compileSdkVersion 24
@@ -96,7 +97,8 @@ dependencies {
     //optional, help to generate the final application
 //    compile('com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}'){ changing = true }
     //tinker's main Android lib
-    compile('com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}'){ changing = true }
+//    compile('com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}'){ changing = true }
+    compile('com.tencent.tinker:tinker-android-lib:1.7.1'){ changing = true }
 }
 
 android {
