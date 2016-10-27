@@ -21,6 +21,7 @@ public class BuildConfigFieldActivity extends Activity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        android.R.layout
         setContentView(R.layout.activity_build_config_field);
         textView = (TextView) findViewById(R.id.tv_buildconfig);
         textView.setOnClickListener(this);
@@ -32,7 +33,7 @@ public class BuildConfigFieldActivity extends Activity implements View.OnClickLi
         builder.append("\n APPLICATION_ID=" + BuildConfig.APPLICATION_ID);
         builder.append("\n BUILD_TYPE=" + BuildConfig.BUILD_TYPE);
         builder.append("\n FLAVOR=" + BuildConfig.FLAVOR);
-        builder.append("\n FLAVOR_abc=" + BuildConfig.FLAVOR_abc);
+//        builder.append("\n FLAVOR_abc=" + BuildConfig.FLAVOR_abc);
         builder.append("\n VERSION_NAME=" + BuildConfig.VERSION_NAME);
         builder.append("\n DEBUG=" + BuildConfig.DEBUG);
         builder.append("\n Message=" + BuildConfig.Message);
