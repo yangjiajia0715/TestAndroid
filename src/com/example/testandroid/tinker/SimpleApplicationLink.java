@@ -13,7 +13,7 @@ import com.tencent.tinker.loader.shareutil.ShareConstants;
  * Created by yangjiajia on 2016/10/28 0028.
  */
 @DefaultLifeCycle(
-        application = ".SampleApplication",                       //application类名
+        application = "com.example.testandroid.tinker.SampleApplication",                       //application类名
         flags = ShareConstants.TINKER_ENABLE_ALL,                 //tinkerFlags
         loaderClass = "com.tencent.tinker.loader.TinkerLoader",   //loaderClassName, 我们这里使用默认即可!
         loadVerifyFlag = false)

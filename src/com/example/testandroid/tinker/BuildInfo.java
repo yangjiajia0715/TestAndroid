@@ -16,7 +16,7 @@
 
 package com.example.testandroid.tinker;
 
-import tinker.sample.android.BuildConfig;
+import com.example.testandroid.BuildConfig;
 
 /**
  * Created by zhangshaowen on 16/6/30.

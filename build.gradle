@@ -25,6 +25,11 @@ android {
     compileSdkVersion 24
     buildToolsVersion '24.0.2'
 
+    //recommend
+    dexOptions {
+        jumboMode = true
+    }
+
     signingConfigs {
         yang {
             keyAlias 'yangjiajia'
@@ -44,6 +49,29 @@ android {
         buildConfigField "String","Message","\"测试buildConfigField的使用\""
         // Enabling multidex support.
 //        multiDexEnabled true
+
+        /**
+         * you can use multiDex and install it in your ApplicationLifeCycle implement
+         */
+        multiDexEnabled true
+        /**
+         * not like proguard, multiDexKeepProguard is not a list, so we can't just
+         * add for you in our task. you can copy tinker keep rules at
+         * build/intermediates/tinker_intermediates/tinker_multidexkeep.pro
+         */
+        multiDexKeepProguard file("keep_in_main_dex.txt")
+        /**
+         * buildConfig can change during patch!
+         * we can use the newly value when patch
+         */
+        buildConfigField "String", "MESSAGE", "\"I am the base apk\""
+//        buildConfigField "String", "MESSAGE", "\"I am the patch apk\""
+        /**
+         * client version would update with patch
+         * so we can get the newly git version easily!
+         */
+        buildConfigField "String", "CLIENTVERSION", "\"${getTinkerIdValue()}\""
+        buildConfigField "String", "PLATFORM",  "\"all\""
     }
 
     buildTypes {
@@ -94,10 +122,22 @@ dependencies {
 
 
     //optional, help to generate the final application
-//    compile('com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}'){ changing = true }
+    compile('com.tencent.tinker:tinker-android-anno:1.7.1'){ changing = true }
     //tinker's main Android lib
 //    compile('com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}'){ changing = true }
     compile('com.tencent.tinker:tinker-android-lib:1.7.1'){ changing = true }
+}
+
+def gitSha() {
+    try {
+        String gitRev = 'git rev-parse --short HEAD'.execute(null, project.rootDir).text.trim()
+        if (gitRev == null) {
+            throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+        }
+        return gitRev
+    } catch (Exception e) {
+        throw new GradleException("can't get git rev, you should add git to system path or just input test value, such as 'testTinkerId'")
+    }
 }
 
 android {
@@ -166,6 +206,7 @@ def getApplyResourceMappingPath() {
     return hasProperty("APPLY_RESOURCE") ? APPLY_RESOURCE : ext.tinkerApplyResourcePath
 }
 
+println "${project.name} hasProperty TINKER_ID=" + hasProperty("TINKER_ID")
 def getTinkerIdValue() {
     return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()
 }
@@ -221,27 +262,27 @@ if (buildWithTinker()) {
          * Warning, applyMapping will affect the normal android build!
          */
         buildConfig {
-            /**
-             * optional，default 'null'
-             * if we use tinkerPatch to build the patch apk, you'd better to apply the old
-             * apk mapping file if minifyEnabled is enable!
-             * Warning:
-             * you must be careful that it will affect the normal assemble build!
-             */
+//            /**
+//             * optional，default 'null'
+//             * if we use tinkerPatch to build the patch apk, you'd better to apply the old
+//             * apk mapping file if minifyEnabled is enable!
+//             * Warning:
+//             * you must be careful that it will affect the normal assemble build!
+//             */
             applyMapping = getApplyMappingPath()
-            /**
-             * optional，default 'null'
-             * It is nice to keep the resource id from R.txt file to reduce java changes
-             */
+//            /**
+//             * optional，default 'null'
+//             * It is nice to keep the resource id from R.txt file to reduce java changes
+//             */
             applyResourceMapping = getApplyResourceMappingPath()
-
-            /**
-             * necessary，default 'null'
-             * because we don't want to check the base apk with md5 in the runtime(it is slow)
-             * tinkerId is use to identify the unique base apk when the patch is tried to apply.
-             * we can use git rev, svn rev or simply versionCode.
-             * we will gen the tinkerId in your manifest automatic
-             */
+//
+//            /**
+//             * necessary，default 'null'
+//             * because we don't want to check the base apk with md5 in the runtime(it is slow)
+//             * tinkerId is use to identify the unique base apk when the patch is tried to apply.
+//             * we can use git rev, svn rev or simply versionCode.
+//             * we will gen the tinkerId in your manifest automatic
+//             */
             tinkerId = getTinkerIdValue()
         }
 
@@ -286,9 +327,9 @@ if (buildWithTinker()) {
              */
             loader = ["com.tencent.tinker.loader.*",
                       //warning, you must change it with your application
-                      "tinker.sample.android.app.SampleApplication",
+                      "com.example.testandroid.tinker.SampleApplication",
                       //use sample, let BaseBuildInfo unchangeable with tinker
-                      "tinker.sample.android.app.BaseBuildInfo"
+                      "com.example.testandroid.tinker.BaseBuildInfo"
             ]
         }
 
