@@ -37,6 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_Dex_ClassLoader).setOnClickListener(this);
         findViewById(R.id.tv_photo_view).setOnClickListener(this);
         findViewById(R.id.tv_buildconfig_field).setOnClickListener(this);
+        findViewById(R.id.tv_test_tinker).setOnClickListener(this);
 
         new CheckedTextView(this);
     }
@@ -110,6 +111,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_buildconfig_field:
                 intent = new Intent(this, BuildConfigFieldActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_test_tinker:
+                intent = new Intent(this, TestTinkerActivity.class);
                 startActivity(intent);
                 break;
         }

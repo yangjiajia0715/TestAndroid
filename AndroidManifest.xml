@@ -17,9 +17,9 @@
 
     <!--name MultiDexAppcation-->
     <application
+        android:name=".tinker.SampleApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:name=".tinker.SampleApplication"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
@@ -43,28 +43,37 @@
         <activity
             android:name=".activity.ParallaxActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" />
+
         <activity
             android:name=".activity.ListViewClipActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name=".activity.ScrollViewClipActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name=".activity.ViewPagerAllActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name=".ObservableScrollView.demo.ParallaxToolbarScrollViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity android:name=".ObservableScrollView.viewpager.ViewPagerTabActivity" />
+
         <activity
             android:name=".activity.AnimationActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name=".activity.FrgStatePagerAdaperActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name=".activity.ItemTypeListViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name="com.example.testandroid.activity.DexClassLoaderActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
@@ -72,22 +81,30 @@
         <activity
             android:name="com.example.testandroid.activity.ViewAnimatorActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name="com.example.testandroid.activity.CheckTextViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name="com.example.testandroid.activity.DexClassLoadTestActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name="com.example.testandroid.activity.PhotoViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name="com.example.testandroid.activity.BuildConfigFieldActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
 
+        <activity
+            android:name="com.example.testandroid.activity.TestTinkerActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <service
             android:name=".service.SampleResultService"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>
