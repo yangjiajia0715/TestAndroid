@@ -6,8 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
-//        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
-        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:1.7.1"
+        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
     }
 }
 
@@ -128,10 +127,8 @@ dependencies {
 
 
     //optional, help to generate the final application
-    compile('com.tencent.tinker:tinker-android-anno:1.7.1'){ changing = true }
-    //tinker's main Android lib
-//    compile('com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}'){ changing = true }
-    compile('com.tencent.tinker:tinker-android-lib:1.7.1'){ changing = true }
+    compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
+    compile("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
 }
 
 def gitSha() {
@@ -213,6 +210,13 @@ def getApplyResourceMappingPath() {
 }
 
 println "${project.name} hasProperty TINKER_ID=" + hasProperty("TINKER_ID")
+println "${project.name} hasProperty yangjiajia=" + hasProperty("yangjiajia") + ",yangjiajia=" + project.yangjiajia
+println "${project.name} hasProperty org.gradle.java.home=" + hasProperty("org.gradle.java.home")
+println "${project.name} hasProperty buildDir=" + buildDir.getAbsolutePath()
+println "${project.name} hasProperty gradleUserHomeDir=" + gradle.gradleUserHomeDir
+
+
+
 def getTinkerIdValue() {
     return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()
 }
