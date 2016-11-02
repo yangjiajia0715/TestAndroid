@@ -186,11 +186,11 @@ ext {
 
     //for normal build
     //old apk file to build patch apk
-    tinkerOldApkPath = "${bakPath}/app-debug-1030-22-26-05.apk"
+    tinkerOldApkPath = "${bakPath}/app-debug-1101-21-56-52.apk"
     //proguard mapping file to build patch apk
-    tinkerApplyMappingPath = "${bakPath}/app-debug-1030-22-26-05-mapping.txt"
+    tinkerApplyMappingPath = "${bakPath}/app-debug-1101-21-56-52-mapping.txt"
     //resource R.txt to build patch apk, must input if there is resource changed
-    tinkerApplyResourcePath = "${bakPath}/app-debug-1030-22-26-05-R.txt"
+    tinkerApplyResourcePath = "${bakPath}/app-debug-1101-21-56-52-R.txt"
 
     //only use for build all flavor, if not, just ignore this field
     tinkerBuildFlavorDirectory = "${bakPath}/app-1030-22-26-05"
@@ -210,12 +210,10 @@ def getApplyResourceMappingPath() {
 }
 
 println "${project.name} hasProperty TINKER_ID=" + hasProperty("TINKER_ID")
-println "${project.name} hasProperty yangjiajia=" + hasProperty("yangjiajia") + ",yangjiajia=" + project.yangjiajia
+println "${project.name} hasProperty yangjiajia=" + hasProperty("yangjiajia")
 println "${project.name} hasProperty org.gradle.java.home=" + hasProperty("org.gradle.java.home")
 println "${project.name} hasProperty buildDir=" + buildDir.getAbsolutePath()
 println "${project.name} hasProperty gradleUserHomeDir=" + gradle.gradleUserHomeDir
-
-
 
 def getTinkerIdValue() {
     return hasProperty("TINKER_ID") ? TINKER_ID : gitSha()
