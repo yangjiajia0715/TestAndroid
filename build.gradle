@@ -4,9 +4,11 @@ buildscript {
         mavenLocal()
         jcenter()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
-        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
+//        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
+        classpath ('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3')
     }
 }
 
@@ -18,7 +20,7 @@ allprojects {
 }
 
 apply plugin: 'com.android.application'
-//apply plugin: 'com.tencent.tinker.patch'
+apply plugin: 'com.tencent.tinker.patch'
 
 android {
     compileSdkVersion 24
@@ -120,15 +122,19 @@ android {
 dependencies {
     compile fileTree(include: '*.jar', dir: 'libs',exclude:"BDAutoUpdateSDK_20150605_V1.2.0.jar")
     //    compile 'com.android.support:design:24.1.1'
-    compile 'com.android.support:support-v13:24.2.1'
-    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile "com.android.support:support-v13:24.2.1"
+    compile "com.android.support:recyclerview-v7:24.2.1"
     //    compile 'com.android.support:multidex:1.0.0'
     compile "com.android.support:multidex:1.0.1"
 
-
     //optional, help to generate the final application
-    compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
-    compile("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
+//    compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
+//    compile("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
+
+    //optional, help to generate the final application，2016-11-3
+    provided('com.tencent.tinker:tinker-android-anno:1.7.3')
+    //tinker's main Android lib
+    compile('com.tencent.tinker:tinker-android-lib:1.7.3')
 }
 
 def gitSha() {

@@ -18,24 +18,20 @@ import com.tencent.tinker.loader.shareutil.ShareConstants;
 /**
  * Created by yangjiajia on 2016/10/28 0028.
  */
-@DefaultLifeCycle(
-        application = "com.example.testandroid.tinker.SampleApplication",                       //application类名
-        flags = ShareConstants.TINKER_ENABLE_ALL,                 //tinkerFlags
-        loaderClass = "com.tencent.tinker.loader.TinkerLoader",   //loaderClassName, 我们这里使用默认即可!
+@SuppressWarnings("unused")
+@DefaultLifeCycle(application = ".SampleApplication",
+        flags = ShareConstants.TINKER_ENABLE_ALL,
         loadVerifyFlag = false)
 public class SimpleApplicationLink extends DefaultApplicationLike {
     public SimpleApplicationLink(Application application, int tinkerFlags, boolean tinkerLoadVerifyFlag, long applicationStartElapsedTime, long applicationStartMillisTime, Intent tinkerResultIntent, Resources[] resources, ClassLoader[] classLoader, AssetManager[] assetManager) {
         super(application, tinkerFlags, tinkerLoadVerifyFlag, applicationStartElapsedTime, applicationStartMillisTime, tinkerResultIntent, resources, classLoader, assetManager);
     }
 
-
     @Override
     public void onBaseContextAttached(Context base) {
         super.onBaseContextAttached(base);
         //you must install multiDex whatever tinker is installed!
         MultiDex.install(base);
-
-
         SampleApplicationContext.application = getApplication();
         SampleApplicationContext.context = getApplication();
         TinkerManager.setTinkerApplicationLike(this);
