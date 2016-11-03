@@ -67,7 +67,8 @@ public class TestTinkerActivity extends Activity  {
         cleanPatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Tinker.with(getApplicationContext()).cleanPatch();
+                Toast.makeText(TestTinkerActivity.this, "cleanPatchButton", Toast.LENGTH_SHORT).show();
+//                Tinker.with(getApplicationContext()).cleanPatch();
             }
         });
 
