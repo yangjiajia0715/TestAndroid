@@ -105,7 +105,7 @@ public class TestTinkerActivity extends Activity  {
             sb.append(String.format("[packageConfig patchMessage] %s \n", tinker.getTinkerLoadResultIfPresent().getPackageConfigByName("patchMessage")));
             sb.append(String.format("[TINKER_ID Rom Space] %d k \n", tinker.getTinkerRomSpace()));
 
-            Toast.makeText(context, "修复成功了哈哈", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "修复成功了哈哈2016年11月4日22:23:12", Toast.LENGTH_SHORT).show();
         } else {
             sb.append(String.format("[patch is not loaded] \n"));
             sb.append(String.format("[buildConfig CLIENTVERSION] %s \n", BuildInfo.CLIENTVERSION));
