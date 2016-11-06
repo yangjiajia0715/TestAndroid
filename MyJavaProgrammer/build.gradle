@@ -1,10 +1,23 @@
 apply plugin: 'java'
 
-//貌似不起作用
-//defaultTasks 'hello','loadFile'
+//查看gradle properties
+//defaultTasks 'hello','distribution'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+//使用外部依赖之前，至少需要定义一个库
+repositories{
+    mavenCentral()
+    //使用远程的Maven库
+//    maven {
+//        url "http://repo.mycompany.com/maven2"
+//    }
+    //使用本地的ivy目录, ..表示当前目录
+//    ivy {
+//        url "../local-repo"
+//    }
 }
 
 task hello {
@@ -99,6 +112,7 @@ task release (dependsOn: distribution ) << {
     println "we release now"
 }
 
+//默认属性
 gradle.taskGraph.whenReady {
     taskGraph ->
     if (taskGraph.hasTask(release)){
@@ -108,8 +122,21 @@ gradle.taskGraph.whenReady {
     }
 }
 
+//TINKER_VERSION = '1.7.4'//改变属性
+jar {
+    manifest {
+        attributes 'Implementation-Title':'gradle------quick start'
+    }
+}
 
-
+//发布jar文件  这里发布到本地
+uploadArchives {
+    repositories{
+        flatDir {
+            dirs 'repos'
+        }
+    }
+}
 
 //println "project name = $project.name ,projectDir= $project.projectDir"
 //println "project name = $project.name ,version= $version"

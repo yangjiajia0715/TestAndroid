@@ -135,6 +135,7 @@ dependencies {
     provided('com.tencent.tinker:tinker-android-anno:1.7.3')
     //tinker's main Android lib
     compile('com.tencent.tinker:tinker-android-lib:1.7.3')
+    compile project(':mylib')
 }
 
 def gitSha() {
