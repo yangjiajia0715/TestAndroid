@@ -1,13 +1,127 @@
 apply plugin: 'java'
 
+//貌似不起作用
+//defaultTasks 'hello','loadFile'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 task hello {
+    ext.helloProp = "helloValue"
     doLast{
         println "Hello Word!"
     }
 }
 
-println "${project.name} buildWithTinker=" + buildWithTinker();
+task upper << {
+    String someString = "HHHH_kkk"
+    println "Original: " + someString
+    println "Upper case : " + someString.toUpperCase()
+
+}
+
+task count << {
+    4.times {
+//        println "time = $time"
+        println "time = $it"
+    }
+}
+
+task intro(dependsOn: hello) << {
+    println "i am gradle"
+}
+
+//依赖的任务没必要提前定义
+task taskx(dependsOn: 'taskY') << {
+    println "taskx"
+}
+
+task taskY <<{
+    println "taskY"
+}
+
+//动态的创建任务
+4.times { counter ->
+    task "task$counter" << {
+        println "I am task number $counter"
+    }
+}
+
+//添加依赖
+task0.dependsOn task2,task3
+
+hello.doFirst{
+    println "hello doFirst"
+}
+
+hello.doFirst{
+    println "hello doFirst ext"
+}
+
+hello.doLast{
+    println "hello doLast"
+}
+
+//短标记法 $可以访问一个存在的任务
+hello << {
+    println "hello doLast ext ,name = $hello.name"
+}
+
+//自定义任务属性
+task myTask {
+    ext.myProperty = "myValue"
+
+    //注意 上面没 << ， doLast 可以加到该处
+}
+
+task printTaskProperties << {
+    println "printTaskProperties =" + myTask.myProperty
+}
+
+task printHelloProperties << {
+    println "printTaskProperties =" + hello.helloProp
+}
+
+task loadFile << {
+    def files = file('../src').listFiles()
+
+    files.each {File file ->
+        println "loadFile files= " + file.name
+    }
+}
+
+task distribution << {
+    println "we build the zip with version = $version"
+}
+
+task release (dependsOn: distribution ) << {
+    println "we release now"
+}
+
+gradle.taskGraph.whenReady {
+    taskGraph ->
+    if (taskGraph.hasTask(release)){
+        version = '1.0'
+    }else {
+        version = '1.0-snapshot'
+    }
+}
+
+
+
+
+//println "project name = $project.name ,projectDir= $project.projectDir"
+//println "project name = $project.name ,version= $version"
+println "project name = $project.name ,buildDir= $buildDir"
+
+
+
+
+
+
+
+
+
+
+
