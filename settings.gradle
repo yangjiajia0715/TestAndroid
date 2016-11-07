@@ -1,2 +1,2 @@
-include ':MyJavaProgrammer', ':mylib'
+include ':MyJavaProgrammer',':mylib'
 
