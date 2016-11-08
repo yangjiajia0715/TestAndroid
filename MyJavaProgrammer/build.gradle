@@ -139,7 +139,8 @@ uploadArchives {
 }
 
 //println "project name = $project.name ,projectDir= $project.projectDir"
-//println "project name = $project.name ,version= $version"
+println "project name = $project.name ,hasProperty=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
+
 println "project name = $project.name ,buildDir= $buildDir"
 
 
