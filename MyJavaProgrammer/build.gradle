@@ -139,9 +139,9 @@ uploadArchives {
 }
 
 //println "project name = $project.name ,projectDir= $project.projectDir"
-println "project name = $project.name ,hasProperty=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
+println "-----------project name = $project.name ,hasProperty--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
 
-println "project name = $project.name ,buildDir= $buildDir"
+println "-----------project name = $project.name ,buildDir= $buildDir"
 
 
 
