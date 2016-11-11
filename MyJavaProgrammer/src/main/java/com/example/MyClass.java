@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MyClass {
@@ -28,7 +29,8 @@ public class MyClass {
 //
 ////        [A-Za-z0-9_-]*
 //        System.out.printf("toArray toArray=" + videoId.matches("[A-Za-z0-9]*"));
-        testArrayAddDelNull();
+//        testArrayAddDelNull();
+        testMapAddDelNull();
     }
 
     /**
@@ -43,9 +45,29 @@ public class MyClass {
         arrayList.add(null);
         arrayList.add(null);
 
-        System.out.printf("arrayList arrayList size=" + arrayList.size() + "" + arrayList.toString());
+        System.out.println("arrayList arrayList size=" + arrayList.size() + "" + arrayList.toString());
         arrayList.remove(null);
-        System.out.printf("arrayList arrayList size=" + arrayList.size() + "" + arrayList.toString());
+        arrayList.remove(null);
+        boolean remove = arrayList.remove(null);
+        boolean remove22 =  arrayList.remove(new TestUserInfo("dfdsf",22));
+        System.out.println("--------------arrayList---------------2--remove=" + remove );
+        System.out.println("--------------arrayList---------------2--remove22=" + remove22 );
+        System.out.println("arrayList arrayList size=" + arrayList.size() + "" + arrayList.toString());
+    }
+
+    /**
+     * add null
+     * del null
+     */
+    private static void testMapAddDelNull() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("k1", "v1");
+        map.put("k2", "v2");
+//        map.put(null, null);
+//        map.put(null, null);
+        map.remove(null);
+
+        System.out.println("--------testMapAddDelNull--------size=" + map.size() + ",map=" + map.toString());
     }
 
 

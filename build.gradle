@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
 //        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
-        classpath ('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3')
+        classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3')
     }
 }
 
@@ -21,6 +21,7 @@ allprojects {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.tencent.tinker.patch'
+apply from: file('utils.gradle')
 
 android {
     compileSdkVersion 24
@@ -47,7 +48,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField "String","Message","\"测试buildConfigField的使用\""
+        buildConfigField "String", "Message", "\"测试buildConfigField的使用\""
         // Enabling multidex support.
 //        multiDexEnabled true
 
@@ -72,7 +73,7 @@ android {
          * so we can get the newly git version easily!
          */
         buildConfigField "String", "CLIENTVERSION", "\"${getTinkerIdValue()}\""
-        buildConfigField "String", "PLATFORM",  "\"all\""
+        buildConfigField "String", "PLATFORM", "\"all\""
     }
 
     buildTypes {
@@ -82,7 +83,7 @@ android {
             proguardFile 'proguard.flags'
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.yang
-            buildConfigField "String","HHH","\"releasereleasereleaserelease\""
+            buildConfigField "String", "HHH", "\"releasereleasereleaserelease\""
         }
 
         debug {
@@ -120,7 +121,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: '*.jar', dir: 'libs',exclude:"BDAutoUpdateSDK_20150605_V1.2.0.jar")
+    compile fileTree(include: '*.jar', dir: 'libs', exclude: "BDAutoUpdateSDK_20150605_V1.2.0.jar")
     //    compile 'com.android.support:design:24.1.1'
     compile "com.android.support:support-v13:24.2.1"
     compile "com.android.support:recyclerview-v7:24.2.1"
@@ -427,7 +428,7 @@ if (buildWithTinker()) {
     }
 
     List<String> flavors = new ArrayList<>();
-    project.android.productFlavors.each {flavor ->
+    project.android.productFlavors.each { flavor ->
         flavors.add(flavor.name)
     }
     boolean hasFlavors = flavors.size() > 0
