@@ -140,17 +140,30 @@ uploadArchives {
 
 
 task myCopy(type: Copy){
-    from 'srctest'
+    description "复制任务描述信息 整个目录"
+    from file('srctest')
+    into file('dst00')
+}
+
+//myCopy.dependsOn ":MyJavaProgrammer:generateDebugAndroidTestSources" // path
+
+task myCopyEx(type: Copy){
+    description "复制任务描述信息 个别文件"
+
+    from file('srctest')
     into file('srcDst')
 }
 
-myCopy.dependsOn 'generateReleaseSources'
+
+//myCopy.dependsOn 'generateDebugAndroidTestSources' // path
 
 
 //println "project name = $project.name ,projectDir= $project.projectDir"
 println "-----------project name = $project.name ,hasProperty--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
 
-println "-----------project name = $project.name ,buildDir= $buildDir"
+println "-----------project name = $project.name ,buildDir= $buildDir buildDir=$buildDir"
+File dst = file("srctest");
+println "-----------project name = $project.name ,buildDir= $buildDir dst.exists=" + dst.exists()
 
 
 

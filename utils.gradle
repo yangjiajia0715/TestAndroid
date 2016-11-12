@@ -3,14 +3,14 @@ println "-----------utile.gradle--------begin-------------"
 
 
 
-gradle.taskGraph.whenReady {
-    taskGraph ->
-        if (taskGraph.hasTask(release)) {
-            version = '22.0'
-        } else {
-            version = '22.0-SNAPSHOT'
-        }
-}
+//gradle.taskGraph.whenReady {
+//    taskGraph ->
+//        if (taskGraph.hasTask(release)) {
+//            version = '22.0'
+//        } else {
+//            version = '22.0-SNAPSHOT'
+//        }
+//}
 
 
 println "-----------utile.gradle--------end-------------"
