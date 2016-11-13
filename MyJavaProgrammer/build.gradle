@@ -1,5 +1,5 @@
 apply plugin: 'java'
-
+println "---------------project name = $project.name ------begin----------------------------"
 //查看gradle properties
 //defaultTasks 'hello','distribution'
 
@@ -8,7 +8,7 @@ dependencies {
 }
 
 //使用外部依赖之前，至少需要定义一个库
-repositories{
+repositories {
     mavenCentral()
     //使用远程的Maven库
 //    maven {
@@ -22,7 +22,7 @@ repositories{
 
 task hello {
     ext.helloProp = "helloValue"
-    doLast{
+    doLast {
         println "Hello Word!"
     }
 }
@@ -50,7 +50,7 @@ task taskx(dependsOn: 'taskY') << {
     println "taskx"
 }
 
-task taskY <<{
+task taskY << {
     println "taskY"
 }
 
@@ -62,17 +62,17 @@ task taskY <<{
 }
 
 //添加依赖
-task0.dependsOn task2,task3
+task0.dependsOn task2, task3
 
-hello.doFirst{
+hello.doFirst {
     println "hello doFirst"
 }
 
-hello.doFirst{
+hello.doFirst {
     println "hello doFirst ext"
 }
 
-hello.doLast{
+hello.doLast {
     println "hello doLast"
 }
 
@@ -99,7 +99,7 @@ task printHelloProperties << {
 task loadFile << {
     def files = file('../src').listFiles()
 
-    files.each {File file ->
+    files.each { File file ->
         println "loadFile files= " + file.name
     }
 }
@@ -108,55 +108,76 @@ task distribution << {
     println "we build the zip with version = $version"
 }
 
-task release (dependsOn: distribution ) << {
+task release(dependsOn: distribution) << {
     println "we release now"
 }
 
 //默认属性
 gradle.taskGraph.whenReady {
     taskGraph ->
-    if (taskGraph.hasTask(release)){
-        version = '1.0'
-    }else {
-        version = '1.0-snapshot'
-    }
+        if (taskGraph.hasTask(release)) {
+            version = '1.0'
+        } else {
+            version = '1.0-snapshot'
+        }
 }
 
 //TINKER_VERSION = '1.7.4'//改变属性
 jar {
     manifest {
-        attributes 'Implementation-Title':'gradle------quick start'
+        attributes 'Implementation-Title': 'gradle------quick start'
     }
 }
 
 //发布jar文件  这里发布到本地
 uploadArchives {
-    repositories{
+    repositories {
         flatDir {
             dirs 'repos'
         }
     }
 }
 
-
-task myCopy(type: Copy){
+//通过tasks创建任务
+tasks.create(name: 'myCopy1',type: Copy, group:"yangyang", description : "描述") {
     description "复制任务描述信息 整个目录"
-    from file('srctest')
-    into file('dst00')
+    group rootProject.GROUP
+
+    println "-----------project name = $project.name ,myCopy myCopy myCopy"
+    println "-----------project name = $project.name ,myCopy---libsFile"
+    File libsFile = file("${buildDir}/libs");
+    println "-----------project name = $project.name ,libsFile.exists=" + libsFile.exists()
+    from libsFile
+    into file('newLibsDir22')
 }
 
+task cleanFinish(dependsOn: clean)
+
+cleanFinish << {
+    File libFile = file('$buildDir/libs');
+    println "-----------project name = $project.name ,buildDir= $buildDir libFile.exists=" + libFile.exists()
+}
 //myCopy.dependsOn ":MyJavaProgrammer:generateDebugAndroidTestSources" // path
 
-task myCopyEx(type: Copy){
-    description "复制任务描述信息 个别文件"
+task myCopyEx(type: Copy,description: '复制任务描述信息 个别文件') {
+    group rootProject.ext.GROUP
 
-    from file('srctest')
+    from file("srctest")
     into file('srcDst')
+    include ('*.txt')//
+}
+
+//依赖其他项目的task
+task dependOnOther(dependsOn: ':mylib:myLibTask1') << {
+    println "-----------myCopyEx.name----Copy end----"
 }
 
 
-//myCopy.dependsOn 'generateDebugAndroidTestSources' // path
 
+
+tasks.myCopyEx.name
+
+//myCopy.dependsOn 'generateDebugAndroidTestSources' // path
 
 //println "project name = $project.name ,projectDir= $project.projectDir"
 println "-----------project name = $project.name ,hasProperty--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";

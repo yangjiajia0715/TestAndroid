@@ -513,3 +513,8 @@ if (buildWithTinker()) {
         }
     }
 }
+
+//add on 2016-11-13
+ext {
+    GROUP = "TestAndoid"
+}
