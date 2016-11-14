@@ -172,6 +172,40 @@ task dependOnOther(dependsOn: ':mylib:myLibTask1') << {
     println "-----------myCopyEx.name----Copy end----"
 }
 
+//跳过任务 方式一：onlyIf
+task onlyIfTest << {
+    println "----------onlyIfTest----"
+
+}
+
+onlyIfTest.onlyIf{
+//    tasks.findAll { }
+    println "----------onlyIfTest.onlyIf----rootProject.hasProperty(yangjiajia)=" + rootProject.hasProperty("yangjiajia")
+    rootProject.hasProperty("onlyIfPredicate")
+}
+
+//跳过任务 方式二：onlyIf
+task stopExe << {
+    println "----------StopExe--------"
+}
+
+stopExe.doFirst {
+    if (true) {
+        throw new StopExecutionException()
+    }
+}
+
+task StopExe2(dependsOn: stopExe) << {
+    println "----------StopExe--no affect------"
+}
+
+//跳过任务 方式三：
+//激活和注销任务
+task disableMe <<{
+    println "----------diseableMe----"
+}
+
+disableMe.enabled false
 
 
 
