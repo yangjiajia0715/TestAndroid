@@ -214,10 +214,21 @@ tasks.myCopyEx.name
 //myCopy.dependsOn 'generateDebugAndroidTestSources' // path
 
 //println "project name = $project.name ,projectDir= $project.projectDir"
-println "-----------project name = $project.name ,hasProperty--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
 
-println "-----------project name = $project.name ,buildDir= $buildDir buildDir=$buildDir"
 File dst = file("srctest");
+
+task fileColl =tasks.create(name: 'fileCollectionTest')
+
+//tasks.create(name: 'fileCollectionTest') << {
+//    FileCollection fileCollection = files('srctest/a.txt',new File('srctest/B.java'),['testDir','testDir/abc.txt'])
+//
+//    fileCollection.each {File file ->
+//        println "-----------project name = $project.name ,fileCollection name=" + file.name
+//    }
+//}
+
+
+
 println "-----------project name = $project.name ,buildDir= $buildDir dst.exists=" + dst.exists()
 
 
