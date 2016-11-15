@@ -208,7 +208,6 @@ task disableMe <<{
 disableMe.enabled false
 
 
-
 tasks.myCopyEx.name
 
 //myCopy.dependsOn 'generateDebugAndroidTestSources' // path
@@ -217,15 +216,23 @@ tasks.myCopyEx.name
 
 File dst = file("srctest");
 
-task fileColl =tasks.create(name: 'fileCollectionTest')
+//tasks.create(name: 'fileCollectionTest')
+File abcFile = file("'testDir/abc.txt");
+tasks.create(name: 'fileCollectionTest') << {
+    FileCollection fileCollection = files('srctest/a.txt',new File('srctest/B.java'),['testDir','testDir/abc.txt'])
 
-//tasks.create(name: 'fileCollectionTest') << {
-//    FileCollection fileCollection = files('srctest/a.txt',new File('srctest/B.java'),['testDir','testDir/abc.txt'])
-//
-//    fileCollection.each {File file ->
-//        println "-----------project name = $project.name ,fileCollection name=" + file.name
-//    }
-//}
+    //增加和减少文件集合
+    def myFileCollection = fileCollection - abcFile
+    myFileCollection.each {File file ->
+        println "-----------project name = $project.name ,myFileCollection name=" + file.name
+    }
+
+    fileCollection.each {File file ->
+        println "-----------project name = $project.name ,fileCollection name=" + file.name
+    }
+
+    
+}
 
 
 
