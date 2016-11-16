@@ -139,7 +139,7 @@ uploadArchives {
 }
 
 //通过tasks创建任务
-tasks.create(name: 'myCopy1',type: Copy, group:"yangyang", description : "描述") {
+tasks.create(name: 'myCopy1', type: Copy, group: "yangyang", description: "描述") {
     description "复制任务描述信息 整个目录"
     group rootProject.GROUP
 
@@ -159,12 +159,12 @@ cleanFinish << {
 }
 //myCopy.dependsOn ":MyJavaProgrammer:generateDebugAndroidTestSources" // path
 
-task myCopyEx(type: Copy,description: '复制任务描述信息 个别文件') {
+task myCopyEx(type: Copy, description: '复制任务描述信息 个别文件') {
     group rootProject.ext.GROUP
 
     from file("srctest")
     into file('srcDst')
-    include ('*.txt')//
+    include('*.txt')//
 }
 
 //依赖其他项目的task
@@ -178,7 +178,7 @@ task onlyIfTest << {
 
 }
 
-onlyIfTest.onlyIf{
+onlyIfTest.onlyIf {
 //    tasks.findAll { }
     println "----------onlyIfTest.onlyIf----rootProject.hasProperty(yangjiajia)=" + rootProject.hasProperty("yangjiajia")
     rootProject.hasProperty("onlyIfPredicate")
@@ -201,7 +201,7 @@ task StopExe2(dependsOn: stopExe) << {
 
 //跳过任务 方式三：
 //激活和注销任务
-task disableMe <<{
+task disableMe << {
     println "----------diseableMe----"
 }
 
@@ -219,19 +219,41 @@ File dst = file("srctest");
 //tasks.create(name: 'fileCollectionTest')
 File abcFile = file("'testDir/abc.txt");
 tasks.create(name: 'fileCollectionTest') << {
-    FileCollection fileCollection = files('srctest/a.txt',new File('srctest/B.java'),['testDir','testDir/abc.txt'])
+    FileCollection fileCollection = files('srctest/a.txt', new File('srctest/B.java'), ['testDir', 'testDir/abc.txt'])
 
     //增加和减少文件集合
-    def myFileCollection = fileCollection - abcFile
-    myFileCollection.each {File file ->
+//    def myFileCollection = fileCollection - file("testDir/abc.txt")//这样可以
+    def myFileCollection = fileCollection - file("testDir/abc.txt")
+//    myFileCollection.each {File file ->
+//        println "-----------project name = $project.name ,myFileCollection name=" + file.name
+//    }
+//
+//    fileCollection.each {File file ->
+//        println "-----------project name = $project.name ,fileCollection name=" + file.name
+//    }
+
+//     fileCollection.singleFile //有四个文件
+//    println "-----------project name = $project.name ,siFile name=" + fileCollection.singleFile
+
+    fileCollection.collect {
+        relativePath()
+    }
+}
+
+def aClosure = {
+        //闭包是一段代码，所以需要用花括号括起来..
+    String param1, int param2 ->  //这个箭头很关键。箭头前面是参数定义，箭头后面是代码
+        println "this is code param1=" + param1 + ",param2=" + param2 //这是代码，最后一句是返回值，
+        //也可以使用return，和Groovy中普通函数一样
+}
+task testClosure << {
+    aClosure.call('闭包', 1111)
+    aClosure('闭包no call', 2222)
+
+    FileCollection fileCollection = files('srctest/a.txt', new File('srctest/B.java'), ['testDir', 'testDir/abc.txt'])
+    fileCollection.each { File file ->
         println "-----------project name = $project.name ,myFileCollection name=" + file.name
     }
-
-    fileCollection.each {File file ->
-        println "-----------project name = $project.name ,fileCollection name=" + file.name
-    }
-
-    
 }
 
 
