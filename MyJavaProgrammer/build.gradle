@@ -246,6 +246,7 @@ def aClosure = {
         println "this is code param1=" + param1 + ",param2=" + param2 //这是代码，最后一句是返回值，
         //也可以使用return，和Groovy中普通函数一样
 }
+
 task testClosure << {
     aClosure.call('闭包', 1111)
     aClosure('闭包no call', 2222)
@@ -254,11 +255,17 @@ task testClosure << {
     fileCollection.each { File file ->
         println "-----------project name = $project.name ,myFileCollection name=" + file.name
     }
+
+    fileCollection.findAll {
+        file ->
+            println "-----------project name = $project.name ,findAll name=" + file.name
+    }
+
 }
 
 
 
-println "-----------project name = $project.name ,buildDir= $buildDir dst.exists=" + dst.exists()
+println "-----------project name = $project.name ,buildDir= $buildDir dst.exists=" + dst.exists()+ ",classes.name=" + classes.name
 
 
 
