@@ -441,7 +441,7 @@ if (buildWithTinker()) {
          */
         def taskName = variant.name
         def date = new Date().format("MMdd-HH-mm-ss")
-
+        logger.quiet("-----variant--------------flavorName=" + variant.flavorName);
         tasks.all {
             if ("assemble${taskName.capitalize()}".equalsIgnoreCase(it.name)) {
 
