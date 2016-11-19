@@ -106,13 +106,13 @@ android {
 //            dimension "ver"
 //        }
 //
-//        flavor1 {
+        flavor1 {
 //            dimension "abc"
-//        }
-//
-//        flavor2 {
+        }
+
+        flavor2 {
 //            dimension "abc"
-//        }
+        }
     }
 
     lintOptions {
