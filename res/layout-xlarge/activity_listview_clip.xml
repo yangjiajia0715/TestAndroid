@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#08f"
-        android:paddingTop="105dp"
+        android:paddingTop="100dp"
         android:clipToPadding="true"
         android:clipChildren="false"
         android:cacheColorHint="#00000000"

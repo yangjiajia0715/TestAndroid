@@ -9,7 +9,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.2.2'
 //        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
         classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3')
-    }
+}
 }
 
 allprojects {
@@ -127,6 +127,7 @@ dependencies {
     compile "com.android.support:recyclerview-v7:24.2.1"
     //    compile 'com.android.support:multidex:1.0.0'
     compile "com.android.support:multidex:1.0.1"
+//    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
 
     //optional, help to generate the final application
 //    compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
