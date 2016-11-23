@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_test_RxJava"
+        style="@style/home_text_style"
+        android:text="RxJava" />
+    <TextView
+        android:id="@+id/tv_test_RxJava1"
+        style="@style/home_text_style"
+        android:text="RxJava1" />
+    <TextView
+        android:id="@+id/tv_test_RxJava2"
+        style="@style/home_text_style"
+        android:text="RxJava2" />
+    <TextView
+        android:id="@+id/tv_test_RxJava3"
+        style="@style/home_text_style"
+        android:text="RxJava3" />
+
+</LinearLayout>

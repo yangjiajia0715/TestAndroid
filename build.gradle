@@ -137,6 +137,10 @@ dependencies {
     provided('com.tencent.tinker:tinker-android-anno:1.7.3')
     //tinker's main Android lib
     compile('com.tencent.tinker:tinker-android-lib:1.7.3')
+
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
+
     compile project(':mylib')
 }
 

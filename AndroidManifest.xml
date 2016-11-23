@@ -102,6 +102,10 @@
             android:name="com.example.testandroid.activity.TestTinkerActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
 
+        <activity
+            android:name="com.example.testandroid.activity.RxJavaActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <service
             android:name=".service.SampleResultService"
             android:exported="false" />

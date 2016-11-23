@@ -91,6 +91,11 @@
             style="@style/home_text_style"
             android:text="TestTinker" />
 
+        <TextView
+            android:id="@+id/tv_test_RxJava"
+            style="@style/home_text_style"
+            android:text="TestRxJava" />
+
     </LinearLayout>
 
 </ScrollView>
