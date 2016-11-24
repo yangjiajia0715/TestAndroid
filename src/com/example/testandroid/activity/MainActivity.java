@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_photo_view).setOnClickListener(this);
         findViewById(R.id.tv_buildconfig_field).setOnClickListener(this);
         findViewById(R.id.tv_test_tinker).setOnClickListener(this);
-        findViewById(R.id.tv_test_RxJava).setOnClickListener(this);
+        findViewById(R.id.tv_test_RxJava_main).setOnClickListener(this);
 
         new CheckedTextView(this);
     }
@@ -118,7 +118,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 intent = new Intent(this, TestTinkerActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.tv_test_RxJava:
+            case R.id.tv_test_RxJava_main:
                 intent = new Intent(this, RxJavaActivity.class);
                 startActivity(intent);
                 break;

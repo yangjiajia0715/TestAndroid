@@ -18,22 +18,27 @@
             android:id="@+id/tv_test_view_pager_11"
             style="@style/home_text_style"
             android:text="缩放图片ViewPager" />
+
         <TextView
             android:id="@+id/tv_parallax"
             style="@style/home_text_style"
             android:text="tv_parallax_视差" />
+
         <TextView
             android:id="@+id/tv_test_listview_clip"
             style="@style/home_text_style"
             android:text="listview_clip" />
+
         <TextView
             android:id="@+id/tv_test_scrollview_clip"
             style="@style/home_text_style"
             android:text="scrollview_clip" />
+
         <TextView
             android:id="@+id/tv_test_viewpager_all"
             style="@style/home_text_style"
             android:text="viewpager_sv_lv" />
+
         <TextView
             android:id="@+id/tv_parallaxtoolbar_scrollview_activity"
             style="@style/home_text_style"
@@ -43,14 +48,17 @@
             android:id="@+id/tv_test_view_pager_tab_dif"
             style="@style/home_text_style"
             android:text="view_pager_tab_dif" />
+
         <TextView
             android:id="@+id/tv_animation"
             style="@style/home_text_style"
             android:text="animation" />
+
         <TextView
             android:id="@+id/tv_fragement_pager_adapter"
             style="@style/home_text_style"
             android:text="fragementPagerAdapter" />
+
         <TextView
             android:id="@+id/tv_item_type_listview"
             style="@style/home_text_style"
@@ -92,7 +100,7 @@
             android:text="TestTinker" />
 
         <TextView
-            android:id="@+id/tv_test_RxJava"
+            android:id="@+id/tv_test_RxJava_main"
             style="@style/home_text_style"
             android:text="TestRxJava" />
 

@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.administrator.testdesignsupport"
+        applicationId "com.example.yangjiajia.testandroid"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
