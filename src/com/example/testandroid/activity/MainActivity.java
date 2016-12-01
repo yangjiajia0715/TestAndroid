@@ -3,17 +3,24 @@ package com.example.testandroid.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckedTextView;
+import android.widget.Toast;
 
 import com.example.testandroid.ObservableScrollView.demo.ParallaxToolbarScrollViewActivity;
 import com.example.testandroid.ObservableScrollView.viewpager.ViewPagerTabActivity;
 import com.example.testandroid.R;
 
+import java.io.File;
+
 /**
+ * Main
  * Created by Administrator on 2016/7/27 0027.
  */
 public class MainActivity extends Activity implements View.OnClickListener {
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_buildconfig_field).setOnClickListener(this);
         findViewById(R.id.tv_test_tinker).setOnClickListener(this);
         findViewById(R.id.tv_test_RxJava_main).setOnClickListener(this);
+        findViewById(R.id.tv_test_DatabaseUtil).setOnClickListener(this);
 
         new CheckedTextView(this);
     }
@@ -121,6 +129,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.tv_test_RxJava_main:
                 intent = new Intent(this, RxJavaActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.tv_test_DatabaseUtil:
+                String time = DateUtils.formatDateTime(this, System.currentTimeMillis(), DateUtils.FORMAT_SHOW_DATE);
+                Toast.makeText(this, "DatabaseUtil 计划中 time:" + time, Toast.LENGTH_SHORT).show();
+                File cacheDir = getCacheDir();
+                Log.d(TAG, "tv_test_DatabaseUtil onClick: cacheDir=" + cacheDir);
                 break;
         }
     }

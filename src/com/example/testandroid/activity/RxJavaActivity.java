@@ -152,6 +152,8 @@ public class RxJavaActivity extends Activity implements View.OnClickListener {
 
             }
         });
+
+
     }
 
     private void testRx8() {

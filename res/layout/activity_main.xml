@@ -104,6 +104,11 @@
             style="@style/home_text_style"
             android:text="TestRxJava" />
 
+        <TextView
+            android:id="@+id/tv_test_DatabaseUtil"
+            style="@style/home_text_style"
+            android:text="DatabaseUtil" />
+
     </LinearLayout>
 
 </ScrollView>
