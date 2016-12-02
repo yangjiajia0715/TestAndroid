@@ -47,6 +47,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_test_tinker).setOnClickListener(this);
         findViewById(R.id.tv_test_RxJava_main).setOnClickListener(this);
         findViewById(R.id.tv_test_DatabaseUtil).setOnClickListener(this);
+        findViewById(R.id.tv_test_CursorLoader).setOnClickListener(this);
 
         new CheckedTextView(this);
     }
@@ -135,6 +136,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Toast.makeText(this, "DatabaseUtil 计划中 time:" + time, Toast.LENGTH_SHORT).show();
                 File cacheDir = getCacheDir();
                 Log.d(TAG, "tv_test_DatabaseUtil onClick: cacheDir=" + cacheDir);
+                break;
+            case R.id.tv_test_CursorLoader:
+                intent = new Intent(this, CursorLoadActivity.class);
+                startActivity(intent);
                 break;
         }
     }

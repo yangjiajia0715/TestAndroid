@@ -109,6 +109,11 @@
             style="@style/home_text_style"
             android:text="DatabaseUtil" />
 
+        <TextView
+            android:id="@+id/tv_test_CursorLoader"
+            style="@style/home_text_style"
+            android:text="CursorLoader" />
+
     </LinearLayout>
 
 </ScrollView>
