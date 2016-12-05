@@ -23,8 +23,14 @@ public class CursorLoadActivity extends Activity implements LoaderManager.Loader
     }
 
     @Override
-    public Loader<Object> onCreateLoader(int id, Bundle args) {
-        return null;
+    public Loader<Object> onCreateLoader(int id, Bundle bundle) {
+
+        Loader<Object> loader = new Loader<Object>(this) {
+
+        };
+
+
+        return loader;
     }
 
     @Override
@@ -34,6 +40,5 @@ public class CursorLoadActivity extends Activity implements LoaderManager.Loader
 
     @Override
     public void onLoaderReset(Loader<Object> loader) {
-
     }
 }
