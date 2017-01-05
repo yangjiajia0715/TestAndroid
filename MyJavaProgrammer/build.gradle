@@ -6,7 +6,6 @@ println "---------------project name = $project.name ------begin----------------
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
-
 //使用外部依赖之前，至少需要定义一个库
 repositories {
     mavenCentral()
@@ -263,15 +262,43 @@ task testClosure << {
 
 }
 
-
-
 println "-----------project name = $project.name ,buildDir= $buildDir dst.exists=" + dst.exists()+ ",classes.name=" + classes.name
 
+task myValue {
+    ext.myProperty = "VVVV"
+}
 
+defaultTasks 'clean1', 'run1'
 
+task clean1 {
+    doLast {
+        println 'Default Cleaning!1111'
+    }
+}
 
+task run1 {
+    doLast {
+        println 'Default Running!111'
+    }
+}
 
+task other {
+    doLast {
+        println "I'm not a default task!111"
+    }
+}
 
+gradle.taskGraph.whenReady {taskGraph ->
+    if (taskGraph.hasTask(release)) {
+        version = '1.0'
+    } else {
+        version = '1.0-SNAPSHOT'
+    }
+}
+
+task taskX(dependsOn: 'task'){
+
+}
 
 
 

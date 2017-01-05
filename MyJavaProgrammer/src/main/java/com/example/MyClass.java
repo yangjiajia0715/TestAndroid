@@ -31,6 +31,8 @@ public class MyClass {
 //        System.out.printf("toArray toArray=" + videoId.matches("[A-Za-z0-9]*"));
 //        testArrayAddDelNull();
         testMapAddDelNull();
+
+
     }
 
     /**
