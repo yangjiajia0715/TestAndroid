@@ -523,3 +523,108 @@ if (buildWithTinker()) {
 ext {
     GROUP = "TestAndoid"
 }
+
+def myMap =[:]
+myMap."an identifier with a space and double quotes" = "ALLOWED"
+myMap.'with-dash-signs-and-single-quotes' = "ALLOWED"
+myMap."124yang" = "123Value"
+//myMap.'single quote' = "single quote 11"
+//myMap."double quote" = "double quote 22"
+//myMap.'''triple single quote'''  = "triple single quote 33"
+//myMap."""triple double quote"""  =  "tripledouble quote 44"
+//myMap./slashy string/= "slashy"
+//myMap.$/dollar slashy string/$= "slashy string"
+//
+//myMap./slashy string6666/= "slashy"
+//myMap.$/dollar slashy string6666/$= "slashy string"
+
+//println "----------------Map-----------------"
+//println "----------------Map-----------------get="+ myMap.get("an identifier with a space and double quotes")
+//println "----------------Map-----------------size="+ myMap.size()
+//def jkkk = "jkjkjk"
+//myMap."666" = "${jkkk}"
+//myMap.jjj = '''
+//    我
+//    换
+//    行
+//    了
+//'''
+//
+//println "----------------Map-----------------size="+ myMap.size()
+//def iterator = myMap.entrySet().iterator()
+//while (iterator.hasNext()) {
+//    def entry = iterator.next()
+//    println "----遍历--map--getKey=" + entry.getKey() + "  ,getValue=" +  entry.getValue();
+//}
+
+println "----------------GString-----------------"
+//def startingAndEndingWithANewline = '''
+//line one
+//line two
+//line three
+//'''
+//
+//def startingAndEndingWithANewline2 = """\
+//"line one"
+//'line two'
+//line three
+//"""
+
+//def startingAndEndingWithANewline3 = 'yang \'jia\' jia'
+//def startingAndEndingWithANewline4 = 'yang\\jia'
+//def startingAndEndingWithANewline5 = 'yang \"jia\" jia'
+//println "---GString--startingAndEndingWithANewline=" + startingAndEndingWithANewline.startsWith("\n")
+//println "---GString--startingAndEndingWithANewline2=" + startingAndEndingWithANewline2
+//println "---GString--startingAndEndingWithANewline3=" + startingAndEndingWithANewline3
+//println "---GString--startingAndEndingWithANewline4=" + startingAndEndingWithANewline4
+//println "---GString--startingAndEndingWithANewline5=" + startingAndEndingWithANewline5
+
+//def multilineSlashy = /one
+//    two
+//    three/
+//
+//println "---GString--multilineSlashy=" + multilineSlashy.contains('\n')
+//println "---GString--startingAndEndingWithANewline2=" + startingAndEndingWithANewline2.contains("\n")
+//
+//def sum = "The sum of 2 and 3 equals ${2 + 3}"
+//def sum2 ="The sum of 1 and 2 is equal to ${def a = 1; def b = 2; a + b}"
+//def sum3 ="The sum of 1 and 2 is equal to ${"研究"; "好好最后"}"
+//
+//println "---GString--sum=" + sum
+//println "---GString--sum2=" + sum2
+//println "---GString--sum3=" + sum3
+//def person = [name: 'Guillaume', age: 36]
+//println "---GString--age=" + person.age
+
+//println "----------------List----------------"
+//
+//def numberList = [11, 33, 44]
+//println "---GString--numberList=" + numberList[0]
+//println "---GString--numberList=" + numberList[-1]
+//numberList << 66
+//numberList << 88
+//println "---GString--numberList=" + numberList[-1]
+//println "---GString--numberList--[0,1,2]---"
+//
+//numberList[0,1,2] = [1,2,3]
+//println "---GString--numberList=" + numberList[0]
+//println "---GString--numberList=" + numberList.size()
+//
+//println "----------------Arrays----------------"
+//int[] aaLi = [1,2,3]
+//
+//
+//println "----------------Closure----------------"
+//
+//def listener = { e -> println "Clicked on $e.source" }
+//
+//Closure callback = { println 'Done!' }
+//Closure<Boolean> isTextFile = {
+//    File it -> it.name.endsWith('.txt')
+//}
+//
+//println "----------------Closure----------------callback=" + callback()
+//
+//def isOdd = { int i-> i%2 == 1 }
+//println "----------------Closure----------------isOdd=" + isOdd(3)
+//println "----------------Closure----------------isOdd=" + idOdd.call()
