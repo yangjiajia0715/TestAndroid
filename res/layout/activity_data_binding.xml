@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--自定义bind class name,加点在module包下，不加在module的databinding包下-->
+    <data class=".CCCTest">
+
+        <import type="android.view.View" />
+
+        <import type="java.util.List" />
+
+        <import type="com.example.testandroid.common.Course" />
+
+        <variable
+            name="stu"
+            type="com.example.testandroid.common.Student2" />
+
+        <variable
+            name="handlers"
+            type="com.example.testandroid.common.MyCLickHandler" />
+
+        <variable
+            name="course"
+            type="Course" />
+
+        <variable
+            name="user"
+            type="com.example.testandroid.common.User" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--
+            android:onClick="@{stu.friend ? handlers.onClickFriend : handlers.onClickEnemy}"
+        -->
+        <!--@string/stu_name + stu.name-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{handlers.onClick1}"
+            android:padding="10dp"
+            android:text="@{@string/stu_age(stu.age)}"
+            tools:text="战三" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@{String.valueOf(stu.age)}"
+            android:visibility="@{stu.age > 100 ? View.GONE : View.VISIBLE}"
+            tools:text="22" />
+
+        <!--@{((Course)stu.courses.get(3)).name}-->
+        <!--'@{"age=" + stu.age}'-->
+        <!--@{stu.firtName ?? stu.lastName}-->
+        <!--@{course.name}-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@{stu.friend ? @dimen/text_padd_10_: @dimen/text_padd_30}"
+            android:text='@{"age=" + stu.age}'
+            tools:text="呵呵哈哈哈" />
+
+        <include
+            layout="@layout/include_user_name"
+            app:student="@{stu}" />
+
+        <include
+            layout="@layout/include_user_name2"
+            app:student2="@{stu}" />
+
+        <TextView
+            android:id="@+id/change"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="换数据了Student" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@{user.firstName}"
+            tools:text="用户" />
+
+        <TextView
+            android:id="@+id/change2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="换数据了User" />
+    </LinearLayout>
+
+</layout>

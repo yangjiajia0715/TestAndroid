@@ -113,6 +113,10 @@
         <service
             android:name=".service.SampleResultService"
             android:exported="false" />
+
+        <activity
+            android:name="com.example.testandroid.activity.DataBindingActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
     </application>
 
 </manifest>

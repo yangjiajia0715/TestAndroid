@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import java.util.Locale;
 import java.util.UUID;
 
-public class StringUtil {
+public class StringUtilNim {
 	
 	public static String getPercentString(float percent) {
 		return String.format(Locale.US, "%d%%", (int) (percent * 100));

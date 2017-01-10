@@ -28,4 +28,9 @@
     <dimen name="sliding_overlay_blur_size">4dp</dimen>
     <!--↑↑↑ yangjiajia add on ↑↑↑-->
     <dimen name="tool_bar_replace_temp_height">50dp</dimen>
+
+    <dimen name="text_padd_10_">10dp</dimen>
+    <dimen name="text_padd_30">50dp</dimen>
+
+
 </resources>

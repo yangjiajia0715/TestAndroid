@@ -9,7 +9,9 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.2.2'
 //        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
         classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3')
-}
+//        classpath "com.android.databinding:dataBinder:1.0-rc1"
+
+    }
 }
 
 allprojects {
@@ -23,9 +25,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.tencent.tinker.patch'
 apply from: file('utils.gradle')
 
+//apply plugin: 'com.android.databinding'
+
 android {
     compileSdkVersion 24
     buildToolsVersion '24.0.2'
+
+    dataBinding {
+        enabled = true
+    }
 
     //recommend
     dexOptions {
@@ -118,6 +126,7 @@ android {
     lintOptions {
         check 'NewApi'
     }
+
 }
 
 dependencies {
@@ -142,6 +151,7 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.0.1'
 
     compile project(':mylib')
+
 }
 
 def gitSha() {
@@ -628,3 +638,5 @@ println "----------------GString-----------------"
 //def isOdd = { int i-> i%2 == 1 }
 //println "----------------Closure----------------isOdd=" + isOdd(3)
 //println "----------------Closure----------------isOdd=" + idOdd.call()
+
+

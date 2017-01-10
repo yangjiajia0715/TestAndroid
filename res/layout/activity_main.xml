@@ -114,6 +114,11 @@
             style="@style/home_text_style"
             android:text="CursorLoader" />
 
+        <TextView
+            android:id="@+id/tv_Data_Binding"
+            style="@style/home_text_style"
+            android:text="Data_Binding" />
+
     </LinearLayout>
 
 </ScrollView>

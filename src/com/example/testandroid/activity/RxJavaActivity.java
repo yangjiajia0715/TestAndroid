@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.testandroid.R;
 import com.example.testandroid.common.Course;
-import com.example.testandroid.common.Student;
+import com.example.testandroid.common.Student2;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -191,7 +191,7 @@ public class RxJavaActivity extends Activity implements View.OnClickListener {
     }
 
     private void testFlatMap() {
-        Student[] students = getStudents(10);
+        Student2[] students = getStudents(10);
         Subscriber<Course> subscriber = new Subscriber<Course>() {
             @Override
             public void onCompleted() {
@@ -210,9 +210,9 @@ public class RxJavaActivity extends Activity implements View.OnClickListener {
             }
         };
 
-        Observable.from(students).flatMap(new Func1<Student, Observable<Course>>() {
+        Observable.from(students).flatMap(new Func1<Student2, Observable<Course>>() {
             @Override
-            public Observable<Course> call(Student student) {
+            public Observable<Course> call(Student2 student) {
                 List<Course> courses = student.getCourses();
                 Log.d(TAG, "testFlatMap--call: currentThread=" + Thread.currentThread().getName());
                 return Observable.from(courses);
@@ -221,7 +221,7 @@ public class RxJavaActivity extends Activity implements View.OnClickListener {
     }
 
     private void testMap() {
-        Student[] students = getStudents(10);
+        Student2[] students = getStudents(10);
 
         Subscriber<String> subscriber = new Subscriber<String>() {
             @Override
@@ -240,21 +240,21 @@ public class RxJavaActivity extends Activity implements View.OnClickListener {
             }
         };
 
-        Observable.from(students).map(new Func1<Student, String>() {
+        Observable.from(students).map(new Func1<Student2, String>() {
             @Override
-            public String call(Student student) {
+            public String call(Student2 student) {
                 return student.getName();
             }
         }).subscribe(subscriber);
 
     }
 
-    private Student[] getStudents(int count) {
-        Student[] students = new Student[count];
+    private Student2[] getStudents(int count) {
+        Student2[] students = new Student2[count];
         Log.d(TAG, "getStudents: stu cnt =" + students.length);
         for (int i = 0; i < students.length; i++) {
             Log.d(TAG, "getStudents: stu  " + i + " =" + students[0]);
-            students[i] = new Student("张三", 10 + i);
+            students[i] = new Student2("张三", 10 + i);
 
             students[i].addCourses(new Course("语文 " + students[i].getName()));
             students[i].addCourses(new Course("数学 " + students[i].getName()));

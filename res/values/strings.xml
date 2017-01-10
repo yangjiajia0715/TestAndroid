@@ -97,5 +97,8 @@ Quam libero nulla netus eu porta curae, ut nulla bibendum facilisis et urna sed,
     <!--tinker-->
     <string name="test_resource">I am in the base apk</string>
 
+    <string name="stu_age">学生年龄：%d</string>
+    <string name="stu_name">学生姓名</string>
+
 
 </resources>
