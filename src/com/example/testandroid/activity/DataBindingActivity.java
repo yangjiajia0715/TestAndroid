@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableArrayMap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import com.example.testandroid.CCCTest;
 import com.example.testandroid.R;
+import com.example.testandroid.common.Fields;
 import com.example.testandroid.common.MyCLickHandler;
 import com.example.testandroid.common.Student2;
 import com.example.testandroid.common.User;
@@ -27,6 +30,11 @@ public class DataBindingActivity extends Activity {
     private User user;
     private int index;
 
+    public static void start(Context context) {
+        Intent intent = new Intent(context, DataBindingActivity.class);
+        context.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +43,9 @@ public class DataBindingActivity extends Activity {
 
 //        ActivityDataBindingBinding dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding);
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding);
+//        DataBindingUtil.
 
+//        dataBinding.
 //        ActivityDataBindingBinding inflate = ActivityDataBindingBinding.inflate(getLayoutInflater());
 
         Log.d(TAG, "onCreate: dataBinding=" + dataBinding);
@@ -70,11 +80,38 @@ public class DataBindingActivity extends Activity {
                 Log.d(TAG, "onClick user: user=" + user);
             }
         });
-    }
 
-    public static void start(Context context) {
-        Intent intent = new Intent(context, DataBindingActivity.class);
-        context.startActivity(intent);
+        final ObservableArrayMap<String, Object> teacher = new ObservableArrayMap<>();
+        teacher.put("firstName", "Google");
+        teacher.put("lastName", "Inc.");
+        teacher.put("age", 17);
+
+        findViewById(R.id.change3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                teacher.put("firstName", "ObservableArrayMap" + System.currentTimeMillis());
+            }
+        });
+
+        dataBinding.setTeacher(teacher);
+
+
+        final ObservableArrayList<String> master = new ObservableArrayList();
+        master.add("张三");
+        master.add("李四");
+        master.add("王五");
+
+                    dataBinding.setMaster(master);
+            findViewById(R.id.change4).setOnClickListener(new View.OnClickListener() {
+                @Override
+            public void onClick(View v) {
+                master.add(Fields.FIRST, "赵六" + System.currentTimeMillis() );
+            }
+        });
+
+        dataBinding.firstName.setText("呵呵哈哈哈");
+        dataBinding.firstName2.setText("哈哈哈哈军军军军");
+
     }
 
 }
