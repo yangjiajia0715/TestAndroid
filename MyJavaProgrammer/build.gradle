@@ -140,7 +140,6 @@ uploadArchives {
 //通过tasks创建任务
 tasks.create(name: 'myCopy1', type: Copy, group: "yangyang", description: "描述") {
     description "复制任务描述信息 整个目录"
-    group rootProject.GROUP
 
     println "-----------project name = $project.name ,myCopy myCopy myCopy"
     println "-----------project name = $project.name ,myCopy---libsFile"
@@ -159,7 +158,6 @@ cleanFinish << {
 //myCopy.dependsOn ":MyJavaProgrammer:generateDebugAndroidTestSources" // path
 
 task myCopyEx(type: Copy, description: '复制任务描述信息 个别文件') {
-    group rootProject.ext.GROUP
 
     from file("srctest")
     into file('srcDst')
