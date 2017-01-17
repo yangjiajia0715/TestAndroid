@@ -43,12 +43,14 @@ public class TempActivity extends BaseActivity implements View.OnClickListener {
         Toast.makeText(this, "老乡不中112233", Toast.LENGTH_SHORT).show();
     }
 
-    private void initView() {
+    @Override
+    public void initView() {
         tvYang = findViewById(R.id.temp_yang);
         tvYang.setOnClickListener(this);
     }
 
-    private void initData() {
+    @Override
+    public void initData() {
     }
 
     @Override

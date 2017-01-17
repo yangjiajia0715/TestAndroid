@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tag_first" type="id" />
+    <item name="tag_second" type="id" />
+
+    <item name="tv_zoom_image" type="id" />
+    <item name="tv_test_view_pager_11" type="id" />
+    <item name="tv_parallax" type="id" />
+    <item name="tv_test_listview_clip" type="id" />
+    <item name="tv_test_scrollview_clip" type="id" />
+    <item name="tv_test_viewpager_all" type="id" />
+    <item name="tv_animation" type="id" />
+    <item name="tv_parallaxtoolbar_scrollview_activity" type="id" />
+    <item name="tv_test_view_pager_tab_dif" type="id" />
+    <item name="tv_fragement_pager_adapter" type="id" />
+    <item name="tv_item_type_listview" type="id" />
+    <item name="tv_DexClassLoader" type="id" />
+    <item name="tv_ViewAnimator" type="id" />
+    <item name="tv_CheckedTextView" type="id" />
+    <item name="tv_Dex_ClassLoader" type="id" />
+    <item name="tv_photo_view" type="id" />
+    <item name="tv_buildconfig_field" type="id" />
+    <item name="tv_test_tinker" type="id" />
+    <item name="tv_test_RxJava_main" type="id" />
+    <item name="tv_test_DatabaseUtil" type="id" />
+    <item name="tv_test_CursorLoader" type="id" />
+    <item name="tv_Data_Binding" type="id" />
+    <item name="tv_temp" type="id" />
+
+
+</resources>

@@ -1,129 +1,15 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <LinearLayout
+    <include layout="@layout/include_title_bar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/tv_zoom_image"
-            style="@style/home_text_style"
-            android:text="缩放图片" />
-
-        <TextView
-            android:id="@+id/tv_test_view_pager_11"
-            style="@style/home_text_style"
-            android:text="缩放图片ViewPager" />
-
-        <TextView
-            android:id="@+id/tv_parallax"
-            style="@style/home_text_style"
-            android:text="tv_parallax_视差" />
-
-        <TextView
-            android:id="@+id/tv_test_listview_clip"
-            style="@style/home_text_style"
-            android:text="listview_clip" />
-
-        <TextView
-            android:id="@+id/tv_test_scrollview_clip"
-            style="@style/home_text_style"
-            android:text="scrollview_clip" />
-
-        <TextView
-            android:id="@+id/tv_test_viewpager_all"
-            style="@style/home_text_style"
-            android:text="viewpager_sv_lv" />
-
-        <TextView
-            android:id="@+id/tv_parallaxtoolbar_scrollview_activity"
-            style="@style/home_text_style"
-            android:text="ParallaxToolbarScrollViewActivity" />
-
-        <TextView
-            android:id="@+id/tv_test_view_pager_tab_dif"
-            style="@style/home_text_style"
-            android:text="view_pager_tab_dif" />
-
-        <TextView
-            android:id="@+id/tv_animation"
-            style="@style/home_text_style"
-            android:text="animation" />
-
-        <TextView
-            android:id="@+id/tv_fragement_pager_adapter"
-            style="@style/home_text_style"
-            android:text="fragementPagerAdapter" />
-
-        <TextView
-            android:id="@+id/tv_item_type_listview"
-            style="@style/home_text_style"
-            android:text="tv_item_type_listview" />
-
-        <TextView
-            android:id="@+id/tv_DexClassLoader"
-            style="@style/home_text_style"
-            android:text="DexClassLoader" />
-
-        <TextView
-            android:id="@+id/tv_ViewAnimator"
-            style="@style/home_text_style"
-            android:text="ViewAnimator" />
-
-        <TextView
-            android:id="@+id/tv_CheckedTextView"
-            style="@style/home_text_style"
-            android:text="CheckedTextView" />
-
-        <TextView
-            android:id="@+id/tv_Dex_ClassLoader"
-            style="@style/home_text_style"
-            android:text="DexClassLoader" />
-
-        <TextView
-            android:id="@+id/tv_photo_view"
-            style="@style/home_text_style"
-            android:text="tv_photo_view" />
-
-        <TextView
-            android:id="@+id/tv_buildconfig_field"
-            style="@style/home_text_style"
-            android:text="tv_buildconfig_field" />
-
-        <TextView
-            android:id="@+id/tv_test_tinker"
-            style="@style/home_text_style"
-            android:text="TestTinker" />
-
-        <TextView
-            android:id="@+id/tv_test_RxJava_main"
-            style="@style/home_text_style"
-            android:text="TestRxJava" />
-
-        <TextView
-            android:id="@+id/tv_test_DatabaseUtil"
-            style="@style/home_text_style"
-            android:text="DatabaseUtil" />
-
-        <TextView
-            android:id="@+id/tv_test_CursorLoader"
-            style="@style/home_text_style"
-            android:text="CursorLoader" />
-
-        <TextView
-            android:id="@+id/tv_Data_Binding"
-            style="@style/home_text_style"
-            android:text="Data_Binding" />
-
-        <TextView
-            android:id="@+id/tv_temp"
-            style="@style/home_text_style"
-            android:text="tv_temp" />
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

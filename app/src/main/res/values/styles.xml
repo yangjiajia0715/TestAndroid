@@ -5,12 +5,12 @@
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <!-- Base application theme. -->
-   <!-- <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        &lt;!&ndash; Customize your theme here. &ndash;&gt;
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>-->
+    <!-- <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+         &lt;!&ndash; Customize your theme here. &ndash;&gt;
+         <item name="colorPrimary">@color/colorPrimary</item>
+         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+         <item name="colorAccent">@color/colorAccent</item>
+     </style>-->
     <!--android:Theme.Light-->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
@@ -27,15 +27,26 @@
     </style>
 
     <style name="home_text_style">
-        <item name="android:layout_margin">3dp</item>
+        <item name="android:layout_margin">5dp</item>
         <item name="android:textColor">#fff</item>
         <item name="android:padding">3dp</item>
         <item name="android:textSize">15sp</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/btn_click_selector</item>
-
     </style>
 
+    <style name="Home_text_style2" parent="home_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- toolbar弹出菜单样式 -->
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+    </style>
 </resources>

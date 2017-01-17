@@ -1,9 +1,37 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.MainActivity"
+    >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/filter_view"
+        android:icon="@drawable/ic_search_bg_black"
+        android:title="filter_view"
+        android:showAsAction="always" />
+    <item
+        android:id="@+id/filter_animator"
+        android:icon="@drawable/ic_search_bg_black"
+        android:title="filter_animator"
+        android:showAsAction="always" />
+    <item
+        android:id="@+id/filter_database"
+        android:icon="@mipmap/ic_launcher"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="filter_database"
+        android:showAsAction="always" />
+    <item
+        android:id="@+id/filter_other"
+        android:icon="@mipmap/ic_launcher"
+        android:orderInCategory="100"
+        android:title="filter_other"
+        android:showAsAction="always" />
+
+    <item
+        android:id="@+id/filter_all"
+        android:icon="@mipmap/ic_launcher"
+        android:orderInCategory="100"
+        android:title="All"
+        android:showAsAction="always" />
 
 </menu>

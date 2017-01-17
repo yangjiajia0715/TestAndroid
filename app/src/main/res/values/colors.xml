@@ -15,10 +15,10 @@
 -->
 <resources>
 
-    <!--3F51B5-->
-    <color name="colorPrimary">#fea73d</color>
+    <!--3F51B5 fea73d-->
+    <color name="colorPrimary">#2e8abb</color>
     <!--303F9F-->
-    <color name="colorPrimaryDark">#fea73d</color>
+    <color name="colorPrimaryDark">#3A5FCD</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="primary">#009688</color>
