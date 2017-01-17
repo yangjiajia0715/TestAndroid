@@ -49,6 +49,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_test_DatabaseUtil).setOnClickListener(this);
         findViewById(R.id.tv_test_CursorLoader).setOnClickListener(this);
         findViewById(R.id.tv_Data_Binding).setOnClickListener(this);
+        findViewById(R.id.tv_temp).setOnClickListener(this);
 
         new CheckedTextView(this);
     }
@@ -144,6 +145,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_Data_Binding:
                 DataBindingActivity.start(this);
+                break;
+            case R.id.tv_temp:
+                TempActivity.start(this);
+//                LoginActivity.start(this);
                 break;
         }
     }

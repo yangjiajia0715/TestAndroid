@@ -119,6 +119,11 @@
             style="@style/home_text_style"
             android:text="Data_Binding" />
 
+        <TextView
+            android:id="@+id/tv_temp"
+            style="@style/home_text_style"
+            android:text="tv_temp" />
+
     </LinearLayout>
 
 </ScrollView>

@@ -99,6 +99,8 @@ Quam libero nulla netus eu porta curae, ut nulla bibendum facilisis et urna sed,
 
     <string name="stu_age">学生年龄：%d</string>
     <string name="stu_name">学生姓名</string>
+    <string name="title_activity_temp_e">TempE</string>
+    <string name="title_activity_tttt__login">Sign in</string>
 
 
 </resources>

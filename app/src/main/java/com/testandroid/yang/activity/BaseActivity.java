@@ -1,13 +1,15 @@
-package com.testandroid.yang;
+package com.testandroid.yang.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-public class MainActivity extends Activity {
+/**
+ * Created by yangjiajia on 2017/1/13 0013.
+ */
 
+public class BaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
     }
 }

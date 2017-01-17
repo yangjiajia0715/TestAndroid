@@ -38,7 +38,6 @@ public class DataBindingActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding);
         Log.d(TAG, "onCreate: dataBinding=" + dataBinding);
 //        Log.d(TAG, "onCreate:     inflate=" + inflate);
