@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.3'
 //        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
         classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3')
 //        classpath "com.android.databinding:dataBinder:1.0-rc1"
@@ -24,12 +24,20 @@ allprojects {
 apply plugin: 'com.android.application'
 apply plugin: 'com.tencent.tinker.patch'
 apply from: file('utils.gradle')
+apply plugin: 'com.antfortune.freeline'
 
 //apply plugin: 'com.android.databinding'
 
 android {
     compileSdkVersion 24
     buildToolsVersion '24.0.2'
+
+//    freeline {
+//        hack true
+//    }
+    freeline {
+        applicationProxy false
+    }
 
     dataBinding {
         enabled = true
@@ -102,7 +110,7 @@ android {
         }
     }
 
-    productFlavors {
+//    productFlavors {
         // Define separate dev and prod product flavors.
 
 //        flavorDimensions  "ver","abc"
@@ -122,7 +130,7 @@ android {
 //        flavor2 {
 ////            dimension "abc"
 //        }
-    }
+//    }
 
     lintOptions {
         check 'NewApi'
@@ -134,6 +142,8 @@ dependencies {
     //    appcompat
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile fileTree(include: '*.jar', exclude: 'BDAutoUpdateSDK_20150605_V1.2.0.jar', dir: 'libs')
+//    compile fileTree(dir: 'libs')
+
     //    compile 'com.android.support:design:24.1.1'
     compile 'com.android.support:support-v13:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
@@ -149,7 +159,6 @@ dependencies {
     compile 'com.tencent.tinker:tinker-android-lib:1.7.3'
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'io.reactivex:rxandroid:1.0.1'
-    compile fileTree(dir: 'libs')
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.android.support:design:24.2.1'
 }

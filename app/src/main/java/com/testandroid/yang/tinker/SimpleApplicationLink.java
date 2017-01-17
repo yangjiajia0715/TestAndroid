@@ -7,6 +7,7 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.support.multidex.MultiDex;
 
+import com.antfortune.freeline.FreelineCore;
 import com.tencent.tinker.anno.DefaultLifeCycle;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
 import com.tencent.tinker.loader.app.DefaultApplicationLike;
@@ -30,8 +31,13 @@ public class SimpleApplicationLink extends DefaultApplicationLike {
     @Override
     public void onBaseContextAttached(Context base) {
         super.onBaseContextAttached(base);
+        FreelineCore.init(getApplication());
         //you must install multiDex whatever tinker is installed!
         MultiDex.install(base);
+
+        //2017-1-17 FeeLine
+//        FreelineCore.init(getApplication());
+
         SampleApplicationContext.application = getApplication();
         SampleApplicationContext.context = getApplication();
         TinkerManager.setTinkerApplicationLike(this);

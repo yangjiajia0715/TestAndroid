@@ -149,6 +149,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.tv_temp:
                 TempActivity.start(this);
 //                LoginActivity.start(this);
+                /////
                 break;
         }
     }

@@ -27,7 +27,20 @@ public class TempActivity extends BaseActivity implements View.OnClickListener {
         initView();
 
         initData();
+        
+        te();
+        
+        test();
         //你好你好 打点滴
+//        llll
+    }
+
+    private void test() {
+        Toast.makeText(this, "test333", Toast.LENGTH_SHORT).show();
+    }
+
+    private void te() {
+        Toast.makeText(this, "老乡不中112233", Toast.LENGTH_SHORT).show();
     }
 
     private void initView() {

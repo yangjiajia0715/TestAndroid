@@ -1,0 +1,120 @@
+{
+    "android_gradle_plugin_version": "2.2.3",
+    "apk_path": "E:\\workspace\\TestAndroid\\app\\build\\outputs\\apk\\app-debug.apk",
+    "apt": {
+        
+    },
+    "apt_libraries": {
+        "dagger": false,
+        "butterknife": false
+    },
+    "auto_dependency": true,
+    "build_cache_dir": "E:\\workspace\\TestAndroid\\app\\build\\freeline",
+    "build_directory": "E:\\workspace\\TestAndroid\\app\\build",
+    "build_script": "gradlew.bat :app:assembleDebug",
+    "build_script_work_directory": "",
+    "build_tools_directory": "E:\\sdk\\build-tools\\23.0.3",
+    "build_tools_version": "23.0.3",
+    "compile_sdk_directory": "E:\\sdk\\platforms\\android-24",
+    "compile_sdk_version": "android-24",
+    "databinding": [
+        {
+            "isLibrary": false,
+            "minSdkVersion": 15,
+            "name": "app",
+            "packageName": "com.testandroid.yang"
+        }
+    ],
+    "databinding_compiler_jar": "",
+    "databinding_modules": [
+        "app"
+    ],
+    "debug_package": "com.testandroid.yang",
+    "exclude_dep_res_paths": [
+        
+    ],
+    "extra_dep_res_paths": [
+        
+    ],
+    "freeline_cache_dir": "E:\\workspace\\TestAndroid",
+    "freeline_gradle_plugin_version": "0.8.5",
+    "ignore_resource_ids": [
+        "avd_hide_password_1",
+        "avd_hide_password_2",
+        "avd_hide_password_3",
+        "avd_show_password_1",
+        "avd_show_password_2",
+        "avd_show_password_3"
+    ],
+    "java_home": "C:\\Program Files\\Java\\jdk1.8.0_101",
+    "launcher": "com.testandroid.yang.activity.MainActivity",
+    "main_assets_directory": [
+        "E:\\workspace\\TestAndroid\\app\\src\\debug\\assets",
+        "E:\\workspace\\TestAndroid\\app\\src\\main\\assets"
+    ],
+    "main_jniLibs_directory": [
+        "E:\\workspace\\TestAndroid\\app\\src\\debug\\jniLibs",
+        "E:\\workspace\\TestAndroid\\app\\src\\main\\jniLibs"
+    ],
+    "main_jni_directory": [
+        "E:\\workspace\\TestAndroid\\app\\src\\debug\\jni",
+        "E:\\workspace\\TestAndroid\\app\\src\\main\\jni"
+    ],
+    "main_manifest_path": "E:\\workspace\\TestAndroid\\app\\src\\main\\AndroidManifest.xml",
+    "main_project_dir": "app",
+    "main_project_name": "app",
+    "main_r_path": "E:\\workspace\\TestAndroid\\app\\build\\generated\\source\\r\\debug\\R.java",
+    "main_res_directory": [
+        "E:\\workspace\\TestAndroid\\app\\src\\debug\\res",
+        "E:\\workspace\\TestAndroid\\app\\src\\main\\res"
+    ],
+    "main_src_directory": [
+        "E:\\workspace\\TestAndroid\\app\\src\\debug\\java",
+        "E:\\workspace\\TestAndroid\\app\\src\\main\\java"
+    ],
+    "module_dependencies": {
+        "app": [
+            
+        ]
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "E:\\workspace\\TestAndroid\\app"
+        }
+    ],
+    "package": "com.testandroid.yang",
+    "product_flavor": "",
+    "project_source_sets": {
+        "app": {
+            "main_assets_directory": [
+                "E:\\workspace\\TestAndroid\\app\\src\\debug\\assets",
+                "E:\\workspace\\TestAndroid\\app\\src\\main\\assets"
+            ],
+            "main_jniLibs_directory": [
+                "E:\\workspace\\TestAndroid\\app\\src\\debug\\jniLibs",
+                "E:\\workspace\\TestAndroid\\app\\src\\main\\jniLibs"
+            ],
+            "main_jni_directory": [
+                "E:\\workspace\\TestAndroid\\app\\src\\debug\\jni",
+                "E:\\workspace\\TestAndroid\\app\\src\\main\\jni"
+            ],
+            "main_manifest_path": "E:\\workspace\\TestAndroid\\app\\src\\main\\AndroidManifest.xml",
+            "main_res_directory": [
+                "E:\\workspace\\TestAndroid\\app\\src\\debug\\res",
+                "E:\\workspace\\TestAndroid\\app\\src\\main\\res"
+            ],
+            "main_src_directory": [
+                "E:\\workspace\\TestAndroid\\app\\src\\debug\\java",
+                "E:\\workspace\\TestAndroid\\app\\src\\main\\java"
+            ]
+        }
+    },
+    "project_type": "gradle",
+    "retrolambda": {
+        
+    },
+    "root_dir": "E:\\workspace\\TestAndroid",
+    "sdk_directory": "E:\\sdk",
+    "use_jdk8": true
+}
