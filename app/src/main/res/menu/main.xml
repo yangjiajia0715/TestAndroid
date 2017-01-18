@@ -5,6 +5,11 @@
     >
 
     <item
+        android:id="@+id/filter_newTech"
+        android:icon="@drawable/ic_search_bg_black"
+        android:title="filter_newTech"
+        android:showAsAction="always" />
+    <item
         android:id="@+id/filter_view"
         android:icon="@drawable/ic_search_bg_black"
         android:title="filter_view"

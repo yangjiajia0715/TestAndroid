@@ -26,6 +26,7 @@
     <item name="tv_test_CursorLoader" type="id" />
     <item name="tv_Data_Binding" type="id" />
     <item name="tv_temp" type="id" />
+    <item name="tv_CoordinatorLayout" type="id" />
 
 
 </resources>

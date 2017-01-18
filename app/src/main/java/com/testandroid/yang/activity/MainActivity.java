@@ -102,6 +102,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         infos.add(new HomeInfo("tv_test_CursorLoader", R.id.tv_test_CursorLoader, HomeInfo.HomeGroup.DataBase));
         infos.add(new HomeInfo("tv_Data_Binding", R.id.tv_Data_Binding, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_temp", R.id.tv_temp, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("tv_CoordinatorLayout", R.id.tv_CoordinatorLayout, HomeInfo.HomeGroup.NewTech));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -208,6 +209,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //                LoginActivity.start(this);
                     /////
                     break;
+                case R.id.tv_CoordinatorLayout:
+                    CoordinatorLayoutActivity.start(this);
+                    break;
             }
             return;
         }
@@ -219,6 +223,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         items.clear();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         switch (item.getItemId()) {
+            case R.id.filter_newTech:
+                for (HomeInfo info : infos) {
+                    if (info.group == HomeInfo.HomeGroup.NewTech)
+                        items.add(info);
+                }
+                adapter.notifyDataSetChanged();
+                break;
             case R.id.filter_view:
                 for (HomeInfo info : infos) {
                     if (info.group == HomeInfo.HomeGroup.View)
