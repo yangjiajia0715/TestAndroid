@@ -49,4 +49,8 @@
     <!-- toolbar弹出菜单样式 -->
     <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
     </style>
+
+    <style name="app_bar_style" >
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>

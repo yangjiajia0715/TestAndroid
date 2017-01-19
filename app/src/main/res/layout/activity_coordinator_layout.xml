@@ -7,39 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".activity.CoordinatorLayoutActivity">
 
-      <!--  <Button
-            android:id="@+id/btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="300dp"
-            android:background="#FFCC00"
-            android:text="Hello"
-            app:layout_behavior="com.testandroid.yang.util.MyBehavior" />
--->
-    <!--
-        <Button
-            android:id="@+id/child"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="300dp"
-            android:background="#FFCC00"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="child"
-            app:layout_behavior="com.testandroid.yang.util.MyBehavior" />
-    -->
-    <!--
-        <com.testandroid.yang.view.TempView
-            android:id="@+id/dependency"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="300dp"
-            android:background="#3366CC"
-            android:tag="10"/>-->
 
+    <TextView
+        android:id="@+id/swip"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:background="#32CD32"
+        android:text="别删我"
+        android:textSize="20dip"
+        android:gravity="center"
+        />
 
     <Button
         android:id="@+id/btn"
@@ -50,6 +27,13 @@
         android:background="#FFCC00"
         android:text="Hello"
         app:layout_behavior="com.testandroid.yang.util.MyBehavior" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="100dp"
+        android:src="@drawable/ic_math" />
 
     <com.testandroid.yang.view.TempView
         android:layout_width="100dp"
