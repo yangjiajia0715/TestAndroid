@@ -129,6 +129,8 @@
         <activity android:name="com.testandroid.yang.activity.CoordinatorLayoutActivity" />
 
         <activity android:name="com.testandroid.yang.activity.CoordinatorAppBarActivity" />
+
+        <activity android:name="com.testandroid.yang.activity.AppBarTabLayout" />
     </application>
 
 </manifest>

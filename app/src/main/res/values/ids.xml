@@ -28,6 +28,7 @@
     <item name="tv_temp" type="id" />
     <item name="tv_CoordinatorLayout" type="id" />
     <item name="tv_CoordinatorLayout_appbar" type="id" />
+    <item name="tv_appbar_tab_layout" type="id" />
 
 
 </resources>
