@@ -2,3 +2,5 @@ include ':MyJavaProgrammer', ':app', ':uikit'
 
 //println "project name = $project.name ,projectDir= $project.projectDir"
 println "-------setting----project  ,hasProperty--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
+println "-------setting----project  ,systemProp.--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
+//System.properties['system']
