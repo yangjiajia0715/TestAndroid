@@ -131,6 +131,13 @@
         <activity android:name="com.testandroid.yang.activity.CoordinatorAppBarActivity" />
 
         <activity android:name="com.testandroid.yang.activity.AppBarTabLayout" />
+
+        <activity
+            android:name="com.testandroid.yang.activity.TestAppBar"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
 
 </manifest>

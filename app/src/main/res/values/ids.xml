@@ -29,6 +29,7 @@
     <item name="tv_CoordinatorLayout" type="id" />
     <item name="tv_CoordinatorLayout_appbar" type="id" />
     <item name="tv_appbar_tab_layout" type="id" />
+    <item name="tv_tv_test_app_bar" type="id" />
 
 
 </resources>

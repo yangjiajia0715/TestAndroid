@@ -54,6 +54,11 @@ public class HomeRecyleViewAdapter extends RecyclerView.Adapter<HomeRecyleViewAd
         return infos == null ? 0 : infos.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
     public class HomeHolder extends RecyclerView.ViewHolder {
 
         public final TextView tvContent;

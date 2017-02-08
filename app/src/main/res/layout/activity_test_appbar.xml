@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:minHeight="50dp"
+            android:layout_height="wrap_content">
+
+            <SurfaceView
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:background="#fea73d"
+                android:gravity="center"
+                android:text="标题"
+                app:layout_collapseMode="pin"
+                android:layout_height="50dp" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#ff0"
+            android:gravity="center"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:text="测试内容" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--<android.support.v4.view.ViewPager
+        android:id="@+id/media_play_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_temp_content_long" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_temp_content_long" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_temp_content_long" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_temp_content_long" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_temp_content_long" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="点击输入" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
