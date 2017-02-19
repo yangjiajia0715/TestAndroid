@@ -106,6 +106,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         infos.add(new HomeInfo("tv_CoordinatorLayout_appbar", R.id.tv_CoordinatorLayout_appbar, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_appbar_tab_layout", R.id.tv_appbar_tab_layout, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_tv_test_app_bar", R.id.tv_tv_test_app_bar, HomeInfo.HomeGroup.NewTech));
+        infos.add(new HomeInfo("三种菜单", R.id.tv_menu, HomeInfo.HomeGroup.Other));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -219,12 +220,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     CoordinatorAppBarActivity.start(this);
                     break;
                 case R.id.tv_appbar_tab_layout:
-//                    CoordinatorAppBarActivity.start(this);
                     AppBarTabLayout.start(this);
                     break;
                 case R.id.tv_tv_test_app_bar:
-//                    CoordinatorAppBarActivity.start(this);
                     TestAppBar.start(this);
+                    break;
+                case R.id.tv_menu:
+                    MenuActivity.start(this);
                     break;
             }
             return;
