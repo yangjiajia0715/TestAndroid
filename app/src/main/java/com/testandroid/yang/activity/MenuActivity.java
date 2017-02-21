@@ -3,16 +3,27 @@ package com.testandroid.yang.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.adapter.MultiChoiceAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,9 +41,55 @@ public class MenuActivity extends BaseActivity {
     TextView tvOptionMenu;
     @BindView(R.id.tv_context_menu)
     TextView tvContextMenu;
+    @BindView(R.id.tv_action_mode)
+    TextView tvActionMode;
     @BindView(R.id.tv_pop_menu)
     TextView tvPopMenu;
 
+    TextView tvOther;
+
+    ListView listview;
+    ListView listviewRight;
+
+    ActionMode mActionMode;
+
+    ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            Log.d(TAG, "onCreateActionMode: ");
+            mode.getMenuInflater().inflate(R.menu.action_mode_menu, menu);
+            mode.setTitle("Mode");
+            mode.setSubtitle("Subtitle");
+//            mode.setType(ActionMode.TYPE_FLOATING);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            Log.d(TAG, "onPrepareActionMode: ");
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.drop_down_answer_action_mode:
+                    Log.d(TAG, "onActionItemClicked:1 item=" + item);
+                    break;
+                case R.id.drop_down_setting_action_mode:
+                    Log.d(TAG, "onActionItemClicked: 2item=" + item);
+                    mode.finish();
+                    break;
+            }
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            Log.d(TAG, "onDestroyActionMode: ");
+            mActionMode = null;
+        }
+    };
 
     public static void start(Context context) {
         Intent starter = new Intent(context, MenuActivity.class);
@@ -45,6 +102,10 @@ public class MenuActivity extends BaseActivity {
         setContentView(R.layout.activity_menu);
         ButterKnife.bind(this);
 
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        Log.d(TAG, "onCreate: " + metrics);
         initView();
         initData();
     }
@@ -65,10 +126,17 @@ public class MenuActivity extends BaseActivity {
         if (tvContextMenu == null) {
             tvContextMenu = (TextView) findViewById(R.id.tv_context_menu);
         }
-//        tvOptionMenu.setLongClickable(this);
 
-        registerForContextMenu(tvContextMenu);
+        tvPopMenu = (TextView) findViewById(R.id.tv_pop_menu);
+
+        tvActionMode = (TextView) findViewById(R.id.tv_action_mode);
+        tvOther = (TextView) findViewById(R.id.tv_pop_menu_other);
+
+        listview = (ListView) findViewById(R.id.listview);
+        listviewRight = (ListView) findViewById(R.id.listviewright);
+
     }
+
 
     //optionmenu 每次show之前都会调用该方法，或者，invalidate
     @Override
@@ -89,8 +157,8 @@ public class MenuActivity extends BaseActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        Log.d(TAG, "onCreateContextMenu: menu=" + menu + ",v=" + v + ",menuInfo=" + menuInfo );
-        getMenuInflater().inflate(R.menu.context_ment,menu);
+        Log.d(TAG, "onCreateContextMenu: menu=" + menu + ",v=" + v + ",menuInfo=" + menuInfo);
+        getMenuInflater().inflate(R.menu.context_ment, menu);
     }
 
     @Override
@@ -132,20 +200,135 @@ public class MenuActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        registerForContextMenu(tvContextMenu);
 
-    }
+        tvOther.setSelected(true);
 
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.tv_context_menu:
-                break;
-            case R.id.tv_option_menu:
-//                invalidateOptionsMenu();
-                break;
-            case R.id.tv_pop_menu:
-                break;
+        tvActionMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mActionMode != null)
+                    return;
+
+                v.startActionMode(mActionModeCallback);
+//                v.setSelected(true);
+            }
+        });
+
+        List<String> strings = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            strings.add("点我点我" + i);
         }
 
+//        listview.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
+        listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        listview.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+                Log.d(TAG, "onItemCheckedStateChanged: position=" + position + ",checked=" + checked);
+//                listview.getCheckedItemIds();
+//                listview.setItemChecked(position,true);
+                Log.d(TAG, "onItemCheckedStateChanged: getCheckedItemCount=" + listview.getCheckedItemCount());
+//                Log.d(TAG, "onItemCheckedStateChanged: getCheckedItemPosition=" +  listview.getCheckedItemPosition());
+                Log.d(TAG, "onItemCheckedStateChanged: getCheckedItemPositions=" + listview.getCheckedItemPositions());
+                long[] checkedItemIds = listview.getCheckedItemIds();
+
+                for (long checkedItemId : checkedItemIds) {
+                    Log.d(TAG, "onItemCheckedStateChanged: checkedItemId=" + checkedItemId);
+                }
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                Log.d(TAG, "onCreateActionMode: ");
+                mode.getMenuInflater().inflate(R.menu.action_mode_listview_menu, menu);
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                Log.d(TAG, "onPrepareActionMode: ");
+                return true;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                Log.d(TAG, "onActionItemClicked: item=" + item.getTitle());
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                Log.d(TAG, "onDestroyActionMode: ");
+
+            }
+        });
+
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, strings);
+        listview.setAdapter(adapter);
+
+//        listview.setLongClickable(true);
+
+        List<String> stringArrayList = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            stringArrayList.add("复选框--点我点我" + i);
+        }
+
+        MultiChoiceAdapter choiceAdapter = new MultiChoiceAdapter(this, stringArrayList, listviewRight);
+//        choiceAdapter.setOnCheckedChangeListenertt(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//
+//            }
+//        });
+        listviewRight.setAdapter(choiceAdapter);
+        listviewRight.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
+        listviewRight.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+                Log.d(TAG, "onItemCheckedStateChanged--listviewRight: checked=" + checked);
+                Log.d(TAG, "onItemCheckedStateChanged--listviewRight: getCheckedItemCount=" + listviewRight.getCheckedItemCount());
+                Log.d(TAG, "onItemCheckedStateChanged--listviewRight: getCheckedItemPositions=" + listviewRight.getCheckedItemPositions());
+
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                Log.d(TAG, "onCreateActionMode--listviewRight: ");
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                Log.d(TAG, "onPrepareActionMode--listviewRight: ");
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+
+            }
+        });
+
+
+        tvPopMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopMenu(v);
+            }
+        });
     }
+
+    private void showPopMenu(View v) {
+        PopupMenu popupMenu = new PopupMenu(this, v, Gravity.END);
+        popupMenu.getMenuInflater().inflate(R.menu.pop_menu, popupMenu.getMenu());
+        popupMenu.show();
+    }
+
 
 }

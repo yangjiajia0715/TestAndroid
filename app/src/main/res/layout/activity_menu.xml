@@ -9,19 +9,44 @@
     <TextView
         android:id="@+id/tv_option_menu"
         style="@style/Home_text_style2"
-        android:onClick="onClick"
         android:text="OptionMenu" />
 
     <TextView
         android:id="@+id/tv_context_menu"
         style="@style/Home_text_style2"
-        android:onClick="onClick"
         android:text="ContextMenu" />
+
+    <TextView
+        android:id="@+id/tv_action_mode"
+        style="@style/Home_text_style2"
+        android:text="ActionMode" />
 
 
     <TextView
         android:id="@+id/tv_pop_menu"
         style="@style/Home_text_style2"
-        android:onClick="onClick"
+        android:layout_width="200dp"
         android:text="PopMenu" />
+
+    <TextView
+        android:id="@+id/tv_pop_menu_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/accentLight"
+        android:padding="8dp"
+        android:text="tv_pop_menu_other" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"/>
+        <ListView
+            android:id="@+id/listviewright"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 </LinearLayout>

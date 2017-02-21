@@ -140,7 +140,9 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <activity android:name="com.testandroid.yang.activity.MenuActivity" />
+        <activity
+            android:name="com.testandroid.yang.activity.MenuActivity"
+            android:theme="@style/ActionModeTheme" />
     </application>
 
 </manifest>

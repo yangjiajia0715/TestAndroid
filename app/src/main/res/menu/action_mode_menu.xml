@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/drop_down_answer_action_mode"
+        android:icon="@drawable/drop_down_answer"
+        app:showAsAction="withText"
+        android:title="我的答疑ActionMode" />
+
+    <item
+        android:id="@+id/drop_down_setting_action_mode"
+        android:icon="@drawable/drop_down_setting"
+        app:showAsAction="withText"
+        android:title="设置学科ActionMode" />
+
+    <item
+        android:icon="@drawable/drop_down_setting"
+        app:showAsAction="withText"
+        android:title="设置学科ActionMode3" />
+    <item
+        android:icon="@drawable/drop_down_setting"
+        app:showAsAction="withText"
+        android:title="设置学科ActionMode4" />
+    <item
+        android:icon="@drawable/drop_down_setting"
+        app:showAsAction="withText"
+        android:title="设置学科ActionMode5" />
+    <item
+        android:icon="@drawable/drop_down_setting"
+        app:showAsAction="withText"
+        android:title="设置学科ActionMode6" />
+</menu>
