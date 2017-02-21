@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.testandroid.yang"
     android:versionCode="1"
     android:versionName="1.0"> <!-- 18 -->
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="24" />
+        android:targetSdkVersion="24"
+        tools:overrideLibrary="uk.co.senab.photoview" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -143,6 +145,8 @@
         <activity
             android:name="com.testandroid.yang.activity.MenuActivity"
             android:theme="@style/ActionModeTheme" />
+
+        <activity android:name="com.testandroid.yang.activity.ViewBigImageActivity" />
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/MyJavaProgrammer" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/uikit" />
+            <option value="$PROJECT_DIR$/zoomlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
