@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_bar_setting"
+        android:icon="@drawable/drop_down_setting"
+        android:title="设置"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/menu_bar_setting1"
+        android:icon="@drawable/drop_down_setting"
+        android:title="设置1"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/menu_bar_setting2"
+        android:icon="@drawable/drop_down_setting"
+        android:title="设置2"
+        app:showAsAction="withText|ifRoom" />
+
+    <item
+        android:id="@+id/menu_bar_more"
+        android:icon="@drawable/ic_done"
+        android:title="更多"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/menu_bar_more1"
+        android:icon="@drawable/ic_done"
+        android:title="更多1"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/menu_bar_more2"
+        android:icon="@drawable/ic_done"
+        android:title="更多2"
+        app:showAsAction="withText|ifRoom" />
+
+</menu>

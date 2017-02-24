@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 /**
+ * BaseActivity
  * Created by yangjiajia on 2017/1/13 0013.
  */
 

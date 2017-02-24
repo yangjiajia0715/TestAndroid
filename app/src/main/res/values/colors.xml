@@ -31,4 +31,6 @@
 
     <color name="white">#fff</color>
 
+    <color name="actionbar_text">#16c35b</color>
+
 </resources>

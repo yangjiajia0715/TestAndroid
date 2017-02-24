@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.testandroid.yang"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:versionCode="1"
     android:versionName="1.0"> <!-- 18 -->
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="24"
@@ -147,6 +149,15 @@
             android:theme="@style/ActionModeTheme" />
 
         <activity android:name="com.testandroid.yang.activity.ViewBigImageActivity" />
+
+        <!--splitActionBarWhenNarrow 不起作用？？？？-->
+        <activity
+            android:name="com.testandroid.yang.activity.ActionBarActivity"
+            android:theme="@style/MyActionBarTheme" >
+            <meta-data android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
+
+        </activity>
     </application>
 
 </manifest>
