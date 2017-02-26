@@ -151,8 +151,10 @@
         <activity android:name="com.testandroid.yang.activity.ViewBigImageActivity" />
 
         <!--splitActionBarWhenNarrow 不起作用？？？？-->
+        <!-- android:parentActivityName="com.testandroid.yang.activity.ParallaxActivity"-->
         <activity
             android:name="com.testandroid.yang.activity.ActionBarActivity"
+            android:parentActivityName="com.testandroid.yang.activity.ParallaxActivity"
             android:theme="@style/MyActionBarTheme" >
             <meta-data android:name="android.support.UI_OPTIONS"
                 android:value="splitActionBarWhenNarrow" />

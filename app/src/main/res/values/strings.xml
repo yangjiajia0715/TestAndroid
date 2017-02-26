@@ -107,4 +107,5 @@ Quam libero nulla netus eu porta curae, ut nulla bibendum facilisis et urna sed,
 正如你所看的这样，Toolbar根本就不够看的，一点都不复杂。接下来我们继续学习在Toolbar上面再套一层父View，让Toolbar更有互动性。</string>
     <string name="text_three_menu">三种基本类型的菜单</string>
 
+    <string name="share">分享</string>
 </resources>
