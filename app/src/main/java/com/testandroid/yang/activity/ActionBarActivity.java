@@ -6,16 +6,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.TaskStackBuilder;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.testandroid.yang.R;
 
@@ -51,23 +47,24 @@ public class ActionBarActivity extends BaseActivity {
     public void initView() {
         Log.d(TAG, "initView: toolbar=" + toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.arrow_left_dart);
+        setSupportActionBar(toolbar);
+
         toolbar.setNavigationContentDescription("导航？");
+        //需放到setSupportActionBar 后面 才生效？
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: setNavigationOnClickListener v=" + v);
+                finish();
             }
         });
-
-        setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("MyActionBar");
 //        actionBar.setElevation(0);
 //        actionBar.setLogo(R.drawable.ic_data);
 
-        actionBar.setIcon(R.drawable.ic_mail_box);
+//        actionBar.setIcon(R.drawable.ic_mail_box);
 
         Log.d(TAG, "initView: actionBar=" + actionBar);
 
@@ -75,6 +72,7 @@ public class ActionBarActivity extends BaseActivity {
         //貌似不起作用
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+//        deprecate
 //        actionBar.setNavigationMode();
 
 //        actionBar.newTab()
@@ -103,54 +101,54 @@ public class ActionBarActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_action_bar, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+//        MenuItem searchItem = menu.findItem(R.id.action_search);
+//
+//        //必须用该方法设置，否则不支持的操作异常
+//        MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
+//            @Override
+//            public boolean onMenuItemActionExpand(MenuItem item) {
+//                Log.d(TAG, "onMenuItemActionExpand: item=" + item);
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onMenuItemActionCollapse(MenuItem item) {
+//                Log.d(TAG, "onMenuItemActionCollapse: item=" + item);
+//                return true;
+//            }
+//        });
+//
+//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+//
+//        searchView.setIconifiedByDefault(false);
+//
+////        720
+//        searchView.setMaxWidth(100 * 4);
+//
+//        searchView.setSubmitButtonEnabled(true);
+//
+//        searchView.setBackgroundResource(R.drawable.bg_accumulated_income);
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                Log.d(TAG, "onQueryTextSubmit: query=" + query);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                Log.d(TAG, "onQueryTextChange: newText=" + newText);
+//                return false;
+//            }
+//        });
 
-        //必须用该方法设置，否则不支持的操作异常
-        MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                Log.d(TAG, "onMenuItemActionExpand: item=" + item);
-                return true;
-            }
 
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                Log.d(TAG, "onMenuItemActionCollapse: item=" + item);
-                return true;
-            }
-        });
+//        TextView actionView = (TextView) menu.findItem(R.id.action_text_veiw).getActionView();
+//        actionView.setText("健健康康扩扩啦啦啦啦啦绿");
 
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-
-        searchView.setIconifiedByDefault(false);
-
-//        720
-        searchView.setMaxWidth(100 * 4);
-
-        searchView.setSubmitButtonEnabled(true);
-
-        searchView.setBackgroundResource(R.drawable.bg_accumulated_income);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Log.d(TAG, "onQueryTextSubmit: query=" + query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                Log.d(TAG, "onQueryTextChange: newText=" + newText);
-                return false;
-            }
-        });
-
-
-        TextView actionView = (TextView) menu.findItem(R.id.action_text_veiw).getActionView();
-        actionView.setText("健健康康扩扩啦啦啦啦啦绿");
-
-        ShareActionProvider shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menu.findItem(R.id.action_share));
-        shareActionProvider.setShareIntent(getDefaultIntent());
+//        ShareActionProvider shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menu.findItem(R.id.action_share));
+//        shareActionProvider.setShareIntent(getDefaultIntent());
 
         return super.onCreateOptionsMenu(menu);
     }

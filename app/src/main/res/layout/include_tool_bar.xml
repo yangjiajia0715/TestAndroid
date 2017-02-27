@@ -10,6 +10,7 @@
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         app:popupTheme="@style/ToolbarPopupTheme"
+        app:navigationIcon="@drawable/arrow_left_dart"
         android:layout_height="wrap_content">
     </android.support.v7.widget.Toolbar>
 </FrameLayout>

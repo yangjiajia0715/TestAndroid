@@ -152,6 +152,7 @@
 
         <!--splitActionBarWhenNarrow 不起作用？？？？-->
         <!-- android:parentActivityName="com.testandroid.yang.activity.ParallaxActivity"-->
+     <!--   /MyActionBarTheme-->
         <activity
             android:name="com.testandroid.yang.activity.ActionBarActivity"
             android:parentActivityName="com.testandroid.yang.activity.ParallaxActivity"
