@@ -3,6 +3,12 @@
     <item name="tag_first" type="id" />
     <item name="tag_second" type="id" />
 
+    <item name="type_animation" type="id" />
+    <item name="type_data_base" type="id" />
+    <item name="type_new_tech" type="id" />
+    <item name="type_view" type="id" />
+    <item name="type_other" type="id" />
+
     <item name="tv_zoom_image" type="id" />
     <item name="tv_test_view_pager_11" type="id" />
     <item name="tv_parallax" type="id" />

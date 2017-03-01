@@ -15,7 +15,7 @@
 -->
 
 <!--com.github.ksoichiro.android.observablescrollview.ObservableScrollView-->
-<com.example.testandroid.ObservableScrollView.ObservableScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.testandroid.yang.ObservableScrollView.ObservableScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,4 +40,4 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             android:text="@string/lipsum" />
     </LinearLayout>
-</com.example.testandroid.ObservableScrollView.ObservableScrollView>
+</com.testandroid.yang.ObservableScrollView.ObservableScrollView>

@@ -50,7 +50,7 @@
             android:minHeight="@dimen/tool_bar_replace_temp_height"
             android:text="工具条部分" />
         <!--com.google.samples.apps.iosched.ui.widget.SlidingTabLayout-->
-        <com.example.testandroid.ObservableScrollView.indicator.SlidingTabLayout
+        <com.testandroid.yang.ObservableScrollView.indicator.SlidingTabLayout
             android:id="@+id/sliding_tabs"
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_height"
