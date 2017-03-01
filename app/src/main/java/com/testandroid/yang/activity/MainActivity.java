@@ -116,6 +116,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         infos.add(new HomeInfo("tv_tv_test_app_bar", R.id.tv_tv_test_app_bar, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("三种菜单", R.id.tv_menu, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("ActionBar相关", R.id.tv_action_bar, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("MD Animation", R.id.tv_animation_materail_design, HomeInfo.HomeGroup.Other));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -238,6 +239,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     MenuActivity.start(this);
                     break;
                 case R.id.tv_action_bar:
+                    ActionBarActivity.start(this);
+                    break;
+                case R.id.tv_animation_materail_design:
                     ActionBarActivity.start(this);
                     break;
             }
