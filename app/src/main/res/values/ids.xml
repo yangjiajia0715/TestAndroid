@@ -40,5 +40,15 @@
     <item name="tv_action_bar" type="id" />
     <item name="tv_animation_materail_design" type="id" />
 
+    <!--"type_animation"-->
+
+    <!-- "type_data_base"-->
+
+    <!-- "type_new_tech" -->
+    <item name="tv_rx_java_tmp" type="id" />
+
+    <!-- "type_view"-->
+
+    <!--"type_other"-->
 
 </resources>

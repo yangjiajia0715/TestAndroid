@@ -76,6 +76,7 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
         infos.add(new HomeInfo("tv_CoordinatorLayout_appbar", R.id.tv_CoordinatorLayout_appbar, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_appbar_tab_layout", R.id.tv_appbar_tab_layout, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_tv_test_app_bar", R.id.tv_tv_test_app_bar, HomeInfo.HomeGroup.NewTech));
+        infos.add(new HomeInfo("RxJava", R.id.tv_tv_test_app_bar, HomeInfo.HomeGroup.NewTech));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
