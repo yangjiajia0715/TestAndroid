@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.0'
 //        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
         classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3')
 //        classpath "com.android.databinding:dataBinder:1.0-rc1"
@@ -164,6 +164,7 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
 }
 
 def gitSha() {
@@ -180,7 +181,7 @@ def gitSha() {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '23.0.3'
+    buildToolsVersion '25.0.0'
 
 //    sourceSets {
 //        main {
@@ -221,11 +222,11 @@ ext {
 
     //for normal build
     //old apk file to build patch apk
-    tinkerOldApkPath = "${bakPath}/TestAndroid-release-1105-16-53-08.apk"
+    tinkerOldApkPath = "${bakPath}/app-debug-0302-17-39-23.apk"
     //proguard mapping file to build patch apk
     tinkerApplyMappingPath = "${bakPath}/TestAndroid-release-1105-16-53-08-mapping.txt"
     //resource R.txt to build patch apk, must input if there is resource changed
-    tinkerApplyResourcePath = "${bakPath}/TestAndroid-release-1105-16-53-08-R.txt"
+    tinkerApplyResourcePath = "${bakPath}/app-debug-0302-17-39-23-R.txt"
 
     //only use for build all flavor, if not, just ignore this field
     tinkerBuildFlavorDirectory = "${bakPath}/app-1105-16-53-08"
@@ -651,4 +652,16 @@ println "----------------GString-----------------"
 //println "----------------Closure----------------isOdd=" + isOdd(3)
 //println "----------------Closure----------------isOdd=" + idOdd.call()
 
+configurations {
+    compile
+}
 
+
+println "------------configurations-----------------"
+
+task testConfig{
+    doLast{
+        println configurations.compile.name
+        println configurations['compile'].name
+    }
+}
