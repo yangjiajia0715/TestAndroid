@@ -168,6 +168,7 @@
         <activity android:name="com.testandroid.yang.activity.TypeNewTectActivity" />
         <activity android:name="com.testandroid.yang.activity.TypeOtherActivity" />
         <activity android:name="com.testandroid.yang.activity.TypeViewActivity" />
+        <activity android:name="com.testandroid.yang.activity.PDFCreateActivity" />
     </application>
 
 </manifest>

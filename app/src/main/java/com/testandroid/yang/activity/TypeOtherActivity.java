@@ -74,6 +74,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         infos.add(new HomeInfo("tv_temp", R.id.tv_temp, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("三种菜单", R.id.tv_menu, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("ActionBar相关", R.id.tv_action_bar, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("pdf相关", R.id.tv_pdf, HomeInfo.HomeGroup.Other));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -99,6 +100,9 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                     break;
                 case R.id.tv_action_bar:
                     ActionBarActivity.start(this);
+                    break;
+                case R.id.tv_pdf:
+                    PDFCreateActivity.start(this);
                     break;
             }
         }

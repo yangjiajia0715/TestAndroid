@@ -38,6 +38,7 @@
     <item name="tv_tv_test_app_bar" type="id" />
     <item name="tv_menu" type="id" />
     <item name="tv_action_bar" type="id" />
+    <item name="tv_pdf" type="id" />
     <item name="tv_animation_materail_design" type="id" />
 
     <!--"type_animation"-->
