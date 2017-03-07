@@ -7,8 +7,8 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'
-//        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
-        classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.3')
+        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
+//        classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.7')
 //        classpath "com.android.databinding:dataBinder:1.0-rc1"
 
     }
@@ -29,8 +29,12 @@ apply plugin: 'com.antfortune.freeline'
 //apply plugin: 'com.android.databinding'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.2'
+    //origin 24
+//    compileSdkVersion 24
+    compileSdkVersion 25
+    //origin 24.0.2
+//    buildToolsVersion '24.0.2'
+    buildToolsVersion '25.0.2'
 
 //    freeline {
 //        hack true
@@ -140,28 +144,33 @@ android {
 
 dependencies {
     //    appcompat
-    compile 'com.android.support:appcompat-v7:24.2.1'
+//    compile 'com.android.support:appcompat-v7:24.2.1'
     compile fileTree(include: '*.jar', exclude: 'BDAutoUpdateSDK_20150605_V1.2.0.jar', dir: 'libs')
 
     compile project(':zoomlibrary')
-    //    compile fileTree(dir: 'libs')
-    //    compile 'com.android.support:design:24.1.1'
-    compile 'com.android.support:support-v13:24.2.1'
-    compile 'com.android.support:recyclerview-v7:24.2.1'
+
+    compile 'com.android.support:appcompat-v7:25.2.0'
+//    compile 'com.android.support:design:24.2.1'
+//    compile 'com.android.support:support-v13:24.2.1'
+//    compile 'com.android.support:recyclerview-v7:24.2.1'
+
+//    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:support-v13:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
     //    compile 'com.android.support:multidex:1.0.0'
     compile 'com.android.support:multidex:1.0.1'
     //    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
     //optional, help to generate the final application
     //    compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
     //    compile("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
-    //optional, help to generate the final application，2016-11-3
-    provided 'com.tencent.tinker:tinker-android-anno:1.7.3'
-    //tinker's main Android lib
-    compile 'com.tencent.tinker:tinker-android-lib:1.7.3'
+
+    compile("com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}") { changing = true }
+    provided("com.tencent.tinker:tinker-android-anno:${TINKER_VERSION}") { changing = true }
+
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.android.support:design:24.2.1'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
@@ -181,7 +190,7 @@ def gitSha() {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.0.2'
 
 //    sourceSets {
 //        main {
@@ -368,11 +377,16 @@ if (buildWithTinker()) {
              * own tinkerLoader, and the classes you use in them
              *
              */
-            loader = ["com.tencent.tinker.loader.*",
-                      //warning, you must change it with your application
-                      "com.testandroid.yang.tinker.SampleApplication",
-                      //use sample, let BaseBuildInfo unchangeable with tinker
-                      "com.testandroid.yang.tinker.BaseBuildInfo"
+//            loader = ["com.tencent.tinker.loader.*",
+//                      //warning, you must change it with your application
+//                      "com.testandroid.yang.tinker.SampleApplication",
+//                      //use sample, let BaseBuildInfo unchangeable with tinker
+//                      "com.testandroid.yang.tinker.BaseBuildInfo"
+//            ]
+
+            loader = [
+                    //use sample, let BaseBuildInfo unchangeable with tinker
+                    "com.testandroid.yang.tinker.BaseBuildInfo"
             ]
         }
 
