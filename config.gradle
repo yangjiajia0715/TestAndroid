@@ -4,9 +4,9 @@ ext {
     android = [
             compileSdkVersion: 25,
             buildToolsVersion: "25.0.2",
-            applicationId    : "com.cuotibao.teacher",
+            applicationId    : "com.testandroid.yang",
             minSdkVersion    : 16,
-            targetSdkVersion : 21,
+            targetSdkVersion : 24,
             versionCode      : 17,
             versionName      : "1.17"
     ]

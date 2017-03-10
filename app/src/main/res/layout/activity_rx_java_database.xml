@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8f8f8"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_test_RxJava"
+        style="@style/home_text_style"
+        android:text="RxJava" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava1"
+        style="@style/home_text_style"
+        android:text="RxJava1" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava2"
+        style="@style/home_text_style"
+        android:text="RxJava2" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava3"
+        style="@style/home_text_style"
+        android:text="RxJava3" />
+    <TextView
+        android:id="@+id/tv_test_RxJava4"
+        style="@style/home_text_style"
+        android:text="RxJava4" />
+    <TextView
+        android:id="@+id/tv_test_RxJava5"
+        style="@style/home_text_style"
+        android:text="RxJava5" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava6"
+        style="@style/home_text_style"
+        android:layout_margin="10dp"
+        android:text="变换  map" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava7"
+        style="@style/home_text_style"
+        android:layout_margin="10dp"
+        android:text="变换  flatmap" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava8"
+        style="@style/home_text_style"
+        android:layout_margin="10dp"
+        android:text="零碎00" />
+    <TextView
+        android:id="@+id/tv_test_RxJava9"
+        style="@style/home_text_style"
+        android:layout_margin="10dp"
+        android:text="Single" />
+
+</LinearLayout>

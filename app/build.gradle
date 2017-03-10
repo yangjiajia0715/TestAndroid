@@ -55,12 +55,11 @@ android {
     }
 
     defaultConfig {
-//        applicationId "com.example.yangjiajia.testandroid"
-        applicationId "com.testandroid.yang"
-        minSdkVersion 16
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
 
         buildConfigField "String", "Message", "\"测试buildConfigField的使用\""
         // Enabling multidex support.
@@ -135,6 +134,15 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.butterknifeVersion}"
 
 }
+
+// Iterable gets an each() method
+//configurations.compile.each {File f ->
+//    println "configurations.compile f =" + f.name
+//}
+//
+//configurations.runtime.each { File f ->
+//    println "configurations.runtime f =" + f.name
+//}
 
 def gitSha() {
     try {

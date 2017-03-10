@@ -1,31 +1,69 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
+
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     testCompile 'junit:junit:4.12'
 }
+
+println "---------------imagejoint--------------------"
+
+
+version '1.1.1'
+group 'com.51study.cth'
+description "好好学习"
+
+println name
+println project.name
+println project.path
+println project.projectDir
+println project.buildDir
+println project.description
+println project.group
+println project.version
+
+logger.lifecycle("logger.lifecycle")
+logger.quiet("logger.quiet")
+
+def myClosure = {getThisObject()}
+def whatIsThis = { this }
+
+println "buildscript myClosure=" + myClosure
+println "buildscript whatIsThis=" + whatIsThis
+println "buildscript this=" + this
+
+println "buildscript gradle.gradleHomeDir=" + gradle.gradleHomeDir
+println "buildscript gradle.gradleUserHomeDir=" + gradle.gradleUserHomeDir
+println "buildscript gradle.gradleVersion=" + gradle.gradleVersion
+
+println "buildscript.sourceFile=" + buildscript.sourceFile
+
+println "---------------imagejoint----end----------------"
