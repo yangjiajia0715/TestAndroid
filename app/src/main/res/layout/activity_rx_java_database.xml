@@ -1,59 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f8f8f8"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_test_RxJava"
-        style="@style/home_text_style"
-        android:text="RxJava" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/light_grey">
 
-    <TextView
-        android:id="@+id/tv_test_RxJava1"
-        style="@style/home_text_style"
-        android:text="RxJava1" />
+        <TextView
+            android:id="@+id/rx_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            tools:text="内容" />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_test_RxJava2"
-        style="@style/home_text_style"
-        android:text="RxJava2" />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_test_RxJava3"
-        style="@style/home_text_style"
-        android:text="RxJava3" />
-    <TextView
-        android:id="@+id/tv_test_RxJava4"
-        style="@style/home_text_style"
-        android:text="RxJava4" />
-    <TextView
-        android:id="@+id/tv_test_RxJava5"
-        style="@style/home_text_style"
-        android:text="RxJava5" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_test_RxJava6"
-        style="@style/home_text_style"
-        android:layout_margin="10dp"
-        android:text="变换  map" />
 
-    <TextView
-        android:id="@+id/tv_test_RxJava7"
-        style="@style/home_text_style"
-        android:layout_margin="10dp"
-        android:text="变换  flatmap" />
+            <TextView
+                android:id="@+id/tv_operate_rx_"
+                style="@style/home_text_style"
+                android:text="RxJava" />
 
-    <TextView
-        android:id="@+id/tv_test_RxJava8"
-        style="@style/home_text_style"
-        android:layout_margin="10dp"
-        android:text="零碎00" />
-    <TextView
-        android:id="@+id/tv_test_RxJava9"
-        style="@style/home_text_style"
-        android:layout_margin="10dp"
-        android:text="Single" />
+            <TextView
+                android:id="@+id/tv_operate_rx_1"
+                style="@style/home_text_style"
+                android:text="RxJava1" />
+
+            <TextView
+                android:id="@+id/tv_operate_rx_2"
+                style="@style/home_text_style"
+                android:text="RxJava2" />
+
+            <TextView
+                android:id="@+id/tv_operate_rx_3"
+                style="@style/home_text_style"
+                android:text="RxJava3" />
+
+            <TextView
+                android:id="@+id/tv_operate_rx_4"
+                style="@style/home_text_style"
+                android:text="RxJava4" />
+
+            <TextView
+                android:id="@+id/tv_operate_rx_5"
+                style="@style/home_text_style"
+                android:text="RxJava5" />
+
+            <TextView
+                android:id="@+id/tv_operate_rx_6"
+                style="@style/home_text_style"
+                android:layout_margin="10dp"
+                android:text="变换  map" />
+
+            <TextView
+                android:id="@+id/tv_operate_rx_7"
+                style="@style/home_text_style"
+                android:layout_margin="10dp"
+                android:text="变换  flatmap" />
+
+            <TextView
+                android:id="@+id/tv_operate_rx_8"
+                style="@style/home_text_style"
+                android:layout_margin="10dp"
+                android:text="零碎00" />
+
+            <TextView
+                android:id="@+id/tv_operate_rx_9"
+                style="@style/home_text_style"
+                android:layout_margin="10dp"
+                android:text="Single" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
 
 </LinearLayout>

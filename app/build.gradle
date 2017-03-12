@@ -299,7 +299,7 @@ if (buildWithTinker()) {
              * Notice: If you change this value, please trigger clean task
              * and regenerate base package.
              */
-            usePreGeneratedPatchDex = false
+//            usePreGeneratedPatchDex = false
             /**
              * necessary，default '[]'
              * what dexes in apk are expected to deal with tinkerPatch

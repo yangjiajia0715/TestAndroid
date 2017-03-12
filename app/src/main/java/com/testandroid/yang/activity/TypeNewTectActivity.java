@@ -71,6 +71,7 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
 
         infos.add(new HomeInfo("tv_test_tinker", R.id.tv_test_tinker, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_test_RxJava_main", R.id.tv_test_RxJava_main, HomeInfo.HomeGroup.NewTech));
+        infos.add(new HomeInfo("tv_test_RxJava_operate", R.id.tv_test_RxJava_operate, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_Data_Binding", R.id.tv_Data_Binding, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_CoordinatorLayout", R.id.tv_CoordinatorLayout, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_CoordinatorLayout_appbar", R.id.tv_CoordinatorLayout_appbar, HomeInfo.HomeGroup.NewTech));
@@ -97,6 +98,9 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
                 case R.id.tv_test_RxJava_main:
                     intent = new Intent(this, RxJavaActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.tv_test_RxJava_operate:
+                    RxJavaOperateActivity.start(this);
                     break;
                 case R.id.tv_Data_Binding:
                     DataBindingActivity.start(this);
