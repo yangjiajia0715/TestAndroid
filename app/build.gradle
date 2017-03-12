@@ -196,7 +196,8 @@ def getApplyResourceMappingPath() {
 println "${project.name} hasProperty TINKER_ID=" + hasProperty("TINKER_ID")
 println "${project.name} hasProperty yangjiajia=" + hasProperty("yangjiajia")
 println "${project.name} hasProperty org.gradle.java.home=" + hasProperty("org.gradle.java.home")
-//println "${project.name} hasProperty buildDir=" + buildDir.getAbsolutePath()
+println "${project.name} hasProperty buildDir=" + buildDir.getAbsolutePath()
+println "${project.name} hasProperty SIGNING_FILE_PATH=" + hasProperty("SIGNING_FILE_PATH")
 //println "${project.name} hasProperty gradleUserHomeDir=" + gradle.gradleUserHomeDir
 
 def getTinkerIdValue() {
