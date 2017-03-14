@@ -321,6 +321,29 @@ public class RxJavaOperateActivity extends Activity {
                 Log.d(TAG, "testZip----onNext: result=" + result);
             }
         });
+
+        letterSequence.subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+
+            }
+        });
+
+//        letterSequence.filter(new Func1<String, Boolean>() {
+//            @Override
+//            public Boolean call(String s) {
+//                return null;
+//            }
+//        });
+//        letterSequence.ofType()
+
+//        Observable.zip(letterSequence, numberSequence, new Func2<String, Long, User>() {
+//            @Override
+//            public User call(String s, Long aLong) {
+//                return null;
+//            }
+//        });
+
     }
 
 
