@@ -104,7 +104,7 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" />
 
         <activity
-            android:name=".activity.RxJavaActivity"
+            android:name=".activity.RxJava2Activity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
 
         <activity

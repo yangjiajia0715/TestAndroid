@@ -1,6 +1,7 @@
 package com.testandroid.yang.common;
 
 /**
+ * HomeInfo
  * Created by yangjiajia on 2017/1/17 0017.
  */
 
@@ -22,5 +23,13 @@ public class HomeInfo implements BaseInfo {
 
     public enum HomeGroup {
         View, Animator, NewTech, DataBase, Other
+    }
+
+    @Override
+    public String toString() {
+        return "HomeInfo{" +
+                "content='" + content + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

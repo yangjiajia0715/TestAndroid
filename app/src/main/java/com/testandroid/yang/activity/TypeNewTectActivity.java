@@ -96,7 +96,7 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
                     startActivity(intent);
                     break;
                 case R.id.tv_test_RxJava_main:
-                    intent = new Intent(this, RxJavaActivity.class);
+                    intent = new Intent(this, RxJava2Activity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_test_RxJava_operate:

@@ -14,8 +14,10 @@ ext {
     supportVersion = "25.2.0"
     multidexVersion = "1.0.1"
 
-    rxjavaVersion = "1.0.14"
-    rxandroidVersion = "1.0.1"
+//    rxjavaVersion = "1.0.14"
+    rxjavaVersion = "2.0.7"//2017-3-16
+    rxandroidVersion = "2.0.1"
+
     nineoldandroidsVersion = "2.4.0"
 
     butterknifeVersion = "8.5.1"
