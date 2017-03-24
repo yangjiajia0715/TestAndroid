@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.testandroid.yang.R;
@@ -46,6 +47,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         ButterKnife.bind(this);
         initView();
         initData();
+        Log.d(TAG, "TypeOtherActivity--onCreate: getTaskId=" + getTaskId());
     }
 
     @Override
@@ -75,6 +77,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         infos.add(new HomeInfo("三种菜单", R.id.tv_menu, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("ActionBar相关", R.id.tv_action_bar, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("pdf相关", R.id.tv_pdf, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("Overview Screen", R.id.tv_overview_screen, HomeInfo.HomeGroup.Other));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -102,7 +105,11 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                     ActionBarActivity.start(this);
                     break;
                 case R.id.tv_pdf:
-                    PDFCreateActivity.start(this);
+//                    PDFCreateActivity.start(this);
+                    OverviewScreen01Activity.start(this);
+                    break;
+                case R.id.tv_overview_screen:
+                    OverviewScreen01Activity.start(this);
                     break;
             }
         }
