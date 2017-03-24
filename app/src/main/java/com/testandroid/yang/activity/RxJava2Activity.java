@@ -246,7 +246,6 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
                     @Override
                     public void accept(@NonNull Integer integer) throws Exception {
                         Log.d(TAG, "accept: zip---apply-666--integer=" + integer + ",integer=" + integer + ",currentThread=" + Thread.currentThread().getName());
-
                     }
                 });
 

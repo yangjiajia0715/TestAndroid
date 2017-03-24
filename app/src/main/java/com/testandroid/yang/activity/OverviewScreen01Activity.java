@@ -22,9 +22,10 @@ public class OverviewScreen01Activity extends BaseActivity {
     public static void start(Context context) {
         Intent starter = new Intent(context, OverviewScreen01Activity.class);
 //        starter.putExtra();
-//        starter.addFlaggs(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+//        starter.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
 //        starter.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         context.startActivity(starter);
+
     }
 
     @Override
@@ -32,10 +33,11 @@ public class OverviewScreen01Activity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview_screen);
         tvContext = (TextView) findViewById(R.id.overview_text);
-
+//        getSystemService()
         findViewById(R.id.overview_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "OverviewScreen01Activity--onClick: getTaskId=" + getTaskId());
                 OverviewScreen01Activity.start(OverviewScreen01Activity.this);
             }
         });

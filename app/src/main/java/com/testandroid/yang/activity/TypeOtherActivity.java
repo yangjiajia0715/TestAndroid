@@ -78,6 +78,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         infos.add(new HomeInfo("ActionBar相关", R.id.tv_action_bar, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("pdf相关", R.id.tv_pdf, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("Overview Screen", R.id.tv_overview_screen, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("Notification", R.id.tv_notification, HomeInfo.HomeGroup.Other));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -105,11 +106,14 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                     ActionBarActivity.start(this);
                     break;
                 case R.id.tv_pdf:
-//                    PDFCreateActivity.start(this);
-                    OverviewScreen01Activity.start(this);
+                    PDFCreateActivity.start(this);
+//                    OverviewScreen01Activity.start(this);
                     break;
                 case R.id.tv_overview_screen:
                     OverviewScreen01Activity.start(this);
+                    break;
+                case R.id.tv_notification:
+                    NotificationActivity.start(this);
                     break;
             }
         }
