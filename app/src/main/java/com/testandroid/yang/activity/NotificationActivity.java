@@ -34,6 +34,12 @@ public class NotificationActivity extends BaseActivity {
     TextView notification02;
     @BindView(R.id.notification_03)
     TextView notification03;
+    @BindView(R.id.notification_04)
+    TextView notification04;
+    @BindView(R.id.notification_05)
+    TextView notification05;
+    @BindView(R.id.notification_06)
+    TextView notification06;
     private NotificationManager notificationManager;
 
     public static void start(Context context) {
@@ -59,7 +65,12 @@ public class NotificationActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.notification_01, R.id.notification_02, R.id.notification_03})
+    @OnClick({R.id.notification_01
+            , R.id.notification_02
+            , R.id.notification_03
+            , R.id.notification_04
+            , R.id.notification_05
+            , R.id.notification_06})
     public void onViewClicked(View view) {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         switch (view.getId()) {
@@ -125,7 +136,91 @@ public class NotificationActivity extends BaseActivity {
             case R.id.notification_03:
                 notificationLoop();
                 break;
+            case R.id.notification_04:
+                taskStack();
+                break;
+            case R.id.notification_05:
+
+                break;
+            case R.id.notification_06:
+                setProgressBar();
+                break;
         }
+    }
+
+    private void setProgressBar() {
+
+        final int ID = R.id.notification_02;
+        final Notification.Builder mBuilder = new Notification.Builder(this).
+                setSmallIcon(R.drawable.ic_launcher)
+                .setContentText("setProgressBar")
+                .setContentTitle("setProgressBar");
+
+        mBuilder.setAutoCancel(true);
+
+        mBuilder.setProgress(100, 0 , false);
+
+// Start a lengthy operation in a background thread
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        int incr;
+                        // Do the "lengthy" operation 20 times
+                        for (incr = 0; incr <= 100; incr+=5) {
+                            // Sets the progress indicator to a max value, the
+                            // current completion percentage, and "determinate"
+                            // state
+                            mBuilder.setProgress(100, incr, false);
+                            // Displays the progress bar for the first time.
+                            notificationManager.notify(0, mBuilder.build());
+                            // Sleeps the thread, simulating an operation
+                            // that takes time
+                            try {
+                                // Sleep for 5 seconds
+                                Thread.sleep(5*1000);
+                            } catch (InterruptedException e) {
+                                Log.d(TAG, "sleep failure");
+                            }
+                        }
+                        // When the loop is finished, updates the notification
+                        mBuilder.setContentText("Download complete")
+                                // Removes the progress bar
+                                .setProgress(0,0,false);
+                        notificationManager.notify(ID, mBuilder.build());
+                    }
+                }
+// Starts the thread by calling the run() method in its Runnable
+        ).start();
+        notificationManager.notify(R.id.notification_01, mBuilder.build());
+    }
+
+    private void taskStack() {
+        Notification.Builder builder = new Notification.Builder(this).
+                setSmallIcon(R.drawable.ic_launcher)
+                .setContentText("content")
+                .setContentTitle("content");
+
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(this);
+//        taskStackBuilder.addParentStack(MainActivity.class);
+        taskStackBuilder.addNextIntent(new Intent(this, TypeOtherActivity.class));
+        taskStackBuilder.addNextIntent(new Intent(this, OverviewScreen01Activity.class));
+
+        int intentCount = taskStackBuilder.getIntentCount();
+
+        Log.d(TAG, "taskStack: intentCount=" + intentCount);
+
+        Intent intent = taskStackBuilder.editIntentAt(0);
+
+        Log.d(TAG, "taskStack:  intent.getAction()=" +  intent.getAction());
+
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+//        builder.setAutoCancel(true);
+        PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(100, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingIntent);
+        notificationManager.notify(R.id.notification_01, builder.build());
     }
 
     private void notificationLoop() {
@@ -134,10 +229,17 @@ public class NotificationActivity extends BaseActivity {
                 .setContentText("content");
         int numMessage = 0;
 
+        PendingIntent pendingIntent = PendingIntent.getActivities(this, 0, null, PendingIntent.FLAG_ONE_SHOT);
+
+//        builder.setContentIntent()
+        builder.setAutoCancel(true);
+//        builder.setFullScreenIntent()
+
         for (int i = 0; i < 10; i++) {
             builder.setContentText("ccccccc=" + i);
             notificationManager.notify(R.id.notification_01, builder.build());
-            notificationManager.cancelAll();
+//            notificationManager.cancelAll();
         }
     }
+
 }

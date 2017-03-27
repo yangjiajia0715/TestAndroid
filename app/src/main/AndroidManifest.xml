@@ -177,10 +177,11 @@
         <!-- android:maxRecents="3"
             android:autoRemoveFromRecents="false"
             android:documentLaunchMode="none"-->
-        <activity android:name="com.testandroid.yang.activity.OverviewScreen01Activity" />
+        <activity android:name="com.testandroid.yang.activity.OverviewScreen01Activity" android:launchMode="singleTask"/>
 
+        <activity android:name="com.testandroid.yang.activity.NotificationActivity" android:parentActivityName=".activity.TypeAnimationActivity">
 
-        <activity android:name="com.testandroid.yang.activity.NotificationActivity" />
+        </activity>
     </application>
 
 </manifest>

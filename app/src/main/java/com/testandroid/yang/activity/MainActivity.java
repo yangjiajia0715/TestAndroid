@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
@@ -32,6 +33,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         initView();
         initData();
+        Log.d(TAG, "MainActivity--onCreate: getTaskId=" + getTaskId());
     }
 
     @Override
@@ -107,4 +109,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "MainActivity--onDestroy: getTaskId=" + getTaskId());
+    }
 }

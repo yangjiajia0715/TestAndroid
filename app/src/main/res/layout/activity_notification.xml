@@ -30,4 +30,28 @@
         android:gravity="center"
         android:text="notification_03" />
 
+    <TextView
+        android:id="@+id/notification_04"
+        style="@style/home_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="notification_04" />
+
+    <TextView
+        android:id="@+id/notification_05"
+        style="@style/home_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="notification_05" />
+
+    <TextView
+        android:id="@+id/notification_06"
+        style="@style/home_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="progressBar" />
+
 </LinearLayout>
