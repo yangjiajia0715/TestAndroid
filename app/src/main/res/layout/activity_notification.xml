@@ -54,6 +54,8 @@
         android:gravity="center"
         android:text="progressBar" />
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,5 +77,14 @@
             android:layout_height="wrap_content"
             android:gravity="center" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/notification_07"
+        style="@style/home_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="action" />
+
 
 </LinearLayout>

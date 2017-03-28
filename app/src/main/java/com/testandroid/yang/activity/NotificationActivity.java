@@ -42,12 +42,19 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
     TextView notification05;
     @BindView(R.id.notification_06)
     TextView notification06;
+    @BindView(R.id.notification_07)
+    TextView notification07;
     @BindView(R.id.notification_chronometer)
     Chronometer notificationChronometer;
     @BindView(R.id.notification_chronometer_content)
     TextView notificationChronometerContent;
 
     private NotificationManager notificationManager;
+
+    Notification.Builder mBuilder = new Notification.Builder(this).
+            setSmallIcon(R.drawable.ic_launcher)
+            .setContentText("Notification")
+            .setContentTitle("Notification");
 
     public static void start(Context context) {
         Intent starter = new Intent(context, NotificationActivity.class);
@@ -156,7 +163,17 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
             case R.id.notification_06:
                 setProgressBar();
                 break;
+            case R.id.notification_07:
+                notificationAction();
+                break;
         }
+    }
+
+    private void notificationAction() {
+//        new Notification.Actionstion.Builder(null,"Act",null);
+//        mBuilder.addAction();
+
+        mBuilder.setPriority(Notification.PRIORITY_MAX);
     }
 
     private void remoteView() {
