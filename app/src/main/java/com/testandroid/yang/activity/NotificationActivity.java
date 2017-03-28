@@ -11,6 +11,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Chronometer;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
@@ -24,7 +26,7 @@ import butterknife.OnClick;
  * Created by yangjiajia on 2017/3/24 0024.
  */
 
-public class NotificationActivity extends BaseActivity {
+public class NotificationActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "NotificationActivity";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -40,6 +42,11 @@ public class NotificationActivity extends BaseActivity {
     TextView notification05;
     @BindView(R.id.notification_06)
     TextView notification06;
+    @BindView(R.id.notification_chronometer)
+    Chronometer notificationChronometer;
+    @BindView(R.id.notification_chronometer_content)
+    TextView notificationChronometerContent;
+
     private NotificationManager notificationManager;
 
     public static void start(Context context) {
@@ -53,11 +60,15 @@ public class NotificationActivity extends BaseActivity {
         setContentView(R.layout.activity_notification);
         Log.d(TAG, "NotificationActivity--onCreate: getTaskId=" + getTaskId());
         ButterKnife.bind(this);
+        initView();
+        initData();
     }
 
     @Override
     public void initView() {
-
+        notificationChronometer.setOnClickListener(this);
+        notificationChronometer.setFormat("yyyy-MM-ss HH:mm:SS");
+        notificationChronometerContent.setOnClickListener(this);
     }
 
     @Override
@@ -140,12 +151,29 @@ public class NotificationActivity extends BaseActivity {
                 taskStack();
                 break;
             case R.id.notification_05:
-
+                remoteView();
                 break;
             case R.id.notification_06:
                 setProgressBar();
                 break;
         }
+    }
+
+    private void remoteView() {
+        Notification.Builder mBuilder = new Notification.Builder(this).
+                setSmallIcon(R.drawable.ic_launcher)
+                .setContentText("remoteView")
+                .setContentTitle("setContentTitle");
+
+        RemoteViews remoteViews = new RemoteViews(this.getPackageName(), R.layout.remoteview);
+        mBuilder.setContent(remoteViews);
+        remoteViews.setChronometer(R.id.remoteview_chronometer, System.currentTimeMillis(),"MM:SS" , true);
+
+        mBuilder.setOngoing(true);//用户不能取消
+
+        notificationManager.notify(R.id.notification_02, mBuilder.build());
+//        mBuilder.setCustomContentView(remoteViews);
+
     }
 
     private void setProgressBar() {
@@ -242,4 +270,15 @@ public class NotificationActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.notification_chronometer:
+                notificationChronometer.start();
+                break;
+            case R.id.notification_chronometer_content:
+                notificationChronometer.stop();
+                break;
+        }
+    }
 }
