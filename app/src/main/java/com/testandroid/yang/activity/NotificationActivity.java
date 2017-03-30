@@ -51,10 +51,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
 
     private NotificationManager notificationManager;
 
-    Notification.Builder mBuilder = new Notification.Builder(this).
-            setSmallIcon(R.drawable.ic_launcher)
-            .setContentText("Notification")
-            .setContentTitle("Notification");
+    Notification.Builder mBuilder;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, NotificationActivity.class);
@@ -67,6 +64,11 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_notification);
         Log.d(TAG, "NotificationActivity--onCreate: getTaskId=" + getTaskId());
         ButterKnife.bind(this);
+
+        mBuilder = new Notification.Builder(this).
+                setSmallIcon(R.drawable.ic_launcher)
+                .setContentText("NotificationTitle")
+                .setContentTitle("NotificationContent");
         initView();
         initData();
     }
@@ -88,7 +90,9 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
             , R.id.notification_03
             , R.id.notification_04
             , R.id.notification_05
-            , R.id.notification_06})
+            , R.id.notification_06
+            , R.id.notification_07
+    })
     public void onViewClicked(View view) {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         switch (view.getId()) {
@@ -173,7 +177,31 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
 //        new Notification.Actionstion.Builder(null,"Act",null);
 //        mBuilder.addAction();
 
-        mBuilder.setPriority(Notification.PRIORITY_MAX);
+//        mBuilder.setPriority(Notification.PRIORITY_MAX);
+        Notification.InboxStyle inboxStyle = new Notification.InboxStyle();
+        inboxStyle.setBigContentTitle("BigContenTitle");
+        inboxStyle.addLine("按钮1");
+        inboxStyle.addLine("按钮2");
+        inboxStyle.addLine("按钮3");
+        inboxStyle.addLine("按钮4");
+        inboxStyle.addLine("按钮5");
+
+        Log.d(TAG, "notificationAction: inboxStyle=" + inboxStyle);
+
+//        mBuilder.setStyle(inboxStyle);
+
+//        Icon.createWithResource("",R.drawable.ic_launcher);
+
+        Intent intent = new Intent(this, TypeViewActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        mBuilder.addAction(R.drawable.ic_launcher, "hh", pendingIntent);
+
+
+        Log.d(TAG, "notificationAction: mBuilder=" + mBuilder);
+
+        mBuilder.setFullScreenIntent(pendingIntent, true);
+
+        notificationManager.notify(R.id.notification_02, mBuilder.build());
     }
 
     private void remoteView() {
@@ -184,7 +212,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
 
         RemoteViews remoteViews = new RemoteViews(this.getPackageName(), R.layout.remoteview);
         mBuilder.setContent(remoteViews);
-        remoteViews.setChronometer(R.id.remoteview_chronometer, System.currentTimeMillis(),"MM:SS" , true);
+        remoteViews.setChronometer(R.id.remoteview_chronometer, System.currentTimeMillis(), "MM:SS", true);
 
         mBuilder.setOngoing(true);//用户不能取消
 
@@ -203,7 +231,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
 
         mBuilder.setAutoCancel(true);
 
-        mBuilder.setProgress(100, 0 , false);
+        mBuilder.setProgress(100, 0, false);
 
 // Start a lengthy operation in a background thread
         new Thread(
@@ -212,7 +240,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
                     public void run() {
                         int incr;
                         // Do the "lengthy" operation 20 times
-                        for (incr = 0; incr <= 100; incr+=5) {
+                        for (incr = 0; incr <= 100; incr += 5) {
                             // Sets the progress indicator to a max value, the
                             // current completion percentage, and "determinate"
                             // state
@@ -223,7 +251,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
                             // that takes time
                             try {
                                 // Sleep for 5 seconds
-                                Thread.sleep(5*1000);
+                                Thread.sleep(5 * 1000);
                             } catch (InterruptedException e) {
                                 Log.d(TAG, "sleep failure");
                             }
@@ -231,7 +259,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
                         // When the loop is finished, updates the notification
                         mBuilder.setContentText("Download complete")
                                 // Removes the progress bar
-                                .setProgress(0,0,false);
+                                .setProgress(0, 0, false);
                         notificationManager.notify(ID, mBuilder.build());
                     }
                 }
@@ -257,7 +285,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
 
         Intent intent = taskStackBuilder.editIntentAt(0);
 
-        Log.d(TAG, "taskStack:  intent.getAction()=" +  intent.getAction());
+        Log.d(TAG, "taskStack:  intent.getAction()=" + intent.getAction());
 
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
