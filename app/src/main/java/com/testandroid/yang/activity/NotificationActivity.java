@@ -6,6 +6,8 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
@@ -67,8 +69,8 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
 
         mBuilder = new Notification.Builder(this).
                 setSmallIcon(R.drawable.ic_launcher)
-                .setContentText("NotificationTitle")
-                .setContentTitle("NotificationContent");
+                .setContentText("setContentText")
+                .setContentTitle("NotificationTitle");
         initView();
         initData();
     }
@@ -92,69 +94,17 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
             , R.id.notification_05
             , R.id.notification_06
             , R.id.notification_07
+            , R.id.notification_09
     })
     public void onViewClicked(View view) {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         switch (view.getId()) {
             case R.id.notification_01:
-                Notification.Builder builder = new Notification.Builder(this).
-                        setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("标题")
-                        .setAutoCancel(true)
-                        .setContentText("Content");
-
-                // Creates an explicit intent for an Activity in your app
-                Intent resultIntent = new Intent(this, OverviewScreen01Activity.class);
-
-                // The stack builder object will contain an artificial back stack for the
-// started Activity.
-// This ensures that navigating backward from the Activity leads out of
-// your application to the Home screen.
-                TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-// Adds the back stack for the Intent (but not the Intent itself)
-                stackBuilder.addParentStack(NotificationActivity.class);
-// Adds the Intent that starts the Activity to the top of the stack
-                stackBuilder.addNextIntent(resultIntent);
-//                PendingIntent.
-                PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0
-                        , PendingIntent.FLAG_ONE_SHOT);//FLAG_UPDATE_CURRENT
-                builder.setContentIntent(resultPendingIntent);
-
-                Notification notification = builder.build();
-//                notification.flags = Notification.FLAG_AUTO_CANCEL;
-
-                notificationManager.notify(R.id.notification_01, notification);
+                taskStackBuilder01();
                 break;
-            case R.id.notification_02: {
-                Intent intent = new Intent(this, OverviewScreen01Activity.class);
-                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("Event tracker")
-                        .setContentText("Events received");
-
-                NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-                String[] events = new String[6];
-                inboxStyle.setBigContentTitle("Event tracker details:");
-
-                TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(this);
-                taskStackBuilder.addParentStack(NotificationActivity.class);
-                taskStackBuilder.addNextIntent(intent);
-//                PendingIntent.
-                PendingIntent taskStackBuilderPendingIntent = taskStackBuilder.getPendingIntent(0
-                        , PendingIntent.FLAG_ONE_SHOT);//FLAG_UPDATE_CURRENT
-                mBuilder.setContentIntent(taskStackBuilderPendingIntent);
-// Moves events into the expanded layout
-                for (int i = 0; i < events.length; i++) {
-                    inboxStyle.addLine(events[i]);
-                }
-// Moves the expanded layout object into the notification object.
-                mBuilder.setStyle(inboxStyle);
-
-                Notification notification1 = mBuilder.build();
-//                notification.flags = Notification.FLAG_AUTO_CANCEL;
-                notificationManager.notify(R.id.notification_01, notification1);
-            }
-            break;
+            case R.id.notification_02:
+                taskStackBuilder();
+                break;
             case R.id.notification_03:
                 notificationLoop();
                 break;
@@ -170,7 +120,113 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
             case R.id.notification_07:
                 notificationAction();
                 break;
+            case R.id.notification_09:
+                others();
+                break;
         }
+    }
+
+    private void others() {
+
+        //test 001 inboxstyle
+        Notification.InboxStyle inboxStyle = new Notification.InboxStyle();
+        inboxStyle.addLine("Line1Line1Line1Line1Line1Line1Line1Line1Line1Line1Line1Line1Line1Line1");
+        inboxStyle.addLine("Line2");
+//        inboxStyle.addLine("Line3");
+//        inboxStyle.addLine("Line4Line4Line4Line4Line4Line4Line4Line4Line4Line4Line4Line4Line4Line4");
+//        inboxStyle.addLine("Line5");
+//        inboxStyle.addLine("Line6");
+        inboxStyle.setBigContentTitle("BigContentTitle");
+        inboxStyle.setSummaryText("SummaryText");
+        mBuilder.setStyle(inboxStyle);
+
+//        mBuilder.setVisibility(Notification.VISIBILITY_PRIVATE);//api 21
+
+        mBuilder.setDefaults(Notification.DEFAULT_LIGHTS);//呼吸灯
+//        mBuilder.setCategory(Notification.CATEGORY_PROGRESS);
+//        Notification notification = mBuilder.build();
+//        notification.category = Notification.CATEGORY_PROGRESS;
+
+        //test 002:largeIcon
+        mBuilder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_pay_success));
+
+        //test 003: action failed
+//        Intent intent = new Intent(this, NotificationActivity.class);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        mBuilder.addAction(R.drawable.ic_launcher,"查看微课",pendingIntent);//?不起作用
+
+        final Notification notification = mBuilder.build();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            notification.visibility = Notification.VISIBILITY_SECRET;
+        }
+
+        notification01.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d(TAG, "run: postDelayed=" + notification);
+                notificationManager.notify(R.id.notification_09, notification);
+            }
+        },8000);
+    }
+
+    private void taskStackBuilder01() {
+        Notification.Builder builder = new Notification.Builder(this).
+                setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle("标题")
+                .setAutoCancel(true)
+                .setContentText("Content");
+
+        // Creates an explicit intent for an Activity in your app
+        Intent resultIntent = new Intent(this, OverviewScreen01Activity.class);
+
+        // The stack builder object will contain an artificial back stack for the
+// started Activity.
+// This ensures that navigating backward from the Activity leads out of
+// your application to the Home screen.
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+// Adds the back stack for the Intent (but not the Intent itself)
+        stackBuilder.addParentStack(NotificationActivity.class);
+// Adds the Intent that starts the Activity to the top of the stack
+        stackBuilder.addNextIntent(resultIntent);
+//                PendingIntent.
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0
+                , PendingIntent.FLAG_ONE_SHOT);//FLAG_UPDATE_CURRENT
+        builder.setContentIntent(resultPendingIntent);
+
+        Notification notification = builder.build();
+//                notification.flags = Notification.FLAG_AUTO_CANCEL;
+
+        notificationManager.notify(R.id.notification_01, notification);
+    }
+
+    private void taskStackBuilder() {
+        Intent intent = new Intent(this, OverviewScreen01Activity.class);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle("Event tracker")
+                .setContentText("Events received");
+
+        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+        String[] events = new String[6];
+        inboxStyle.setBigContentTitle("Event tracker details:");
+
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(this);
+        taskStackBuilder.addParentStack(NotificationActivity.class);
+        taskStackBuilder.addNextIntent(intent);
+//                PendingIntent.
+        PendingIntent taskStackBuilderPendingIntent = taskStackBuilder.getPendingIntent(0
+                , PendingIntent.FLAG_ONE_SHOT);//FLAG_UPDATE_CURRENT
+        mBuilder.setContentIntent(taskStackBuilderPendingIntent);
+// Moves events into the expanded layout
+        for (int i = 0; i < events.length; i++) {
+            inboxStyle.addLine(events[i]);
+        }
+// Moves the expanded layout object into the notification object.
+        mBuilder.setStyle(inboxStyle);
+
+        Notification notification1 = mBuilder.build();
+//                notification.flags = Notification.FLAG_AUTO_CANCEL;
+        notificationManager.notify(R.id.notification_01, notification1);
     }
 
     private void notificationAction() {
@@ -195,7 +251,6 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
         Intent intent = new Intent(this, TypeViewActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 //        mBuilder.addAction(R.drawable.ic_launcher, "hh", pendingIntent);
-
 
         Log.d(TAG, "notificationAction: mBuilder=" + mBuilder);
 
