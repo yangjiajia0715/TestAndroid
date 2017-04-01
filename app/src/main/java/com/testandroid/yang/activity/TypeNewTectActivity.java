@@ -78,6 +78,7 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
         infos.add(new HomeInfo("tv_appbar_tab_layout", R.id.tv_appbar_tab_layout, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_tv_test_app_bar", R.id.tv_tv_test_app_bar, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("RxJava", R.id.tv_tv_test_app_bar, HomeInfo.HomeGroup.NewTech));
+        infos.add(new HomeInfo("OkHttp3", R.id.tv_ok_http, HomeInfo.HomeGroup.NewTech));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -122,6 +123,9 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
                     break;
                 case R.id.tv_action_bar:
                     ActionBarActivity.start(this);
+                    break;
+                case R.id.tv_ok_http:
+                    OkHttpActivity.start(this);
                     break;
             }
         }

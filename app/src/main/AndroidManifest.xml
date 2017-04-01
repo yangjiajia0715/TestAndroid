@@ -173,6 +173,8 @@
         <activity android:name="com.testandroid.yang.activity.PDFCreateActivity" />
         <activity android:name="com.testandroid.yang.activity.RxJavaOperateActivity" />
 
+        <activity android:name="com.testandroid.yang.activity.OkHttpActivity" />
+
         <!-- android:excludeFromRecents="true"-->
         <!-- android:maxRecents="3"
             android:autoRemoveFromRecents="false"
