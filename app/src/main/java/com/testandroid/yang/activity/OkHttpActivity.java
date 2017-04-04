@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.testandroid.yang.R;
 import com.testandroid.yang.util.ProtocalManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Call;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -42,6 +44,7 @@ public class OkHttpActivity extends BaseActivity {
     TextView okhttp03;
     @BindView(R.id.okhttp_04)
     TextView okhttp04;
+
     private OkHttpClient okHttpClient;
 
     public static void start(Context context) {
@@ -55,9 +58,32 @@ public class OkHttpActivity extends BaseActivity {
         setContentView(R.layout.activity_okhttp);
         ButterKnife.bind(this);
 
+        Interceptor interceptor = new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+//                chain.proceed()
+                return null;
+            }
+        };
+
+//        File externalCacheDir = getExternalCacheDir();
+
+//        File filesDir = getFilesDir();
+
+//        File externalStorageDirectory = Environment.getExternalStorageDirectory();
+
+//        Log.d(TAG, "onCreate: externalCacheDir=" + externalCacheDir);
+//        Log.d(TAG, "onCreate: externalStorageDirectory=" + externalStorageDirectory);
+
+        File cacheFile = null;
+        long maxsize = 0;
+
         //全局
-        OkHttpClient.Builder builder = new OkHttpClient.Builder().readTimeout(20, TimeUnit.SECONDS);
-        okHttpClient = builder.build();
+        okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(20, TimeUnit.SECONDS)
+                .addInterceptor(interceptor)
+//                .cache(new Cache(externalStorageDirectory, maxsize))
+                .build();
 
         initView();
         initData();
@@ -103,6 +129,7 @@ public class OkHttpActivity extends BaseActivity {
 //                    Response response = okHttpClient.newCall(request).execute();
 
                     Call call = okHttpClient.newCall(request);
+
 
                     Response response = call.execute();
                     Log.d(TAG, "run: response=" + response);
