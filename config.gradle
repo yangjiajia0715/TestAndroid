@@ -19,6 +19,8 @@ ext {
 
     okhttp3Version = "3.6.0"
 
+    retrofitVersion = "2.2.0"
+
     nineoldandroidsVersion = "2.4.0"
 
     butterknifeVersion = "8.5.1"

@@ -35,7 +35,7 @@
                 style="@style/CommonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OkHttp2" />
+                android:text="Retrofit" />
 
             <TextView
                 android:id="@+id/okhttp_03"

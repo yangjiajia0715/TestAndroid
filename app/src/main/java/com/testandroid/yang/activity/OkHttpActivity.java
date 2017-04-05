@@ -3,12 +3,14 @@ package com.testandroid.yang.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.retrofit.GetAnswerSquare;
 import com.testandroid.yang.util.ProtocalManager;
 
 import java.io.File;
@@ -18,7 +20,9 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Cache;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -70,19 +74,25 @@ public class OkHttpActivity extends BaseActivity {
 
 //        File filesDir = getFilesDir();
 
-//        File externalStorageDirectory = Environment.getExternalStorageDirectory();
+        String storageState = Environment.getExternalStorageState();
+        Log.d(TAG, "onCreate: storageState=" + storageState);
 
-//        Log.d(TAG, "onCreate: externalCacheDir=" + externalCacheDir);
-//        Log.d(TAG, "onCreate: externalStorageDirectory=" + externalStorageDirectory);
+        if (storageState.equals(Environment.MEDIA_MOUNTED)) {
+
+        }
+
+        File externalStorageDirectory = Environment.getExternalStorageDirectory();
+
+        Log.d(TAG, "onCreate: externalStorageDirectory=" + externalStorageDirectory);
 
         File cacheFile = null;
-        long maxsize = 0;
+        long maxsize = 100_000;
 
         //全局
         okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(20, TimeUnit.SECONDS)
-                .addInterceptor(interceptor)
-//                .cache(new Cache(externalStorageDirectory, maxsize))
+//                .addInterceptor(interceptor)
+                .cache(new Cache(externalStorageDirectory, maxsize))
                 .build();
 
         initView();
@@ -106,12 +116,43 @@ public class OkHttpActivity extends BaseActivity {
                 okhttp01();
                 break;
             case R.id.okhttp_02:
+                retrofit();
                 break;
             case R.id.okhttp_03:
                 break;
             case R.id.okhttp_04:
                 break;
         }
+    }
+
+    private void retrofit() {
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("")
+//                .build();
+
+        Class service = GetAnswerSquare.class;
+
+        Log.d(TAG, "retrofit: service=" + service);
+
+//        Object instance = Proxy.newProxyInstance(service.getClassLoader(), new Class<?>[]{service},
+//                new InvocationHandler() {
+//
+//                    @Override
+//                    public Object invoke(Object proxy, Method method, Object[] args)
+//                            throws Throwable {
+////                        Log.d(TAG, "retrofit: proxy=" + proxy);
+//                        Log.d(TAG, "retrofit: method=" + method.getName());
+//                        return new Student2("zs",11);
+//                    }
+//                });
+//
+//        Log.d(TAG, "retrofit: instance=" + instance);
+
+
+//        retrofit.create()
+//        GetAnswerSquare answerSquare = retrofit.create(GetAnswerSquare.class);
+//        User user = answerSquare.getUser();
+
     }
 
     private void okhttp01() {
@@ -130,7 +171,17 @@ public class OkHttpActivity extends BaseActivity {
 
                     Call call = okHttpClient.newCall(request);
 
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
 
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+
+                        }
+                    });
                     Response response = call.execute();
                     Log.d(TAG, "run: response=" + response);
                     if (response.code() == 200) {

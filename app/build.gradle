@@ -133,6 +133,8 @@ dependencies {
 
     compile "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3Version}"
 
+    compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+
     compile "com.nineoldandroids:library:${rootProject.ext.nineoldandroidsVersion}"
 
     compile "com.jakewharton:butterknife:${rootProject.ext.butterknifeVersion}"
