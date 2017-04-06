@@ -54,6 +54,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
     private NotificationManager notificationManager;
 
     Notification.Builder mBuilder;
+    private PendingIntent activity;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, NotificationActivity.class);
@@ -94,6 +95,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
             , R.id.notification_05
             , R.id.notification_06
             , R.id.notification_07
+            , R.id.notification_0700
             , R.id.notification_09
     })
     public void onViewClicked(View view) {
@@ -120,10 +122,23 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
             case R.id.notification_07:
                 notificationAction();
                 break;
+            case R.id.notification_0700:
+                headerUPNotification();
+                break;
             case R.id.notification_09:
                 others();
                 break;
         }
+    }
+
+    private void headerUPNotification() {
+
+        Intent intent = new Intent(this, TypeOtherActivity.class);
+        PendingIntent activity = PendingIntent.getActivity(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        mBuilder.setFullScreenIntent(activity, true);
+
+        notificationManager.notify(200, mBuilder.build());
     }
 
     private void others() {

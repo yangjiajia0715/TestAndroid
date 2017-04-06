@@ -86,6 +86,14 @@
         android:gravity="center"
         android:text="action" />
 
+    <TextView
+        android:id="@+id/notification_0700"
+        style="@style/home_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="header-up" />
+
 
     <TextView
         android:id="@+id/notification_09"
