@@ -271,6 +271,9 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
 
         mBuilder.setFullScreenIntent(pendingIntent, true);
 
+//        PendingIntent service = PendingIntent.getService(this, 1000, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
         notificationManager.notify(R.id.notification_02, mBuilder.build());
     }
 

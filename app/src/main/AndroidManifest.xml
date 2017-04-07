@@ -115,6 +115,36 @@
             android:name=".service.SampleResultService"
             android:exported="false" />
 
+        <receiver
+            android:name=".receiver.TestReceiverPriorityHigh"
+            android:exported="false">
+
+            <intent-filter android:priority="100" >
+                <action android:name="action_test_broadcastreceiver" />
+            </intent-filter>
+
+        </receiver>
+
+        <receiver
+            android:name=".receiver.TestReceiverPriorityMiddle"
+            android:exported="false">
+
+            <intent-filter android:priority="90" >
+                <action android:name="action_test_broadcastreceiver" />
+            </intent-filter>
+
+        </receiver>
+
+        <receiver
+            android:name=".receiver.TestReceiverPriorityLow"
+            android:exported="false">
+
+            <intent-filter android:priority="80">
+                <action android:name="action_test_broadcastreceiver" />
+            </intent-filter>
+
+        </receiver>
+
         <activity
             android:name=".activity.DataBindingActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
@@ -174,14 +204,19 @@
         <activity android:name="com.testandroid.yang.activity.RxJavaOperateActivity" />
 
         <activity android:name="com.testandroid.yang.activity.OkHttpActivity" />
+        <activity android:name="com.testandroid.yang.activity.BroadcastReceiverActivity" />
 
         <!-- android:excludeFromRecents="true"-->
         <!-- android:maxRecents="3"
             android:autoRemoveFromRecents="false"
             android:documentLaunchMode="none"-->
-        <activity android:name="com.testandroid.yang.activity.OverviewScreen01Activity" android:launchMode="singleTask"/>
+        <activity
+            android:name="com.testandroid.yang.activity.OverviewScreen01Activity"
+            android:launchMode="singleTask" />
 
-        <activity android:name="com.testandroid.yang.activity.NotificationActivity" android:parentActivityName=".activity.TypeAnimationActivity">
+        <activity
+            android:name="com.testandroid.yang.activity.NotificationActivity"
+            android:parentActivityName=".activity.TypeAnimationActivity">
 
         </activity>
     </application>

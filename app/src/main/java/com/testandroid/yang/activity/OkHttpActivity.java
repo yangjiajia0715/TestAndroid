@@ -125,6 +125,8 @@ public class OkHttpActivity extends BaseActivity {
         }
     }
 
+
+
     private void retrofit() {
 //        Retrofit retrofit = new Retrofit.Builder()
 //                .baseUrl("")
@@ -147,7 +149,6 @@ public class OkHttpActivity extends BaseActivity {
 //                });
 //
 //        Log.d(TAG, "retrofit: instance=" + instance);
-
 
 //        retrofit.create()
 //        GetAnswerSquare answerSquare = retrofit.create(GetAnswerSquare.class);
