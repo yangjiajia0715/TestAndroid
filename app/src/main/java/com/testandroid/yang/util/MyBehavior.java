@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.testandroid.yang.activity.CoordinatorLayoutActivity;
 import com.testandroid.yang.view.TempView;
 
 /**
  * Package com.hc.studycoordinatelayout
+ * {@link CoordinatorLayoutActivity}
  * Created by HuaChao on 2016/6/1.
  */
 public class MyBehavior extends CoordinatorLayout.Behavior<Button> {

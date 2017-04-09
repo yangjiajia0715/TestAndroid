@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/include_tool_bar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/green"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/bottom_sheet_01"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bottom_sheet" />
+
+            <TextView
+                android:id="@+id/bottom_sheet_02"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bottom_sheet2" />
+
+            <TextView
+                android:id="@+id/bottom_sheet_03"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bottom_sheet3" />
+
+            <TextView
+                android:id="@+id/bottom_sheet_04"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bottom_sheet4" />
+
+            <TextView
+                android:id="@+id/bottom_sheet_05"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bottom_sheet5" />
+
+            <TextView
+                android:id="@+id/bottom_sheet_06"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="bottom_sheet6" />
+
+            <TextView
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="temp1" />
+
+            <TextView
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="temp2" />
+
+            <TextView
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="temp3" />
+
+            <TextView
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="temp4" />
+
+            <TextView
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="temp5" />
+
+            <TextView
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="temp6" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/sheet_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_animations_accent"
+        android:orientation="vertical"
+        app:behavior_peekHeight = "100dp"
+        app:behavior_hideable = "true"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <TextView
+            style="@style/CommonButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bottom_sheet_behavior43" />
+
+        <TextView
+            style="@style/CommonButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bottom_sheet_behavior44" />
+
+        <TextView
+            style="@style/CommonButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bottom_sheet_behavior45" />
+
+        <TextView
+            style="@style/CommonButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="bottom_sheet_behavior46" />
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

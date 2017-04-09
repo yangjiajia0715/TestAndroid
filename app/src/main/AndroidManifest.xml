@@ -139,7 +139,7 @@
             android:name=".receiver.TestReceiverPriorityLow"
             android:exported="false">
 
-            <intent-filter android:priority="80">
+            <intent-filter android:priority="80" >
                 <action android:name="action_test_broadcastreceiver" />
             </intent-filter>
 
@@ -205,6 +205,7 @@
 
         <activity android:name="com.testandroid.yang.activity.OkHttpActivity" />
         <activity android:name="com.testandroid.yang.activity.BroadcastReceiverActivity" />
+        <activity android:name="com.testandroid.yang.activity.BottomSheetActivity" />
 
         <!-- android:excludeFromRecents="true"-->
         <!-- android:maxRecents="3"

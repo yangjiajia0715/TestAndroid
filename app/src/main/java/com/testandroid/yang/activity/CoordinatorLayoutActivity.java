@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.util.MyBehavior;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 
 /**
  * CoordinatorLayoutActivity 原理：Behavior
+ * {@link MyBehavior}
  * Created by yangjiajia on 2017/1/18 0018.
  */
 

@@ -37,6 +37,7 @@ public class TestReceiverPriorityMiddle extends BroadcastReceiver {
         Log.d(TAG, "Middle--onReceive: resultExtras result=" + resultExtras.getString("resultExtras"));
 
         Log.d(TAG, "onReceive: key_data=" + key_data);
+
         if (key_data == 0) {
             boolean abortBroadcast = getAbortBroadcast();
             Log.d(TAG, "onReceive: abortBroadcast=" + abortBroadcast);
