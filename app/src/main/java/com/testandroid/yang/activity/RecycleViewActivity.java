@@ -53,6 +53,7 @@ public class RecycleViewActivity extends BaseActivity {
     @Override
     public void initData() {
 
+
     }
 
 }
