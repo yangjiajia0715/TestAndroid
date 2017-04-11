@@ -180,6 +180,8 @@
 
         <activity android:name="com.testandroid.yang.activity.ViewBigImageActivity" />
 
+        <activity android:name="com.testandroid.yang.activity.RecycleViewActivity" />
+
         <!--splitActionBarWhenNarrow 不起作用？？？？-->
         <!-- android:parentActivityName="com.testandroid.yang.activity.ParallaxActivity"-->
         <!--   /MyActionBarTheme-->

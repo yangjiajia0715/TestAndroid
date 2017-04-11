@@ -82,7 +82,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("tv_fragement_pager_adapter", R.id.tv_fragement_pager_adapter, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_item_type_listview", R.id.tv_item_type_listview, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_CheckedTextView", R.id.tv_CheckedTextView, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_photo_view", R.id.tv_photo_view, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_recycleview", R.id.tv_recycleview, HomeInfo.HomeGroup.View));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -149,6 +149,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                 case R.id.tv_buildconfig_field:
                     intent = new Intent(this, BuildConfigFieldActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.tv_recycleview:
+                    RecycleViewActivity.start(this);
                     break;
             }
         }
