@@ -41,6 +41,7 @@ public class BottomSheetActivity extends BaseActivity {
     View sheetLayout;
     private ActionMode.Callback callback;
     ActionMode actionMode;
+    private BottomSheetBehavior<View> sheetBehavior;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, BottomSheetActivity.class);
@@ -59,11 +60,14 @@ public class BottomSheetActivity extends BaseActivity {
     @Override
     public void initView() {
 
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
-        BottomSheetBehavior<View> sheetBehavior = BottomSheetBehavior.from(sheetLayout);
+        sheetBehavior = BottomSheetBehavior.from(sheetLayout);
 
 //        sheetBehavior.setPeekHeight(200);
+
+        //显示全部：不是9:16
+        sheetBehavior.setPeekHeight(BottomSheetBehavior.PEEK_HEIGHT_AUTO);
 
         sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -78,7 +82,6 @@ public class BottomSheetActivity extends BaseActivity {
             }
         });
 
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,8 +94,8 @@ public class BottomSheetActivity extends BaseActivity {
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
                 getMenuInflater().inflate(R.menu.menu_action_mode, menu);
                 actionMode = mode;
-//                actionMode.setTitle("标题");
-//                actionMode.setSubtitle("子标题");
+                actionMode.setTitle("标题稍微有点长标题稍微有点长");
+                actionMode.setSubtitle("子标题稍微有点长子标题稍微有点长");
                 return true;
             }
 
@@ -103,10 +106,19 @@ public class BottomSheetActivity extends BaseActivity {
 
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                Log.d(TAG, "onActionItemClicked: item=" +item);
+                Log.d(TAG, "onActionItemClicked: item=" + item);
                 switch (item.getItemId()) {
                     case R.id.menu_action_mode_1:
-                        actionMode.finish();
+//                        actionMode.finish();
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                        break;
+                    case R.id.menu_action_mode_2:
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        break;
+                    case R.id.menu_action_mode_3:
+                        break;
+                    case R.id.menu_action_mode_4:
+                        sheetBehavior.setPeekHeight(50 * 3);
                         break;
                 }
                 return false;

@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/menu_action_mode_1"
-        android:icon="@drawable/ic_politics"
+        android:icon="@drawable/ic_mail_box"
+        app:showAsAction="always"
         android:title="第一个" />
 
     <item
         android:id="@+id/menu_action_mode_2"
-        android:icon="@drawable/ic_politics"
+        android:icon="@drawable/ic_math"
+        app:showAsAction="ifRoom"
         android:title="第二个" />
 
     <item
         android:id="@+id/menu_action_mode_3"
         android:icon="@drawable/ic_politics"
+        app:showAsAction="always"
         android:title="第三个" />
+
+    <item
+        android:id="@+id/menu_action_mode_4"
+        android:icon="@drawable/ic_start"
+        app:showAsAction="ifRoom"
+        android:title="第四个" />
 </menu>

@@ -146,4 +146,19 @@
         <item name="android:gravity">center</item>
         <item name="android:padding">8dp</item>
     </style>
+
+    <!--default:false,false-->
+    <style name="AppTheme.ActiomMode">
+        <!--<item name="android:windowActionBarOverlay" >true</item>-->
+        <item name="windowActionBarOverlay">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeBackground">@drawable/bg_account</item>
+       <!-- <item name="actionModeSplitBackground">?attr/colorPrimaryDark</item>-->
+        <item name="actionModeSplitBackground">@color/colorPrimary</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_done</item>
+        <item name="actionModeStyle">@style/Widget.AppCompat.ActionMode</item>
+    </style>
+
+
+
 </resources>

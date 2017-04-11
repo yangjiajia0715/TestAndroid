@@ -167,7 +167,6 @@
 
         <activity android:name="com.testandroid.yang.activity.AppBarTabLayout" />
 
-
         <activity
             android:name="com.testandroid.yang.activity.TestAppBar"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
@@ -205,7 +204,8 @@
 
         <activity android:name="com.testandroid.yang.activity.OkHttpActivity" />
         <activity android:name="com.testandroid.yang.activity.BroadcastReceiverActivity" />
-        <activity android:name="com.testandroid.yang.activity.BottomSheetActivity" />
+        <activity android:name="com.testandroid.yang.activity.BottomSheetActivity"
+            android:theme="@style/AppTheme.ActiomMode"/>
 
         <!-- android:excludeFromRecents="true"-->
         <!-- android:maxRecents="3"
