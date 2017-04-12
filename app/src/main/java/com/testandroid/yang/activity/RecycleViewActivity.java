@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.AutoLineLayoutManage;
+import com.testandroid.yang.adapter.RecycleviewAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * RecycleViewActivity
+ * {@link RecycleviewAdapter}
+ * {@link AutoLineLayoutManage}
  * Created by yangjiajia on 2017/4/11.
  */
 
