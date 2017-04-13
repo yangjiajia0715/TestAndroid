@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.activity.RecycleViewActivity;
@@ -22,6 +23,10 @@ public class RecycleviewAdapter extends RecyclerView.Adapter<RecycleviewAdapter.
     private List<User> users;
     private Context context;
 
+    private RecycleviewAdapter(Context context,List<User> users){
+        this.context = context;
+        this.users = users;
+    }
 
 
     @Override
@@ -39,19 +44,24 @@ public class RecycleviewAdapter extends RecyclerView.Adapter<RecycleviewAdapter.
 
 //        RecyclerView.NO_POSITION
 
-
+        User user = users.get(position);
+        holder.tvContent.setText(user.name);
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return users.size();
     }
 
     class Holder extends RecyclerView.ViewHolder{
 
+        TextView tvContent;
+
         public Holder(View itemView) {
             super(itemView);
+            tvContent = (TextView) itemView.findViewById(R.id.item_view_type_content);
+
         }
     }
 }

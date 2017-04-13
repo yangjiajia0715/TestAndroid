@@ -10,6 +10,8 @@ import android.databinding.ObservableInt;
 
 public class User {
 
+    public String name;
+
     public final ObservableField<String> firstName =
             new ObservableField<>();
     public final ObservableField<String> lastName =
