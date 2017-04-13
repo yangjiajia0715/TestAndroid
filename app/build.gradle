@@ -5,6 +5,7 @@ buildscript {
         jcenter()
     }
 
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'
         classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
@@ -51,6 +52,29 @@ android {
             keyPassword 'yangjiajia'
             storeFile file('yangjiajia.keystore')
             storePassword 'yangjiajia'
+        }
+    }
+
+    sourceSets{
+//        main {
+//            java.srcDirs = ['src/main/java'];
+//        }
+
+        fee{
+            java.srcDirs = ['src/fee/java'];
+        }
+
+        free{
+        }
+    }
+
+    productFlavors {
+        fee{
+
+        }
+
+        free{
+
         }
     }
 

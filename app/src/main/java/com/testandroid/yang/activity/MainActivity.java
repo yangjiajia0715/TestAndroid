@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
+import com.testandroid.yang.CCC;
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
 import com.testandroid.yang.common.HomeInfo;
@@ -33,7 +34,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         initView();
         initData();
+
         Log.d(TAG, "MainActivity--onCreate: getTaskId=" + getTaskId());
+        Log.d(TAG, "MainActivity--onCreate: CCC.get=" + CCC.get());
     }
 
     @Override
