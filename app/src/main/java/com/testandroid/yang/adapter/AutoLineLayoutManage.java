@@ -1,8 +1,11 @@
 package com.testandroid.yang.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.testandroid.yang.activity.RecycleViewActivity;
+
+import java.util.List;
 
 /**
  * {@link RecycleViewActivity}
@@ -12,9 +15,13 @@ import com.testandroid.yang.activity.RecycleViewActivity;
 public class AutoLineLayoutManage extends RecyclerView.LayoutManager {
 
     @Override
+    public void onAdapterChanged(RecyclerView.Adapter oldAdapter, RecyclerView.Adapter newAdapter) {
+        super.onAdapterChanged(oldAdapter, newAdapter);
+    }
+
+    @Override
     public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
         super.onMeasure(recycler, state, widthSpec, heightSpec);
-
     }
 
     @Override
@@ -30,6 +37,9 @@ public class AutoLineLayoutManage extends RecyclerView.LayoutManager {
             return;
         }
 
+        List<RecyclerView.ViewHolder> scrapList = recycler.getScrapList();
+
+        View viewForPosition = recycler.getViewForPosition(0);
 
     }
 }

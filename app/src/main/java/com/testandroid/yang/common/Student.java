@@ -12,7 +12,7 @@ import java.util.List;
  * Created by yangjiajia on 2016/11/25 0025.
  */
 
-public class Student2 extends BaseObservable implements BaseInfo {
+public class Student extends BaseObservable implements BaseInfo {
     private String name;
 
     public int age;
@@ -64,7 +64,7 @@ public class Student2 extends BaseObservable implements BaseInfo {
         courses.remove(course);
     }
 
-    public Student2(String name, int age) {
+    public Student(String name, int age) {
         this.name = name;
         this.age = age;
         courses = new ArrayList<>();
@@ -96,7 +96,7 @@ public class Student2 extends BaseObservable implements BaseInfo {
 
     @Override
     public String toString() {
-        return "Student2{" +
+        return "Student{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", firtName='" + firtName + '\'' +

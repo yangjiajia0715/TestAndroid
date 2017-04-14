@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.activity.RecycleViewActivity;
-import com.testandroid.yang.common.User;
+import com.testandroid.yang.common.Student;
 
 import java.util.List;
 
@@ -20,12 +20,12 @@ import java.util.List;
 
 public class RecycleviewAdapter extends RecyclerView.Adapter<RecycleviewAdapter.Holder> {
 
-    private List<User> users;
+    private List<Student> students;
     private Context context;
 
-    private RecycleviewAdapter(Context context,List<User> users){
+    public RecycleviewAdapter(Context context, List<Student> students){
         this.context = context;
-        this.users = users;
+        this.students = students;
     }
 
 
@@ -40,18 +40,19 @@ public class RecycleviewAdapter extends RecyclerView.Adapter<RecycleviewAdapter.
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         holder.getAdapterPosition();
+
+        Student student2 = students.get(position);
 //        holder.getLayoutPosition();
 
 //        RecyclerView.NO_POSITION
 
-        User user = users.get(position);
-        holder.tvContent.setText(user.name);
+        holder.tvContent.setText(student2.name());
 
     }
 
     @Override
     public int getItemCount() {
-        return users.size();
+        return students.size();
     }
 
     class Holder extends RecyclerView.ViewHolder{
@@ -61,7 +62,6 @@ public class RecycleviewAdapter extends RecyclerView.Adapter<RecycleviewAdapter.
         public Holder(View itemView) {
             super(itemView);
             tvContent = (TextView) itemView.findViewById(R.id.item_view_type_content);
-
         }
     }
 }

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.testandroid.yang.R;
-import com.testandroid.yang.common.Student2;
+import com.testandroid.yang.common.Student;
 import com.testandroid.yang.common.User;
 
 /**
@@ -17,7 +17,7 @@ import com.testandroid.yang.common.User;
 public class DataBindingActivity extends Activity {
 
     private static final String TAG = "DataBindingActivity";
-    private Student2 student;
+    private Student student;
     private User user;
     private int index;
 
@@ -33,7 +33,7 @@ public class DataBindingActivity extends Activity {
 //        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding);
 //        Log.d(TAG, "onCreate: dataBinding=" + dataBinding);
 ////        Log.d(TAG, "onCreate:     inflate=" + inflate);
-//        student = new Student2("张三", 18);
+//        student = new Student("张三", 18);
 //        student.lastName = "张三丰";
 //
 //        Log.d(TAG, "onCreate: getFirtName=" + student.getFirtName());

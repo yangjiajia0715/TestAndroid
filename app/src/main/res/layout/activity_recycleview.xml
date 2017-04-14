@@ -12,6 +12,11 @@
         style="@style/Home_text_style2"
         android:text="自定义布局管理器" />
 
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/green"
+        android:layout_height="10dp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"

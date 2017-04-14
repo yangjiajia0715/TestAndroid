@@ -144,7 +144,7 @@ public class OkHttpActivity extends BaseActivity {
 //                            throws Throwable {
 ////                        Log.d(TAG, "retrofit: proxy=" + proxy);
 //                        Log.d(TAG, "retrofit: method=" + method.getName());
-//                        return new Student2("zs",11);
+//                        return new Student("zs",11);
 //                    }
 //                });
 //

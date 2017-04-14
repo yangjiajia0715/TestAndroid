@@ -5,7 +5,7 @@
 
         <variable
             name="student"
-            type="com.testandroid.yang.common.Student2" />
+            type="com.testandroid.yang.common.Student" />
     </data>
 
     <LinearLayout

@@ -25,4 +25,6 @@ ext {
 
     butterknifeVersion = "8.5.1"
 
+    vlayoutVersion = "1.0.4";
+
 }

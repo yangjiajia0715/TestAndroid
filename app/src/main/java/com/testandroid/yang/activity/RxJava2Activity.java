@@ -8,7 +8,7 @@ import android.view.View;
 import com.testandroid.yang.R;
 import com.testandroid.yang.common.Course;
 import com.testandroid.yang.common.HomeInfo;
-import com.testandroid.yang.common.Student2;
+import com.testandroid.yang.common.Student;
 import com.testandroid.yang.common.User;
 
 import java.util.ArrayList;
@@ -296,12 +296,12 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
 
     }
 
-    private Student2[] getStudents(int count) {
-        Student2[] students = new Student2[count];
+    private Student[] getStudents(int count) {
+        Student[] students = new Student[count];
         Log.d(TAG, "getStudents: stu cnt =" + students.length);
         for (int i = 0; i < students.length; i++) {
             Log.d(TAG, "getStudents: stu  " + i + " =" + students[0]);
-            students[i] = new Student2("张三", 10 + i);
+            students[i] = new Student("张三", 10 + i);
 
             students[i].addCourses(new Course("语文 " + students[i].getName()));
             students[i].addCourses(new Course("数学 " + students[i].getName()));
