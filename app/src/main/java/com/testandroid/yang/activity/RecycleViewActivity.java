@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +16,7 @@ import com.testandroid.yang.common.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,8 +61,9 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
         //custom
         AutoLineLayoutManage autoLineLayoutManage = new AutoLineLayoutManage();
 
-//        linearLayoutManager.generateDefaultLayoutParams();
-        recyclerView.setLayoutManager(linearLayoutManager);
+//        recyclerView.setLayoutManager(linearLayoutManager);
+
+        recyclerView.setLayoutManager(autoLineLayoutManage);
 
         initAdapter();
 
@@ -82,15 +83,34 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onViewRecycled(RecyclerView.ViewHolder holder) {
 //                holder.getAdapterPosition()
-                Log.d(TAG, "onViewRecycled: getAdapterPosition=" + holder.getAdapterPosition());
+//                Log.d(TAG, "onViewRecycled: getAdapterPosition=" + holder.getAdapterPosition());
             }
         });
     }
 
     private void initAdapter() {
+        Random random = new Random();
         List<Student> students = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            students.add(new Student("错题会" + i, i));
+            int nextInt = random.nextInt();
+            switch (nextInt % 4) {
+                case 0:
+                    students.add(new Student("优" + i, i));
+                    break;
+                case 1:
+                    students.add(new Student("错题会" + i, i));
+                    break;
+                case 2:
+                    students.add(new Student("马虎" + i, i));
+                    break;
+                case 3:
+                    students.add(new Student("恭喜发财" + i, i));
+                    break;
+                default:
+                    students.add(new Student("default" + i, i));
+                    break;
+            }
+
         }
         recycleviewAdapter = new RecycleviewAdapter(this, students);
     }

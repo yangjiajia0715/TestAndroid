@@ -76,7 +76,8 @@ public class Student extends BaseObservable implements BaseInfo {
     }
 
     public String name() {
-        return "name=" + name;
+//        return "name=" + name;
+        return "" + name;
     }
 
     public void setName(String name) {
