@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import butterknife.ButterKnife;
  */
 
 public class RecycleViewActivity extends BaseActivity implements View.OnClickListener {
+    private static final String TAG = "RecycleViewActivity";
 
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
@@ -59,18 +61,28 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
         //custom
         AutoLineLayoutManage autoLineLayoutManage = new AutoLineLayoutManage();
 
+//        linearLayoutManager.generateDefaultLayoutParams();
         recyclerView.setLayoutManager(linearLayoutManager);
 
         initAdapter();
 
-        recyclerView.setRecycledViewPool(new CusPool());
-        
+//        recyclerView.setRecycledViewPool(new CusPool());
+
+//        recycleviewAdapter.setHasStableIds(true);
+
+//        recyclerView.setItemViewCacheSize(10);
+//        recyclerView.getRecycledViewPool().setMaxRecycledViews();
+
+        RecyclerView.RecycledViewPool recycledViewPool = recyclerView.getRecycledViewPool();
+
+//        recycledViewPool.getRecycledView()
         recyclerView.setAdapter(recycleviewAdapter);
 
         recyclerView.setRecyclerListener(new RecyclerView.RecyclerListener() {
             @Override
             public void onViewRecycled(RecyclerView.ViewHolder holder) {
 //                holder.getAdapterPosition()
+                Log.d(TAG, "onViewRecycled: getAdapterPosition=" + holder.getAdapterPosition());
             }
         });
     }
@@ -98,6 +110,8 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
     }
 
     class CusPool extends RecyclerView.RecycledViewPool {
+
+
     }
 
 }

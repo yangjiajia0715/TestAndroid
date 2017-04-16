@@ -37,6 +37,9 @@ public class AutoLineLayoutManage extends RecyclerView.LayoutManager {
             return;
         }
 
+        recycler.getScrapList();
+
+
         List<RecyclerView.ViewHolder> scrapList = recycler.getScrapList();
 
         View viewForPosition = recycler.getViewForPosition(0);
