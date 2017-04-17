@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.AutoLineLayoutManage;
+import com.testandroid.yang.adapter.FlowLayoutManager;
 import com.testandroid.yang.adapter.RecycleviewAdapter;
 import com.testandroid.yang.common.Student;
 
@@ -61,9 +62,13 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
         //custom
         AutoLineLayoutManage autoLineLayoutManage = new AutoLineLayoutManage();
 
+        FlowLayoutManager flowLayoutManager = new FlowLayoutManager();
+
 //        recyclerView.setLayoutManager(linearLayoutManager);
 
         recyclerView.setLayoutManager(autoLineLayoutManage);
+
+        recyclerView.setLayoutManager(flowLayoutManager);
 
         initAdapter();
 
@@ -86,6 +91,12 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
 //                Log.d(TAG, "onViewRecycled: getAdapterPosition=" + holder.getAdapterPosition());
             }
         });
+
+        recyclerView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+            }
+        }, 3000);
     }
 
     private void initAdapter() {

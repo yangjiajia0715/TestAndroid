@@ -72,6 +72,25 @@ public class AutoLineLayoutManage extends RecyclerView.LayoutManager {
 
     }
 
+    @Override
+    public boolean canScrollVertically() {
+//        return super.canScrollVertically();
+        return true;
+    }
+
+    @Override
+    public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
+//        return super.scrollVerticallyBy(dy, recycler, state);
+        //位移0、没有子View 当然不移动
+        if (dy == 0 || getChildCount() == 0) {
+            return 0;
+        }
+        Log.d(TAG, "scrollVerticallyBy: dy=" + dy);
+        int realOff = dy;
+        offsetChildrenVertical(-realOff);
+        return dy;
+    }
+
     /**
      * 初始化时调用 填充childView
      *
