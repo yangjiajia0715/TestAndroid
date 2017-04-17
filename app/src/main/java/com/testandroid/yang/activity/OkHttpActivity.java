@@ -10,11 +10,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
-import com.testandroid.yang.retrofit.GetAnswerSquare;
+import com.testandroid.yang.common.Repo;
+import com.testandroid.yang.retrofit.GitHubService;
 import com.testandroid.yang.util.ProtocalManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -28,6 +30,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import retrofit2.Retrofit;
 
 /**
  * OkHttpActivity
@@ -128,13 +131,19 @@ public class OkHttpActivity extends BaseActivity {
 
 
     private void retrofit() {
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("")
-//                .build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.github.com/")
+                .build();
 
-        Class service = GetAnswerSquare.class;
+//        Class service = GetAnswerSquare.class;
 
-        Log.d(TAG, "retrofit: service=" + service);
+        GitHubService gitHubService = retrofit.create(GitHubService.class);
+
+        retrofit2.Call<List<Repo>> yangjiajia = gitHubService.listRepos("yangjiajia0715");
+
+//        gitHubService.createUser(new User());
+
+        Log.d(TAG, "retrofit: gitHubService=" + gitHubService);
 
 //        Object instance = Proxy.newProxyInstance(service.getClassLoader(), new Class<?>[]{service},
 //                new InvocationHandler() {
