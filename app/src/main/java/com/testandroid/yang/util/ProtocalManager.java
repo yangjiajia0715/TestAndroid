@@ -12,4 +12,9 @@ public class ProtocalManager {
      * 获取答疑广场
      */
     public static final String GET_ANSWER_SQUARE_LIST = addressPrefix + "/LoginServer/aq/teacher/findAll.json";
+
+    /**
+     * 微课
+     */
+    public static final String GET_MICRO_COURSE = addressPrefix + "/LoginServer/aq/teacher/findAll.json/LoginServer/px.json";
 }

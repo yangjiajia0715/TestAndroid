@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.common.Repo;
+import com.testandroid.yang.common.Your;
 import com.testandroid.yang.retrofit.GitHubService;
 import com.testandroid.yang.util.ProtocalManager;
 
@@ -22,14 +23,15 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.Cache;
+import okhttp3.Authenticator;
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import okhttp3.Route;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 
 /**
@@ -91,15 +93,51 @@ public class OkHttpActivity extends BaseActivity {
         File cacheFile = null;
         long maxsize = 100_000;
 
-        //全局
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        Authenticator authenticator = new Authenticator() {
+            @Override
+            public Request authenticate(Route route, Response response) throws IOException {
+//                Your.sToken = service.refreshToken();
+                return response.request().newBuilder()
+                        .addHeader("Authorization", Your.sToken)
+                        .build();
+            }
+        };
+
+        Interceptor mTokenInterceptor = new Interceptor() {
+            @Override public Response intercept(Chain chain) throws IOException {
+                Request originalRequest = chain.request();
+                if (Your.sToken == null || alreadyHasAuthorizationHeader(originalRequest)) {
+                    return chain.proceed(originalRequest);
+                }
+
+                Request authorised = originalRequest.newBuilder()
+                        .header("Authorization", Your.sToken)
+                        .build();
+                return chain.proceed(authorised);
+            }
+        };
+
+
+//        BasicParamsInterceptor basicParamsInterceptor;
+                //全局
         okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(20, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)//方法为设置出现错误进行重新连接
+                .addInterceptor(loggingInterceptor)
+                .addNetworkInterceptor(mTokenInterceptor)
 //                .addInterceptor(interceptor)
-                .cache(new Cache(externalStorageDirectory, maxsize))
+//                .cache(new Cache(externalStorageDirectory, maxsize))
                 .build();
 
         initView();
         initData();
+    }
+
+    private boolean alreadyHasAuthorizationHeader(Request originalRequest) {
+        return true;
     }
 
     @Override
@@ -171,27 +209,34 @@ public class OkHttpActivity extends BaseActivity {
             public void run() {
                 super.run();
 
+                //可行 浏览器
+                String xiaoman = "http://101.200.163.38/LoginServer/px.json?dataType=course_find_by_stu&stu_id=10097";
+                String uu = "http://101.200.163.38/LoginServer/appServlet?auth=12345&id=10097";
                 String url = ProtocalManager.GET_ANSWER_SQUARE_LIST + "?teacherId=520";
                 Request request = new Request.Builder()
                         .url(url)
                         .build();
+
+//                UrlEncodedFormEntity
 
                 try {
 //                    Response response = okHttpClient.newCall(request).execute();
 
                     Call call = okHttpClient.newCall(request);
 
-                    call.enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
+//                    Request request1 = call.request();
 
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-
-                        }
-                    });
+//                    call.enqueue(new Callback() {
+//                        @Override
+//                        public void onFailure(Call call, IOException e) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onResponse(Call call, Response response) throws IOException {
+//
+//                        }
+//                    });
                     Response response = call.execute();
                     Log.d(TAG, "run: response=" + response);
                     if (response.code() == 200) {

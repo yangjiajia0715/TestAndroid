@@ -157,7 +157,11 @@ dependencies {
 
     compile "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3Version}"
 
+    compile "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3InterceptorVersion}"
+
     compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+
+    compile "com.squareup.retrofit2:adapter-rxjava:${rootProject.ext.retrofit2AdapterRxjavaVersion}"
 
     compile "com.nineoldandroids:library:${rootProject.ext.nineoldandroidsVersion}"
 

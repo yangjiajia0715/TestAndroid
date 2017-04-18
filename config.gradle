@@ -19,7 +19,11 @@ ext {
 
     okhttp3Version = "3.6.0"
 
+    okhttp3InterceptorVersion = "3.0.1"
+
     retrofitVersion = "2.2.0"
+
+    retrofit2AdapterRxjavaVersion = "2.0.0-beta4"
 
     nineoldandroidsVersion = "2.4.0"
 
