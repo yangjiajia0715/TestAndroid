@@ -10,13 +10,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.common.MicroCourseInfo;
 import com.testandroid.yang.common.Repo;
 import com.testandroid.yang.common.Your;
+import com.testandroid.yang.retrofit.ApiServer;
 import com.testandroid.yang.retrofit.GitHubService;
 import com.testandroid.yang.util.ProtocalManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.Authenticator;
 import okhttp3.Call;
+import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -67,14 +72,6 @@ public class OkHttpActivity extends BaseActivity {
         setContentView(R.layout.activity_okhttp);
         ButterKnife.bind(this);
 
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-//                chain.proceed()
-                return null;
-            }
-        };
-
 //        File externalCacheDir = getExternalCacheDir();
 
 //        File filesDir = getFilesDir();
@@ -89,6 +86,19 @@ public class OkHttpActivity extends BaseActivity {
         File externalStorageDirectory = Environment.getExternalStorageDirectory();
 
         Log.d(TAG, "onCreate: externalStorageDirectory=" + externalStorageDirectory);
+        List<String> strings = new ArrayList<>();
+        strings.add("FirstOne");
+        String[] strs = {"张三", "李四"};
+        Collections.addAll(strings, strs);
+        Collections.addAll(strings, "王五", "周六");
+
+        boolean b = false;
+        b |= false;
+        b |= true;
+        b |= false;
+
+        Log.d(TAG, "onCreate: b=" + b);
+        Log.d(TAG, "onCreate: strings=" + strings);
 
         File cacheFile = null;
         long maxsize = 100_000;
@@ -107,11 +117,14 @@ public class OkHttpActivity extends BaseActivity {
         };
 
         Interceptor mTokenInterceptor = new Interceptor() {
-            @Override public Response intercept(Chain chain) throws IOException {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
                 Request originalRequest = chain.request();
                 if (Your.sToken == null || alreadyHasAuthorizationHeader(originalRequest)) {
                     return chain.proceed(originalRequest);
                 }
+
+                originalRequest.newBuilder();
 
                 Request authorised = originalRequest.newBuilder()
                         .header("Authorization", Your.sToken)
@@ -122,13 +135,12 @@ public class OkHttpActivity extends BaseActivity {
 
 
 //        BasicParamsInterceptor basicParamsInterceptor;
-                //全局
+        //全局
         okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(20, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)//方法为设置出现错误进行重新连接
-                .addInterceptor(loggingInterceptor)
-                .addNetworkInterceptor(mTokenInterceptor)
-//                .addInterceptor(interceptor)
+//                .addInterceptor(loggingInterceptor)//报错
+//                .addNetworkInterceptor(mTokenInterceptor)//没反应
 //                .cache(new Cache(externalStorageDirectory, maxsize))
                 .build();
 
@@ -160,12 +172,23 @@ public class OkHttpActivity extends BaseActivity {
                 retrofit();
                 break;
             case R.id.okhttp_03:
+                retrofit3();
                 break;
             case R.id.okhttp_04:
                 break;
         }
     }
 
+    private void retrofit3() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://101.200.163.38/LoginServer/px.json/")
+                .build();
+
+        ApiServer apiServer = retrofit.create(ApiServer.class);
+
+        List<MicroCourseInfo> answerSquare = apiServer.getAnswerSquare();
+
+    }
 
 
     private void retrofit() {
@@ -204,25 +227,48 @@ public class OkHttpActivity extends BaseActivity {
     }
 
     private void okhttp01() {
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
 
-                //可行 浏览器
-                String xiaoman = "http://101.200.163.38/LoginServer/px.json?dataType=course_find_by_stu&stu_id=10097";
-                String uu = "http://101.200.163.38/LoginServer/appServlet?auth=12345&id=10097";
-                String url = ProtocalManager.GET_ANSWER_SQUARE_LIST + "?teacherId=520";
-                Request request = new Request.Builder()
-                        .url(url)
-                        .build();
+        try {
+
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+
+                    //可行 浏览器
+                    String xiaoman2 = "http://101.200.163.38/LoginServer/px.json?dataType=course_find_by_stu&stu_id=10097";
+                    String xiaoman = "http://101.200.163.38/LoginServer/px.json?";
+                    String uu = "http://101.200.163.38/LoginServer/appServlet?auth=12345&id=10097";
+
+                    String url = ProtocalManager.GET_ANSWER_SQUARE_LIST + "?teacherId=520";
+
+                    url = xiaoman;
+
+//                    dataType=course_find_by_stu&stu_id=10097
+                    FormBody formBody = new FormBody.Builder()
+                            .add("dataType", "course_find_by_stu")
+                            .add("stu_id", "10097")
+                            .add("search", "biezhihua")
+                            .build();
+
+//                    Log.d(TAG, "run: formBody=" + formBody.name(0));
+//                    Log.d(TAG, "run: formBody=" + formBody.contentLength());
+//                    Log.d(TAG, "run: formBody=" + formBody.size());
+//                    Log.d(TAG, "run: formBody=" + formBody.contentType());
+
+//                    FormEncodingBuilder builder;
+                    Request request = new Request.Builder()
+                            .url(url)
+                            .post(formBody)
+                            .addHeader("header", "headerValue")
+                            .build();
 
 //                UrlEncodedFormEntity
 
-                try {
+                    try {
 //                    Response response = okHttpClient.newCall(request).execute();
 
-                    Call call = okHttpClient.newCall(request);
+                        Call call = okHttpClient.newCall(request);
 
 //                    Request request1 = call.request();
 
@@ -237,18 +283,21 @@ public class OkHttpActivity extends BaseActivity {
 //
 //                        }
 //                    });
-                    Response response = call.execute();
-                    Log.d(TAG, "run: response=" + response);
-                    if (response.code() == 200) {
-                        ResponseBody body = response.body();
-                        Log.d(TAG, "run:  body.string=" + body.string());
+                        Response response = call.execute();
+                        Log.d(TAG, "run: response=" + response);
+                        if (response.code() == 200) {
+                            ResponseBody body = response.body();
+                            Log.d(TAG, "run:  body.string=" + body.string());
+                        }
+                    } catch (IOException e) {
+                        Log.d(TAG, "run: e=" + e);
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    Log.d(TAG, "run: e=" + e);
-                    e.printStackTrace();
                 }
-            }
-        }.start();
+            }.start();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
