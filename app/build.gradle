@@ -165,7 +165,13 @@ dependencies {
 
     compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
 
-    compile "com.squareup.retrofit2:adapter-rxjava:${rootProject.ext.retrofit2AdapterRxjavaVersion}"
+    //depress
+//    compile "com.squareup.retrofit2:adapter-rxjava:${rootProject.ext.retrofit2AdapterRxjavaVersion}"
+
+    //new
+    compile "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofit2AdapterRxjava2Version}"
+
+    compile "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofit2ConverterGsonVersion}"
 
     compile "com.nineoldandroids:library:${rootProject.ext.nineoldandroidsVersion}"
 

@@ -27,6 +27,10 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.Authenticator;
 import okhttp3.Call;
 import okhttp3.FormBody;
@@ -38,6 +42,7 @@ import okhttp3.ResponseBody;
 import okhttp3.Route;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 /**
  * OkHttpActivity
@@ -175,18 +180,128 @@ public class OkHttpActivity extends BaseActivity {
                 retrofit3();
                 break;
             case R.id.okhttp_04:
+                retrofitRxjava();
                 break;
         }
     }
 
-    private void retrofit3() {
+    private void retrofitRxjava() {
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://101.200.163.38/LoginServer/px.json/")
+                .baseUrl("http://101.200.163.38/")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         ApiServer apiServer = retrofit.create(ApiServer.class);
 
-        List<MicroCourseInfo> answerSquare = apiServer.getAnswerSquare();
+//        Observable<ResponseBody> mic = apiServer.getMic("10097");
+
+        Log.d(TAG, "retrofitRxjava: ");
+        
+        apiServer.getMic("10097")
+                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "retrofitRxjava--onSubscribe: ");
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        try {
+                            Log.d(TAG, "retrofitRxjava--onNext responseBody: " + responseBody.string());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.d(TAG, "retrofitRxjava--onNext e: " + e);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "retrofitRxjava--onError: e=" + e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "retrofitRxjava--onComplete: ");
+                    }
+                });
+
+    }
+
+    private void retrofit3() {
+
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    //可行 浏览器
+                    String xiaoman2 = "http://101.200.163.38/LoginServer/px.json?dataType=course_find_by_stu&stu_id=10097";
+
+                    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                            .addInterceptor(new Interceptor() {
+                                @Override
+                                public Response intercept(Chain chain) throws IOException {
+                                    Request request = chain.request();
+                                    Log.d(TAG, "intercept: ------intercept-----request=" + request.method());
+                                    Request.Builder builder = request.newBuilder();
+//                                    builder.head()
+                                    return chain.proceed(request);
+                                }
+                            })
+                            .build();
+//        LoginServer/px.json/
+
+                    Retrofit retrofit = new Retrofit.Builder()
+//                            .addConverterFactory(GsonConverterFactory.create())
+//                            .addConverterFactory()
+                            .callFactory(okHttpClient)
+                            .baseUrl("http://101.200.163.38/")
+                            .build();
+
+//                    Retrofit.Builder builder = retrofit.newBuilder();
+                    Log.d(TAG, "retrofit3: retrofit=" + retrofit.baseUrl());
+                    ApiServer apiServer = retrofit.create(ApiServer.class);
+
+//                    retrofit2.Call<ResponseBody> findByStu = apiServer.getMicroCourseInfos("course_find_by_stu", "10097");
+//
+//                    Proxy.newProxyInstance(getClassLoader(), new Class[]{ApiServer.class}, new InvocationHandler() {
+//                        @Override
+//                        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+//                            return null;
+//                        }
+//                    });
+//                    retrofit2.Call<ResponseBody> microCourseInfosdata = apiServer.getMicroCourseInfosdata("10097");
+
+                    retrofit2.Call<List<MicroCourseInfo>> microCourseInfosdata = apiServer.getMicroCourseInfosdata("10097");
+                    retrofit2.Response<List<MicroCourseInfo>> responseBodyResponse = microCourseInfosdata.execute();
+
+//                    retrofit2.Response<ResponseBody> responseBodyResponse = findByStu.execute();
+
+                    boolean successful = responseBodyResponse.isSuccessful();
+//
+                    Log.d(TAG, "retrofit3: successful=" + successful);
+                    if (successful) {
+                        List<MicroCourseInfo> body = responseBodyResponse.body();
+                        if (body != null && !body.isEmpty()) {
+                            Log.d(TAG, "retrofit3: body=" + body.size());
+                            for (MicroCourseInfo info : body) {
+                                Log.d(TAG, "retrofit3: getSubject_name=" + info.getSubject_name());
+                            }
+                        }
+                    }
+
+//        Log.d(TAG, "retrofit3: answerSquare=" + answerSquare);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "retrofit3: string e=" + e);
+                } finally {
+                    Log.d(TAG, "retrofit3: string end");
+                }
+
+            }
+        }.start();
 
     }
 

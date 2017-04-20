@@ -54,7 +54,7 @@ public class MicroCourseInfo implements Serializable{
     private String createUsername;
     private String stage;
     private int user_id;
-    private Object school;
+//    private Object school;
     private int price;
     private String subject_name;
     private int id;
@@ -212,13 +212,13 @@ public class MicroCourseInfo implements Serializable{
         this.user_id = user_id;
     }
 
-    public Object getSchool() {
-        return school;
-    }
-
-    public void setSchool(Object school) {
-        this.school = school;
-    }
+//    public Object getSchool() {
+//        return school;
+//    }
+//
+//    public void setSchool(Object school) {
+//        this.school = school;
+//    }
 
     public int getPrice() {
         return price;

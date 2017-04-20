@@ -25,6 +25,10 @@ ext {
 
     retrofit2AdapterRxjavaVersion = "2.0.0-beta4"
 
+    retrofit2ConverterGsonVersion = "2.2.0"
+
+    retrofit2AdapterRxjava2Version = "2.2.0"
+
     nineoldandroidsVersion = "2.4.0"
 
     butterknifeVersion = "8.5.1"
