@@ -50,6 +50,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="retrofitRxjava" />
+
+            <TextView
+                android:id="@+id/okhttp_05"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Encode" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

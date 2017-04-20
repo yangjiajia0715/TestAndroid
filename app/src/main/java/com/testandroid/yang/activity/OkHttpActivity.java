@@ -21,7 +21,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -34,6 +36,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.Authenticator;
 import okhttp3.Call;
 import okhttp3.FormBody;
+import okhttp3.Headers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -167,7 +170,7 @@ public class OkHttpActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04})
+    @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04,R.id.okhttp_05})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.okhttp_01:
@@ -182,7 +185,31 @@ public class OkHttpActivity extends BaseActivity {
             case R.id.okhttp_04:
                 retrofitRxjava();
                 break;
+            case R.id.okhttp_05:
+                essayHeader();
+                break;
         }
+    }
+
+    private void essayHeader() {
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+                String path = request.url().encodedPath();
+                String query = request.url().encodedQuery();
+
+                Map<String, String> map = new HashMap<>();
+                map.put("张三","0000000");
+                map.put("张三111","000011");
+                Request request1 = request.newBuilder()
+                        .headers(Headers.of(map))
+                        .build();
+                return chain.proceed(request1);
+            }
+        });
     }
 
     private void retrofitRxjava() {
@@ -197,7 +224,34 @@ public class OkHttpActivity extends BaseActivity {
 //        Observable<ResponseBody> mic = apiServer.getMic("10097");
 
         Log.d(TAG, "retrofitRxjava: ");
-        
+
+        //返回：Response  闪退
+//        Observable<retrofit2.Response> micResponse = apiServer.getMicResponse("10097");
+//        micResponse.subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Observer<retrofit2.Response>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        Log.d(TAG, "retrofitRxjava: onSubscribe" );
+//                    }
+//
+//                    @Override
+//                    public void onNext(retrofit2.Response response) {
+//                        Log.d(TAG, "retrofitRxjava: onNext response=" + response );
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d(TAG, "retrofitRxjava: onError e=" + e );
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        Log.d(TAG, "retrofitRxjava: onComplete" );
+//                    }
+//                });
+
+
         apiServer.getMic("10097")
                 .subscribeOn(Schedulers.newThread())
                 .subscribeOn(AndroidSchedulers.mainThread())
@@ -344,7 +398,6 @@ public class OkHttpActivity extends BaseActivity {
     private void okhttp01() {
 
         try {
-
             new Thread() {
                 @Override
                 public void run() {
