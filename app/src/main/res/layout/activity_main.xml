@@ -10,6 +10,24 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="#f0f0f0"
+        android:orientation="vertical">
+
+
+    </RelativeLayout>
+    <!-- android:layout_centerInParent="true"-->
+    <TextView
+        android:id="@+id/temp_trans_animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_color_normal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="临时" />
 </LinearLayout>

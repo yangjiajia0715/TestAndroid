@@ -7,6 +7,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
@@ -29,6 +31,8 @@ public class TypeAnimationActivity extends BaseActivity implements View.OnClickL
     Toolbar toolbar;
     @BindView(R.id.recycleview)
     RecyclerView recyclerView;
+    @BindView(R.id.temp_trans_animation)
+    View tempTransAnimation;
 
     private List<HomeInfo> infos = new ArrayList<>();
     private List<HomeInfo> items;
@@ -73,6 +77,7 @@ public class TypeAnimationActivity extends BaseActivity implements View.OnClickL
         infos.add(new HomeInfo("tv_animation", R.id.tv_animation, HomeInfo.HomeGroup.Animator));
         infos.add(new HomeInfo("tv_ViewAnimator", R.id.tv_ViewAnimator, HomeInfo.HomeGroup.Animator));
         infos.add(new HomeInfo("MD Animation", R.id.tv_animation_materail_design, HomeInfo.HomeGroup.Animator));
+        infos.add(new HomeInfo("Trans Animation", R.id.tv_animation_trans, HomeInfo.HomeGroup.Animator));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -97,7 +102,17 @@ public class TypeAnimationActivity extends BaseActivity implements View.OnClickL
                 case R.id.tv_animation_materail_design:
                     ActionBarActivity.start(this);
                     break;
+                case R.id.tv_animation_trans:
+                    trans();
+                    break;
             }
         }
+    }
+
+    private void trans() {
+//        tempTransAnimation.setTranslationY(150);//px 正数 向下
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in);
+        tempTransAnimation.startAnimation(animation);
     }
 }
