@@ -8,13 +8,16 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.common.MicroCourseInfo;
 import com.testandroid.yang.common.Repo;
 import com.testandroid.yang.common.Your;
+import com.testandroid.yang.retrofit.ApiClient;
 import com.testandroid.yang.retrofit.ApiServer;
 import com.testandroid.yang.retrofit.GitHubService;
+import com.testandroid.yang.util.FileUtil;
 import com.testandroid.yang.util.ProtocalManager;
 
 import java.io.File;
@@ -35,11 +38,15 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Authenticator;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.Route;
@@ -68,6 +75,7 @@ public class OkHttpActivity extends BaseActivity {
     TextView okhttp04;
 
     private OkHttpClient okHttpClient;
+    private int stuId = 10097;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, OkHttpActivity.class);
@@ -170,7 +178,7 @@ public class OkHttpActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04,R.id.okhttp_05})
+    @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04, R.id.okhttp_05, R.id.okhttp_07, R.id.okhttp_08})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.okhttp_01:
@@ -188,7 +196,98 @@ public class OkHttpActivity extends BaseActivity {
             case R.id.okhttp_05:
                 essayHeader();
                 break;
+            case R.id.okhttp_07:
+                testAssemble();
+                break;
+            case R.id.okhttp_08:
+                uploadFile();
+                break;
         }
+    }
+
+    /**
+     * 可以了
+     */
+    private void uploadFile() {
+        String sdPath = FileUtil.getSDPath();
+        Log.d(TAG, "uploadFile: sdPath=" + sdPath);
+        File file = new File(sdPath + "/DCIM/Camera/IMG_20161025_155722.jpg");///////
+
+        MediaType mediaType = MediaType.parse("multipart/form-data");
+        String type = mediaType.type();
+        String subtype = mediaType.subtype();
+
+        Log.d(TAG, "uploadFile: type=" + type);
+        Log.d(TAG, "uploadFile: subtype=" + subtype);
+
+        if (!file.exists()) {/////
+            Toast.makeText(this, "文件不存在....", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(this, "uploadFile", Toast.LENGTH_SHORT).show();
+
+        MultipartBody.Builder multipartBuild = new MultipartBody.Builder().setType(MultipartBody.FORM);
+
+        multipartBuild.addPart(Headers.of("Content-Disposition", "form-data; name=\"file\";filename=\"file.jpg\"")
+                , RequestBody.create(MediaType.parse("image/png"), file));
+
+//        multipartBuild.addPart();
+        MultipartBody multipartBody = multipartBuild.build();
+
+        Request request = new Request.Builder()
+                .post(multipartBody)
+                .url("http://101.200.163.38/LoginServer/px/file/upload.json")
+                .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d(TAG, "onFailure: e=" + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG, "onResponse: response=" + response);
+                if (response.isSuccessful()) {
+                    String id = response.body().string();
+                    Log.d(TAG, "onResponse: id=" + id);
+                }
+            }
+        });
+    }
+
+    private void testAssemble() {
+        stuId++;
+
+        ApiClient.getInstance()
+                .getMicInfos(String.valueOf(stuId))
+                .subscribe(new Observer<List<MicroCourseInfo>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "onSubscribe: ");
+                    }
+
+                    @Override
+                    public void onNext(List<MicroCourseInfo> microCourseInfos) {
+                        Log.d(TAG, "onNext: microCourseInfos=" + microCourseInfos);
+                        if (microCourseInfos != null) {
+                            for (MicroCourseInfo info : microCourseInfos) {
+                                Log.d(TAG, "onNext: info=" + info.getSubject_name());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "onError: e=" + e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete: ");
+                    }
+                });
     }
 
     private void essayHeader() {
@@ -202,8 +301,8 @@ public class OkHttpActivity extends BaseActivity {
                 String query = request.url().encodedQuery();
 
                 Map<String, String> map = new HashMap<>();
-                map.put("张三","0000000");
-                map.put("张三111","000011");
+                map.put("张三", "0000000");
+                map.put("张三111", "000011");
                 Request request1 = request.newBuilder()
                         .headers(Headers.of(map))
                         .build();
@@ -217,6 +316,7 @@ public class OkHttpActivity extends BaseActivity {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://101.200.163.38/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .callFactory(okHttpClient)
                 .build();
 
         ApiServer apiServer = retrofit.create(ApiServer.class);
@@ -252,6 +352,12 @@ public class OkHttpActivity extends BaseActivity {
 //                });
 
 
+//        .map(new Function<ResponseBody, List<MicroCourseInfo>>() {
+//            @Override
+//            public List<MicroCourseInfo> apply(@NonNull ResponseBody responseBody) throws Exception {
+//                return null;
+//            }
+//        })
         apiServer.getMic("10097")
                 .subscribeOn(Schedulers.newThread())
                 .subscribeOn(AndroidSchedulers.mainThread())

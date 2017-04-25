@@ -251,4 +251,33 @@ public class MicroCourseInfo implements Serializable{
     public void setQuestion_ids(String question_ids) {
         this.question_ids = question_ids;
     }
+
+    @Override
+    public String toString() {
+        return "MicroCourseInfo{" +
+                "numberOfVotes=" + numberOfVotes +
+                ", create_time=" + create_time +
+                ", headerPicture='" + headerPicture + '\'' +
+                ", description='" + description + '\'' +
+                ", pid=" + pid +
+                ", cover_id='" + cover_id + '\'' +
+                ", title='" + title + '\'' +
+                ", video_ids='" + video_ids + '\'' +
+                ", questionIdForAnswer=" + questionIdForAnswer +
+                ", totalScore=" + totalScore +
+                ", video_paths='" + video_paths + '\'' +
+                ", knowledge_point='" + knowledge_point + '\'' +
+                ", score=" + score +
+                ", user_type='" + user_type + '\'' +
+                ", answer='" + answer + '\'' +
+                ", course_code='" + course_code + '\'' +
+                ", createUsername='" + createUsername + '\'' +
+                ", stage='" + stage + '\'' +
+                ", user_id=" + user_id +
+                ", price=" + price +
+                ", subject_name='" + subject_name + '\'' +
+                ", id=" + id +
+                ", question_ids='" + question_ids + '\'' +
+                '}';
+    }
 }

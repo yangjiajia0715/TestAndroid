@@ -59,6 +59,20 @@
                 android:layout_height="wrap_content"
                 android:text="Encode" />
 
+            <TextView
+                android:id="@+id/okhttp_07"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="简单封装" />
+
+            <TextView
+                android:id="@+id/okhttp_08"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="上传文件" />
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,6 +97,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
                 android:text="temp" />
+
+
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
