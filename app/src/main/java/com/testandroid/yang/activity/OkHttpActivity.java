@@ -209,6 +209,11 @@ public class OkHttpActivity extends BaseActivity {
      * 可以了
      */
     private void uploadFile() {
+//        TagInfo tagInfo = new TagInfo();
+//        List<TagInfo.ResultBean> result = tagInfo.getResult();
+//        TagInfo.ResultBean resultBean = result.get(0);
+//        resultBean.getAlias();
+
         String sdPath = FileUtil.getSDPath();
         Log.d(TAG, "uploadFile: sdPath=" + sdPath);
         File file = new File(sdPath + "/DCIM/Camera/IMG_20161025_155722.jpg");///////
@@ -219,6 +224,7 @@ public class OkHttpActivity extends BaseActivity {
 
         Log.d(TAG, "uploadFile: type=" + type);
         Log.d(TAG, "uploadFile: subtype=" + subtype);
+        Log.d(TAG, "uploadFile: mediaType=" + mediaType.toString());
 
         if (!file.exists()) {/////
             Toast.makeText(this, "文件不存在....", Toast.LENGTH_SHORT).show();
@@ -227,13 +233,10 @@ public class OkHttpActivity extends BaseActivity {
 
         Toast.makeText(this, "uploadFile", Toast.LENGTH_SHORT).show();
 
-        MultipartBody.Builder multipartBuild = new MultipartBody.Builder().setType(MultipartBody.FORM);
-
-        multipartBuild.addPart(Headers.of("Content-Disposition", "form-data; name=\"file\";filename=\"file.jpg\"")
-                , RequestBody.create(MediaType.parse("image/png"), file));
-
-//        multipartBuild.addPart();
-        MultipartBody multipartBody = multipartBuild.build();
+        MultipartBody multipartBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addPart(Headers.of("Content-Disposition", "form-data; name=\"file\";filename=\"file.jpg\""), RequestBody.create(MediaType.parse("image/png"), file))
+                .build();
 
         Request request = new Request.Builder()
                 .post(multipartBody)

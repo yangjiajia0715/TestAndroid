@@ -11,7 +11,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -42,7 +41,9 @@ public interface ApiServer {
     @GET("LoginServer/px.json?dataType=course_find_by_stu")
     Observable<Response> getMicResponse(@Query("stu_id") String stuId);
 
-    @POST("/LoginServer/px/file/upload.json")
-    Observable<ResponseBody> uploadFile();
+//    @Multipart
+//    @Headers("Content-Disposition:form-data; name=\"file\";filename=\"file.jpg\"")
+//    @POST("/LoginServer/px/file/upload.json")
+//    Observable<ResponseBody> uploadFile(@Part);
 
 }
