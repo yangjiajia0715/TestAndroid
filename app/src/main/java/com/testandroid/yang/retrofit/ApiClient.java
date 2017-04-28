@@ -5,12 +5,15 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.testandroid.yang.BuildConfig;
+import com.testandroid.yang.common.ResultBeanInfo;
+import com.testandroid.yang.common.FileUploadInfo;
 import com.testandroid.yang.common.MicroCourseInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -19,11 +22,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * ApiClient
@@ -67,7 +74,7 @@ public class ApiClient {
         apiServer = retrofit.create(ApiServer.class);
     }
 
-    public Observable<List<MicroCourseInfo>> getMicInfos( String stuId) {
+    public Observable<List<MicroCourseInfo>> getMicInfos(String stuId) {
         return apiServer.getMic(stuId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -97,5 +104,23 @@ public class ApiClient {
                         return null;
                     }
                 });
+    }
+
+    public Observable<ResultBeanInfo<FileUploadInfo>> uploadFile(@android.support.annotation.NonNull File file) {
+
+        RequestBody body = MultipartBody.create(MediaType.parse("image/png"), file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), body);
+
+        Retrofit retrofitFileUpload = retrofit.newBuilder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiServer apiServer1 = retrofitFileUpload.create(ApiServer.class);
+
+        return apiServer1.uploadFile(part)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())//doOnndext
+                ;
+
     }
 }

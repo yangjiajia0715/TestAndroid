@@ -11,8 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.common.ResultBeanInfo;
+import com.testandroid.yang.common.FileUploadInfo;
 import com.testandroid.yang.common.MicroCourseInfo;
 import com.testandroid.yang.common.Repo;
+import com.testandroid.yang.common.User;
 import com.testandroid.yang.common.Your;
 import com.testandroid.yang.retrofit.ApiClient;
 import com.testandroid.yang.retrofit.ApiServer;
@@ -34,7 +37,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Authenticator;
 import okhttp3.Call;
@@ -149,8 +154,6 @@ public class OkHttpActivity extends BaseActivity {
             }
         };
 
-
-//        BasicParamsInterceptor basicParamsInterceptor;
         //全局
         okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(20, TimeUnit.SECONDS)
@@ -178,7 +181,8 @@ public class OkHttpActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04, R.id.okhttp_05, R.id.okhttp_07, R.id.okhttp_08})
+    @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04, R.id.okhttp_05
+            , R.id.okhttp_07, R.id.okhttp_08, R.id.okhttp_09, R.id.okhttp_10, R.id.okhttp_11})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.okhttp_01:
@@ -202,11 +206,167 @@ public class OkHttpActivity extends BaseActivity {
             case R.id.okhttp_08:
                 uploadFile();
                 break;
+            case R.id.okhttp_09:
+                testMultipart();
+                break;
+            case R.id.okhttp_10:
+                uploadFirstFile();
+                break;
+            case R.id.okhttp_11:
+                uploadFileWithRetrofit();
+                break;
         }
     }
 
     /**
-     * 可以了
+     * 完美
+     */
+    private void uploadFileWithRetrofit() {
+        String sdPath = FileUtil.getSDPath();
+        Log.d(TAG, "uploadFileWithRetrofit: sdPath=" + sdPath);
+        File file = new File(sdPath + "/DCIM/Camera/IMG_20161025_155722.jpg");///////
+
+        if (!file.exists()) {
+            Toast.makeText(this, "文件不存在", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ApiClient.getInstance()
+                .uploadFile(file)
+                .delay(2, TimeUnit.SECONDS, false)
+                .subscribe(new Consumer<ResultBeanInfo<FileUploadInfo>>() {
+                    @Override
+                    public void accept(@NonNull ResultBeanInfo<FileUploadInfo> fileUploadInfoResultBeanInfo) throws Exception {
+
+                    }
+                });
+
+        ApiClient.getInstance()
+                .uploadFile(file)
+                .subscribe(new Observer<ResultBeanInfo<FileUploadInfo>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResultBeanInfo<FileUploadInfo> fileUploadInfoBaseBeanInfo) {
+                        Log.d(TAG, "onNext: fileUploadInfoBaseBeanInfo=" + fileUploadInfoBaseBeanInfo);
+                        if (fileUploadInfoBaseBeanInfo != null) {
+                            FileUploadInfo info = fileUploadInfoBaseBeanInfo.getData();
+                            Log.d(TAG, "onNext: fileUploadInfoBaseBeanInfo=" + info);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "onError: e=" + e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    //ocr 第一张图片 识别 识别成功 相同 2
+    private void uploadFirstFile() {
+
+        String sdPath = FileUtil.getSDPath();
+        Log.d(TAG, "uploadFirstFile: sdPath=" + sdPath);
+//        File file = new File(sdPath + "/DCIM/Camera/IMG_20161025_155722.jpg");///////
+//        File file = new File(sdPath + "/DCIM/Camera/IMG_20170428_122142.jpg");///////
+        File file = new File(sdPath + "/CuoTiHui/temp_croped1_mosaic.jpg");///////
+
+        MediaType mediaType = MediaType.parse("multipart/form-data");
+        String type = mediaType.type();
+        String subtype = mediaType.subtype();
+
+        Log.d(TAG, "uploadFile: type=" + type);
+        Log.d(TAG, "uploadFile: subtype=" + subtype);
+        Log.d(TAG, "uploadFile: mediaType=" + mediaType.toString());
+        Log.d(TAG, "uploadFile: file=" + file.getName());
+
+        if (!file.exists()) {/////
+            Toast.makeText(this, "文件不存在....", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+//        RequestBody requestBody = MultipartBody.create(MediaType.parse("image/png"), file);
+//        MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+
+//        HashMap<String, String> map = new HashMap<>();
+//        Headers headers = Headers.of(map);
+
+//        map.put("subjectType", mSearchSubjectInfo.subjectType);
+//        map.put("pupilId", String.valueOf(mUserInfo.pupilId));
+//        map.put("type", "QUICK_OCR");
+
+        MultipartBody multipartBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+//                .addPart(Headers.of("Content-Disposition", "form-data; name=\"file\";filename=\"file.jpg\""), RequestBody.create(MediaType.parse("image/png"), file))
+                .addFormDataPart("file", file.getName(), MultipartBody.create(MediaType.parse("image/png"), file))
+//                .addFormDataPart("subjectType\r\n math","math")
+//                .addFormDataPart("pupilId\r\n 10097","10097")
+//                .addFormDataPart("type\r\n QUICK_OCR","QUICK_OCR")
+                .addFormDataPart("subjectType", "math")//ok ok
+                .addFormDataPart("pupilId", "10097")
+                .addFormDataPart("type", "QUICK_OCR")
+                .build();
+
+        Request request = new Request.Builder()
+                .post(multipartBody)
+//                .url("http://101.200.163.38/LoginServer/px/file/upload.json")
+                .url("http://101.200.163.38/LoginServer/px/file/uploadForOcr.json")
+                .build();
+
+        Log.d(TAG, "onResponse: resprequest--request---request-----");
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d(TAG, "onFailure: e=" + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG, "onResponse: response=" + response);
+                if (response.isSuccessful()) {//ok
+                    String body = response.body().string();
+                    Log.d(TAG, "onResponse: body=" + body);
+                }
+            }
+        });
+    }
+
+    private void testMultipart() {
+        Log.d(TAG, "----------testMultipart------");
+
+        try {
+
+            MultipartBody.Part part = MultipartBody.Part.createFormData("错题会", "hhhh.jpg", RequestBody.create(null, "好的".getBytes()));
+            Headers headers = part.headers();
+            String toString = part.toString();
+            RequestBody body = part.body();
+
+            Log.d(TAG, "testMultipart: headers: " + headers);
+
+            MultipartBody multipartBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addPart(part)
+                    .addFormDataPart("", "file name", RequestBody.create(MediaType.parse("image/png"), new File("")))
+                    .build();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "testMultipart: e: " + e);
+        }
+
+    }
+
+    /**
+     * 可以了 ok
      */
     private void uploadFile() {
 //        TagInfo tagInfo = new TagInfo();
@@ -225,6 +385,7 @@ public class OkHttpActivity extends BaseActivity {
         Log.d(TAG, "uploadFile: type=" + type);
         Log.d(TAG, "uploadFile: subtype=" + subtype);
         Log.d(TAG, "uploadFile: mediaType=" + mediaType.toString());
+        Log.d(TAG, "uploadFile: file=" + file.getName());
 
         if (!file.exists()) {/////
             Toast.makeText(this, "文件不存在....", Toast.LENGTH_SHORT).show();
@@ -233,9 +394,15 @@ public class OkHttpActivity extends BaseActivity {
 
         Toast.makeText(this, "uploadFile", Toast.LENGTH_SHORT).show();
 
+//        RequestBody requestBody = MultipartBody.create(MediaType.parse("image/png"), file);
+//        MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+
+//        MultipartBody.Part.create()
         MultipartBody multipartBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addPart(Headers.of("Content-Disposition", "form-data; name=\"file\";filename=\"file.jpg\""), RequestBody.create(MediaType.parse("image/png"), file))
+//                .addPart(Headers.of("Content-Disposition", "form-data; name=\"file\";filename=\"file.jpg\""), RequestBody.create(MediaType.parse("image/png"), file))
+//                .addPart(part)
+                .addFormDataPart("哈哈哈", file.getName(), MultipartBody.create(MediaType.parse("image/png"), file))
                 .build();
 
         Request request = new Request.Builder()
@@ -483,6 +650,11 @@ public class OkHttpActivity extends BaseActivity {
 //        gitHubService.createUser(new User());
 
         Log.d(TAG, "retrofit: gitHubService=" + gitHubService);
+
+        ApiServer apiServer = retrofit.create(ApiServer.class);
+
+        retrofit2.Call<User> user = apiServer.createUser(new User());
+
 
 //        Object instance = Proxy.newProxyInstance(service.getClassLoader(), new Class<?>[]{service},
 //                new InvocationHandler() {

@@ -73,6 +73,27 @@
                 android:layout_height="wrap_content"
                 android:text="上传文件" />
 
+            <TextView
+                android:id="@+id/okhttp_09"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Part" />
+
+            <TextView
+                android:id="@+id/okhttp_10"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="第一张图片orc" />
+
+            <TextView
+                android:id="@+id/okhttp_11"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="上传图片retrofit" />
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
