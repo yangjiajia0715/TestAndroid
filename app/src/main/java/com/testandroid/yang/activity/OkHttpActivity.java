@@ -11,10 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.testandroid.yang.R;
-import com.testandroid.yang.common.ResultBeanInfo;
 import com.testandroid.yang.common.FileUploadInfo;
 import com.testandroid.yang.common.MicroCourseInfo;
 import com.testandroid.yang.common.Repo;
+import com.testandroid.yang.common.ResultBeanInfo;
 import com.testandroid.yang.common.User;
 import com.testandroid.yang.common.Your;
 import com.testandroid.yang.retrofit.ApiClient;
@@ -81,6 +81,7 @@ public class OkHttpActivity extends BaseActivity {
 
     private OkHttpClient okHttpClient;
     private int stuId = 10097;
+    private int curPage = 1;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, OkHttpActivity.class);
@@ -182,7 +183,8 @@ public class OkHttpActivity extends BaseActivity {
     }
 
     @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04, R.id.okhttp_05
-            , R.id.okhttp_07, R.id.okhttp_08, R.id.okhttp_09, R.id.okhttp_10, R.id.okhttp_11})
+            , R.id.okhttp_07, R.id.okhttp_08, R.id.okhttp_09, R.id.okhttp_10, R.id.okhttp_11
+            , R.id.okhttp_12})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.okhttp_01:
@@ -215,6 +217,38 @@ public class OkHttpActivity extends BaseActivity {
             case R.id.okhttp_11:
                 uploadFileWithRetrofit();
                 break;
+            case R.id.okhttp_12:
+                testRetrofit();
+                break;
+        }
+    }
+
+    private void testRetrofit() {
+        try {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://101.200.163.38/")
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//don't for get
+                    .build();
+
+            ApiServer apiServer = retrofit.create(ApiServer.class);
+
+            apiServer.getAnswerSquare("521", curPage)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<ResponseBody>() {
+                        @Override
+                        public void accept(@NonNull ResponseBody responseBody) throws Exception {
+                            String string = responseBody.string();
+                            MediaType mediaType = responseBody.contentType();
+                            Log.d(TAG, "accept: mediaType=" + mediaType);
+                            Log.d(TAG, "accept: string=" + string);
+                        }
+                    });
+
+            curPage++;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "testRetrofit: e=" + e);
         }
     }
 
@@ -231,15 +265,15 @@ public class OkHttpActivity extends BaseActivity {
             return;
         }
 
-        ApiClient.getInstance()
-                .uploadFile(file)
-                .delay(2, TimeUnit.SECONDS, false)
-                .subscribe(new Consumer<ResultBeanInfo<FileUploadInfo>>() {
-                    @Override
-                    public void accept(@NonNull ResultBeanInfo<FileUploadInfo> fileUploadInfoResultBeanInfo) throws Exception {
-
-                    }
-                });
+//        ApiClient.getInstance()
+//                .uploadFile(file)
+//                .delay(2, TimeUnit.SECONDS, false)
+//                .subscribe(new Consumer<ResultBeanInfo<FileUploadInfo>>() {
+//                    @Override
+//                    public void accept(@NonNull ResultBeanInfo<FileUploadInfo> fileUploadInfoResultBeanInfo) throws Exception {
+//
+//                    }
+//                });
 
         ApiClient.getInstance()
                 .uploadFile(file)

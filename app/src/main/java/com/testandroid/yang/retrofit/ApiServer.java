@@ -78,4 +78,7 @@ public interface ApiServer {
     @POST("LoginServer/px/file/uploadForOcr.json")
     Observable<ResponseBody> uploadFirstFile(@Part RequestBody body);
 
+    @GET("LoginServer/aq/teacher/findAll.json")
+    Observable<ResponseBody> getAnswerSquare(@Query("teacherId") String teacherId, @Query("_pageNum") int pageNum);
+
 }

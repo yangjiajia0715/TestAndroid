@@ -119,7 +119,7 @@
             android:name=".receiver.TestReceiverPriorityHigh"
             android:exported="false">
 
-            <intent-filter android:priority="100" >
+            <intent-filter android:priority="100">
                 <action android:name="action_test_broadcastreceiver" />
             </intent-filter>
 
@@ -129,7 +129,7 @@
             android:name=".receiver.TestReceiverPriorityMiddle"
             android:exported="false">
 
-            <intent-filter android:priority="90" >
+            <intent-filter android:priority="90">
                 <action android:name="action_test_broadcastreceiver" />
             </intent-filter>
 
@@ -139,7 +139,7 @@
             android:name=".receiver.TestReceiverPriorityLow"
             android:exported="false">
 
-            <intent-filter android:priority="80" >
+            <intent-filter android:priority="80">
                 <action android:name="action_test_broadcastreceiver" />
             </intent-filter>
 
@@ -206,8 +206,9 @@
 
         <activity android:name="com.testandroid.yang.activity.OkHttpActivity" />
         <activity android:name="com.testandroid.yang.activity.BroadcastReceiverActivity" />
-        <activity android:name="com.testandroid.yang.activity.BottomSheetActivity"
-            android:theme="@style/AppTheme.ActiomMode"/>
+        <activity
+            android:name="com.testandroid.yang.activity.BottomSheetActivity"
+            android:theme="@style/AppTheme.ActiomMode" />
 
         <!-- android:excludeFromRecents="true"-->
         <!-- android:maxRecents="3"
@@ -219,9 +220,10 @@
 
         <activity
             android:name="com.testandroid.yang.activity.NotificationActivity"
-            android:parentActivityName=".activity.TypeAnimationActivity">
+            android:parentActivityName=".activity.TypeAnimationActivity" />
 
-        </activity>
+        <activity android:name="com.testandroid.yang.activity.ReflectActivity" />
+
     </application>
 
 </manifest>

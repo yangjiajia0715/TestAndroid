@@ -94,6 +94,13 @@
                 android:layout_height="wrap_content"
                 android:text="上传图片retrofit" />
 
+            <TextView
+                android:id="@+id/okhttp_12"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="retrofit注解测试" />
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

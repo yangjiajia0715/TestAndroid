@@ -80,6 +80,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         infos.add(new HomeInfo("Overview Screen", R.id.tv_overview_screen, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("Notification", R.id.tv_notification, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("BroadcastReceiverActivity", R.id.tv_broadcastreceived, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("反射相关", R.id.tv_Reflect, HomeInfo.HomeGroup.Other));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -118,6 +119,9 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                     break;
                 case R.id.tv_broadcastreceived:
                     BroadcastReceiverActivity.start(this);
+                    break;
+                case R.id.tv_Reflect:
+                    ReflectActivity.start(this);
                     break;
             }
         }
