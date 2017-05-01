@@ -86,18 +86,20 @@ public class ReflectActivity extends BaseActivity {
     }
 
     private void testProxy() {
+        Class aClass = IServer.class;
+        Log.d(TAG, "invoke: aClass=" + aClass);
         try {
-            Object instance = Proxy.newProxyInstance(getClassLoader(), new Class[]{IServer.class}, new InvocationHandler() {
+            Object instance = Proxy.newProxyInstance(aClass.getClassLoader(), new Class[]{aClass}, new InvocationHandler() {
                 @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                     String name = method.getName();
                     Log.d(TAG, "invoke: proxy=" + proxy);
                     Log.d(TAG, "invoke: method=" + method);
                     Log.d(TAG, "invoke: name=" + name);
-                    Log.d(TAG, "invoke: args=" + args[0]);
-                    args[0] = 111;
-                    Object invoke = method.invoke(proxy, args);
-                    return invoke;
+//                    Log.d(TAG, "invoke: args=" + args[0]);
+//                    args[0] = 111;
+//                    Object invoke = method.invoke(proxy, args);
+                    return null;
                 }
             });
 
