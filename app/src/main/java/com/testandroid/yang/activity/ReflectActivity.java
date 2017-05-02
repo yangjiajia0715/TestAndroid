@@ -9,9 +9,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.common.House;
 import com.testandroid.yang.common.IServer;
+import com.testandroid.yang.retrofit.ApiServer;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
@@ -88,36 +92,96 @@ public class ReflectActivity extends BaseActivity {
     private void testProxy() {
         Class aClass = IServer.class;
         Log.d(TAG, "invoke: aClass=" + aClass);
-        try {
-            Object instance = Proxy.newProxyInstance(aClass.getClassLoader(), new Class[]{aClass}, new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    String name = method.getName();
-                    Log.d(TAG, "invoke: proxy=" + proxy);
-                    Log.d(TAG, "invoke: method=" + method);
-                    Log.d(TAG, "invoke: name=" + name);
-//                    Log.d(TAG, "invoke: args=" + args[0]);
-//                    args[0] = 111;
-//                    Object invoke = method.invoke(proxy, args);
-                    return null;
+        Log.d(TAG, "invoke: getClassLoader=" + aClass.getClassLoader());
+
+        InvocationHandler handler = new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                Integer a = (Integer) args[0];
+                Integer b = (Integer) args[1];
+                System.out.println("方法名：" + method.getName());
+                System.out.println("参数：" + a + " , " + b);
+
+//                    GET get = method.getAnnotation(GET.class);
+//                    System.out.println("注解：" + get.value());
+
+                try {
+//                    ApiServer apiServer = (ApiServer) proxy;
+                    return method.invoke(proxy, args);//stackoverflow
+                } catch (InvocationTargetException e) {
+                    e.getCause().printStackTrace();
+                    Log.d(TAG, "testProxy: e=" + e);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            });
 
-//            IServer server = (IServer) instance;
+                Log.d(TAG, "testProxy: age=================");
+//                    return  method.invoke(proxy, args);
+                return 33333333;
+            }
+        };
 
-//            int age = server.getAge(1);
+        ApiServer instance = (ApiServer) Proxy.newProxyInstance(ApiServer.class.getClassLoader(), new Class<?>[]{ApiServer.class}, handler);
 
-            Log.d(TAG, "testProxy: instance=" + instance);
-//            Log.d(TAG, "testProxy: server=" + server);
-//            Log.d(TAG, "testProxy: age=" + age);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-            Log.d(TAG, "testProxy: e=" + e);
-        }
+        int add = instance.add(3, 5);
+        Log.d(TAG, "testProxy: add=" + add);
 
     }
 
     private void test01() {
+        //获取 反射类
+        try {
+            //houseClass=class com.testandroid.yang.common.House
+//            Class<?> aClass = Class.forName("com.testandroid.yang.common.House");
+//            House house = new House();
+//            Class<? extends House> aClass1 = house.getClass();
+            Class houseClass = House.class;
 
+            Log.d(TAG, "test01: houseClass=" + houseClass);
+
+            String name = houseClass.getName();
+            String simpleName = houseClass.getSimpleName();
+            Log.d(TAG, "test01: name=" + name);
+            Log.d(TAG, "test01: simpleName=" + simpleName);
+
+            Method[] methods = houseClass.getMethods();
+
+            for (Method method : methods) {
+                String methodName = method.getName();
+                Log.d(TAG, "test01: methodName=" + methodName);
+            }
+
+            Log.d(TAG, "test01: ========================");
+
+            Method[] declaredMethods = houseClass.getDeclaredMethods();
+            for (Method declaredMethod : declaredMethods) {
+                String methodName = declaredMethod.getName();
+                Log.d(TAG, "test01: declaredMethod=" + methodName);
+            }
+
+            Constructor[] constructors = houseClass.getConstructors();
+
+            for (Constructor constructor : constructors) {
+                Class[] parameterTypes = constructor.getParameterTypes();
+                Log.d(TAG, "test01: parameterTypes=" + parameterTypes.length);
+                if (parameterTypes.length == 2) {
+                    House instance = (House) constructor.newInstance("错题会", "全都会");
+                    String string = instance.toString();
+                    Log.d(TAG, "test01: string=" + string);
+
+                    Method method = houseClass.getDeclaredMethod("aa", String.class);
+                    Log.d(TAG, "test01: getName=" + method.getName());
+                    Log.d(TAG, "test01: isAccessible=" + method.isAccessible());
+                    method.setAccessible(true);
+                    Log.d(TAG, "test01: isAccessible=" + method.isAccessible());
+
+                    method.invoke(instance, "呵呵哈哈哈");
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "test01: e=" + e);
+        }
     }
 }

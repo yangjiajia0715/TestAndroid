@@ -1,12 +1,33 @@
 package com.testandroid.yang.common;
 
+import android.util.Log;
+
 /**
+ * House
  * Created by Administrator on 2017/3/13 0013.
  */
 
 public class House {
+    private static final String TAG = "House";
     private String name;
     private String desc;
+
+    private void aa(String str) {
+        System.out.print("----aa-----------------str=" + str);
+        Log.d(TAG, "aa: str=" + str);
+    }
+
+    private void bb() {
+
+    }
+
+    protected void cc() {
+
+    }
+
+    void dd() {
+
+    }
 
     public House() {
     }

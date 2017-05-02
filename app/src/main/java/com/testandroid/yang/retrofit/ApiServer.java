@@ -30,6 +30,8 @@ import retrofit2.http.Query;
  */
 
 public interface ApiServer {
+    @GET("/heiheihei")
+    int add(int a, int b);
 
     //keyong
     @GET("LoginServer/px.json")

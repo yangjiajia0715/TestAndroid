@@ -20,14 +20,14 @@
                 style="@style/CommonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="reflect_01" />
+                android:text="反射" />
 
             <TextView
                 android:id="@+id/reflect_02"
                 style="@style/CommonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="reflect_01" />
+                android:text="动态代理" />
 
             <TextView
                 android:id="@+id/reflect_03"
