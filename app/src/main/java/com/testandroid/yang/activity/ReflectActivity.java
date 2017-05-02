@@ -13,15 +13,18 @@ import com.testandroid.yang.common.House;
 import com.testandroid.yang.common.IServer;
 import com.testandroid.yang.retrofit.ApiServer;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.http.GET;
 
 /**
  * 反射
@@ -78,7 +81,7 @@ public class ReflectActivity extends BaseActivity {
                 testProxy();
                 break;
             case R.id.reflect_03:
-
+                basicReflect();
                 break;
             case R.id.reflect_04:
 
@@ -87,6 +90,38 @@ public class ReflectActivity extends BaseActivity {
 
                 break;
         }
+    }
+
+    private void basicReflect() {
+        Class<?> aClass = ApiServer.class;
+        try {
+            Method method = aClass.getDeclaredMethod("add", int.class, int.class);
+            Log.d(TAG, "basicReflect: getName=" + method.getName());
+
+            Type[] genericParameterTypes = method.getGenericParameterTypes();
+            Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+
+            Log.d(TAG, "basicReflect: genericParameterTypes=" + genericParameterTypes.length);
+            Log.d(TAG, "basicReflect: parameterAnnotations=" + parameterAnnotations.length);
+//            Log.d(TAG, "basicReflect: parameterAnnotations=" + parameterAnnotations);
+
+            Type returnType = method.getGenericReturnType();
+            Log.d(TAG, "basicReflect: returnType=" + returnType);
+            Annotation[] annotations = method.getAnnotations();
+
+            for (Annotation annotation : annotations) {
+//                Class<? extends Annotation> type = annotation.annotationType();
+                Log.d(TAG, "basicReflect: annotation=" + annotation);
+                if (annotation instanceof GET) {
+                    String value = ((GET) annotation).value();
+                    Log.d(TAG, "basicReflect: value=" + value);
+                }
+            }
+
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void testProxy() {

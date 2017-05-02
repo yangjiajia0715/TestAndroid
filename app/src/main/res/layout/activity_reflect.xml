@@ -34,7 +34,7 @@
                 style="@style/CommonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="reflect_01" />
+                android:text="Basic reflect" />
 
             <TextView
                 android:id="@+id/reflect_04"
