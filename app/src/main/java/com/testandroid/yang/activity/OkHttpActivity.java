@@ -184,7 +184,7 @@ public class OkHttpActivity extends BaseActivity {
 
     @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04, R.id.okhttp_05
             , R.id.okhttp_07, R.id.okhttp_08, R.id.okhttp_09, R.id.okhttp_10, R.id.okhttp_11
-            , R.id.okhttp_12})
+            , R.id.okhttp_12, R.id.okhttp_13})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.okhttp_01:
@@ -220,7 +220,32 @@ public class OkHttpActivity extends BaseActivity {
             case R.id.okhttp_12:
                 testRetrofit();
                 break;
+            case R.id.okhttp_13:
+                testRetrofitCallAdapter();
+                break;
         }
+    }
+
+    private void testRetrofitCallAdapter() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://101.200.163.38/")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//don't forget
+                .build();
+
+        ApiServer apiServer = retrofit.create(ApiServer.class);
+
+        apiServer.getAnswerSquare("521", curPage)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<ResponseBody>() {
+                    @Override
+                    public void accept(@NonNull ResponseBody responseBody) throws Exception {
+                        String string = responseBody.string();
+                        MediaType mediaType = responseBody.contentType();
+                        Log.d(TAG, "accept: mediaType=" + mediaType);
+                        Log.d(TAG, "accept: string=" + string);
+                    }
+                });
     }
 
     private void testRetrofit() {

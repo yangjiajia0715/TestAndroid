@@ -11,15 +11,24 @@ import android.widget.TextView;
 import com.testandroid.yang.R;
 import com.testandroid.yang.common.House;
 import com.testandroid.yang.common.IServer;
+import com.testandroid.yang.extenddd.Apple;
+import com.testandroid.yang.extenddd.Fruit;
+import com.testandroid.yang.extenddd.Plate;
 import com.testandroid.yang.retrofit.ApiServer;
+import com.testandroid.yang.util.UtilsCopySource;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
 import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.lang.reflect.WildcardType;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -84,11 +93,105 @@ public class ReflectActivity extends BaseActivity {
                 basicReflect();
                 break;
             case R.id.reflect_04:
-
+                utils();
                 break;
             case R.id.reflect_05:
 
                 break;
+        }
+    }
+
+    private void utils() {
+        boolean isR = true;
+//        Plate<Fruit> plate = new Plate<Apple>(new Apple());
+
+        Plate<? extends Fruit> plate1 = new Plate<Apple>(new Apple());
+
+        Plate<? super Apple> plate = new Plate<Apple>(new Apple());
+
+        
+//        Log.d(TAG, "utils: fruit=" + fruit);
+
+        if (isR)
+            return;
+        //extends T 表示类型的上届 需要是它的子类
+        //super T 表示类型的下界 Object
+
+        //PECS原则
+//        最后看一下什么是PECS（Producer Extends Consumer Super）原则，已经很好理解了：
+//
+//        频繁往外读取内容的，适合用上界Extends。
+//        经常往里插入的，适合用下界Super。
+        Map<String, ? super Runnable> map = new HashMap<>();
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        };
+
+        map.put("kkkk", runnable);
+
+        Class<? extends Map> aClass = map.getClass();
+
+        TypeVariable<? extends Class<? extends Map>>[] parameters = aClass.getTypeParameters();
+
+        for (TypeVariable<? extends Class<? extends Map>> parameter : parameters) {
+            String name = parameter.getName();
+            Log.d(TAG, "utils: name=" + name);
+            Type[] bounds = parameter.getBounds();
+            for (Type bound : bounds) {
+                Log.d(TAG, "utils: bound=" + bound);
+            }
+        }
+
+        Log.d(TAG, "utils: -------------------------------------");
+
+        Class<House> houseClass = House.class;
+        try {
+            Method method = houseClass.getDeclaredMethod("mappp");
+            Class<?> returnType = method.getReturnType();
+            Type genericReturnType = method.getGenericReturnType();
+
+            Log.d(TAG, "utils:  returnType=" + returnType);//interface java.util.Map
+
+            Log.d(TAG, "utils: return genericReturnType=" + genericReturnType);//java.util.Map<java.lang.String, ? extends java.lang.Runnable>
+            boolean isParameterized = genericReturnType instanceof ParameterizedType;
+
+            Log.d(TAG, "utils:  isParameterized=" + isParameterized);
+
+            if (isParameterized) {
+                ParameterizedType parameterizedType = (ParameterizedType) genericReturnType;
+                Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
+                for (Type type : actualTypeArguments) {
+                    Log.d(TAG, "utils: type=" + type + "   instanceof=" + (type instanceof WildcardType));
+                    if (type instanceof WildcardType) {
+
+                        Type[] upperBounds = ((WildcardType) type).getUpperBounds();
+                        for (Type upperBound : upperBounds) {
+//                            Log.d(TAG, "utils: upperBound=" + upperBound.getClass().getName());//java.lang.Class
+                            Log.d(TAG, "utils: upperBound 11=" + upperBound);
+                        }
+
+//                        ? super Runnable
+                        Type[] lowerBounds = ((WildcardType) type).getLowerBounds();
+                        for (Type lower : lowerBounds) {
+                            Log.d(TAG, "utils: lower=" + lower);
+                        }
+                    }
+                }
+            }
+
+//            Log.d(TAG, "utils: return instanceof=" + (genericReturnType instanceof Class<?>));//false
+//            Log.d(TAG, "utils: return ==" + (returnType == Map.class)); // true
+
+            Log.d(TAG, "utils: ---------------------------");
+
+            Log.d(TAG, "utils: return returnType=" + UtilsCopySource.getRawType(returnType));
+            Log.d(TAG, "utils: return genericReturnType=" + UtilsCopySource.getRawType(genericReturnType));
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
         }
     }
 

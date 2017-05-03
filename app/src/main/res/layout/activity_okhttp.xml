@@ -101,6 +101,13 @@
                 android:layout_height="wrap_content"
                 android:text="retrofit注解测试" />
 
+            <TextView
+                android:id="@+id/okhttp_13"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="retrofit 自定义callAdapter" />
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

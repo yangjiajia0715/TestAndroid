@@ -2,6 +2,9 @@ package com.testandroid.yang.common;
 
 import android.util.Log;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * House
  * Created by Administrator on 2017/3/13 0013.
@@ -11,6 +14,14 @@ public class House {
     private static final String TAG = "House";
     private String name;
     private String desc;
+
+    private List<? extends Runnable> runn(){
+        return null;
+    }
+
+    private Map<String, ? super Runnable> mappp(){
+        return null;
+    }
 
     private void aa(String str) {
         System.out.print("----aa-----------------str=" + str);
