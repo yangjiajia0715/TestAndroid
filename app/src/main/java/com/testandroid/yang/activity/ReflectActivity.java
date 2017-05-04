@@ -14,11 +14,14 @@ import com.testandroid.yang.common.IServer;
 import com.testandroid.yang.extenddd.Apple;
 import com.testandroid.yang.extenddd.Fruit;
 import com.testandroid.yang.extenddd.Plate;
+import com.testandroid.yang.extenddd.RedApple;
+import com.testandroid.yang.extenddd.TestType;
 import com.testandroid.yang.retrofit.ApiServer;
 import com.testandroid.yang.util.UtilsCopySource;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -80,7 +83,8 @@ public class ReflectActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.reflect_01, R.id.reflect_02, R.id.reflect_03, R.id.reflect_04, R.id.reflect_05})
+    @OnClick({R.id.reflect_01, R.id.reflect_02, R.id.reflect_03, R.id.reflect_04,
+            R.id.reflect_05, R.id.reflect_06, R.id.reflect_07, R.id.reflect_08})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.reflect_01:
@@ -96,20 +100,103 @@ public class ReflectActivity extends BaseActivity {
                 utils();
                 break;
             case R.id.reflect_05:
-
+                typeAll();
                 break;
+            case R.id.reflect_06:
+                break;
+            case R.id.reflect_07:
+                break;
+            case R.id.reflect_08:
+                break;
+        }
+    }
+
+    // 泛型介绍：http://loveshisong.cn/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/2016-02-16-Type%E8%AF%A6%E8%A7%A3.html
+    private void typeAll() {
+        //TYPE1: ParameterizedType
+        try {
+            Field f = TestType.class.getDeclaredField("userMap");
+            System.out.println(f.getGenericType());                               // java.util.Map<java.lang.String, com.testandroid.yang.common.User>
+            System.out.println(f.getGenericType() instanceof ParameterizedType);  // true
+            ParameterizedType pType = (ParameterizedType) f.getGenericType();
+            System.out.println(pType.getRawType());                               // interface java.util.Map
+            for (Type type : pType.getActualTypeArguments()) {
+                System.out.println(type);                                         // class java.lang.String class com.testandroid.yang.common.User
+            }
+//            返回是谁的member.
+            System.out.println(pType.getOwnerType());                             // null
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        Log.d(TAG, "typeAll: ----------------TypeVariable-------------------");
+
+        // 获取字段的类型
+        try {
+            Field fk = TestType.class.getDeclaredField("key");
+            Field fv = TestType.class.getDeclaredField("value");
+
+            System.out.println(fk.getGenericType() instanceof TypeVariable);//true
+            System.out.println(fv.getGenericType() instanceof TypeVariable);//true
+
+            TypeVariable keyType = (TypeVariable) fk.getGenericType();
+            TypeVariable valueType = (TypeVariable) fv.getGenericType();
+            // getName 方法
+            System.out.println("getName 方法:");
+            System.out.println(keyType.getName());                 // K
+            System.out.println(valueType.getName());               // V
+            // getGenericDeclaration 方法
+            System.out.println(keyType.getGenericDeclaration());   // class com.test.TestType
+            System.out.println(valueType.getGenericDeclaration()); // class com.test.TestType
+            // getBounds 方法
+            System.out.println("K 的上界:");                        // 有两个
+            for (Type type : keyType.getBounds()) {                // interface java.lang.Comparable
+                System.out.println(type);                          // interface java.io.Serializable
+            }
+            System.out.println("V 的上界:");                        // 没明确声明上界的, 默认上界是 Object
+            for (Type type : valueType.getBounds()) {              // class java.lang.Object
+                System.out.println(type);
+            }
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+
+        Log.d(TAG, "typeAll: ----------------GenericArrayType-------------------");
+        Method[] declaredMethods = TestType.class.getDeclaredMethods();
+        Method method = declaredMethods[0];
+        Type[] genericParameterTypes = method.getGenericParameterTypes();
+
+        for (Type type : genericParameterTypes) {
+//            (type instanceof GenericArrayType
+            System.out.println("");
         }
     }
 
     private void utils() {
         boolean isR = true;
+//        List<String>[]  lists = new ArrayList<String>[3];
+
+        String[] ss = new String[3];
+
 //        Plate<Fruit> plate = new Plate<Apple>(new Apple());
 
-        Plate<? extends Fruit> plate1 = new Plate<Apple>(new Apple());
+        //pecs
+        Plate<? extends Fruit> plate1 = new Plate<>(new Apple());
+        Fruit fruit = plate1.get();
 
-        Plate<? super Apple> plate = new Plate<Apple>(new Apple());
+        //========================================================
 
-        
+        Plate<? super Apple> plateaa = new Plate<>(new Apple());
+        plateaa.set(new RedApple());
+        plateaa.set(new Apple());
+        Object object1 = plateaa.get();
+
+//        plateaa.set(new Object());//error
+        //pecs
+        Plate<? super Apple> plate = new Plate<>(new Object());
+        plate.set(new Apple());
+        plate.set(new RedApple());
+        Object object = plate.get();
+
 //        Log.d(TAG, "utils: fruit=" + fruit);
 
         if (isR)

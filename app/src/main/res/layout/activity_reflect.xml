@@ -48,10 +48,22 @@
                 style="@style/CommonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="reflect_01" />
+                android:text="Type all" />
 
             <TextView
                 android:id="@+id/reflect_06"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="reflect_01" />
+            <TextView
+                android:id="@+id/reflect_07"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="reflect_01" />
+            <TextView
+                android:id="@+id/reflect_08"
                 style="@style/CommonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
