@@ -22,6 +22,7 @@ import com.testandroid.yang.util.UtilsCopySource;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -165,9 +166,25 @@ public class ReflectActivity extends BaseActivity {
         Method method = declaredMethods[0];
         Type[] genericParameterTypes = method.getGenericParameterTypes();
 
+//        List<String>[] lists = new List<String>[4];
         for (Type type : genericParameterTypes) {
-//            (type instanceof GenericArrayType
-            System.out.println("");
+            boolean isGenericArrayType = type instanceof GenericArrayType;
+
+            Log.d(TAG,"---------GenericArrayType " + isGenericArrayType);
+            if (isGenericArrayType) {
+                GenericArrayType arrayType = (GenericArrayType) type;
+                Type componentType = arrayType.getGenericComponentType();
+                if (componentType instanceof TypeVariable) {
+                    TypeVariable typeVariable = (TypeVariable) componentType;
+                    Log.d(TAG,"typeVariable " + typeVariable.getName());
+                }
+
+                if (componentType instanceof ParameterizedType) {
+                    ParameterizedType parameterizedType = (ParameterizedType) componentType;
+                    Log.d(TAG,"parameterizedType " + parameterizedType.getRawType());
+                }
+            }
+
         }
     }
 
@@ -324,11 +341,11 @@ public class ReflectActivity extends BaseActivity {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 Integer a = (Integer) args[0];
                 Integer b = (Integer) args[1];
-                System.out.println("方法名：" + method.getName());
-                System.out.println("参数：" + a + " , " + b);
+                Log.d(TAG,"方法名：" + method.getName());
+                Log.d(TAG,"参数：" + a + " , " + b);
 
 //                    GET get = method.getAnnotation(GET.class);
-//                    System.out.println("注解：" + get.value());
+//                    Log.d(TAG,"注解：" + get.value());
 
                 try {
 //                    ApiServer apiServer = (ApiServer) proxy;

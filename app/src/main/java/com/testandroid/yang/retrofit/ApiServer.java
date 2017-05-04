@@ -23,6 +23,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 /**
  * ApiServer
@@ -83,4 +84,5 @@ public interface ApiServer {
     @GET("LoginServer/aq/teacher/findAll.json")
     Observable<ResponseBody> getAnswerSquare(@Query("teacherId") String teacherId, @Query("_pageNum") int pageNum);
 
+    List<List<? extends User>> getLLL(@Url String url);
 }
