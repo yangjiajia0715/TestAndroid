@@ -85,4 +85,14 @@ public interface ApiServer {
     Observable<ResponseBody> getAnswerSquare(@Query("teacherId") String teacherId, @Query("_pageNum") int pageNum);
 
     List<List<? extends User>> getLLL(@Url String url);
+
+    //继教网老账号ID
+//#define DWACCOUNT_USERID @"435D54363B37C983"
+//咱们自己的新账号ID
+//#define DWACCOUNT_USERID @"2BDF604C7486AE0F"
+//继教网老账号apiKey
+//#define DWACCOUNT_APIKEY @"iSgdPc2uGMhiml0UrdXh4AgS3AayonAv"
+//咱们自己新账号的apiKey
+//#define DWACCOUNT_APIKEY @"YUsABCcw7U4j0PfLpCEubg5tsq74ubzd"
+
 }
