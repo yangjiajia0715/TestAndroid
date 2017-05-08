@@ -49,6 +49,7 @@
     <item name="tv_animation_materail_design" type="id" />
     <item name="tv_animation_trans" type="id" />
     <item name="tv_recycleview" type="id" />
+    <item name="tv_vLayouot" type="id" />
 
     <!--"type_animation"-->
 

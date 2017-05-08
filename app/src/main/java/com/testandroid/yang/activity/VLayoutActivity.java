@@ -1,0 +1,51 @@
+package com.testandroid.yang.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+
+import com.alibaba.android.vlayout.DelegateAdapter;
+import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.testandroid.yang.R;
+import com.testandroid.yang.adapter.HomePage1Adapter;
+import com.testandroid.yang.adapter.HomePagew2Adapter;
+
+/**
+ * Created by yangjiajia on 2017/5/8.
+ */
+
+public class VLayoutActivity extends BaseActivity {
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, VLayoutActivity.class);
+        context.startActivity(starter);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_vlayout);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        VirtualLayoutManager layoutManager = new VirtualLayoutManager(this,VirtualLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+        DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager);
+
+        delegateAdapter.addAdapter(new HomePage1Adapter(this));//
+        delegateAdapter.addAdapter(new HomePagew2Adapter(this));
+        recyclerView.setAdapter(delegateAdapter);
+
+    }
+
+    @Override
+    public void initView() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+}

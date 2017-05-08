@@ -224,6 +224,8 @@
 
         <activity android:name="com.testandroid.yang.activity.ReflectActivity" />
 
+        <activity android:name=".activity.VLayoutActivity" />
+
     </application>
 
 </manifest>

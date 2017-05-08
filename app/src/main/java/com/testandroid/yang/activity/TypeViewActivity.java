@@ -83,6 +83,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("tv_item_type_listview", R.id.tv_item_type_listview, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_CheckedTextView", R.id.tv_CheckedTextView, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_recycleview", R.id.tv_recycleview, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_vLayouot", R.id.tv_vLayouot, HomeInfo.HomeGroup.View));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -152,6 +153,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                     break;
                 case R.id.tv_recycleview:
                     RecycleViewActivity.start(this);
+                    break;
+                case R.id.tv_vLayouot:
+                    VLayoutActivity.start(this);
                     break;
             }
         }
