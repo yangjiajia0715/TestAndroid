@@ -161,7 +161,6 @@ dependencies {
     compile "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjavaVersion}"
 
     compile "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3Version}"
-
     compile "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3InterceptorVersion}"
 
     compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
@@ -171,7 +170,6 @@ dependencies {
 
     //new
     compile "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofit2AdapterRxjava2Version}"
-
     compile "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofit2ConverterGsonVersion}"
 
     compile "com.nineoldandroids:library:${rootProject.ext.nineoldandroidsVersion}"
