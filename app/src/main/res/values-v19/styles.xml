@@ -13,4 +13,7 @@
     </style>
 
 
+    <style name="AppTheme.FitSystemWindown" >
+        <item name="android:windowTranslucentStatus" >true</item>
+    </style>
 </resources>

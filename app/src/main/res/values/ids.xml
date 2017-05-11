@@ -50,6 +50,7 @@
     <item name="tv_animation_trans" type="id" />
     <item name="tv_recycleview" type="id" />
     <item name="tv_vLayouot" type="id" />
+    <item name="tv_fitsystemwindow" type="id" />
 
     <!--"type_animation"-->
 

@@ -55,6 +55,7 @@ public class VLayoutActivity extends BaseActivity implements SwipeRefreshLayout.
 
     @Override
     public void initView() {
+        getTitle();//label 
 
     }
 
