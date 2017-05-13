@@ -165,8 +165,9 @@
 
         <activity android:name="com.testandroid.yang.activity.CoordinatorAppBarActivity" />
 
-        <activity android:name="com.testandroid.yang.activity.AppBarTabLayout"
-            android:theme="@style/AppTheme.FitSystemWindown"/>
+        <activity
+            android:name="com.testandroid.yang.activity.AppBarTabLayout"
+            android:theme="@style/AppTheme.FitSystemWindown" />
 
         <activity
             android:name="com.testandroid.yang.activity.TestAppBar"
@@ -227,8 +228,10 @@
 
         <activity android:name=".activity.VLayoutActivity" />
 
+        <!--android:theme="@style/AppTheme.FitSystemWindown"-->
         <activity android:name=".activity.FitSystemWindowActivity"
-            android:theme="@style/AppTheme.FitSystemWindown"/>
+            android:theme="@style/AppTheme.FitSystemWindown"
+            android:label="FitLabel"/>
 
     </application>
 

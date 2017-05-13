@@ -2,8 +2,10 @@ package com.testandroid.yang.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -14,8 +16,10 @@ import android.support.v4.view.OnApplyWindowInsetsListener;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.WindowInsetsCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 
 import com.testandroid.yang.R;
@@ -52,6 +56,26 @@ public class FitSystemWindowActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ViewCompat.setOnApplyWindowInsetsListener(toolbar, new OnApplyWindowInsetsListener() {
+            @Override
+            public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+                Log.d(TAG, "onApplyWindowInsets toolbar:isConsumed= " + insets.isConsumed());
+                return insets;
+            }
+        });
+
+//        ViewCompat.offsetTopAndBottom(toolbar, 166);//没作用
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setDisplayShowTitleEnabled(true);
+
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingtoolbarlayout);
+        collapsingToolbarLayout.setTitle("代码标题");
+        collapsingToolbarLayout.setCollapsedTitleGravity(Gravity.CENTER);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.BLUE);
+        collapsingToolbarLayout.setExpandedTitleColor(Color.RED);
+
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         if (viewPager != null) {
             setupViewPager(viewPager);
@@ -71,15 +95,16 @@ public class FitSystemWindowActivity extends BaseActivity {
 
 //        appBarLayout.setFitsSystemWindows(true);
         boolean fitsSystemWindows = ViewCompat.getFitsSystemWindows(appBarLayout);
-        ViewCompat.setOnApplyWindowInsetsListener(appBarLayout, new OnApplyWindowInsetsListener() {
-            @Override
-            public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
-                Log.d(TAG, "onApplyWindowInsets: top=" + insets.getSystemWindowInsetTop());
-                Log.d(TAG, "onApplyWindowInsets: insets=" + insets);
-                Log.d(TAG, "onApplyWindowInsets: isConsumed=" + insets.isConsumed());
-                return insets;
-            }
-        });
+//        ViewCompat.setOnApplyWindowInsetsListener(appBarLayout, new OnApplyWindowInsetsListener() {
+//            @Override
+//            public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+//                Log.d(TAG, "onApplyWindowInsets: top=" + insets.getSystemWindowInsetTop());
+//                Log.d(TAG, "onApplyWindowInsets: insets=" + insets);
+//                Log.d(TAG, "onApplyWindowInsets: isConsumed=" + insets.isConsumed());
+//                return insets;
+//            }
+//        });
+
         Log.d(TAG, "initView: fitsSystemWindows=" + fitsSystemWindows);
         Log.d(TAG, "initView: getFitsSystemWindows=" + appBarLayout.getFitsSystemWindows());
 

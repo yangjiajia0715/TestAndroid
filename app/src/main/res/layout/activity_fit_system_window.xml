@@ -4,30 +4,60 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/green">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
+        android:background="#f00"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/red"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingtoolbarlayout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/app_color_normal"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="wrap_content"
+            app:contentScrim="#fea73d"
+            app:statusBarScrim="@color/accent"
+            app:collapsedTitleGravity="center"
+            android:fitsSystemWindows="false"
+            app:titleEnabled="true"
+            android:background="#88f"
+            app:expandedTitleMarginStart="10dp"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img02"
-            app:layout_scrollFlags="scroll|snap|enterAlways|exitUntilCollapsed" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:fitsSystemWindows="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img02"
+                app:layout_collapseMode="parallax" />
+
+            <!--android:background="#99000000"-->
+            <!--?attr/actionBarSize-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:title="HHHHH"
+                android:fitsSystemWindows="true"
+                android:background="#99000000"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="临时40dp"
+                    android:layout_gravity="center"
+                    android:background="@color/accent"
+                    android:visibility="visible"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
 
         <!-- app:tabPaddingStart="40dp"-->
         <!-- app:tabMode="fixed"-->
@@ -44,9 +74,9 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-        android:background="@color/light_grey"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/light_grey"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
