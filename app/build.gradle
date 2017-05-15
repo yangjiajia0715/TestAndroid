@@ -55,25 +55,25 @@ android {
         }
     }
 
-    sourceSets{
+    sourceSets {
 //        main {
 //            java.srcDirs = ['src/main/java'];
 //        }
 
-        fee{
+        fee {
             java.srcDirs = ['src/fee/java'];
         }
 
-        free{
+        free {
         }
     }
 
     productFlavors {
-        fee{
+        fee {
 
         }
 
-        free{
+        free {
 
         }
     }
@@ -177,9 +177,17 @@ dependencies {
     compile "com.jakewharton:butterknife:${rootProject.ext.butterknifeVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.butterknifeVersion}"
 
-    compile ("com.alibaba.android:vlayout:${rootProject.ext.vlayoutVersion}@aar") {
+    compile("com.alibaba.android:vlayout:${rootProject.ext.vlayoutVersion}@aar") {
         transitive = true
     }
+
+
+    compile 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
+    // If you want to bind to Android-specific lifecycles
+//    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
+
+// If you want pre-written Activities and Fragments you can subclass as providers
+    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
 
 }
 
@@ -661,8 +669,8 @@ configurations {
 
 println "------------configurations-----------------"
 
-task testConfig{
-    doLast{
+task testConfig {
+    doLast {
         println configurations.compile.name
         println configurations['compile'].name
     }

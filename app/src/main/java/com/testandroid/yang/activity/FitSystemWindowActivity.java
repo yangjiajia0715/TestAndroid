@@ -28,6 +28,10 @@ import com.testandroid.yang.fragment.CheeseListFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+
 /**
  * Created by yangjiajia on 2017/1/22 0022.
  */
@@ -47,6 +51,29 @@ public class FitSystemWindowActivity extends BaseActivity {
         setContentView(R.layout.activity_fit_system_window);
         initView();
         initData();
+        testRxLifeCircle();
+    }
+
+    private void testRxLifeCircle() {
+//        Observable.just(1,2)
+//                .compose(this.<Integer>bindToLifecycle())
+//                .subscribe(new Consumer<Integer>() {
+//                    @Override
+//                    public void accept(@NonNull Integer integer) throws Exception {
+//
+//                    }
+//                });
+
+        Observable.just(3, 4)
+                .compose(this.<Integer>bindToLifecycle())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(@NonNull Integer integer) throws Exception {
+                        Log.d(TAG, "accept: in=" + integer);
+                    }
+                });
+
+
     }
 
     @Override
