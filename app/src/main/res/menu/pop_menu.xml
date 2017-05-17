@@ -2,15 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/drop_down_pop_menu_1"
-        android:icon="@drawable/drop_down_answer"
-        android:title="popmenu1"
-        app:showAsAction="withText" />
+    <group android:checkableBehavior="single" >
 
-    <item
-        android:id="@+id/drop_down_pop_menu_2"
-        android:icon="@drawable/drop_down_setting"
-        android:title="popmenu2"
-        app:showAsAction="withText" />
+        <item
+            android:id="@+id/drop_down_pop_menu_1"
+            android:icon="@drawable/drop_down_answer"
+            android:checked="true"
+            android:title="popmenu1"
+            app:showAsAction="withText" />
+
+        <item
+            android:id="@+id/drop_down_pop_menu_2"
+            android:icon="@drawable/drop_down_setting"
+            android:title="popmenu2"
+            app:showAsAction="withText" />
+
+    </group>
 </menu>

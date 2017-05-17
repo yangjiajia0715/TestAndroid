@@ -90,6 +90,7 @@ public class MenuActivity extends BaseActivity {
             mActionMode = null;
         }
     };
+    private PopupMenu popupMenu;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, MenuActivity.class);
@@ -325,9 +326,39 @@ public class MenuActivity extends BaseActivity {
     }
 
     private void showPopMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(this, v, Gravity.END);
-        popupMenu.getMenuInflater().inflate(R.menu.pop_menu, popupMenu.getMenu());
+        if (popupMenu == null) {
+//            popupMenu = new PopupMenu(this, v, Gravity.END);
+            popupMenu = new PopupMenu(this,v,Gravity.END,R.attr.popupMenuStyle,R.style.PopmenuStyle);
+            popupMenu = new PopupMenu(this,v,Gravity.END,R.attr.popupMenuStyle,R.style.PopmenuStyle);
+//        popupMenu.inflate();
+            popupMenu.getMenuInflater().inflate(R.menu.pop_menu, popupMenu.getMenu());
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.drop_down_pop_menu_1:
+                            item.setChecked(true);
+                            break;
+                        case R.id.drop_down_pop_menu_2:
+                            item.setChecked(true);
+//                            Log.d(TAG, "onMenuItemClick: isChecked=" + item.isChecked());
+//                            if (item.isChecked()) {
+//                                item.setChecked(false);
+//                            } else {
+////                                item.setCheckable(true);
+//                                item.setChecked(true);
+//                            }
+                            return true;
+                        default:
+                            return false;
+
+                    }
+                    return false;
+                }
+            });
+        }
         popupMenu.show();
+
     }
 
 

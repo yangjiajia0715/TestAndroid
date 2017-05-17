@@ -12,5 +12,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="PopmenuStyle" parent="Widget.AppCompat.Light.PopupMenu" >
+        <item name="android:layout_width" >300dp</item>
+        <item name="android:dropDownWidth" >400dp</item>
+        <item name="android:dropDownVerticalOffset" >40dp</item>
+        <item name="android:dropDownHorizontalOffset" >40dp</item>
+        <item name="android:popupBackground" >@color/theme_red_accent</item>
+
+        <item name="android:background" >@color/app_color_normal</item>
+        </style>
+
 
 </resources>
