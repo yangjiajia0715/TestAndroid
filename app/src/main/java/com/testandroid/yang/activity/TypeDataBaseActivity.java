@@ -76,6 +76,7 @@ public class TypeDataBaseActivity extends BaseActivity implements View.OnClickLi
         infos.add(new HomeInfo("tv_Dex_ClassLoader", R.id.tv_Dex_ClassLoader, HomeInfo.HomeGroup.DataBase));
         infos.add(new HomeInfo("tv_test_DatabaseUtil", R.id.tv_test_DatabaseUtil, HomeInfo.HomeGroup.DataBase));
         infos.add(new HomeInfo("tv_test_CursorLoader", R.id.tv_test_CursorLoader, HomeInfo.HomeGroup.DataBase));
+        infos.add(new HomeInfo("tv_save_userinfo_to_database", R.id.tv_save_userinfo_to_database, HomeInfo.HomeGroup.DataBase));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -106,6 +107,9 @@ public class TypeDataBaseActivity extends BaseActivity implements View.OnClickLi
                 case R.id.tv_test_CursorLoader:
                     intent = new Intent(this, CursorLoadActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.tv_save_userinfo_to_database:
+                    SaveToDataBaseActivity.start(this);
                     break;
             }
         }

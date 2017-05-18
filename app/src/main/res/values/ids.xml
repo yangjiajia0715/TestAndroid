@@ -31,6 +31,7 @@
     <item name="tv_test_RxJava_operate" type="id" />
     <item name="tv_test_DatabaseUtil" type="id" />
     <item name="tv_test_CursorLoader" type="id" />
+    <item name="tv_save_userinfo_to_database" type="id" />
     <item name="tv_Data_Binding" type="id" />
     <item name="tv_temp" type="id" />
     <item name="tv_CoordinatorLayout" type="id" />

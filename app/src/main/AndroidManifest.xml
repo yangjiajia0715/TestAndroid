@@ -233,6 +233,8 @@
             android:theme="@style/AppTheme.FitSystemWindown"
             android:label="FitLabel"/>
 
+        <activity android:name=".activity.SaveToDataBaseActivity" />
+
     </application>
 
 </manifest>

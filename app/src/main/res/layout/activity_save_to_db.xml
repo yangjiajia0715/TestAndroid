@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/save_to_db0"
+        style="@style/Home_text_style2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存到数据库" />
+
+    <TextView
+        android:id="@+id/save_to_db1"
+        style="@style/Home_text_style2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存到数据库1" />
+
+    <TextView
+        android:id="@+id/save_to_db2"
+        style="@style/Home_text_style2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存到数据库2" />
+
+    <TextView
+        android:id="@+id/save_to_db3"
+        style="@style/Home_text_style2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存到数据库3" />
+
+    <TextView
+        android:id="@+id/save_to_db4"
+        style="@style/Home_text_style2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存到数据库4" />
+
+    <TextView
+        android:id="@+id/save_to_db5"
+        style="@style/Home_text_style2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存到数据库5" />
+
+    <TextView
+        android:id="@+id/save_to_db6"
+        style="@style/Home_text_style2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存到数据库6" />
+
+    <TextView
+        android:id="@+id/save_to_db7"
+        style="@style/Home_text_style2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存到数据库7" />
+</LinearLayout>
