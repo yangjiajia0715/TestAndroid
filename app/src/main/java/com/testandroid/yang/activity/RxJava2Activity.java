@@ -10,9 +10,12 @@ import com.testandroid.yang.common.Course;
 import com.testandroid.yang.common.HomeInfo;
 import com.testandroid.yang.common.Student;
 import com.testandroid.yang.common.User;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.RxLifecycle;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -54,6 +57,9 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_test_RxJava7).setOnClickListener(this);
         findViewById(R.id.tv_test_RxJava8).setOnClickListener(this);
         findViewById(R.id.tv_test_RxJava9).setOnClickListener(this);
+        findViewById(R.id.tv_test_RxJava10).setOnClickListener(this);
+        findViewById(R.id.tv_test_RxJava11).setOnClickListener(this);
+        findViewById(R.id.tv_test_RxJava12).setOnClickListener(this);
 
     }
 
@@ -103,7 +109,7 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
                             public String apply(@NonNull Integer integer) throws Exception {
 //                                + ",currentThread=" + Thread.currentThread().getName()
                                 Log.d(TAG, "RxJava2Activity--1--apply--currentThread=" + Thread.currentThread().getName());
-                                return "错题会" + integer ;
+                                return "错题会" + integer;
                             }
                         })
                         .observeOn(Schedulers.newThread())
@@ -233,7 +239,7 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
 
                 List<Integer> strings1 = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {
-                    strings1.add( i);
+                    strings1.add(i);
                 }
 
 //                .delay(2, TimeUnit.SECONDS)
@@ -252,7 +258,7 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
                 Observable.zip(observable1, observable2, new BiFunction<String, Integer, HomeInfo>() {
                     @Override
                     public HomeInfo apply(@NonNull String s, @NonNull Integer integer) throws Exception {
-                        HomeInfo info = new HomeInfo(s,integer);
+                        HomeInfo info = new HomeInfo(s, integer);
                         Log.d(TAG, "accept: zip---apply---s=" + s + ",integer=" + integer + ",currentThread=" + Thread.currentThread().getName());
                         return info;
                     }
@@ -277,7 +283,110 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
             case R.id.tv_test_RxJava9:
                 testSingle();
                 break;
+            case R.id.tv_test_RxJava10:
+                testRxLifeCircle();
+                break;
+            case R.id.tv_test_RxJava11:
+                testOprerate();
+                break;
+            case R.id.tv_test_RxJava12:
+                break;
         }
+    }
+
+    private void testOprerate() {
+        //operate1 :takeUtil
+        Observable<Long> observable = Observable.interval(3, TimeUnit.SECONDS);
+
+        Observable.interval(1, TimeUnit.SECONDS)
+                .takeUntil(observable)
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        Log.d(TAG, "testOprerate--takeUtil--onNext--aLong: " + aLong);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "testOprerate--takeUtil--onComplete--");
+
+
+                    }
+                });
+
+
+
+    }
+
+    private void testRxLifeCircle() {
+
+        Observable<Integer> observable = Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                Log.d(TAG, "testRxLifeCircle-1-subscribe: ");
+                e.onNext(111);
+                e.onNext(222);
+                e.onNext(333);
+                e.onNext(4);
+                e.onNext(5);
+                e.onComplete();
+                Log.d(TAG, "testRxLifeCircle-1-subscribe: end");
+            }
+        });
+
+        LifecycleTransformer<Object> transformer = RxLifecycle.bind(observable);
+//        LifecycleTransformer<Object> bindUntilEvent = RxLifecycle.bindUntilEvent(observable, ActivityEvent.DESTROY);
+
+//        RxLifecycleAndroid.bindActivity()
+
+
+        Observable
+                .create(new ObservableOnSubscribe<String>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<String> e) throws Exception {
+                        Log.d(TAG, "testRxLifeCircle-2-subscribe: ");
+                        e.onNext("数据1");
+                        e.onNext("数据2");
+                        e.onNext("数据3");
+                        e.onNext("数据4");
+                        e.onComplete();
+                        Log.d(TAG, "testRxLifeCircle-2-subscribe: end");
+
+                    }
+                })
+                .compose(transformer)
+                .subscribe();
+//                .subscribe(new Observer<String>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(String s) {
+//                        Log.d(TAG, "onNext: s=" + s);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
     }
 
     private void testSingle() {

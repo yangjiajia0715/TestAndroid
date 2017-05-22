@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f8f8f8"
-    android:padding="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/tv_test_RxJava"
@@ -25,10 +25,12 @@
         android:id="@+id/tv_test_RxJava3"
         style="@style/home_text_style"
         android:text="RxJava3" />
+
     <TextView
         android:id="@+id/tv_test_RxJava4"
         style="@style/home_text_style"
         android:text="RxJava4" />
+
     <TextView
         android:id="@+id/tv_test_RxJava5"
         style="@style/home_text_style"
@@ -51,8 +53,27 @@
         style="@style/home_text_style"
         android:layout_margin="10dp"
         android:text="零碎00" />
+
     <TextView
         android:id="@+id/tv_test_RxJava9"
+        style="@style/home_text_style"
+        android:layout_margin="10dp"
+        android:text="Single" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava10"
+        style="@style/home_text_style"
+        android:layout_margin="10dp"
+        android:text="RxLifeCircle" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava11"
+        style="@style/home_text_style"
+        android:layout_margin="10dp"
+        android:text="Single" />
+
+    <TextView
+        android:id="@+id/tv_test_RxJava12"
         style="@style/home_text_style"
         android:layout_margin="10dp"
         android:text="Single" />

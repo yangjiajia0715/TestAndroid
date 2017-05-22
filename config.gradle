@@ -17,6 +17,8 @@ ext {
     rxjavaVersion = "2.0.7"//2017-3-16
     rxandroidVersion = "2.0.1"
 
+    rxlifecycleVersion = "2.0.1"//同rxlifecycle-components
+
     okhttp3Version = "3.6.0"
 //    okhttp3InterceptorVersion = "3.0.1"
 
