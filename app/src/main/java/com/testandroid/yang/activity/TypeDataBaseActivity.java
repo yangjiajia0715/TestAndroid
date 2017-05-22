@@ -82,6 +82,8 @@ public class TypeDataBaseActivity extends BaseActivity implements View.OnClickLi
         adapter = new HomeRecyleViewAdapter(this, items);
         recyclerView.setAdapter(adapter);
         adapter.setClickListener(this);
+
+        //数据库 冲突
     }
 
     @Override
