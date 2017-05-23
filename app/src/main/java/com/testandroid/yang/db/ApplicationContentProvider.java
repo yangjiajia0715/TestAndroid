@@ -7,18 +7,21 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
- * ApplicationProvider
+ * ApplicationContentProvider
  * Created by yangjiajia on 2017/5/18.
  */
 
-public class ApplicationProvider extends ContentProvider {
+public class ApplicationContentProvider extends ContentProvider {
+    private static final String TAG = "ApplicationContentProvi";
 
     @Override
     public boolean onCreate() {
 
-        DBHelper dbHelper = new DBHelper(getContext(), "Test.db", null, 1);
+        Log.d(TAG, "onCreate: ");
+        DBHelper dbHelper = new DBHelper(getContext(), "TestAndroid.db", null, 1);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         return false;
     }
@@ -26,6 +29,7 @@ public class ApplicationProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+
         return null;
     }
 

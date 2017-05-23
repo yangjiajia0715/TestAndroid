@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.multidex.MultiDex;
+import android.util.Log;
 
 import com.tencent.tinker.anno.DefaultLifeCycle;
 import com.tencent.tinker.lib.tinker.Tinker;
@@ -79,8 +80,8 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         //you must install multiDex whatever tinker is installed!
         MultiDex.install(base);
 
-//        Log.d(TAG,"SampleApplicationLike--onBaseContextAttached--base=" + base);
-//        Log.d(TAG,"SampleApplicationLike--onBaseContextAttached--getApplication=" + getApplication());
+        Log.d(TAG,"SampleApplicationLike--onBaseContextAttached--base=" + base);
+        Log.d(TAG,"SampleApplicationLike--onBaseContextAttached--getApplication=" + getApplication());
 
 //        Log.d(TAG,"SampleApplicationLike--onBaseContextAttached--getApplicationContext=" + getApplication().getApplicationContext());
 
