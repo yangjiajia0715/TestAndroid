@@ -1,6 +1,8 @@
 package com.testandroid.yang.activity;
 
 import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -41,6 +43,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
     TextView saveToDb6;
     @BindView(R.id.save_to_db7)
     TextView saveToDb7;
+    private int appId = 1;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, SaveToDataBaseActivity.class);
@@ -77,16 +80,36 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 ContentResolver contentResolver = getContentResolver();
                 Log.d(TAG, "onViewClicked: contentResolver=" + contentResolver);
 
-                Uri uri = Uri.parse("");
-                Cursor query = contentResolver.query(UserDictionary.Words.CONTENT_URI, null, null, null, null);
-                int count = query.getCount();
+//                contentResolver.insert()
+                Cursor cursor = contentResolver.query(UserDictionary.Words.CONTENT_URI, null, null, null, null);
+                int count = cursor.getCount();
                 Log.d(TAG, "onViewClicked: count=" + count);
+                Uri uri = UserDictionary.Words.CONTENT_URI;
 
+                Log.d(TAG, "onViewClicked: uri=" + uri);
+                Uri withAppendedId = ContentUris.withAppendedId(uri, 2);
+                Log.d(TAG, "onViewClicked: withAppendedId=" + withAppendedId);
+                long parseId = ContentUris.parseId(withAppendedId);
+                Log.d(TAG, "onViewClicked: parseId=" + parseId);
+
+                int columnIndex = cursor.getColumnIndex(UserDictionary.Words.WORD);
+                String string = cursor.getString(columnIndex);
+
+                if (cursor != null) {
+                    while (cursor.moveToNext()) {
+                        String string1 = cursor.getString(columnIndex);
+
+                        int type = cursor.getType(columnIndex);
+
+                    }
+                }
 //                UserDictionary.Words.addWord();
                 break;
             case R.id.save_to_db2:
+//                new SimpleCursorAdapter(getApplication(),R.layout.item_school_list,)
                 break;
             case R.id.save_to_db3:
+                saveWord();
                 break;
             case R.id.save_to_db4:
                 break;
@@ -95,5 +118,22 @@ public class SaveToDataBaseActivity extends BaseActivity {
             case R.id.save_to_db6:
                 break;
         }
+    }
+
+    private void saveWord() {
+        appId++;
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(UserDictionary.Words.APP_ID, appId);
+        contentValues.put(UserDictionary.Words.WORD, "张三" + appId);
+
+        contentValues.putNull(UserDictionary.Words.CONTENT_TYPE);
+        Uri uri = UserDictionary.Words.CONTENT_URI;
+
+        Uri insert = getContentResolver().insert(uri, contentValues);
+
+        Log.d(TAG, "saveWord: insert=" + insert);
+
+
     }
 }

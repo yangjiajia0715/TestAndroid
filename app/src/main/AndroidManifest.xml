@@ -21,6 +21,7 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
 
     <!-- name MultiDexAppcation -->
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
     <application
         android:name="com.testandroid.yang.tinker.SampleApplication"
         android:allowBackup="true"
