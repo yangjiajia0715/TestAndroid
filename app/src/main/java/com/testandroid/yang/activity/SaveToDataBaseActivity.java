@@ -1,19 +1,24 @@
 package com.testandroid.yang.activity;
 
+import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.OperationApplicationException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.provider.UserDictionary;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -112,6 +117,15 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 saveWord();
                 break;
             case R.id.save_to_db4:
+                ContentProviderOperation contentProviderOperation ;
+                ArrayList<ContentProviderOperation> list = new ArrayList<>();
+                try {
+                    getContentResolver().applyBatch("", list);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                } catch (OperationApplicationException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.save_to_db5:
                 break;
