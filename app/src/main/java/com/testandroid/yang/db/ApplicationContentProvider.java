@@ -2,9 +2,11 @@ package com.testandroid.yang.db;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -16,6 +18,7 @@ import android.util.Log;
 
 public class ApplicationContentProvider extends ContentProvider {
     private static final String TAG = "ApplicationContentProvi";
+    private static UriMatcher uriMatcher;
 
     @Override
     public boolean onCreate() {
@@ -30,6 +33,11 @@ public class ApplicationContentProvider extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
 
+        uriMatcher = new UriMatcher(2);
+        uriMatcher.addURI("","",444);
+//        ContactsContract.CommonDataKinds.Contactables;
+        
+        uriMatcher.match(ContactsContract.Contacts.CONTENT_URI);
         return null;
     }
 
