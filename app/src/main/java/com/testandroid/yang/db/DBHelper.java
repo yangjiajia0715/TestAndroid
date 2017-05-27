@@ -22,6 +22,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(TAG, "onCreate: ");
 
+        //wrong
+        db.execSQL("create table " + "users{"
+                + UserContract.Users._ID + " primarykey autoincreament"
+                + "}");
     }
 
     @Override

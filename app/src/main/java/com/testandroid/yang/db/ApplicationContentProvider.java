@@ -36,7 +36,7 @@ public class ApplicationContentProvider extends ContentProvider {
         uriMatcher = new UriMatcher(2);
         uriMatcher.addURI("","",444);
 //        ContactsContract.CommonDataKinds.Contactables;
-        
+
         uriMatcher.match(ContactsContract.Contacts.CONTENT_URI);
         return null;
     }
