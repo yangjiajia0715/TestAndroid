@@ -237,6 +237,9 @@
 
         <activity android:name=".activity.SaveToDataBaseActivity" />
 
+        <provider
+            android:authorities="com.testandroid.yang.provider.user"
+            android:name=".db.ApplicationContentProvider" />
     </application>
 
 </manifest>

@@ -18,13 +18,14 @@ import com.testandroid.yang.common.User;
  * Created by yangjiajia on 2017/5/27.
  */
 
-public class UserContract {
+public final class UserContract {
     private static final String TAG = "UserContract";
-    public static final String AUTHORITY = "com.testandroid.yang.user.provider";
+    public static final String AUTHORITY = "com.testandroid.yang.provider.user";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
-    public static class Users implements BaseColumns{
 
-        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/users");
+    public static class Users implements BaseColumns {
+
+        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/user");
 
 //        /**
 //         * The MIME type of {@link #CONTENT_URI} providing a directory of words.
@@ -38,24 +39,18 @@ public class UserContract {
 
         public static String _ID = BaseColumns._ID;
         public static String USER_NAME = "user_name";
-        public static String SEX = "sex";//0 女，其他男
         public static String AGE = "age";
         public static String PHONE_NUMBER = "phone_number";
-        public static String ADDRESS = "address";
 
-       public static void addUser(@NonNull Context context,@NonNull User user){
+        public static void addUser(@NonNull Context context, @NonNull User user) {
             ContentValues contentValues = new ContentValues();
-            contentValues.put(USER_NAME,user.name);
-            contentValues.put(SEX,user.sex);
-            contentValues.put(AGE,user.age);
-            contentValues.put(PHONE_NUMBER,user.phoneNumber);
-            contentValues.put(ADDRESS,user.address);
+            contentValues.put(USER_NAME, user.name);
+            contentValues.put(AGE, user.age);
+            contentValues.put(PHONE_NUMBER, user.phoneNumber);
 
             ContentResolver contentResolver = context.getContentResolver();
-            contentResolver.insert(CONTENT_URI,contentValues);
-
-            Log.d(TAG, "addUser: 插入数据 user=" + user);
-
+            Uri insert = contentResolver.insert(CONTENT_URI, contentValues);
+            Log.d(TAG, "addUser: 插入数据 insert=" + insert);
         }
 
     }

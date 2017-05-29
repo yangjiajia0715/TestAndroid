@@ -11,14 +11,18 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.provider.ContactsContract;
 import android.provider.UserDictionary;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.common.User;
+import com.testandroid.yang.db.UserContract;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +53,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
     @BindView(R.id.save_to_db7)
     TextView saveToDb7;
     private int appId = 1;
+    private Random random;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, SaveToDataBaseActivity.class);
@@ -60,6 +65,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_to_db);
         ButterKnife.bind(this);
+        random = new Random();
         initView();
         initData();
 
@@ -100,11 +106,14 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 int columnIndex = cursor.getColumnIndex(UserDictionary.Words.WORD);
                 String string = cursor.getString(columnIndex);
 
-                if (cursor != null) {
+                if (cursor.getCount() > 0) {
                     while (cursor.moveToNext()) {
                         String string1 = cursor.getString(columnIndex);
 
                         int type = cursor.getType(columnIndex);
+                        if (Cursor.FIELD_TYPE_BLOB == type) {
+
+                        }
 
                     }
                 }
@@ -117,7 +126,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 saveWord();
                 break;
             case R.id.save_to_db4:
-                ContentProviderOperation contentProviderOperation ;
+                ContentProviderOperation contentProviderOperation;
                 ArrayList<ContentProviderOperation> list = new ArrayList<>();
                 try {
                     getContentResolver().applyBatch("", list);
@@ -128,8 +137,19 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 }
                 break;
             case R.id.save_to_db5:
+//                random.nextInt(10000);
+//                10000
+                int nextInt = random.nextInt(100);
+                Log.d(TAG, "onViewClicked: nextint=" + nextInt);
+                final User user = new User();
+                user.name = "用户" + nextInt;
+                user.age = nextInt;
+                user.phoneNumber = String.valueOf(nextInt);
+                Log.d(TAG, "onViewClicked: user=" + user);
+                UserContract.Users.addUser(getApplicationContext(), user);
                 break;
             case R.id.save_to_db6:
+
                 break;
         }
     }
@@ -142,10 +162,13 @@ public class SaveToDataBaseActivity extends BaseActivity {
         contentValues.put(UserDictionary.Words.WORD, "张三" + appId);
 
         contentValues.putNull(UserDictionary.Words.CONTENT_TYPE);
+//        contentValues.putNull("");
         Uri uri = UserDictionary.Words.CONTENT_URI;
 
         Uri insert = getContentResolver().insert(uri, contentValues);
 
+//        getContentResolver().update()
+        ContactsContract.Data data;
         Log.d(TAG, "saveWord: insert=" + insert);
 
 
