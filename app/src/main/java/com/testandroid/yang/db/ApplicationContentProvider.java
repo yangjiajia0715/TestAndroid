@@ -18,9 +18,15 @@ import android.util.Log;
 
 public class ApplicationContentProvider extends ContentProvider {
     private static final String TAG = "ApplicationContentProvi";
-    private static UriMatcher uriMatcher;
+    private static final int User = 1000;
+    private static UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private DBHelper dbHelper;
     private SQLiteDatabase db;
+
+    static {
+        sUriMatcher.addURI(UserContract.AUTHORITY, "user", User);
+    }
+
 
     @Override
     public boolean onCreate() {
@@ -61,12 +67,19 @@ public class ApplicationContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        switch (sUriMatcher.match(uri)) {
+            case User:
+                
+                break;
+            default:
+                throw new IllegalArgumentException("不支持的uri=" + uri);
+        }
         Log.d(TAG, "insert: uri=" + uri);
         db = dbHelper.getWritableDatabase();
         long row = db.insert("user", "干啥用nullColumnHack", values);
         Log.d(TAG, "insert: row=" + row);
         if (row > 0) {
-           return ContentUris.withAppendedId(uri,row);
+            return ContentUris.withAppendedId(uri, row);
         }
         return null;
     }

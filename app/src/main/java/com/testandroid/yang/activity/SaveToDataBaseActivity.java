@@ -91,6 +91,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 ContentResolver contentResolver = getContentResolver();
                 Log.d(TAG, "onViewClicked: contentResolver=" + contentResolver);
 
+//                contentResolver.fi
 //                contentResolver.insert()
                 Cursor cursor = contentResolver.query(UserDictionary.Words.CONTENT_URI, null, null, null, null);
                 int count = cursor.getCount();
