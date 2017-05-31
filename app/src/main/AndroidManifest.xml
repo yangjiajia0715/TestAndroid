@@ -237,6 +237,8 @@
 
         <activity android:name=".activity.SaveToDataBaseActivity" />
 
+        <activity android:name=".activity.RotationActivity" />
+
         <provider
             android:authorities="com.testandroid.yang.provider.user"
             android:name=".db.ApplicationContentProvider" />

@@ -69,7 +69,7 @@ public class ApplicationContentProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         switch (sUriMatcher.match(uri)) {
             case User:
-                
+
                 break;
             default:
                 throw new IllegalArgumentException("不支持的uri=" + uri);
