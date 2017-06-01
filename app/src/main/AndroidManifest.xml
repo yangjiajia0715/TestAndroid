@@ -10,6 +10,10 @@
         android:targetSdkVersion="24"
         tools:overrideLibrary="uk.co.senab.photoview" />
 
+    <permission android:name="com.testandroid.yang.provider" />
+    <permission android:name="com.testandroid.yang.provider.Reader" />
+    <permission android:name="com.testandroid.yang.provider.Write" />
+
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -237,9 +241,30 @@
 
         <activity android:name=".activity.SaveToDataBaseActivity" />
 
+        <!-- android:permission="com."
+            android:readPermission="rrr"
+            android:writePermission="www"-->
+        <!--authorities ; ; ;-->
+        <!--android:enabled="true" 确定是否实例化 application 也有该属性 控制所有组件-->
+        <!--android:exported="true" android:minSdkVersion or android:targetSdkVersion to "16" api 16(含)之前默认是true,16之后默认false-->
         <provider
             android:authorities="com.testandroid.yang.provider.user"
-            android:name=".db.ApplicationContentProvider" />
+            android:grantUriPermissions="true"
+            android:exported="true"
+            android:initOrder="1"
+            android:permission="@string/provider_permisssion"
+            android:name=".db.ApplicationContentProvider" >
+
+            <grant-uri-permission android:path="/attachments/"/>
+            <!-- <grant-uri-permission >
+             </grant-uri-permission>-->
+           <!-- <path-permission android:path="string"
+                android:pathPrefix="string"
+                android:pathPattern="string"
+                android:permission="string"
+                android:readPermission="string"
+                android:writePermission="string" />-->
+        </provider>
     </application>
 
 </manifest>

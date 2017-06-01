@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.testandroid.yang.MyAsynTask;
 import com.testandroid.yang.R;
 import com.testandroid.yang.common.User;
 import com.testandroid.yang.db.UserContract;
@@ -57,6 +58,8 @@ public class SaveToDataBaseActivity extends BaseActivity {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, SaveToDataBaseActivity.class);
+//        starter.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        starter.setDataAndType(,"text/")
         context.startActivity(starter);
     }
 
@@ -69,6 +72,24 @@ public class SaveToDataBaseActivity extends BaseActivity {
         initView();
         initData();
 
+//        Service service = null;
+//        service.startForeground(1,null);
+//        service.stopForeground(true);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+        saveToDb2.post(new Runnable() {
+            @Override
+            public void run() {
+            }
+        });
+
+        MyAsynTask myAsynTask = new MyAsynTask();
+        myAsynTask.cancel(true);
     }
 
     @Override
