@@ -1,5 +1,6 @@
 package com.testandroid.yang.activity;
 
+import android.content.ComponentName;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -7,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.OperationApplicationException;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +24,9 @@ import com.testandroid.yang.R;
 import com.testandroid.yang.common.User;
 import com.testandroid.yang.db.UserContract;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -82,6 +87,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
 
             }
         });
+
         saveToDb2.post(new Runnable() {
             @Override
             public void run() {
@@ -90,6 +96,29 @@ public class SaveToDataBaseActivity extends BaseActivity {
 
         MyAsynTask myAsynTask = new MyAsynTask();
         myAsynTask.cancel(true);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("hh", 0);
+
+        ComponentName componentName = getComponentName();
+        Log.d(TAG, "onCreate: componentName=" + componentName);
+        String className = componentName.getClassName();
+        Log.d(TAG, "onCreate: className=" + className);
+
+        SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
+
+        preferences.edit().putInt(className,11111).apply();
+
+        try {
+            //内部存储
+            FileOutputStream fileOutput = openFileOutput("FileOutput", Context.MODE_PRIVATE);
+            fileOutput.write("哈哈哈哈".getBytes());
+            fileOutput.close();
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
