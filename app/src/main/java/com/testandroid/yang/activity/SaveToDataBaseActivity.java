@@ -24,6 +24,8 @@ import com.testandroid.yang.R;
 import com.testandroid.yang.common.User;
 import com.testandroid.yang.db.UserContract;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -106,14 +108,50 @@ public class SaveToDataBaseActivity extends BaseActivity {
 
         SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
 
-        preferences.edit().putInt(className,11111).apply();
+        preferences.edit().putInt(className, 11111).apply();
 
+        testFileInputSteam();
+    }
+
+    private void testFileInputSteam() {
         try {
             //内部存储
             FileOutputStream fileOutput = openFileOutput("FileOutput", Context.MODE_PRIVATE);
-            fileOutput.write("哈哈哈哈".getBytes());
+            fileOutput.write("内部存储 内容内部存储 内容内部存储 内容内部存储 内容".getBytes());
             fileOutput.close();
-            
+
+//            /storage/emulated/0/Android/data/com.testandroid.yang/files
+            File externalFilesDir = getExternalFilesDir(null);//外部存储目录 data/android/报名 卸载时自动删除
+            File file = new File(externalFilesDir, "外部存储文件.txt");
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+
+            FileInputStream fileInput = openFileInput("FileOutput");
+            byte[] d = new byte[1024];
+            int len;
+            while ((len =fileInput.read(d)) != -1) {
+                fileOutputStream.write(d, 0, len);
+            }
+            fileOutputStream.close();
+            fileInput.close();
+
+            Log.d(TAG, "onCreate: externalFilesDir=" + externalFilesDir);
+
+            //内部目录
+            File filesDir = getFilesDir();//  /data/data/com.testandroid.yang/files
+            File cacheDir = getCacheDir();//  /data/data/com.testandroid.yang/cache
+
+            Log.d(TAG, "onCreate: 内部目录 filesDir=" + filesDir);
+            Log.d(TAG, "onCreate: 内部目录 cacheDir=" + cacheDir);//系统不足会删除，最后自己删除
+
+            File dir = getDir("自定义目录", Context.MODE_PRIVATE);//  /data/data/com.testandroid.yang/app_自定义目录
+            File file0 = new File(dir, "自定义文件0");
+//            file0.setReadable(true);
+            file0.createNewFile();
+            File file1 = new File(dir, "自定义文件1");
+            file1.createNewFile();
+
+            Log.d(TAG, "onCreate: dir=" + dir);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
