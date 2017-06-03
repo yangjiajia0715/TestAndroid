@@ -51,7 +51,7 @@
         style="@style/Home_text_style2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="保存到数据库6" />
+        android:text="保存Raw图片到外部（相对私有）存储空间并设置对Media可见" />
 
     <TextView
         android:id="@+id/save_to_db7"

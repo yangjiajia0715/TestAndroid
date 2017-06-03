@@ -10,8 +10,10 @@ import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.provider.UserDictionary;
@@ -29,6 +31,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -37,7 +40,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 数据库交互
+ * 数据库交互   参考文档Save Data
  * Created by yangjiajia on 2017/5/18.
  */
 
@@ -113,6 +116,9 @@ public class SaveToDataBaseActivity extends BaseActivity {
         testFileInputSteam();
     }
 
+    /**
+     * @see {@link SaveToDataBaseActivity#extralDirectoryPictures()}
+     */
     private void testFileInputSteam() {
         try {
             //内部存储
@@ -126,11 +132,13 @@ public class SaveToDataBaseActivity extends BaseActivity {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
 
             FileInputStream fileInput = openFileInput("FileOutput");
+
             byte[] d = new byte[1024];
             int len;
-            while ((len =fileInput.read(d)) != -1) {
+            while ((len = fileInput.read(d)) != -1) {
                 fileOutputStream.write(d, 0, len);
             }
+
             fileOutputStream.close();
             fileInput.close();
 
@@ -141,9 +149,9 @@ public class SaveToDataBaseActivity extends BaseActivity {
             File cacheDir = getCacheDir();//  /data/data/com.testandroid.yang/cache
 
             Log.d(TAG, "onCreate: 内部目录 filesDir=" + filesDir);
-            Log.d(TAG, "onCreate: 内部目录 cacheDir=" + cacheDir);//系统不足会删除，最后自己删除
+            Log.d(TAG, "onCreate: 内部目录 cacheDir=" + cacheDir);//系统不足会删除，最好自己删除
 
-            File dir = getDir("自定义目录", Context.MODE_PRIVATE);//  /data/data/com.testandroid.yang/app_自定义目录
+            File dir = getDir("内部自定义目录", Context.MODE_PRIVATE);//  /data/data/com.testandroid.yang/app_自定义目录
             File file0 = new File(dir, "自定义文件0");
 //            file0.setReadable(true);
             file0.createNewFile();
@@ -157,6 +165,67 @@ public class SaveToDataBaseActivity extends BaseActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 外部文件（图片）目录，设置媒体可见
+     */
+    private void extralDirectoryPictures(){
+//        File.createTempFile()
+//        try {
+//            File.createTempFile("",null,getCacheDir());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        File externalStorageDirectory = Environment.getExternalStorageDirectory();
+        File externalStoragePublicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+        Log.d(TAG, "extralDirectoryPictures: externalStorageDirectory=" + externalStorageDirectory);
+        Log.d(TAG, "extralDirectoryPictures: externalStoragePublicDirectory=" + externalStoragePublicDirectory);
+
+        //私有，卸载时删除,通常对Media不可见
+        //但是从4.4其他应用也可以访问（有读写权限）
+        // Starting in KITKAT, no permissions are required to read or write to the returned path;
+        // it's always accessible to the calling app.
+        // This only applies to paths generated for package name of the calling application.
+        // To access paths belonging to other packages, WRITE_EXTERNAL_STORAGE and/or READ_EXTERNAL_STORAGE are required.
+//         external private directory.  外部私有目录
+        File externalFilesDirPic = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+//        /storage/emulated/0/Android/data/com.testandroid.yang/files/Pictures
+        Log.d(TAG, "testFileInputSteam: externalFilesDirPic=" + externalFilesDirPic);
+
+        File directoryPictureLiushishi = new File(externalFilesDirPic, "liushishi.jpg");
+        InputStream inputStream = getResources().openRawResource(R.raw.liushishi);
+        try {
+            FileOutputStream fileOutputStream1 = new FileOutputStream(directoryPictureLiushishi);
+            int len2;
+            byte[] bbb = new byte[1024];
+            while ((len2 = inputStream.read(bbb)) != -1) {
+                fileOutputStream1.write(bbb, 0, len2);
+                Log.d(TAG, "testFileInputSteam: len2=" + len2);
+            }
+            inputStream.close();
+            fileOutputStream1.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Tell the media scanner about the new file so that it is
+        // immediately available to the user.
+        MediaScannerConnection.scanFile(this, new String[]{directoryPictureLiushishi.toString()}, null,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    public void onScanCompleted(String path, Uri uri) {
+                        Log.i("ExternalStorage", "Scanned " + path + ":");
+                        Log.i("ExternalStorage", "-> uri=" + uri);
+                        SaveToDataBaseActivity.this.sendBroadcast(new Intent(android.hardware.Camera.ACTION_NEW_PICTURE, uri));
+                        SaveToDataBaseActivity.this.sendBroadcast(new Intent("com.android.camera.NEW_PICTURE", uri));
+                        SaveToDataBaseActivity.this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                                uri));
+                    }
+                });
+
+//        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+//        Uri uri = Uri.fromFile(directoryPictureLiushishi);
+//        intent.setData(uri);
+//        sendBroadcast(intent);
     }
 
     @Override
@@ -237,7 +306,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 UserContract.Users.addUser(getApplicationContext(), user);
                 break;
             case R.id.save_to_db6:
-
+                extralDirectoryPictures();
                 break;
         }
     }
