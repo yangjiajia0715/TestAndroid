@@ -28,8 +28,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(TAG, "onCreate: ");
 //
-        db.execSQL("create table user ("
-                + UserContract.Users._ID + " integer  primary key autoincrement,"
+        db.execSQL("create table " + UserContract.Users.TABLE_NAME + " ("
+                + UserContract.Users._ID + " integer primary key autoincrement,"
                 + UserContract.Users.USER_NAME + " text,"
                 + UserContract.Users.AGE + " integer,"
                 + UserContract.Users.PHONE_NUMBER + " text"

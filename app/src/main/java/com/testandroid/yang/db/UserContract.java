@@ -25,7 +25,8 @@ public final class UserContract {
 
     public static class Users implements BaseColumns {
 
-        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/user");
+        public static final String TABLE_NAME = "user";
+        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
 
 //        /**
 //         * The MIME type of {@link #CONTENT_URI} providing a directory of words.

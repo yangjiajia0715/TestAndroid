@@ -241,17 +241,18 @@
 
         <activity android:name=".activity.SaveToDataBaseActivity" />
 
+        <activity android:name=".activity.RotationActivity" />
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->
+        <!--android:grantUriPermissions="true" 临时权限-->
         <!--authorities ; ; ;-->
         <!--android:enabled="true" 确定是否实例化 application 也有该属性 控制所有组件-->
         <!--android:exported="true" android:minSdkVersion or android:targetSdkVersion to "16" api 16(含)之前默认是true,16之后默认false-->
+
         <provider
             android:name=".db.ApplicationContentProvider"
             android:authorities="com.testandroid.yang.provider.user"
-            android:exported="true"
-            android:grantUriPermissions="true"
             android:initOrder="1"
             android:permission="@string/provider_permisssion">
 

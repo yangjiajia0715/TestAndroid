@@ -9,7 +9,7 @@
         style="@style/Home_text_style2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="保存到数据库" />
+        android:text="testSqliteQueryBuilder" />
 
     <TextView
         android:id="@+id/save_to_db1"
@@ -44,7 +44,7 @@
         style="@style/Home_text_style2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="保存 用户信息 到数据库" />
+        android:text="保存 用户信息 到数据库 随机生成" />
 
     <TextView
         android:id="@+id/save_to_db6"

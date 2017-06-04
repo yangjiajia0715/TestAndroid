@@ -52,6 +52,7 @@
     <item name="tv_recycleview" type="id" />
     <item name="tv_vLayouot" type="id" />
     <item name="tv_fitsystemwindow" type="id" />
+    <item name="tv_rotation_view" type="id" />
 
     <!--"type_animation"-->
 

@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.util.List;
+
 /**
  * ApplicationContentProvider
  * Created by yangjiajia on 2017/5/18.
@@ -18,22 +20,30 @@ import android.util.Log;
 
 public class ApplicationContentProvider extends ContentProvider {
     private static final String TAG = "ApplicationContentProvi";
-    private static UriMatcher uriMatcher;
+    private static final String DB_NAME = "TestAndroid";
+    private static final int DB_VERSION = 1;
+    private static final int CODE_USER = 1000;
+    private static UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private DBHelper dbHelper;
     private SQLiteDatabase db;
+
+    static {
+        sUriMatcher.addURI(UserContract.AUTHORITY, UserContract.Users.TABLE_NAME, CODE_USER);
+    }
 
     @Override
     public boolean onCreate() {
         Log.d(TAG, "onCreate: ");
-        dbHelper = new DBHelper(getContext(), "TestAndroid.db", null, 1);
+        dbHelper = new DBHelper(getContext(), DB_NAME, null, DB_VERSION);
 //        dbHelper.getWritableDatabase();//避免在该方面中调用，延时调用
         return true;
     }
 
     @Nullable
     @Override
-    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-
+    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection,
+                        @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+        Log.d(TAG, "query: uri:" + uri);
 //        Log.d(TAG, "query: ");
 ////        MatrixCursor matrixCursor;
 //        uriMatcher = new UriMatcher(2);
@@ -41,7 +51,23 @@ public class ApplicationContentProvider extends ContentProvider {
 ////        ContactsContract.CommonDataKinds.Contactables;
 //
 //        uriMatcher.match(ContactsContract.Contacts.CONTENT_URI);
-        return null;
+//        db.qu
+//        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+//        queryBuilder.appendWhere("");
+//        Cursor query = queryBuilder.query(db, null, null, null, null, null, null);
+        db = dbHelper.getReadableDatabase();
+        String lastPathSegment = uri.getLastPathSegment();
+        List<String> pathSegments = uri.getPathSegments();
+        Log.d(TAG, "query: lastPathSegment=" + lastPathSegment);
+        Log.d(TAG, "query: pathSegments=" + pathSegments);
+        switch (sUriMatcher.match(uri)) {
+            case CODE_USER:
+                Log.d(TAG, "query: 用户表");
+                return db.query(UserContract.Users.TABLE_NAME, projection, selection, selectionArgs,
+                        null, null, sortOrder);
+            default:
+                throw new IllegalArgumentException("不支持的uri:" + uri);
+        }
     }
 
     @Nullable
@@ -63,11 +89,19 @@ public class ApplicationContentProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         Log.d(TAG, "insert: uri=" + uri);
         db = dbHelper.getWritableDatabase();
-        long row = db.insert("user", "干啥用nullColumnHack", values);
-        Log.d(TAG, "insert: row=" + row);
-        if (row > 0) {
-           return ContentUris.withAppendedId(uri,row);
+        long row = 0;
+        switch (sUriMatcher.match(uri)) {
+            case CODE_USER:
+                row = db.insert(UserContract.Users.TABLE_NAME, "干啥用nullColumnHack", values);
+                Log.d(TAG, "insert: row=" + row);
+                if (row > 0) {
+                    return ContentUris.withAppendedId(uri, row);
+                }
+                break;
+            default:
+                throw new IllegalArgumentException("不支持的uri=" + uri);
         }
+
         return null;
     }
 

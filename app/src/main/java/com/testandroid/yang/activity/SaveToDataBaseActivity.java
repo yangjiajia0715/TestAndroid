@@ -117,7 +117,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
     }
 
     /**
-     * @see {@link SaveToDataBaseActivity#extralDirectoryPictures()}
+     * {@link SaveToDataBaseActivity#extralDirectoryPictures()}
      */
     private void testFileInputSteam() {
         try {
@@ -127,7 +127,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
             fileOutput.close();
 
 //            /storage/emulated/0/Android/data/com.testandroid.yang/files
-            File externalFilesDir = getExternalFilesDir(null);//外部存储目录 data/android/报名 卸载时自动删除
+            File externalFilesDir = getExternalFilesDir(null);//外部私有目录 data/android/报名 卸载时自动删除
             File file = new File(externalFilesDir, "外部存储文件.txt");
             FileOutputStream fileOutputStream = new FileOutputStream(file);
 
@@ -171,6 +171,9 @@ public class SaveToDataBaseActivity extends BaseActivity {
      * 外部文件（图片）目录，设置媒体可见
      */
     private void extralDirectoryPictures(){
+
+//        Cursor cursor = getContentResolver().query(UserContract.CONTENT_URI, null, null, null, null);
+
 //        File.createTempFile()
 //        try {
 //            File.createTempFile("",null,getCacheDir());
@@ -208,6 +211,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         // Tell the media scanner about the new file so that it is
         // immediately available to the user.
         MediaScannerConnection.scanFile(this, new String[]{directoryPictureLiushishi.toString()}, null,
@@ -242,12 +246,13 @@ public class SaveToDataBaseActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.save_to_db0:
-
+                testSqliteQueryBuilder();
                 break;
             case R.id.save_to_db1:
                 ContentResolver contentResolver = getContentResolver();
                 Log.d(TAG, "onViewClicked: contentResolver=" + contentResolver);
 
+//                contentResolver.fi
 //                contentResolver.insert()
                 Cursor cursor = contentResolver.query(UserDictionary.Words.CONTENT_URI, null, null, null, null);
                 int count = cursor.getCount();
@@ -296,7 +301,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
             case R.id.save_to_db5:
 //                random.nextInt(10000);
 //                10000
-                int nextInt = random.nextInt(100);
+                int nextInt = random.nextInt(1000);
                 Log.d(TAG, "onViewClicked: nextint=" + nextInt);
                 final User user = new User();
                 user.name = "用户" + nextInt;
@@ -309,6 +314,10 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 extralDirectoryPictures();
                 break;
         }
+    }
+
+    private void testSqliteQueryBuilder() {
+
     }
 
     private void saveWord() {
