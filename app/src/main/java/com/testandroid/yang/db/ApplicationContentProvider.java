@@ -58,11 +58,12 @@ public class ApplicationContentProvider extends ContentProvider {
 //        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
 //        queryBuilder.appendWhere("");
 //        Cursor query = queryBuilder.query(db, null, null, null, null, null, null);
+
         db = dbHelper.getReadableDatabase();
         String lastPathSegment = uri.getLastPathSegment();
         List<String> pathSegments = uri.getPathSegments();
-        Log.d(TAG, "query: lastPathSegment=" + lastPathSegment);
-        Log.d(TAG, "query: pathSegments=" + pathSegments);
+//        Log.d(TAG, "query: lastPathSegment=" + lastPathSegment);
+//        Log.d(TAG, "query: pathSegments=" + pathSegments);
 
         // 实例化一个全局的ForceLoadContentObserver
         Cursor cursor = null;

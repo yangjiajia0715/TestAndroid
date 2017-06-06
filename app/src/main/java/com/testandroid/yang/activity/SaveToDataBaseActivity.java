@@ -327,7 +327,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
                                 e.printStackTrace();
                             }
                             count++;
-                            if (count > 2) {
+                            if (count > 1) {
                                 continueM = false;
                             }
                         }
