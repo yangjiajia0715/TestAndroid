@@ -1,14 +1,15 @@
 package com.testandroid.yang.activity;
 
 import android.app.LoaderManager;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
+import android.database.ContentObserver;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -48,10 +49,6 @@ public class DisplayUserInfoActivity extends BaseActivity implements LoaderManag
         setContentView(R.layout.activity_display_user_data);
         ButterKnife.bind(this);
 
-        ContentResolver contentResolver = getContentResolver();
-        ContentValues values = new ContentValues();
-        values.putNull("key");
-
         initView();
         initData();
     }
@@ -59,6 +56,7 @@ public class DisplayUserInfoActivity extends BaseActivity implements LoaderManag
     @Override
     public void initView() {
         AdapterViewFlipper adapterViewFlipper;
+//        new CursorLoader(this).re
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +100,23 @@ public class DisplayUserInfoActivity extends BaseActivity implements LoaderManag
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         Log.d(TAG, "onLoadFinished: " + Thread.currentThread().getName());
         adapter.changeCursor(data);
+
+        data.registerContentObserver(new ContentObserver(new Handler()) {
+            @Override
+            public void onChange(boolean selfChange) {
+                super.onChange(selfChange);
+                Log.d(TAG, "onChange: selfChange=" + selfChange);
+            }
+
+            @Override
+            public void onChange(boolean selfChange, Uri uri) {
+                super.onChange(selfChange, uri);
+                Log.d(TAG, "onChange: uri=" + uri);
+            }
+        });
+
+        data.setNotificationUri(getContentResolver(), UserContract.Users.CONTENT_URI);
+//        data.setNotificationUri(getContentResolver(), UserContract.Users.CONTENT_URI);
 //        adapter.swapCursor(data);
     }
 
@@ -112,7 +127,6 @@ public class DisplayUserInfoActivity extends BaseActivity implements LoaderManag
     public void onLoaderReset(Loader<Cursor> loader) {
         Log.d(TAG, "onLoaderReset:  getId=" + loader.getId());
         adapter.changeCursor(null);
-
     }
 
 }

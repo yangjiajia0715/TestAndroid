@@ -64,12 +64,15 @@ public class ApplicationContentProvider extends ContentProvider {
         Log.d(TAG, "query: lastPathSegment=" + lastPathSegment);
         Log.d(TAG, "query: pathSegments=" + pathSegments);
 
+        // 实例化一个全局的ForceLoadContentObserver
         Cursor cursor = null;
         switch (sUriMatcher.match(uri)) {
             case CODE_USER:
                 Log.d(TAG, "query: 用户表");
                 cursor = db.query(UserContract.Users.TABLE_NAME, projection, selection, selectionArgs,
                         null, null, sortOrder);
+                //可行，
+//                cursor.setNotificationUri(getContext().getContentResolver(), uri);
                 break;
             case CODE_USER_ID:
                 Log.d(TAG, "query: 用户表 查询某行");
@@ -113,6 +116,7 @@ public class ApplicationContentProvider extends ContentProvider {
                 row = db.insert(UserContract.Users.TABLE_NAME, "干啥用nullColumnHack", values);
                 Log.d(TAG, "insert: row=" + row);
                 if (row > 0) {
+                    getContext().getContentResolver().notifyChange(uri, null);
                     newUri = ContentUris.withAppendedId(uri, row);
                 }
                 break;
