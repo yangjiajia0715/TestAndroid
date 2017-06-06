@@ -77,6 +77,7 @@ public class TypeDataBaseActivity extends BaseActivity implements View.OnClickLi
         infos.add(new HomeInfo("tv_test_DatabaseUtil", R.id.tv_test_DatabaseUtil, HomeInfo.HomeGroup.DataBase));
         infos.add(new HomeInfo("tv_test_CursorLoader", R.id.tv_test_CursorLoader, HomeInfo.HomeGroup.DataBase));
         infos.add(new HomeInfo("tv_save_userinfo_to_database", R.id.tv_save_userinfo_to_database, HomeInfo.HomeGroup.DataBase));
+        infos.add(new HomeInfo("数据展示页--内部&外部", R.id.tv_save_data_display, HomeInfo.HomeGroup.DataBase));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -112,6 +113,9 @@ public class TypeDataBaseActivity extends BaseActivity implements View.OnClickLi
                     break;
                 case R.id.tv_save_userinfo_to_database:
                     SaveToDataBaseActivity.start(this);
+                    break;
+                case R.id.tv_save_data_display:
+                    DisplayUserInfoActivity.start(this);
                     break;
             }
         }

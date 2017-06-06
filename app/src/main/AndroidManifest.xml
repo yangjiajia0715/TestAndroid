@@ -24,7 +24,22 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
 
     <!-- name MultiDexAppcation -->
-    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY"/>
+
+    <!--<uses-feature />-->
+    <!--不能通过@string/ 方式获取 -->
+    <permission
+        android:name="com.testandroid.yang.provider.pppp"
+         />
+
+    <permission-group android:name="group666" />
+
+    <!-- android:permissionGroup="group11"-->
+    <permission
+        android:name="com.testandroid.yang.provider.READ_USER"
+        android:protectionLevel="dangerous"
+        />
+
     <application
         android:name="com.testandroid.yang.tinker.SampleApplication"
         android:allowBackup="true"
@@ -66,7 +81,7 @@
             android:name=".activity.ViewPagerAllActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
-            android:name=".ObservableScrollView.demo.ParallaxToolbarScrollViewActivity"
+            android:name="com.testandroid.yang.ObservableScrollView.demo.ParallaxToolbarScrollViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
 
         <activity android:name=".ObservableScrollView.viewpager.ViewPagerTabActivity" />
@@ -241,6 +256,8 @@
 
         <activity android:name=".activity.SaveToDataBaseActivity" />
 
+        <activity android:name=".activity.DisplayUserInfoActivity" />
+
         <activity android:name=".activity.RotationActivity" />
         <!-- android:permission="com."
             android:readPermission="rrr"
@@ -251,15 +268,17 @@
         <!--android:exported="true" android:minSdkVersion or android:targetSdkVersion to "16" api 16(含)之前默认是true,16之后默认false-->
 
         <!--android:permission="@string/provider_permisssion"-->
+        <!--注意，permission 该权限需要 定义-->
+        <!-- android:readPermission="com.testandroid.yang.provider.READ_USER"-->
         <provider
             android:name=".db.ApplicationContentProvider"
             android:authorities="com.testandroid.yang.provider.user"
-            android:initOrder="1"
-            android:permission="@string/provider_permisssion"
             android:exported="true"
-            >
+            android:initOrder="1"
+            android:readPermission="com.testandroid.yang.provider.READ_USER"
+            android:permission="@string/provider_permisssion">
 
-           <!-- <grant-uri-permission android:path="/attachments/" />-->
+            <!-- <grant-uri-permission android:path="/attachments/" />-->
             <!-- <grant-uri-permission >
              </grant-uri-permission>-->
             <!-- <path-permission android:path="string"

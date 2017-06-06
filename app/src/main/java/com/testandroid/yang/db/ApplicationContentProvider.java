@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -23,12 +24,14 @@ public class ApplicationContentProvider extends ContentProvider {
     private static final String DB_NAME = "TestAndroid";
     private static final int DB_VERSION = 1;
     private static final int CODE_USER = 1000;
+    private static final int CODE_USER_ID = 1001;
     private static UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private DBHelper dbHelper;
     private SQLiteDatabase db;
 
     static {
         sUriMatcher.addURI(UserContract.AUTHORITY, UserContract.Users.TABLE_NAME, CODE_USER);
+        sUriMatcher.addURI(UserContract.AUTHORITY, UserContract.Users.TABLE_NAME + "/#", CODE_USER_ID);
     }
 
     @Override
@@ -60,14 +63,28 @@ public class ApplicationContentProvider extends ContentProvider {
         List<String> pathSegments = uri.getPathSegments();
         Log.d(TAG, "query: lastPathSegment=" + lastPathSegment);
         Log.d(TAG, "query: pathSegments=" + pathSegments);
+
+        Cursor cursor = null;
         switch (sUriMatcher.match(uri)) {
             case CODE_USER:
                 Log.d(TAG, "query: 用户表");
-                return db.query(UserContract.Users.TABLE_NAME, projection, selection, selectionArgs,
+                cursor = db.query(UserContract.Users.TABLE_NAME, projection, selection, selectionArgs,
                         null, null, sortOrder);
+                break;
+            case CODE_USER_ID:
+                Log.d(TAG, "query: 用户表 查询某行");
+                Log.d(TAG, "query: 用户表 查询某行 selection " + selection);
+                Log.d(TAG, "query: 用户表 查询某行 selectionArgs " + selectionArgs);
+
+                selection = BaseColumns._ID + "=?";
+                selectionArgs = new String[]{lastPathSegment};
+                cursor = db.query(UserContract.Users.TABLE_NAME, projection, selection, selectionArgs,
+                        null, null, sortOrder);
+                break;
             default:
                 throw new IllegalArgumentException("不支持的uri:" + uri);
         }
+        return cursor;
     }
 
     @Nullable
@@ -89,31 +106,34 @@ public class ApplicationContentProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         Log.d(TAG, "insert: uri=" + uri);
         db = dbHelper.getWritableDatabase();
-        long row = 0;
+        long row;
+        Uri newUri = null;
         switch (sUriMatcher.match(uri)) {
             case CODE_USER:
                 row = db.insert(UserContract.Users.TABLE_NAME, "干啥用nullColumnHack", values);
                 Log.d(TAG, "insert: row=" + row);
                 if (row > 0) {
-                    return ContentUris.withAppendedId(uri, row);
+                    newUri = ContentUris.withAppendedId(uri, row);
                 }
                 break;
             default:
                 throw new IllegalArgumentException("不支持的uri=" + uri);
         }
 
-        return null;
+        return newUri;
     }
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
         Log.d(TAG, "delete: ");
+//        getContext().getContentResolver().notifyChange(uri,null);
         return 0;
     }
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         Log.d(TAG, "update: ");
+
         return 0;
     }
 

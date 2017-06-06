@@ -170,7 +170,7 @@ public class SaveToDataBaseActivity extends BaseActivity {
     /**
      * 外部文件（图片）目录，设置媒体可见
      */
-    private void extralDirectoryPictures(){
+    private void extralDirectoryPictures() {
 
 //        Cursor cursor = getContentResolver().query(UserContract.CONTENT_URI, null, null, null, null);
 
@@ -276,13 +276,11 @@ public class SaveToDataBaseActivity extends BaseActivity {
                         if (Cursor.FIELD_TYPE_BLOB == type) {
 
                         }
-
                     }
                 }
-//                UserDictionary.Words.addWord();
                 break;
             case R.id.save_to_db2:
-//                new SimpleCursorAdapter(getApplication(),R.layout.item_school_list,)
+
                 break;
             case R.id.save_to_db3:
                 saveWord();
@@ -299,16 +297,44 @@ public class SaveToDataBaseActivity extends BaseActivity {
                 }
                 break;
             case R.id.save_to_db5:
-//                random.nextInt(10000);
-//                10000
-                int nextInt = random.nextInt(1000);
-                Log.d(TAG, "onViewClicked: nextint=" + nextInt);
-                final User user = new User();
-                user.name = "用户" + nextInt;
-                user.age = nextInt;
-                user.phoneNumber = String.valueOf(nextInt);
-                Log.d(TAG, "onViewClicked: user=" + user);
-                UserContract.Users.addUser(getApplicationContext(), user);
+//                int nextInt = random.nextInt(1000);
+//                Log.d(TAG, "onViewClicked: nextint=" + nextInt);
+//                final User user = new User();
+//                user.name = "用户" + nextInt;
+//                user.age = nextInt;
+//                user.phoneNumber = String.valueOf(nextInt);
+//                Log.d(TAG, "onViewClicked: user=" + user);
+//                UserContract.Users.addUser(getApplicationContext(), user);
+
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        int count = 0;
+                        boolean continueM = true;
+                        while (continueM) {
+                            try {
+                                Thread.sleep(2000);
+                                int nextInt = random.nextInt(1000);
+                                Log.d(TAG, "onViewClicked: nextint=" + nextInt);
+                                final User user = new User();
+                                user.name = "用户" + nextInt;
+                                user.age = nextInt;
+                                user.phoneNumber = String.valueOf(nextInt);
+                                Log.d(TAG, "onViewClicked: user=" + user);
+                                UserContract.Users.addUser(getApplicationContext(), user);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            count++;
+                            if (count > 5) {
+                                continueM = false;
+                            }
+                        }
+                    }
+                }.start();
+
+                DisplayUserInfoActivity.start(this);
                 break;
             case R.id.save_to_db6:
                 extralDirectoryPictures();
