@@ -21,8 +21,6 @@ import java.util.List;
 
 public class ApplicationContentProvider extends ContentProvider {
     private static final String TAG = "ApplicationContentProvi";
-    private static final String DB_NAME = "TestAndroid";
-    private static final int DB_VERSION = 1;
     private static final int CODE_USER = 1000;
     private static final int CODE_USER_ID = 1001;
     private static UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -37,7 +35,7 @@ public class ApplicationContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         Log.d(TAG, "onCreate: ");
-        dbHelper = new DBHelper(getContext(), DB_NAME, null, DB_VERSION);
+        dbHelper = DBHelper.getInstance(getContext());
 //        dbHelper.getWritableDatabase();//避免在该方面中调用，延时调用
         return true;
     }

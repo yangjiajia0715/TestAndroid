@@ -12,6 +12,17 @@ import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String TAG = "DBHelper";
+    private static final String DB_NAME = "TestAndroid";
+    private static final int DB_VERSION = 1;
+
+    private static DBHelper INSTANCE;
+
+    public static synchronized DBHelper getInstance(Context context) {
+        if (INSTANCE == null) {
+            INSTANCE = new DBHelper(context);
+        }
+        return INSTANCE;
+    }
 
     @Override
     public void onOpen(SQLiteDatabase db) {
@@ -19,10 +30,15 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d(TAG, "onOpen: 数据库打开了，做一些初始化操作.....");
     }
 
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    private DBHelper(Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
         Log.d(TAG, "DBHelper: ");
     }
+//
+//    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+//        super(context, name, factory, version);
+//        Log.d(TAG, "DBHelper: ");
+//    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
