@@ -59,7 +59,9 @@ public class RotationActivity extends BaseActivity {
     public void onViewClicked() {
 
 //        matrix.reset();
-//        matrix.postRotate(90);
+        //可能 平移等
+//        matrix.postRotate(90);//重置后旋转
+
         matrix.setRotate(90 * time);
 //        matrix.postRotate(90 * time);
 

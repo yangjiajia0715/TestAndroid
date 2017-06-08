@@ -97,11 +97,11 @@ public class DisplayUserInfoActivity extends BaseActivity implements LoaderManag
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         Log.d(TAG, "onLoadFinished: " + Thread.currentThread().getName());
-        adapter.changeCursor(data);
+        adapter.changeCursor(cursor);
 
-        data.registerContentObserver(new ContentObserver(new Handler()) {
+        cursor.registerContentObserver(new ContentObserver(new Handler()) {
             @Override
             public void onChange(boolean selfChange) {
                 super.onChange(selfChange);
@@ -115,9 +115,9 @@ public class DisplayUserInfoActivity extends BaseActivity implements LoaderManag
             }
         });
 
-        data.setNotificationUri(getContentResolver(), UserContract.Users.CONTENT_URI);
-//        data.setNotificationUri(getContentResolver(), UserContract.Users.CONTENT_URI);
-//        adapter.swapCursor(data);
+        cursor.setNotificationUri(getContentResolver(), UserContract.Users.CONTENT_URI);
+//        cursor.setNotificationUri(getContentResolver(), UserContract.Users.CONTENT_URI);
+//        adapter.swapCursor(cursor);
     }
 
     //This method is invoked when CursorLoader detects that data associated with the Cursor has changed.
