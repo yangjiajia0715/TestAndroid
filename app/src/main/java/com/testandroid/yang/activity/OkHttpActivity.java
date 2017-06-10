@@ -2,16 +2,23 @@ package com.testandroid.yang.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.testandroid.yang.BuildConfig;
 import com.testandroid.yang.R;
+import com.testandroid.yang.common.BottomSelectItem;
 import com.testandroid.yang.common.FileUploadInfo;
+import com.testandroid.yang.common.IBottomSelectItem;
 import com.testandroid.yang.common.MicroCourseInfo;
 import com.testandroid.yang.common.Repo;
 import com.testandroid.yang.common.ResultBeanInfo;
@@ -22,6 +29,7 @@ import com.testandroid.yang.retrofit.ApiServer;
 import com.testandroid.yang.retrofit.GitHubService;
 import com.testandroid.yang.util.FileUtil;
 import com.testandroid.yang.util.ProtocalManager;
+import com.testandroid.yang.view.BottomSelectDialog;
 
 import java.io.File;
 import java.io.IOException;
@@ -67,6 +75,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 public class OkHttpActivity extends BaseActivity {
     private static final String TAG = "OkHttpActivity";
+    private static final String IP_ADDRESS = BuildConfig.IP_ADDRESS;
+    private static final String FILE_UPLOAD_ADDRESS = BuildConfig.FILE_UPLOAD_ADDRESS;
+    private static final String FILE_UPLOAD_ADDRESS_OCR = BuildConfig.FILE_UPLOAD_ADDRESS_ORC;
+
+    public static final int REQUEST_CODE_FROM_CAMERA = 2003;// 拍照
+    public static final int REQUEST_CODE_FROM_ALBUM = 2004;// 从相册中选择
+    public static final int REQUEST_CODE_TOPIC_PICTURE_MOSAIC = 2005;// 图片处理
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -82,6 +97,7 @@ public class OkHttpActivity extends BaseActivity {
     private OkHttpClient okHttpClient;
     private int stuId = 10097;
     private int curPage = 1;
+    private BottomSelectDialog selectDialog;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, OkHttpActivity.class);
@@ -205,8 +221,8 @@ public class OkHttpActivity extends BaseActivity {
             case R.id.okhttp_07:
                 testAssemble();
                 break;
-            case R.id.okhttp_08:
-                uploadFile();
+            case R.id.okhttp_08://上传文件
+                showSelectDialog();
                 break;
             case R.id.okhttp_09:
                 testMultipart();
@@ -228,7 +244,7 @@ public class OkHttpActivity extends BaseActivity {
 
     private void testRetrofitCallAdapter() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://101.200.163.38/")
+                .baseUrl(IP_ADDRESS)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//don't forget
                 .build();
 
@@ -251,7 +267,7 @@ public class OkHttpActivity extends BaseActivity {
     private void testRetrofit() {
         try {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://101.200.163.38/")
+                    .baseUrl(IP_ADDRESS)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//don't for get
                     .build();
 
@@ -374,10 +390,10 @@ public class OkHttpActivity extends BaseActivity {
                 .addFormDataPart("type", "QUICK_OCR")
                 .build();
 
+
         Request request = new Request.Builder()
                 .post(multipartBody)
-//                .url("http://101.200.163.38/LoginServer/px/file/upload.json")
-                .url("http://101.200.163.38/LoginServer/px/file/uploadForOcr.json")
+                .url(FILE_UPLOAD_ADDRESS_OCR)
                 .build();
 
         Log.d(TAG, "onResponse: resprequest--request---request-----");
@@ -426,15 +442,34 @@ public class OkHttpActivity extends BaseActivity {
 
     /**
      * 可以了 ok
+     *
+     * @param uri
      */
-    private void uploadFile() {
-//        TagInfo tagInfo = new TagInfo();
-//        List<TagInfo.ResultBean> result = tagInfo.getResult();
-//        TagInfo.ResultBean resultBean = result.get(0);
-//        resultBean.getAlias();
-
+    private void uploadFile(Uri uri) {
         String sdPath = FileUtil.getSDPath();
         Log.d(TAG, "uploadFile: sdPath=" + sdPath);
+        Log.d(TAG, "uploadFile: uri=" + uri);//content://media/external/images/media/7302
+        if (uri != null) {
+            String encodedPath = uri.getEncodedPath();
+            Log.d(TAG, "uploadFile: uri encodedPath=" + encodedPath);///external/images/media/7302
+            Log.d(TAG, "uploadFile: uri=" + uri.getAuthority());//media
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            Log.d(TAG, "uploadFile: uri cursor=" + cursor);
+
+            if (cursor != null && cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    int columnIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
+                    int columnIndexDis = cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME);
+                    int columnSize = cursor.getColumnIndex(MediaStore.Images.Media.SIZE);
+                    String path = cursor.getString(columnIndex);
+                    String displayname = cursor.getString(columnIndexDis);
+                    Log.d(TAG, "uploadFile: uri path=" + path);//_display_name
+                    Log.d(TAG, "uploadFile: uri displayname=" + displayname);//_display_name
+                }
+                cursor.close();
+            }
+            return;/////////////
+        }
         File file = new File(sdPath + "/DCIM/Camera/IMG_20161025_155722.jpg");///////
 
         MediaType mediaType = MediaType.parse("multipart/form-data");
@@ -451,8 +486,6 @@ public class OkHttpActivity extends BaseActivity {
             return;
         }
 
-        Toast.makeText(this, "uploadFile", Toast.LENGTH_SHORT).show();
-
 //        RequestBody requestBody = MultipartBody.create(MediaType.parse("image/png"), file);
 //        MultipartBody.Part part = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
 
@@ -466,7 +499,7 @@ public class OkHttpActivity extends BaseActivity {
 
         Request request = new Request.Builder()
                 .post(multipartBody)
-                .url("http://101.200.163.38/LoginServer/px/file/upload.json")
+                .url(FILE_UPLOAD_ADDRESS)
                 .build();
 
         okHttpClient.newCall(request).enqueue(new Callback() {
@@ -479,8 +512,8 @@ public class OkHttpActivity extends BaseActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 Log.d(TAG, "onResponse: response=" + response);
                 if (response.isSuccessful()) {
-                    String id = response.body().string();
-                    Log.d(TAG, "onResponse: id=" + id);
+                    String str = response.body().string();
+                    Log.d(TAG, "onResponse: str=" + str);
                 }
             }
         });
@@ -543,7 +576,7 @@ public class OkHttpActivity extends BaseActivity {
     private void retrofitRxjava() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://101.200.163.38/")
+                .baseUrl(IP_ADDRESS)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .callFactory(okHttpClient)
                 .build();
@@ -626,7 +659,7 @@ public class OkHttpActivity extends BaseActivity {
             public void run() {
                 try {
                     //可行 浏览器
-                    String xiaoman2 = "http://101.200.163.38/LoginServer/px.json?dataType=course_find_by_stu&stu_id=10097";
+                    String xiaoman2 = IP_ADDRESS + "LoginServer/px.json?dataType=course_find_by_stu&stu_id=10097";
 
                     OkHttpClient okHttpClient = new OkHttpClient.Builder()
                             .addInterceptor(new Interceptor() {
@@ -646,7 +679,7 @@ public class OkHttpActivity extends BaseActivity {
 //                            .addConverterFactory(GsonConverterFactory.create())
 //                            .addConverterFactory()
                             .callFactory(okHttpClient)
-                            .baseUrl("http://101.200.163.38/")
+                            .baseUrl(IP_ADDRESS)
                             .build();
 
 //                    Retrofit.Builder builder = retrofit.newBuilder();
@@ -744,9 +777,9 @@ public class OkHttpActivity extends BaseActivity {
                     super.run();
 
                     //可行 浏览器
-                    String xiaoman2 = "http://101.200.163.38/LoginServer/px.json?dataType=course_find_by_stu&stu_id=10097";
-                    String xiaoman = "http://101.200.163.38/LoginServer/px.json?";
-                    String uu = "http://101.200.163.38/LoginServer/appServlet?auth=12345&id=10097";
+                    String xiaoman2 = IP_ADDRESS + "LoginServer/px.json?dataType=course_find_by_stu&stu_id=10097";
+                    String xiaoman = IP_ADDRESS + "LoginServer/px.json?";
+                    String uu = IP_ADDRESS + "LoginServer/appServlet?auth=12345&id=10097";
 
                     String url = ProtocalManager.GET_ANSWER_SQUARE_LIST + "?teacherId=520";
 
@@ -806,6 +839,47 @@ public class OkHttpActivity extends BaseActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 创建微课和作业
+     */
+    private void showSelectDialog() {
+        if (selectDialog == null) {
+            ArrayList<IBottomSelectItem> list = new ArrayList<>();
+            list.add(new BottomSelectItem(getString(R.string.get_image_from_camera), 0));
+            list.add(new BottomSelectItem(getString(R.string.get_image_from_album), 0));
+            selectDialog = new BottomSelectDialog(this, list);
+            selectDialog.setBottomItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    switch (position) {
+                        case 0:
+                            break;
+                        case 1:
+                            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                            startActivityForResult(intent, REQUEST_CODE_FROM_ALBUM);// 相册
+                            break;
+                    }
+                }
+            });
+        }
+        selectDialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_CODE_FROM_ALBUM:
+                    Uri uri = data.getData();
+                    uploadFile(uri);
+                    break;
+            }
         }
     }
 }
