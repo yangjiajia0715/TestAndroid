@@ -57,8 +57,12 @@ public interface ApiServer {
     //    @Headers("Content-Disposition:form-data; name=\"file\";filename=\"file.jpg\"")
     @Multipart
     @POST("LoginServer/px/file/upload.json")
-//    @Headers({"Header1: jkkkkk","Header2:kkkkkk"})
     Observable<ResultBeanInfo<FileUploadInfo>> uploadFile(@Part MultipartBody.Part part);
+
+    //temp
+    @Multipart
+    @POST("LoginServer/px/file/upload.json")
+    Observable<ResultBeanInfo<FileUploadInfo>> uploadFile44(@Part("file") RequestBody foo);
 
     //ooccrr
 //    @Multipart

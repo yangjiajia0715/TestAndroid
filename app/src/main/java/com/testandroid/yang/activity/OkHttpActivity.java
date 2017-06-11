@@ -98,6 +98,7 @@ public class OkHttpActivity extends BaseActivity {
     private int stuId = 10097;
     private int curPage = 1;
     private BottomSelectDialog selectDialog;
+    private String path;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, OkHttpActivity.class);
@@ -461,18 +462,25 @@ public class OkHttpActivity extends BaseActivity {
                     int columnIndex = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
                     int columnIndexDis = cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME);
                     int columnSize = cursor.getColumnIndex(MediaStore.Images.Media.SIZE);
-                    String path = cursor.getString(columnIndex);
+                    path = cursor.getString(columnIndex);
                     String displayname = cursor.getString(columnIndexDis);
-                    Log.d(TAG, "uploadFile: uri path=" + path);//_display_name
-                    Log.d(TAG, "uploadFile: uri displayname=" + displayname);//_display_name
+                    ///storage/emulated/0/CuoTiBao/Image/cache/temp_croped1_mosaic.jpg
+                    Log.d(TAG, "uploadFile: uri path=" + path);
+                    Log.d(TAG, "uploadFile: uri displayname=" + displayname);//_display_name temp_croped1_mosaic.jpg
                 }
                 cursor.close();
             }
-            return;/////////////
         }
-        File file = new File(sdPath + "/DCIM/Camera/IMG_20161025_155722.jpg");///////
+
+//        File file = new File(sdPath + "/DCIM/Camera/IMG_20161025_155722.jpg");///////
+        File file = new File(path);
+        if (!file.exists()) {
+            Toast.makeText(this, "文件不存在", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         MediaType mediaType = MediaType.parse("multipart/form-data");
+//        MultipartBody.FORM == MediaType.parse("multipart/form-data");
         String type = mediaType.type();
         String subtype = mediaType.subtype();
 
@@ -494,7 +502,9 @@ public class OkHttpActivity extends BaseActivity {
                 .setType(MultipartBody.FORM)
 //                .addPart(Headers.of("Content-Disposition", "form-data; name=\"file\";filename=\"file.jpg\""), RequestBody.create(MediaType.parse("image/png"), file))
 //                .addPart(part)
-                .addFormDataPart("哈哈哈", file.getName(), MultipartBody.create(MediaType.parse("image/png"), file))
+//                .addFormDataPart("哈哈哈", file.getName(), MultipartBody.create(MediaType.parse("image/png"), file))
+                //注意： 名字必须是：file,否则上传不成功，Content-Dispositon: form-data; name=file；filename="";
+                .addFormDataPart("file", file.getName(), MultipartBody.create(MediaType.parse("image/png"), file))
                 .build();
 
         Request request = new Request.Builder()
@@ -511,6 +521,7 @@ public class OkHttpActivity extends BaseActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Log.d(TAG, "onResponse: response=" + response);
+                Log.d(TAG, "onResponse: isSuccessful=" + response.isSuccessful());
                 if (response.isSuccessful()) {
                     String str = response.body().string();
                     Log.d(TAG, "onResponse: str=" + str);

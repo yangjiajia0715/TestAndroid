@@ -63,12 +63,12 @@ public class ApiClient {
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
             Log.d(TAG, "ApiClient-------httpLoggingInterceptor=" + httpLoggingInterceptor);
             httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//            okHttpClient.networkInterceptors().add(httpLoggingInterceptor);//异常
+            okHttpClient.networkInterceptors().add(httpLoggingInterceptor);//异常
         }
 
         retrofit = new Retrofit.Builder()
                 .callFactory(okHttpClient)
-                .baseUrl("http://101.200.163.38/")
+                .baseUrl(BuildConfig.IP_ADDRESS)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         apiServer = retrofit.create(ApiServer.class);

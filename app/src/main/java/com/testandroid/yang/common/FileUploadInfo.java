@@ -1,6 +1,7 @@
 package com.testandroid.yang.common;
 
 /**
+ * FileUploadInfo
  * Created by yangjiajia on 2017/4/28 0028.
  */
 
