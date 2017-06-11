@@ -4,7 +4,11 @@ println "---------------project name = $project.name ------begin----------------
 //defaultTasks 'hello','distribution'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('lib/mysql-connector-java-5.1.7-bin.jar')
+    compile 'junit:junit:4.12'
+    compile files('lib/commons-dbutils-1.4.jar')
+    compile files('lib/c3p0-0.9.1.2.jar')
 }
 //使用外部依赖之前，至少需要定义一个库
 repositories {
