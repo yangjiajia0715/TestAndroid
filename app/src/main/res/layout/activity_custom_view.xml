@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/view0"
+        style="@style/home_text_style"
+        android:text="自定义view0" />
+
+    <TextView
+        android:id="@+id/view1"
+        style="@style/home_text_style"
+        android:text="自定义view1" />
+
+    <TextView
+        android:id="@+id/view2"
+        style="@style/home_text_style"
+        android:text="自定义view2" />
+
+    <TextView
+        android:id="@+id/view3"
+        style="@style/home_text_style"
+        android:text="自定义view3" />
+
+    <TextView
+        android:id="@+id/view4"
+        style="@style/home_text_style"
+        android:text="自定义view4" />
+
+    <TextView
+        android:id="@+id/view5"
+        style="@style/home_text_style"
+        android:text="自定义view5" />
+
+    <TextView
+        android:id="@+id/view6"
+        style="@style/home_text_style"
+        android:text="自定义view6" />
+
+    <TextView
+        android:id="@+id/view7"
+        style="@style/home_text_style"
+        android:text="自定义view7" />
+
+    <TextView
+        android:id="@+id/view8"
+        style="@style/home_text_style"
+        android:text="自定义view8" />
+
+    <TextView
+        android:id="@+id/view9"
+        style="@style/home_text_style"
+        android:text="自定义view9" />
+
+    <TextView
+        android:id="@+id/view10"
+        style="@style/home_text_style"
+        android:text="自定义view10" />
+</LinearLayout>

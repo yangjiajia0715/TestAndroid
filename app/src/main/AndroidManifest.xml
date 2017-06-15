@@ -259,6 +259,8 @@
         <activity android:name=".activity.DisplayUserInfoActivity" />
 
         <activity android:name=".activity.RotationActivity" />
+        <activity android:name=".activity.CustomViewActivity" />
+        <activity android:name=".activity.CustomView0Activity" />
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->
