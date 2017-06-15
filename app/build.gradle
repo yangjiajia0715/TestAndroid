@@ -7,7 +7,7 @@ buildscript {
 
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
         classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
     }
 }
@@ -89,7 +89,7 @@ android {
         //调用的是闭包的属性，不是脚本
         String fileUploadAddress = (project.hasProperty("FILE_UPLOAD_ADDRESS") ? project.getProperty("FILE_UPLOAD_ADDRESS") : "未配置")
         System.out.println("文件上传地址-------fileUploadAddress=" + fileUploadAddress)
-        def ip = project.hasProperty("IP_DEBUG") ? project.getProperty("IP_DEBUG") : ''
+        def ip = project.hasProperty("IP_DEBUG") ? project.getProperty("IP_DEBUG") : "\"\""
         buildConfigField "String", "IP_ADDRESS", ip
         buildConfigField("String", "FILE_UPLOAD_ADDRESS", getFileUploadAddress())
         buildConfigField("String", "FILE_UPLOAD_ADDRESS_ORC", getFileUploadAddressOcr())
@@ -267,11 +267,11 @@ println "${project.name} hasProperty FILE_UPLOAD_ADDRESS=" + (hasProperty("FILE_
 //println "${project.name} hasProperty gradleUserHomeDir=" + gradle.gradleUserHomeDir
 
 def getFileUploadAddress() {
-    return hasProperty("FILE_UPLOAD_ADDRESS") ? getProperty("FILE_UPLOAD_ADDRESS") : "未配置"
+    return hasProperty("FILE_UPLOAD_ADDRESS") ? getProperty("FILE_UPLOAD_ADDRESS") : "\"未配置\""
 }
 
 def getFileUploadAddressOcr() {
-    return hasProperty("FILE_UPLOAD_ADDRESS_OCR") ? getProperty("FILE_UPLOAD_ADDRESS_OCR") : "未配置"
+    return hasProperty("FILE_UPLOAD_ADDRESS_OCR") ? getProperty("FILE_UPLOAD_ADDRESS_OCR") : "\"未配置\""
 }
 
 def getTinkerIdValue() {

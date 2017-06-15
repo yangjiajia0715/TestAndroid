@@ -6,30 +6,37 @@
     <ImageView
         android:id="@+id/iamgeview"
         android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/liushishi"
-        android:layout_height="300dp" />
+        android:src="@drawable/liushishi" />
 
 
     <TextView
+        android:id="@+id/tttemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/iamgeview"
         android:text="占三里斯占三里斯占三里斯占三里斯占三里斯占三里斯占三里斯占三里斯"
         android:textColor="@color/app_color_normal"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/rotation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:background="@color/white"
         android:layout_margin="5dp"
+        android:background="@color/white"
         android:padding="8dp"
         android:text="旋转"
         android:textColor="@color/red"
         android:textSize="15dp" />
+
+    <com.testandroid.yang.view.CustomView1
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/iamgeview" />
 
 </RelativeLayout>
