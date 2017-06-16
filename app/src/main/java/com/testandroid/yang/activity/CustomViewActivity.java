@@ -1,5 +1,6 @@
 package com.testandroid.yang.activity;
 
+import android.app.MediaRouteButton;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -63,7 +64,7 @@ public class CustomViewActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        MediaRouteButton button;
     }
 
     @OnClick({R.id.view0, R.id.view1, R.id.view2, R.id.view3, R.id.view4, R.id.view5, R.id.view6, R.id.view7, R.id.view8, R.id.view9, R.id.view10})
