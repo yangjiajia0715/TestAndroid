@@ -21,6 +21,7 @@ import butterknife.OnClick;
  */
 
 public class CustomViewActivity extends BaseActivity {
+    private static final String TAG = "CustomViewActivity";
 
     @BindView(R.id.view0)
     TextView view0;
