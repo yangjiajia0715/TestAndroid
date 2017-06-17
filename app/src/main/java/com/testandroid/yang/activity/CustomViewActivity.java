@@ -3,7 +3,9 @@ package com.testandroid.yang.activity;
 import android.app.MediaRouteButton;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -94,5 +96,11 @@ public class CustomViewActivity extends BaseActivity {
             case R.id.view10:
                 break;
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d(TAG, "onConfigurationChanged: new" + newConfig);
     }
 }
