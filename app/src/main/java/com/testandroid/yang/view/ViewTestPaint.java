@@ -9,8 +9,12 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * test画笔
@@ -27,6 +31,8 @@ public class ViewTestPaint extends View {
 
     private float oldX;
     private float oldY;
+
+    private List<Path> paths = new ArrayList<>();
 
     public ViewTestPaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -79,7 +85,28 @@ public class ViewTestPaint extends View {
         paint.setColor(Color.parseColor("#fea73d"));
 
         paint.setStyle(Paint.Style.STROKE);
-        canvas.drawPath(path, paint);
+
+        for (Path path1 : paths) {
+            canvas.drawPath(path1, paint);
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.d(TAG, "onKeyDown: keyCode=" + keyCode);
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        Log.d(TAG, "onKeyUp: keycode=" + keyCode);
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onTrackballEvent(MotionEvent event) {
+        Log.d(TAG, "onTrackballEvent: event=" + event);
+        return super.onTrackballEvent(event);
     }
 
     @Override
@@ -94,6 +121,7 @@ public class ViewTestPaint extends View {
                 path.moveTo(x, y);
                 oldX = x;
                 oldY = y;
+                paths.add(path);
                 invalidate();
                 Log.d(TAG, "onTouchEvent: ACTION_DOWN event=x" + x + " ,y=" + y);
                 return true;
@@ -107,11 +135,49 @@ public class ViewTestPaint extends View {
                 return true;
             case MotionEvent.ACTION_UP:
                 path.lineTo(x, y);
+                path = new Path();
                 Log.d(TAG, "onTouchEvent: ACTION_UP event=x" + x + " ,y=" + y);
                 return true;
             default:
                 return false;
         }
 
+    }
+
+
+    @Override
+    protected void onFocusChanged(boolean gainFocus, int direction, @Nullable Rect previouslyFocusedRect) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
+        Log.d(TAG, "onFocusChanged: gainFocus=" + gainFocus);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasWindowFocus) {
+        super.onWindowFocusChanged(hasWindowFocus);
+        Log.d(TAG, "onWindowFocusChanged: hasWindowFocus=" + hasWindowFocus);
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Log.d(TAG, "onAttachedToWindow: ");
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        Log.d(TAG, "onDetachedFromWindow: ");
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        Log.d(TAG, "onWindowVisibilityChanged: visibility=" + visibility);
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        Log.d(TAG, "onFinishInflate: ");
     }
 }
