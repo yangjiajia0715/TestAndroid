@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.view.ViewTestPaint;
@@ -45,6 +46,13 @@ public class CustomView0Activity extends BaseActivity {
         int height = viewtestpaint.getHeight();
         Log.d(TAG, "initView: width="+ width + ",height=" + height);
 
+        test();
+    }
+
+    private void test() {
+        TextView textView = new TextView(this);
+        textView.setError("错了");
+//        ViewCompat.gen
     }
 
     @Override

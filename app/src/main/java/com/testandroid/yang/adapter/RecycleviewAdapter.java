@@ -39,10 +39,11 @@ public class RecycleviewAdapter extends RecyclerView.Adapter<RecycleviewAdapter.
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Context context = parent.getContext();
 
         long start = System.currentTimeMillis();
 //        Log.d(TAG, "onCreateViewHolder: " + );
-        View inflate = LayoutInflater.from(context).inflate(R.layout.item_view_type_first, null);
+        View inflate = LayoutInflater.from(this.context).inflate(R.layout.item_view_type_first, null);
         Holder holder = new Holder(inflate);
         Log.d(TAG, "onCreateViewHolder: viewType=" + viewType + " 用时：" + (System.currentTimeMillis() - start) + "毫秒");
 

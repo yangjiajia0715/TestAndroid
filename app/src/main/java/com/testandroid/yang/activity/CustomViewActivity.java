@@ -3,6 +3,7 @@ package com.testandroid.yang.activity;
 import android.app.MediaRouteButton;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SearchRecentSuggestionsProvider;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,7 +63,22 @@ public class CustomViewActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        view0.setError("错了");
+        view0.append("  画笔操作");
+//        view1.setTransformationMethod();
+//        DateUtils.formatDateTime(this, System.currentTimeMillis(), );
+//        System.arraycopy();
+//        Pallate
+//        ViewPager.PageTransformer 
 
+//        DatabaseUtils.longForQuery()
+        SearchRecentSuggestionsProvider provider = new SearchRecentSuggestionsProvider();
+    }
+
+//    如果在 Activity 中 configuration 会经常改变的话，使用这个方法就可以不用手动做保存状态的工作了。
+    @Override
+    public boolean isChangingConfigurations() {
+        return super.isChangingConfigurations();
     }
 
     @Override
@@ -77,8 +93,10 @@ public class CustomViewActivity extends BaseActivity {
                 CustomView0Activity.start(this);
                 break;
             case R.id.view1:
+                view3.setVisibility(View.GONE);
                 break;
             case R.id.view2:
+                view3.setVisibility(View.VISIBLE);
                 break;
             case R.id.view3:
                 break;
