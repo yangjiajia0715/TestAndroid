@@ -1,6 +1,7 @@
 package com.testandroid.yang.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -12,6 +13,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.testandroid.yang.R;
+import com.testandroid.yang.util.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +37,8 @@ public class ViewTestPaint extends View {
     private float oldY;
 
     private List<Path> paths = new ArrayList<>();
+    private final Canvas canvasBitmep;
+    private final Bitmap bitmapNew;
 
     public ViewTestPaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -45,6 +51,20 @@ public class ViewTestPaint extends View {
         rect = new Rect(0, 0, 100, 100);
 
         path = new Path();
+
+        //------------------不中
+        bitmapNew = Bitmap.createBitmap(Utility.dp2px(100), Utility.dp2px(100), Bitmap.Config.ARGB_8888);
+        canvasBitmep = new Canvas(bitmapNew);
+        Paint newPaint = new Paint(this.paint);
+        newPaint.setColor(getResources().getColor(R.color.colorPrimary));
+        Path path1 = new Path();
+        int bitmapWidth = bitmapNew.getWidth();
+        int bitmapHeight = bitmapNew.getHeight();
+        path1.lineTo(bitmapWidth / 2, 0);
+        path1.moveTo(bitmapWidth, bitmapHeight / 2);
+        path1.moveTo(bitmapWidth / 2, bitmapHeight);
+        path1.moveTo(0, bitmapHeight / 2);
+        canvasBitmep.drawPath(path1, newPaint);
     }
 
     @Override
@@ -89,6 +109,9 @@ public class ViewTestPaint extends View {
         for (Path path1 : paths) {
             canvas.drawPath(path1, paint);
         }
+
+        canvas.drawBitmap(bitmapNew, height - bitmapNew.getWidth(), height - bitmapNew.getHeight(), paint);
+
     }
 
     @Override
