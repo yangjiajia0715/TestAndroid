@@ -2,6 +2,9 @@ package com.testandroid.yang.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -53,6 +56,13 @@ public class CustomView0Activity extends BaseActivity {
         TextView textView = new TextView(this);
         textView.setError("错了");
 //        ViewCompat.gen
+
+        Shape shape = new Shape() {
+            @Override
+            public void draw(Canvas canvas, Paint paint) {
+
+            }
+        };
     }
 
     @Override
