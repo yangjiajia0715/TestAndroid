@@ -24,21 +24,18 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
 
     <!-- name MultiDexAppcation -->
-    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY"/>
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
 
     <!--<uses-feature />-->
     <!--不能通过@string/ 方式获取 -->
-    <permission
-        android:name="com.testandroid.yang.provider.pppp"
-         />
+    <permission android:name="com.testandroid.yang.provider.pppp" />
 
     <permission-group android:name="group666" />
 
     <!-- android:permissionGroup="group11"-->
     <permission
         android:name="com.testandroid.yang.provider.READ_USER"
-        android:protectionLevel="dangerous"
-        />
+        android:protectionLevel="dangerous" />
 
     <application
         android:name="com.testandroid.yang.tinker.SampleApplication"
@@ -261,6 +258,7 @@
         <activity android:name=".activity.RotationActivity" />
         <activity android:name=".activity.CustomViewActivity" />
         <activity android:name=".activity.CustomView0Activity" />
+        <activity android:name=".activity.CustomViewLevelListActivity" />
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->
@@ -277,8 +275,8 @@
             android:authorities="com.testandroid.yang.provider.user"
             android:exported="true"
             android:initOrder="1"
-            android:readPermission="com.testandroid.yang.provider.READ_USER"
-            android:permission="@string/provider_permisssion">
+            android:permission="@string/provider_permisssion"
+            android:readPermission="com.testandroid.yang.provider.READ_USER">
 
             <!-- <grant-uri-permission android:path="/attachments/" />-->
             <!-- <grant-uri-permission >

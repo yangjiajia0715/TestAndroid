@@ -75,7 +75,7 @@ public class CustomViewActivity extends BaseActivity {
         SearchRecentSuggestionsProvider provider = new SearchRecentSuggestionsProvider();
     }
 
-//    如果在 Activity 中 configuration 会经常改变的话，使用这个方法就可以不用手动做保存状态的工作了。
+    //    如果在 Activity 中 configuration 会经常改变的话，使用这个方法就可以不用手动做保存状态的工作了。
     @Override
     public boolean isChangingConfigurations() {
         return super.isChangingConfigurations();
@@ -93,12 +93,13 @@ public class CustomViewActivity extends BaseActivity {
                 CustomView0Activity.start(this);
                 break;
             case R.id.view1:
-                view3.setVisibility(View.GONE);
+                CustomViewLevelListActivity.start(this);
                 break;
             case R.id.view2:
                 view3.setVisibility(View.VISIBLE);
                 break;
             case R.id.view3:
+                view3.setVisibility(View.GONE);
                 break;
             case R.id.view4:
                 break;

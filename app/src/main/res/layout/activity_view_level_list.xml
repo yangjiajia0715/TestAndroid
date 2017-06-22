@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivLevelList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/levellist" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/btn_level_list"
+            style="@style/CommonButtonStyle"
+            android:text="点我levelList" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/transtionDrawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/transition_drawable_test01" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btn_transtion_previours"
+                style="@style/CommonButtonStyle"
+                android:layout_weight="1"
+                android:text="btn_transtion_previours " />
+
+            <TextView
+                android:id="@+id/btn_transtion_next"
+                style="@style/CommonButtonStyle"
+                android:layout_weight="1"
+                android:text="btn_transtion_next" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
