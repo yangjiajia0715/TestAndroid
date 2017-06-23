@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--需求，答题统计百分比，60%以上绿色，否则红色，圆类按百分比填满，
+    为了有个动画效果，加个ValueAnimation,设置时间2000ms等，动态的更新ClipDrawable 的level-->
+    <item
+        android:maxLevel="100"
+        android:minLevel="60">
+
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <size
+                        android:width="100dp"
+                        android:height="100dp" />
+
+                    <stroke
+                        android:width="2dp"
+                        android:color="@color/homework_correct_rate_hight" />
+                    <!--<solid android:color="@color/homework_correct_rate_hight" />-->
+                </shape>
+            </item>
+
+            <!--android:bottom="2dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="2dp"-->
+            <item android:id="@+id/homework_clip_drawable">
+                <clip
+                    android:clipOrientation="vertical"
+                    android:gravity="bottom">
+                    <!-- android:useLevel="true"-->
+                    <shape android:shape="oval">
+                        <size
+                            android:width="100dp"
+                            android:height="100dp" />
+                        <!--homework_correct_rate_hight_solid-->
+                        <solid android:color="@color/homework_correct_rate_hight_solid" />
+                    </shape>
+                </clip>
+            </item>
+        </layer-list>
+    </item>
+
+    <item
+        android:maxLevel="59"
+        android:minLevel="0">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <size
+                        android:width="100dp"
+                        android:height="100dp" />
+                    <stroke
+                        android:width="2dp"
+                        android:color="@color/homework_correct_rate_low" />
+                </shape>
+            </item>
+
+            <item>
+                <clip
+                    android:id="@+id/homework_clip_drawable_c"
+                    android:clipOrientation="vertical"
+                    android:gravity="bottom">
+                    <shape android:shape="oval">
+                        <size
+                            android:width="100dp"
+                            android:height="100dp" />
+                        <solid
+                            android:width="2dp"
+                            android:color="@color/homework_correct_rate_low_solid" />
+                    </shape>
+                </clip>
+            </item>
+        </layer-list>
+    </item>
+</level-list>
