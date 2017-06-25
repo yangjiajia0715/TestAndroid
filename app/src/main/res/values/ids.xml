@@ -55,6 +55,7 @@
     <item name="tv_fitsystemwindow" type="id" />
     <item name="tv_rotation_view" type="id" />
     <item name="tv_customeview_view" type="id" />
+    <item name="tv_edittext" type="id" />
 
     <!--"type_animation"-->
 

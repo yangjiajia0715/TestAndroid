@@ -259,6 +259,10 @@
         <activity android:name=".activity.CustomViewActivity" />
         <activity android:name=".activity.CustomView0Activity" />
         <activity android:name=".activity.CustomViewLevelListActivity" />
+
+        <activity
+            android:name=".activity.EditTextActivity"
+            android:windowSoftInputMode="adjustResize" />
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->

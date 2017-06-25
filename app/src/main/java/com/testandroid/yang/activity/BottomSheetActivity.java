@@ -121,7 +121,7 @@ public class BottomSheetActivity extends BaseActivity {
                         sheetBehavior.setPeekHeight(50 * 3);
                         break;
                 }
-                return false;
+                return true;
             }
 
             @Override
