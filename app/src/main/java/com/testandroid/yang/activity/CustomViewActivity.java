@@ -8,6 +8,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
@@ -46,6 +48,14 @@ public class CustomViewActivity extends BaseActivity {
     TextView view9;
     @BindView(R.id.view10)
     TextView view10;
+    @BindView(R.id.answer_right)
+    RadioButton answerRight;
+    @BindView(R.id.answer_wrong)
+    RadioButton answerWrong;
+    @BindView(R.id.answer_radiogroup)
+    RadioGroup answerRadiogroup;
+    @BindView(R.id.answer_preview)
+    TextView answerPreview;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, CustomViewActivity.class);
