@@ -106,4 +106,19 @@
             android:text="预览"
             android:textSize="15sp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="10dp"
+            android:listSelector="@drawable/bg_bottom_line_app_color"
+            android:numColumns="6"
+            android:verticalSpacing="10dp" />
+    </LinearLayout>
 </LinearLayout>

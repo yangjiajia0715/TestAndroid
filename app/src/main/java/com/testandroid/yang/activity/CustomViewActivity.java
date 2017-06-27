@@ -8,11 +8,19 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,6 +64,8 @@ public class CustomViewActivity extends BaseActivity {
     RadioGroup answerRadiogroup;
     @BindView(R.id.answer_preview)
     TextView answerPreview;
+    @BindView(R.id.gridview)
+    GridView gridview;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, CustomViewActivity.class);
@@ -83,6 +93,34 @@ public class CustomViewActivity extends BaseActivity {
 
 //        DatabaseUtils.longForQuery()
         SearchRecentSuggestionsProvider provider = new SearchRecentSuggestionsProvider();
+
+        List<Map<String, String>> mapList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            Map<String, String> map = new HashMap<>();
+            map.put("name", "名字" + i);
+            mapList.add(map);
+        }
+
+        String[] from = {"name"};
+        int[] to = {R.id.test01};
+
+        SimpleAdapter adapter = new SimpleAdapter(this, mapList, R.layout.item_gridview_temp00, from, to);
+        gridview.setAdapter(adapter);
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                Log.d(TAG, "onItemClick: position=" + position + " isInTouchMode=" + gridview.isInTouchMode());
+//                parent.setSelection(position);
+                gridview.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        gridview.requestFocusFromTouch();
+                        gridview.setSelection(position);
+                    }
+                });
+
+            }
+        });
     }
 
     //    如果在 Activity 中 configuration 会经常改变的话，使用这个方法就可以不用手动做保存状态的工作了。
