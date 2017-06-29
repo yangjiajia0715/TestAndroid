@@ -150,6 +150,7 @@ public class CustomViewActivity extends BaseActivity {
                 view3.setVisibility(View.GONE);
                 break;
             case R.id.view4:
+                LaunchModeA_Activity.start(this);
                 break;
             case R.id.view5:
                 break;
@@ -170,5 +171,11 @@ public class CustomViewActivity extends BaseActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Log.d(TAG, "onConfigurationChanged: new" + newConfig);
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "onDestroy: " + getClass().getSimpleName());
+        super.onDestroy();
     }
 }

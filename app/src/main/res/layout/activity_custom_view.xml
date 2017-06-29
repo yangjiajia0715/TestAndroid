@@ -28,7 +28,7 @@
     <TextView
         android:id="@+id/view4"
         style="@style/home_text_style"
-        android:text="自定义view4" />
+        android:text="启动模式" />
 
     <TextView
         android:id="@+id/view5"

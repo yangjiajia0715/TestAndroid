@@ -265,6 +265,22 @@
             android:name=".activity.EditTextActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.LaunchModeBaseActivity" />
+
+        <activity android:name=".activity.LaunchModeA_Activity" />
+        <activity android:name=".activity.LaunchModeB_Activity" />
+
+        <!--android:clearTaskOnLaunch="true"
+            android:taskAffinity="com.hhhhhhhh" -->
+        <activity
+            android:name=".activity.LaunchModeC_Activity"
+            android:finishOnTaskLaunch="true"
+            android:launchMode="standard" />
+
+        <activity
+            android:name=".activity.LaunchModeD_Activity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".activity.LaunchModeE_Activity" />
+
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->
