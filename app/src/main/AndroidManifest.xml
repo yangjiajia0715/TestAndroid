@@ -280,6 +280,7 @@
             android:name=".activity.LaunchModeD_Activity"
             android:launchMode="singleInstance" />
         <activity android:name=".activity.LaunchModeE_Activity" />
+        <activity android:name=".activity.CustomViewCanvasActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

@@ -144,10 +144,11 @@ public class CustomViewActivity extends BaseActivity {
                 CustomViewLevelListActivity.start(this);
                 break;
             case R.id.view2:
-                view3.setVisibility(View.VISIBLE);
+                CustomViewCanvasActivity.start(this);
+//                view3.setVisibility(View.VISIBLE);
                 break;
             case R.id.view3:
-                view3.setVisibility(View.GONE);
+//                view3.setVisibility(View.GONE);
                 break;
             case R.id.view4:
                 LaunchModeA_Activity.start(this);
