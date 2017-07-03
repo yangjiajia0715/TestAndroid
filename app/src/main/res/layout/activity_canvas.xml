@@ -8,7 +8,8 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,9 +18,32 @@
 
             <ImageView
                 android:id="@+id/iv_canvas"
-                android:scaleType="centerInside"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#f8f8f8"
+                android:scaleType="centerInside" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/liushishi" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/liushishi" />
+
+            <TextSwitcher
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageSwitcher
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>

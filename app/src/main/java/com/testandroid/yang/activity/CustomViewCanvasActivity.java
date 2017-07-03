@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -92,6 +93,11 @@ public class CustomViewCanvasActivity extends BaseActivity {
             e.printStackTrace();
             Log.d(TAG, "initData: e=" + e);
         }
+
+        ImageView imageView = new ImageView(this);
+        imageView.setAdjustViewBounds(true);
+
+        GLSurfaceView glSurfaceView;
 
     }
 }

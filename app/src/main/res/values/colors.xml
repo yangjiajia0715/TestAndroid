@@ -43,6 +43,7 @@
 
     <color name="color_circle_red_">#88FF4C4D</color>
     <color name="color_circle_red">#FF4C4D</color>
+    <color name="color_f8f8f8">#f8f8f8</color>
 
     <color name="homework_correct_rate_hight">#5BAF00</color>
     <color name="homework_correct_rate_hight_solid">#885BAF00</color>
