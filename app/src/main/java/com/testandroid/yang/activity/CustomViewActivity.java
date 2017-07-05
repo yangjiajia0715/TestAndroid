@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SearchRecentSuggestionsProvider;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.RadioButton;
@@ -16,8 +18,10 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.fragment.DatePickerFragment;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -149,6 +153,25 @@ public class CustomViewActivity extends BaseActivity {
                 break;
             case R.id.view3:
 //                view3.setVisibility(View.GONE);
+                Calendar cal = Calendar.getInstance();
+//                if (dateTime != null && dateTime != 0) {
+//                    cal.setTimeInMillis(dateTime);
+//                }
+
+                int y = cal.get(Calendar.YEAR);
+                int m = cal.get(Calendar.MONTH);
+                int d = cal.get(Calendar.DAY_OF_MONTH);
+
+                boolean digitsOnly = TextUtils.isDigitsOnly("12345");
+                Log.d(TAG, "onViewClicked: digitsOnly=" + digitsOnly + " Only=" + TextUtils.isDigitsOnly("1@2345"));
+                Log.d(TAG, "onViewClicked: digitsOnly=" + TextUtils.concat("111", "-", "222"));
+
+                URLUtil.isValidUrl("");
+//                URLUtil.isDataUrl()
+                URLUtil.isHttpsUrl("");
+                URLUtil.isNetworkUrl("");
+                DatePickerFragment datePickerFragment = new DatePickerFragment();
+                datePickerFragment.show(getFragmentManager(), "DatePicker");
                 break;
             case R.id.view4:
                 LaunchModeA_Activity.start(this);
