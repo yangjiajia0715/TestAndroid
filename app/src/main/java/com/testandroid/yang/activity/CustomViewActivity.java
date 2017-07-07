@@ -170,6 +170,7 @@ public class CustomViewActivity extends BaseActivity {
 //                URLUtil.isDataUrl()
                 URLUtil.isHttpsUrl("");
                 URLUtil.isNetworkUrl("");
+
                 DatePickerFragment datePickerFragment = new DatePickerFragment();
                 datePickerFragment.show(getFragmentManager(), "DatePicker");
                 break;

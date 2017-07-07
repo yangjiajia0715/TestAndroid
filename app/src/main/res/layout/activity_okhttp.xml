@@ -71,7 +71,7 @@
                 style="@style/CommonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="上传文件" />
+                android:text="相册选择 上传文件" />
 
             <TextView
                 android:id="@+id/okhttp_09"
@@ -107,6 +107,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="retrofit 自定义callAdapter" />
+            <TextView
+                android:id="@+id/okhttp_14"
+                style="@style/CommonButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Okhttp3上传for可军" />
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"

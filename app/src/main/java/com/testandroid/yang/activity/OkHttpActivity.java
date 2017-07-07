@@ -201,7 +201,7 @@ public class OkHttpActivity extends BaseActivity {
 
     @OnClick({R.id.okhttp_01, R.id.okhttp_02, R.id.okhttp_03, R.id.okhttp_04, R.id.okhttp_05
             , R.id.okhttp_07, R.id.okhttp_08, R.id.okhttp_09, R.id.okhttp_10, R.id.okhttp_11
-            , R.id.okhttp_12, R.id.okhttp_13})
+            , R.id.okhttp_12, R.id.okhttp_13, R.id.okhttp_14})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.okhttp_01:
@@ -240,7 +240,49 @@ public class OkHttpActivity extends BaseActivity {
             case R.id.okhttp_13:
                 testRetrofitCallAdapter();
                 break;
+            case R.id.okhttp_14:
+                String filePath = "/storage/emulated/0/CuoTiBao/Image/cache/temp_croped3_mosaic.jpg";
+                uploadFileForKeJun(filePath);
+                break;
         }
+    }
+
+    private void uploadFileForKeJun(String filePath) {
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            Toast.makeText(this, "文件不存在....", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        MultipartBody multipartBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("file", file.getName(), MultipartBody.create(MediaType.parse("image/*"), file))
+                .build();
+
+        Request request = new Request.Builder()
+                .post(multipartBody)
+                .url(FILE_UPLOAD_ADDRESS)//改为你的地址，比如我的是：http://101.200.163.38/LoginServer/px/file/upload.json（可以先用这个测试）
+                .build();
+
+        OkHttpClient okHttpClient = new OkHttpClient();//这里只做演示用！整个app最好只有一个okhttpClient(共享资源)！
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("uploadFile","e=" + e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String resultString = response.body().string();
+                    Log.d("uploadFile", "resultString=" + resultString);
+                } else {
+                    Log.d("uploadFile", "上传失败");
+                }
+            }
+        });
+
     }
 
     private void testRetrofitCallAdapter() {
