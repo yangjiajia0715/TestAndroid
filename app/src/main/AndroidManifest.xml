@@ -282,6 +282,10 @@
         <activity android:name=".activity.LaunchModeE_Activity" />
         <activity android:name=".activity.CustomViewCanvasActivity" />
 
+        <!--android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"-->
+        <activity android:name=".activity.DialogListActivity"
+            />
+
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->

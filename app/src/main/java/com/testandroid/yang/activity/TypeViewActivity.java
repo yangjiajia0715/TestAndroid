@@ -88,6 +88,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("tv_rotation_view", R.id.tv_rotation_view, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_customeview_view", R.id.tv_customeview_view, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_edittext", R.id.tv_edittext, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_Dialog", R.id.tv_dialog, HomeInfo.HomeGroup.View));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -172,6 +173,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                     break;
                 case R.id.tv_edittext:
                     EditTextActivity.start(this);
+                    break;
+                case R.id.tv_dialog:
+                    DialogListActivity.start(this);
                     break;
             }
         }

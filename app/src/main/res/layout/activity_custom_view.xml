@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/view3"
         style="@style/home_text_style"
-        android:text="DialogFragment,DataPicker" />
+        android:text="VVV" />
 
     <TextView
         android:id="@+id/view4"

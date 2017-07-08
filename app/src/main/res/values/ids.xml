@@ -56,6 +56,7 @@
     <item name="tv_rotation_view" type="id" />
     <item name="tv_customeview_view" type="id" />
     <item name="tv_edittext" type="id" />
+    <item name="tv_dialog" type="id" />
 
     <!--"type_animation"-->
 
