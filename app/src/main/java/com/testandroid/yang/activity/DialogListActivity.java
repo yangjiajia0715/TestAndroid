@@ -1,6 +1,7 @@
 package com.testandroid.yang.activity;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +33,7 @@ import butterknife.OnClick;
  * Created by yangjiajia on 2017/6/25 0025.
  */
 
-public class DialogListActivity extends BaseActivity {
+public class DialogListActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener {
     private static final String TAG = "DialogListActivity";
 
     @BindView(R.id.toolbar)
@@ -97,8 +99,7 @@ public class DialogListActivity extends BaseActivity {
                 URLUtil.isHttpsUrl("");
                 URLUtil.isNetworkUrl("");
 
-                DatePickerFragment datePickerFragment = new DatePickerFragment();
-                datePickerFragment.show(getFragmentManager(), "DatePicker");
+                DatePickerFragment.newInstance().show(getFragmentManager(), "DatePicker");
                 break;
             case R.id.dialog1:
                 ClearCacheFragment cacheFragment = ClearCacheFragment.newInstance();
@@ -171,5 +172,12 @@ public class DialogListActivity extends BaseActivity {
             case R.id.bottom_btn:
                 break;
         }
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Log.d(TAG, "onDateSet: year=" + year);
+        Log.d(TAG, "onDateSet: month=" + month);
+        Log.d(TAG, "onDateSet: dayOfMonth=" + dayOfMonth);
     }
 }
