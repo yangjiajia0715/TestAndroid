@@ -24,6 +24,8 @@ import com.testandroid.yang.fragment.ClearCacheFragment;
 import com.testandroid.yang.fragment.DatePickerFragment;
 import com.testandroid.yang.fragment.EmbeddableFragment;
 
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -161,7 +163,19 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
                 builder1.setView(R.layout.dialog_custom_01);
                 builder1.create().show();
 
+                Calendar calendar = Calendar.getInstance();
+
             case R.id.dialog6:
+                Calendar calendar1 = Calendar.getInstance();
+                com.fourmob.datetimepicker.date.DatePickerDialog datePickerDialog = com.fourmob.datetimepicker.date.DatePickerDialog.newInstance(new com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(com.fourmob.datetimepicker.date.DatePickerDialog datePickerDialog, int year, int month, int day) {
+
+                    }
+                }, calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DAY_OF_MONTH));
+
+                datePickerDialog.show(getSupportFragmentManager(), "");
+//                android.R.layout.date_picker_dialog;
                 break;
             case R.id.dialog7:
                 break;

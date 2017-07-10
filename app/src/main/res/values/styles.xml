@@ -193,7 +193,8 @@
     </style>
 
     <style name="DatePickerDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowNoTitle" >true</item>
+        <!--<item name="android:windowNoTitle" >true</item>-->
+        <item name="android:colorAccent" >@color/app_color_normal</item>
     </style>
 
 </resources>
