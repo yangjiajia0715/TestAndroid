@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.netease.nim.uikit.R;
-import com.netease.nim.uikit.common.util.string.StringUtil;
+import com.netease.nim.uikit.common.util.string.StringUtilNim;
 import com.netease.nim.uikit.common.util.sys.ScreenUtil;
 
 /**
@@ -262,7 +262,7 @@ public class EasyEditDialog extends Dialog {
 			int editStart = editText.getSelectionStart();
 			int editEnd = editText.getSelectionEnd();
 			editText.removeTextChangedListener(this);
-			while (StringUtil.counterChars(s.toString()) > maxLength) {
+			while (StringUtilNim.counterChars(s.toString()) > maxLength) {
 				s.delete(editStart - 1, editEnd);
 				editStart--;
 				editEnd--;
@@ -270,7 +270,7 @@ public class EasyEditDialog extends Dialog {
 			editText.setSelection(editStart);
 			editText.addTextChangedListener(this);
 			if (show && lengthTV != null) {
-				long remainLength = maxLength - StringUtil.counterChars(s.toString());
+				long remainLength = maxLength - StringUtilNim.counterChars(s.toString());
 				lengthTV.setText("" + remainLength / 2);
 				lengthTV.setVisibility(View.VISIBLE);
 			}

@@ -12,7 +12,7 @@ import com.netease.nim.uikit.common.util.file.AttachmentStore;
 import com.netease.nim.uikit.common.util.media.ImageUtil;
 import com.netease.nim.uikit.common.util.storage.StorageType;
 import com.netease.nim.uikit.common.util.storage.StorageUtil;
-import com.netease.nim.uikit.common.util.string.StringUtil;
+import com.netease.nim.uikit.common.util.string.StringUtilNim;
 import com.netease.nim.uikit.session.constant.Extras;
 import com.netease.nim.uikit.session.constant.RequestCode;
 import com.netease.nim.uikit.session.helper.SendImageHelper;
@@ -47,7 +47,7 @@ public abstract class PickImageAction extends BaseAction {
     }
 
     private String tempFile() {
-        String filename = StringUtil.get32UUID() + JPG;
+        String filename = StringUtilNim.get32UUID() + JPG;
         return StorageUtil.getWritePath(filename, StorageType.TYPE_TEMP);
     }
 
@@ -167,7 +167,7 @@ public abstract class PickImageAction extends BaseAction {
         if (data.getBooleanExtra(PreviewImageFromCameraActivity.RESULT_SEND, false)) {
             sendImageAfterPreviewPhotoActivityResult(data);
         } else if (data.getBooleanExtra(PreviewImageFromCameraActivity.RESULT_RETAKE, false)) {
-            String filename = StringUtil.get32UUID() + JPG;
+            String filename = StringUtilNim.get32UUID() + JPG;
             String path = StorageUtil.getWritePath(filename, StorageType.TYPE_TEMP);
 
             if (requestCode == RequestCode.PREVIEW_IMAGE_FROM_CAMERA) {

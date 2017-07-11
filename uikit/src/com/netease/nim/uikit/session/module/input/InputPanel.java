@@ -29,7 +29,7 @@ import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.R;
 import com.netease.nim.uikit.common.ui.dialog.EasyAlertDialogHelper;
 import com.netease.nim.uikit.common.util.log.LogUtil;
-import com.netease.nim.uikit.common.util.string.StringUtil;
+import com.netease.nim.uikit.common.util.string.StringUtilNim;
 import com.netease.nim.uikit.session.SessionCustomization;
 import com.netease.nim.uikit.session.actions.BaseAction;
 import com.netease.nim.uikit.session.emoji.EmoticonPickerView;
@@ -240,7 +240,7 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
                 MoonUtil.replaceEmoticons(container.activity, s, start, count);
                 int editEnd = messageEditText.getSelectionEnd();
                 messageEditText.removeTextChangedListener(this);
-                while (StringUtil.counterChars(s.toString()) > 5000 && editEnd > 0) {
+                while (StringUtilNim.counterChars(s.toString()) > 5000 && editEnd > 0) {
                     s.delete(editEnd - 1, editEnd);
                     editEnd--;
                 }
@@ -494,7 +494,7 @@ public class InputPanel implements IEmoticonSelectedListener, IAudioRecordCallba
      */
     private void checkSendButtonEnable(EditText editText) {
         String textMessage = editText.getText().toString();
-        if (!TextUtils.isEmpty(StringUtil.removeBlanks(textMessage)) && editText.hasFocus()) {
+        if (!TextUtils.isEmpty(StringUtilNim.removeBlanks(textMessage)) && editText.hasFocus()) {
             moreFuntionButtonInInputBar.setVisibility(View.GONE);
             sendMessageButtonInInputBar.setVisibility(View.VISIBLE);
         } else {

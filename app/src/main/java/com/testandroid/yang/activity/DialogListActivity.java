@@ -24,7 +24,9 @@ import com.testandroid.yang.fragment.ClearCacheFragment;
 import com.testandroid.yang.fragment.DatePickerFragment;
 import com.testandroid.yang.fragment.EmbeddableFragment;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -178,6 +180,17 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
 //                android.R.layout.date_picker_dialog;
                 break;
             case R.id.dialog7:
+                List<String> dates = new ArrayList<>();
+                for (int i = 0; i < 5; i++) {
+                    dates.add("数据" + i);
+                }
+//                MenuDialog menuDialog = new MenuDialog(this, dates, new MenuDialog.MenuDialogOnButtonClickListener() {
+//                    @Override
+//                    public void onButtonClick(String name) {
+//                        Log.d(TAG, "onButtonClick: name " + name);
+//                    }
+//                });
+//                menuDialog.show();
                 break;
             case R.id.dialog8:
                 break;

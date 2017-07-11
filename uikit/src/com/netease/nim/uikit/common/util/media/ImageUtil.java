@@ -18,7 +18,7 @@ import com.netease.nim.uikit.common.util.file.FileUtil;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nim.uikit.common.util.storage.StorageType;
 import com.netease.nim.uikit.common.util.storage.StorageUtil;
-import com.netease.nim.uikit.common.util.string.StringUtil;
+import com.netease.nim.uikit.common.util.string.StringUtilNim;
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderThumbBase;
 
 import java.io.BufferedOutputStream;
@@ -303,7 +303,7 @@ public class ImageUtil {
     private static String getTempFilePath(String extension) {
     	return StorageUtil.getWritePath(
                 NimUIKit.getContext(),
-    			"temp_image_" + StringUtil.get36UUID() + "." + extension,
+    			"temp_image_" + StringUtilNim.get36UUID() + "." + extension,
     			StorageType.TYPE_TEMP);
     }
     

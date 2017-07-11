@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.netease.nim.uikit.R;
 import com.netease.nim.uikit.common.activity.UI;
-import com.netease.nim.uikit.common.util.string.StringUtil;
+import com.netease.nim.uikit.common.util.string.StringUtilNim;
 import com.netease.nim.uikit.model.ToolBarOptions;
 
 /**
@@ -114,7 +114,7 @@ public class AdvancedTeamNicknameActivity extends UI implements TextWatcher, Vie
     public void afterTextChanged(Editable s) {
         int editEnd = regularTeamNickname.getSelectionEnd();
         regularTeamNickname.removeTextChangedListener(this);
-        while (StringUtil.counterChars(s.toString()) > MAX_LENGTH && editEnd > 0) {
+        while (StringUtilNim.counterChars(s.toString()) > MAX_LENGTH && editEnd > 0) {
             s.delete(editEnd - 1, editEnd);
             editEnd--;
         }

@@ -153,6 +153,7 @@ dependencies {
     compile fileTree(include: '*.jar', exclude: 'BDAutoUpdateSDK_20150605_V1.2.0.jar', dir: 'libs')
 
     compile project(':zoomlibrary')
+//    compile project(':uikit')
 
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     compile "com.android.support:design:${rootProject.ext.supportVersion}"
@@ -198,6 +199,8 @@ dependencies {
     compile "com.trello.rxlifecycle2:rxlifecycle-components:${rootProject.ext.rxlifecycleVersion}"
 
     compile 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
+
+    compile 'com.alibaba:fastjson:1.1.59.android'
 }
 
 // Iterable gets an each() method

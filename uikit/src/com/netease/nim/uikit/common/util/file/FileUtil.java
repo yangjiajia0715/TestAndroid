@@ -6,7 +6,7 @@ import android.webkit.MimeTypeMap;
 
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.R;
-import com.netease.nim.uikit.common.util.string.StringUtil;
+import com.netease.nim.uikit.common.util.string.StringUtilNim;
 
 import java.util.Locale;
 
@@ -68,7 +68,7 @@ public class FileUtil {
         Log.i(TAG, "url:" + filePath + " " + "type:" + type);
 
         // FIXME
-        if (StringUtil.isEmpty(type) && filePath.endsWith("aac")) {
+        if (StringUtilNim.isEmpty(type) && filePath.endsWith("aac")) {
             type = "audio/aac";
         }
 

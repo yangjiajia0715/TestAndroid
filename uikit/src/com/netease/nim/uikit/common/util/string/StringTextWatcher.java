@@ -30,7 +30,7 @@ public class StringTextWatcher implements TextWatcher{
     public void afterTextChanged(Editable s) {
         int editEnd = editText.getSelectionEnd();
         editText.removeTextChangedListener(this);
-        while (StringUtil.counterChars(s.toString()) > length && editEnd > 0) {
+        while (StringUtilNim.counterChars(s.toString()) > length && editEnd > 0) {
             s.delete(editEnd - 1, editEnd);
             editEnd--;
         }

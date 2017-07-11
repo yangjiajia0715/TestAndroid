@@ -17,7 +17,7 @@ import com.netease.nim.uikit.common.util.file.FileUtil;
 import com.netease.nim.uikit.common.util.storage.StorageType;
 import com.netease.nim.uikit.common.util.storage.StorageUtil;
 import com.netease.nim.uikit.common.util.string.MD5;
-import com.netease.nim.uikit.common.util.string.StringUtil;
+import com.netease.nim.uikit.common.util.string.StringUtilNim;
 import com.netease.nim.uikit.session.activity.CaptureVideoActivity;
 
 import java.io.File;
@@ -78,7 +78,7 @@ public class VideoMessageHelper {
             return;
         }
         videoFilePath = StorageUtil.getWritePath(
-                activity, StringUtil.get36UUID()
+                activity, StringUtilNim.get36UUID()
                         + C.FileSuffix.MP4, StorageType.TYPE_TEMP);
         videoFile = new File(videoFilePath);
 
@@ -137,7 +137,7 @@ public class VideoMessageHelper {
         }
 
         String filePath = filePathFromIntent(data);
-        if (StringUtil.isEmpty(filePath) || !checkVideoFile(filePath)) {
+        if (StringUtilNim.isEmpty(filePath) || !checkVideoFile(filePath)) {
             return;
         }
 

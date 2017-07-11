@@ -8,7 +8,7 @@ import com.netease.nim.uikit.common.media.picker.activity.PickImageActivity;
 import com.netease.nim.uikit.common.ui.dialog.CustomAlertDialog;
 import com.netease.nim.uikit.common.util.storage.StorageType;
 import com.netease.nim.uikit.common.util.storage.StorageUtil;
-import com.netease.nim.uikit.common.util.string.StringUtil;
+import com.netease.nim.uikit.common.util.string.StringUtilNim;
 
 /**
  * Created by huangjun on 2015/9/22.
@@ -49,7 +49,7 @@ public class PickImageHelper {
         /**
          * 图片选择保存路径
          */
-        public String outputPath = StorageUtil.getWritePath(StringUtil.get32UUID() + ".jpg", StorageType.TYPE_TEMP);
+        public String outputPath = StorageUtil.getWritePath(StringUtilNim.get32UUID() + ".jpg", StorageType.TYPE_TEMP);
     }
 
     /**
