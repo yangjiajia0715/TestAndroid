@@ -2,47 +2,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/checked_tectview_toggle"
-        android:layout_width="wrap_content"
-        android:text="单选多选开关"
-        style="@style/home_text_style"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:textColor="#2b2b2b"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content" />
+    <CheckedTextView
+        android:id="@+id/checkedtextview_0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_f8f8f8"
+        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/temp_item_date" />
+
+    <CheckedTextView
+        android:id="@+id/checkedtextview_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_f8f8f8"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:text="@string/temp_item_date" />
+
+    <CheckedTextView
+        android:id="@+id/checkedtextview_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_f8f8f8"
+        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:ellipsize="marquee"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:text="@string/temp_item_date" />
+
 
     <TextView
         android:id="@+id/checked_tectview_get_checkids"
-        android:layout_width="wrap_content"
-        android:text="获取选择的ids"
         style="@style/home_text_style"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:textColor="#2b2b2b"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/checked_tectview_checkids_show"
         android:layout_width="wrap_content"
-        android:text="show"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:textColor="#2b2b2b"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_height="wrap_content" />
+        android:gravity="center"
+        android:text="获取选择的ids"
+        android:textColor="#2b2b2b"
+        android:textSize="15sp" />
 
     <ListView
-        android:id="@+id/checked_tectview_listview"
+        android:id="@+id/listview"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:cacheColorHint="#00000000"
-        android:scrollbars="none"
-        android:divider="#969696"
-        android:dividerHeight="1dp"
-        android:layout_height="match_parent"/>
+        android:choiceMode="singleChoice"
+        android:divider="@color/color_f8f8f8"
+        android:dividerHeight="2dp"
+        android:scrollbars="none" />
 </LinearLayout>

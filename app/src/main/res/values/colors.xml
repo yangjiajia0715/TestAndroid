@@ -49,4 +49,8 @@
     <color name="homework_correct_rate_hight_solid">#885BAF00</color>
     <color name="homework_correct_rate_low">#FF4C4D</color>
     <color name="homework_correct_rate_low_solid">#88FF4C4D</color>
+
+    <color name="half_gray">#44808080</color>
+    <color name="app_color">#fea73b</color>
+    <color name="text_color_4a4a4a">#4a4a4a</color>
 </resources>

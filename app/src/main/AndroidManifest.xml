@@ -285,6 +285,7 @@
         <!--android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"-->
         <activity android:name=".activity.DialogListActivity"
             />
+        <activity android:name=".activity.CheckTextViewNewActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

@@ -24,11 +24,9 @@ import java.util.List;
 
 public class CheckedTextViewAdapter extends BaseAdapter {
     private static final String TAG = "CheckedTextViewAdapter";
-
+    private SparseBooleanArray sparseBooleanArray;
     private Context context;
-
     private List<String> datas;
-
     private ListView listView;
 
     public CheckedTextViewAdapter(Context context, ListView listView) {
@@ -39,9 +37,16 @@ public class CheckedTextViewAdapter extends BaseAdapter {
         datas = new ArrayList<>();
 
         for (int i = 0; i < 20; i++) {
-            datas.add("错题会 i=" + i);
+            datas.add("错题会内容有点常常长加接口斤斤计 i=" + i);
         }
+    }
 
+    public SparseBooleanArray getSparseBooleanArray() {
+        return sparseBooleanArray;
+    }
+
+    public void setSparseBooleanArray(SparseBooleanArray sparseBooleanArray) {
+        this.sparseBooleanArray = sparseBooleanArray;
     }
 
     @Override
@@ -60,8 +65,9 @@ public class CheckedTextViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView( int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
+        Log.d(TAG, "getView: position=" + position + "  sparseBooleanArray=" + sparseBooleanArray );
         String content = datas.get(position);
 
         if (convertView == null) {
@@ -69,50 +75,19 @@ public class CheckedTextViewAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_checked_textview, null, false);
             holder.textView = (TextView) convertView.findViewById(R.id.item_checked_textview_one);
             holder.checkedTextView = (CheckedTextView) convertView.findViewById(R.id.item_checked_textview_two);
-            holder.checkedTextView.setCheckMarkDrawable(R.drawable.nim_contact_checkbox_checked_grey);
-            holder.checkedTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    holder.checkedTextView.toggle();
-
-                    SparseBooleanArray checkedItemPositions = listView.getCheckedItemPositions();
-                    if (checkedItemPositions != null) {
-
-                        checkedItemPositions.put(position, holder.checkedTextView.isChecked());
-
-                        boolean isChecked = checkedItemPositions.valueAt(position);
-                        Log.d(TAG, " getView onClick: valueAt pos=" + position + " ,isChecked=" + isChecked + ",checkedTextView=" + holder.checkedTextView.isChecked());
-                    }
-
-                    Log.d(TAG, " getView onClick:isChecked=" + holder.checkedTextView.isChecked());
-
-                    notifyDataSetChanged();
-                }
-            });
-
+            holder.checkedTextView.setCheckMarkDrawable(R.drawable.selector_nim);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
         holder.textView.setText(content);
-
         holder.checkedTextView.setText(content);
 
-        SparseBooleanArray checkedItemPositions = listView.getCheckedItemPositions();
-        if (checkedItemPositions != null) {
-            if (checkedItemPositions.get(position)) {
-                holder.checkedTextView.setCheckMarkDrawable(R.drawable.nim_contact_checkbox_checked_green);
-            } else {
-                holder.checkedTextView.setCheckMarkDrawable(R.drawable.nim_contact_checkbox_unchecked);
-            }
+        if (sparseBooleanArray != null) {
+            boolean checked = sparseBooleanArray.get(position);
+            holder.checkedTextView.setChecked(checked);
         }
-
-//        if (holder.checkedTextView.isChecked()) {
-//            holder.checkedTextView.setCheckMarkDrawable(R.drawable.nim_contact_checkbox_checked_green);
-//        } else {
-//            holder.checkedTextView.setCheckMarkDrawable(R.drawable.nim_contact_checkbox_unchecked);
-//        }
 
         return convertView;
     }

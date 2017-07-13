@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:background="@drawable/selector_homework_item"
+    android:maxLines="1"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_paddind_left"
+    android:paddingRight="@dimen/activity_paddind_right"
+    android:textColor="@drawable/text_selector_color"
+    android:textSize="13sp"
+    tools:text="冲刺一班级">
+<!--android:background="@drawable/bg_bottom_line"-->
+</TextView>

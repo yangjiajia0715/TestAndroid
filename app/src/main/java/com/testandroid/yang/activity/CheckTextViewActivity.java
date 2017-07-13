@@ -7,11 +7,16 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.CheckedTextViewAdapter;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * ViewAnimator
@@ -19,86 +24,75 @@ import com.testandroid.yang.adapter.CheckedTextViewAdapter;
  * create time: 2016-9-21
  * desc:
  */
-public class CheckTextViewActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class CheckTextViewActivity extends Activity implements AdapterView.OnItemClickListener {
     private static final String TAG = "CheckTextViewActivity";
-
-    private ListView mListView;
-
-    private boolean flag;
-
-    private TextView tvShow;
-
+    @BindView(R.id.checkedtextview_0)
+    CheckedTextView checkedtextview0;
+    @BindView(R.id.checkedtextview_1)
+    CheckedTextView checkedtextview1;
+    @BindView(R.id.checkedtextview_2)
+    CheckedTextView checkedtextview2;
+    @BindView(R.id.checked_tectview_get_checkids)
+    TextView checkedTectviewGetCheckids;
+    @BindView(R.id.listview)
+    ListView mListView;
     private CheckedTextViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checked_textview);
+        ButterKnife.bind(this);
         initView();
-
-        //origin branch
-        //tempBranch
-//        tttt
     }
 
     private void initView() {
-
-        mListView = (ListView) findViewById(R.id.checked_tectview_listview);
         mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
         adapter = new CheckedTextViewAdapter(this, mListView);
         mListView.setAdapter(adapter);
 
         mListView.setOnItemClickListener(this);
-
-        findViewById(R.id.checked_tectview_toggle).setOnClickListener(this);
-        findViewById(R.id.checked_tectview_get_checkids).setOnClickListener(this);
-
-        tvShow = (TextView) findViewById(R.id.checked_tectview_checkids_show);
-
     }
 
-    @Override
-    public void onClick(View view) {
+    @OnClick({R.id.checkedtextview_0, R.id.checkedtextview_1, R.id.checkedtextview_2, R.id.checked_tectview_get_checkids})
+    public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.checked_tectview_toggle:
-                flag = !flag;
-
-                if (flag) {
-                    mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            case R.id.checkedtextview_0:
+                checkedtextview0.toggle();
+                if (checkedtextview0.isChecked()) {
+                    checkedtextview0.setCheckMarkDrawable(R.drawable.nim_contact_checkbox_checked_grey);
                 } else {
-                    mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+                    checkedtextview0.setCheckMarkDrawable(R.drawable.nim_contact_checkbox_unchecked);
                 }
-
-                adapter.notifyDataSetChanged();
-
-                Log.d(TAG, "onClick: flag=" + flag + ",getChoiceMode=" + mListView.getChoiceMode());
+                Log.d(TAG, "onViewClicked: 0 ::" + checkedtextview0.isChecked());
+                break;
+            case R.id.checkedtextview_1:
+                checkedtextview1.setCheckMarkDrawable(R.drawable.selector_nim);
+                checkedtextview1.toggle();
+                Log.d(TAG, "onViewClicked: 1 ::" + checkedtextview1.isChecked());
+                break;
+            case R.id.checkedtextview_2:
+//                checkedtextview2.setCheckMarkDrawable(R.drawable.selector_nim);
+                checkedtextview2.toggle();
+                Log.d(TAG, "onViewClicked: 2 ::" + checkedtextview2.isChecked());
                 break;
             case R.id.checked_tectview_get_checkids:
-                int checkedItemCount = mListView.getCheckedItemCount();
+                int selectedItemPosition = mListView.getSelectedItemPosition();
+                int checkedItemPosition = mListView.getCheckedItemPosition();
                 SparseBooleanArray checkedItemPositions = mListView.getCheckedItemPositions();
-                long[] checkedItemIds = mListView.getCheckedItemIds();
-
-//                mListView.clearChoices();
-
-                String ids = "";
-                if (checkedItemIds != null) {
-                    for (long id : checkedItemIds) {
-                        ids += ",id=" + id;
-                    }
-                }
-
-                String content = "checkedItemCount=" + checkedItemCount + ",checkedItemPositions=" + checkedItemPositions + ",ids=" + ids;
-
-                tvShow.setText(content);
-
+                Log.d(TAG, "onViewClicked: selectedItemPosition ::" + selectedItemPosition);
+                Log.d(TAG, "onViewClicked: checkedItemPosition  ::" + checkedItemPosition);
+                Log.d(TAG, "onViewClicked: checkedItemPositions        ::" + checkedItemPositions);
                 break;
-
         }
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Log.d(TAG, "onItemClick: position=" + position);
+        SparseBooleanArray checkedItemPositions = mListView.getCheckedItemPositions();
+        Log.d(TAG, "onViewClicked: onItemClick ::" + checkedItemPositions);
+        adapter.setSparseBooleanArray(checkedItemPositions);
+        adapter.notifyDataSetChanged();
     }
 }

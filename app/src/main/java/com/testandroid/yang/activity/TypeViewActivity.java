@@ -82,6 +82,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("tv_fragement_pager_adapter", R.id.tv_fragement_pager_adapter, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_item_type_listview", R.id.tv_item_type_listview, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_CheckedTextView", R.id.tv_CheckedTextView, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_CheckedTextView_new", R.id.tv_CheckedTextView_new, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_recycleview", R.id.tv_recycleview, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_vLayouot", R.id.tv_vLayouot, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_fitsystemwindow", R.id.tv_fitsystemwindow, HomeInfo.HomeGroup.View));
@@ -143,6 +144,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                 case R.id.tv_CheckedTextView:
                     intent = new Intent(this, CheckTextViewActivity.class);
                     startActivity(intent);
+                    break;
+                case R.id.tv_CheckedTextView_new:
+                    CheckTextViewNewActivity.start(this);
                     break;
                 case R.id.tv_Dex_ClassLoader:
                     intent = new Intent(this, DexClassLoadTestActivity.class);

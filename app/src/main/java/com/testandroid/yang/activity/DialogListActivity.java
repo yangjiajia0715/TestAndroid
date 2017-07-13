@@ -7,15 +7,23 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.URLUtil;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +74,10 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
     TextView bottomBtn;
     @BindView(R.id.bottomLayout)
     LinearLayout bottomLayout;
+    @BindView(R.id.planets_spinner)
+    Spinner planetsSpinner;
+    private PopupWindow popupWindow2;
+    private ListView listView;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, DialogListActivity.class);
@@ -88,10 +100,38 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
 
     @Override
     public void initData() {
-
+        spinner();
     }
 
-    @OnClick({R.id.dialog0, R.id.dialog1, R.id.dialog2, R.id.dialog3, R.id.dialog4, R.id.dialog5, R.id.dialog6, R.id.dialog7, R.id.dialog8, R.id.dialog9, R.id.bottom_btn})
+    private void spinner() {
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.planets_array, R.layout.simple_spinner_item_new);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+//        dropDownViewTheme.
+        planetsSpinner.setAdapter(adapter);
+        planetsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object itemAtPosition = parent.getItemAtPosition(position);
+                Log.d(TAG, "onItemSelected: " + itemAtPosition);
+
+                String[] stringArray = getResources().getStringArray(R.array.planets_array);
+                Toast.makeText(DialogListActivity.this, "选择 " + stringArray[position], Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(DialogListActivity.this, "未选择", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @OnClick({R.id.dialog0, R.id.dialog1, R.id.dialog2, R.id.dialog3, R.id.dialog4,
+            R.id.dialog5, R.id.dialog6, R.id.dialog7, R.id.dialog8, R.id.dialog9,
+            R.id.bottom_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.dialog0:
@@ -193,12 +233,48 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
 //                menuDialog.show();
                 break;
             case R.id.dialog8:
+//                showPopupWindow();
+                showClassListPopupwindow2();
                 break;
             case R.id.dialog9:
+
                 break;
             case R.id.bottom_btn:
+
                 break;
         }
+    }
+
+    private void showPopupWindow() {
+
+    }
+
+    private void showClassListPopupwindow2() {
+        if (listView == null) {
+            listView = (ListView) LayoutInflater.from(this).inflate(R.layout.item_homework_popup_filter, null, false);
+            String[] mClassNames = {"选项1", "选项2", "选项4", "选项4"};
+            listView.setAdapter(new ArrayAdapter<>(this, R.layout.item_homwork_filter, mClassNames));
+
+            popupWindow2 = new PopupWindow(listView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+            popupWindow2.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.half_gray)));
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    listView.setSelection(position);
+//                    view.setSelected(true);
+                }
+            });
+        }
+
+//        listView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                listView.setItemChecked(1, true);
+//            }
+//        });
+
+        popupWindow2.showAsDropDown(toolbar);
     }
 
     @Override
@@ -207,4 +283,5 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
         Log.d(TAG, "onDateSet: month=" + month);
         Log.d(TAG, "onDateSet: dayOfMonth=" + dayOfMonth);
     }
+
 }

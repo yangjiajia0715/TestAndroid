@@ -23,6 +23,7 @@
     <item name="tv_DexClassLoader" type="id" />
     <item name="tv_ViewAnimator" type="id" />
     <item name="tv_CheckedTextView" type="id" />
+    <item name="tv_CheckedTextView_new" type="id" />
     <item name="tv_Dex_ClassLoader" type="id" />
     <item name="tv_photo_view" type="id" />
     <item name="tv_buildconfig_field" type="id" />
