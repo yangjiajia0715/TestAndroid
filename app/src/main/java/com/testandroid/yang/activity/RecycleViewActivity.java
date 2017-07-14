@@ -64,7 +64,7 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
 
         FlowLayoutManager flowLayoutManager = new FlowLayoutManager();
 
-//        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         recyclerView.setLayoutManager(autoLineLayoutManage);
 

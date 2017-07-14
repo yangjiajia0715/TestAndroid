@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/selector_checktext_item"
     android:orientation="horizontal">
-
+<!-- android:background="@drawable/selector_checktext_item_tmp"-->
     <TextView
         android:id="@+id/item_checked_textview_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:maxLines="1"
         android:text="one"
+        android:gravity="center"
         android:textColor="#2b2b2b"
         android:textSize="15sp" />
 
+    <!-- android:duplicateParentState="true"-->
     <CheckedTextView
         android:id="@+id/item_checked_textview_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:checkMark="?android:attr/listChoiceIndicatorSingle"
+        android:background="@color/sample_blue"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
         android:checked="false"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/arrow_left_dart"
         android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingRight="10dp"
         android:text="two"
         android:textColor="@color/black_2b"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        tools:text="哈哈哈哈jkjlk飞机撒地方放到发的你好呀好的很多" />
 </LinearLayout>

@@ -41,15 +41,32 @@
         android:padding="10dp"
         android:text="@string/temp_item_date" />
 
-
     <TextView
         android:id="@+id/checked_tectview_get_checkids"
         style="@style/home_text_style"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:background="@drawable/selector_checktext_item_tmp"
+        android:drawablePadding="20dp"
+        android:drawableRight="@drawable/arrow_left_dart"
         android:gravity="center"
         android:text="获取选择的ids"
+        android:textColor="#2b2b2b"
+        android:textSize="15sp" />
+
+    <TextView
+        style="@style/home_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawablePadding="20dp"
+        android:drawableRight="@drawable/arrow_left_dart"
+        android:gravity="center"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:text="@string/temp_item_date"
         android:textColor="#2b2b2b"
         android:textSize="15sp" />
 
@@ -61,5 +78,6 @@
         android:choiceMode="singleChoice"
         android:divider="@color/color_f8f8f8"
         android:dividerHeight="2dp"
+        android:listSelector="@drawable/selector_checktext_item"
         android:scrollbars="none" />
 </LinearLayout>

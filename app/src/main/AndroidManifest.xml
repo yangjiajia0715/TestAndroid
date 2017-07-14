@@ -286,6 +286,7 @@
         <activity android:name=".activity.DialogListActivity"
             />
         <activity android:name=".activity.CheckTextViewNewActivity" />
+        <activity android:name=".activity.ListviewChoiceActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

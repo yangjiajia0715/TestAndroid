@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.testandroid.yang.R;
@@ -27,17 +26,13 @@ public class CheckedTextViewAdapter extends BaseAdapter {
     private SparseBooleanArray sparseBooleanArray;
     private Context context;
     private List<String> datas;
-    private ListView listView;
 
-    public CheckedTextViewAdapter(Context context, ListView listView) {
+    public CheckedTextViewAdapter(Context context) {
         this.context = context;
-
-        this.listView = listView;
-
         datas = new ArrayList<>();
 
         for (int i = 0; i < 20; i++) {
-            datas.add("错题会内容有点常常长加接口斤斤计 i=" + i);
+            datas.add("错题会内容真实稍微长了点 i=" + i);
         }
     }
 
@@ -64,6 +59,15 @@ public class CheckedTextViewAdapter extends BaseAdapter {
         return position;
     }
 
+    //分类 标题的时候 非常好用
+//    @Override
+//    public boolean isEnabled(int position) {
+//        if (position == 0) {
+//            return false;
+//        }
+//        return super.isEnabled(position);
+//    }
+
     @Override
     public View getView( int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
@@ -84,6 +88,7 @@ public class CheckedTextViewAdapter extends BaseAdapter {
         holder.textView.setText(content);
         holder.checkedTextView.setText(content);
 
+        convertView.setSelected(false);
         if (sparseBooleanArray != null) {
             boolean checked = sparseBooleanArray.get(position);
             holder.checkedTextView.setChecked(checked);

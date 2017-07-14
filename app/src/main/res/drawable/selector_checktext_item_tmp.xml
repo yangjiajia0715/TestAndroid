@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:constantSize="false" android:dither="true" android:variablePadding="false">
+
+    <item android:drawable="@color/theme_purple_background" android:state_selected="true" />
+    <item android:drawable="@color/theme_green_accent" android:state_activated="true" />
+    <item android:drawable="@color/theme_purple_primary" android:state_pressed="true" />
+    <item android:drawable="@color/theme_red_background" android:state_checked="true" />
+    <item android:drawable="@color/white" />
+</selector>
