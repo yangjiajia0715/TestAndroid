@@ -12,6 +12,7 @@
     <permission android:name="com.testandroid.yang.provider" />
     <permission android:name="com.testandroid.yang.provider.Reader" />
     <permission android:name="com.testandroid.yang.provider.Write" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -257,16 +258,21 @@
         <activity android:name=".activity.DisplayUserInfoActivity" />
 
         <activity android:name=".activity.RotationActivity" />
+
         <activity android:name=".activity.CustomViewActivity" />
+
         <activity android:name=".activity.CustomView0Activity" />
+
         <activity android:name=".activity.CustomViewLevelListActivity" />
 
         <activity
             android:name=".activity.EditTextActivity"
             android:windowSoftInputMode="adjustResize" />
+
         <activity android:name=".activity.LaunchModeBaseActivity" />
 
         <activity android:name=".activity.LaunchModeA_Activity" />
+
         <activity android:name=".activity.LaunchModeB_Activity" />
 
         <!--android:clearTaskOnLaunch="true"
@@ -279,14 +285,19 @@
         <activity
             android:name=".activity.LaunchModeD_Activity"
             android:launchMode="singleInstance" />
+
         <activity android:name=".activity.LaunchModeE_Activity" />
+
         <activity android:name=".activity.CustomViewCanvasActivity" />
 
         <!--android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"-->
-        <activity android:name=".activity.DialogListActivity"
-            />
+        <activity android:name=".activity.DialogListActivity" />
+
         <activity android:name=".activity.CheckTextViewNewActivity" />
-        <activity android:name=".activity.ListviewChoiceActivity" />
+
+        <activity
+            android:name=".activity.ListviewChoiceActivity"
+            android:theme="@style/ActionBarOverlay" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

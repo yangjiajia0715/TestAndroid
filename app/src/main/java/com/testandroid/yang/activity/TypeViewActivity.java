@@ -90,6 +90,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("tv_customeview_view", R.id.tv_customeview_view, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_edittext", R.id.tv_edittext, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_Dialog", R.id.tv_dialog, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_listview_choice", R.id.tv_listview_choice, HomeInfo.HomeGroup.View));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -100,8 +101,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         Intent intent;
-        if (v.getTag(R.id.tag_first) instanceof HomeInfo) {
-            HomeInfo info = (HomeInfo) v.getTag(R.id.tag_first);
+        Object tag = v.getTag(R.id.tag_first);
+        if (tag instanceof HomeInfo) {
+            HomeInfo info = (HomeInfo) tag;
             switch (info.id) {
                 case R.id.tv_zoom_image:
                     intent = new Intent(this, ZoomImageActivity.class);
@@ -180,6 +182,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                     break;
                 case R.id.tv_dialog:
                     DialogListActivity.start(this);
+                    break;
+                case R.id.tv_listview_choice:
+                    ListviewChoiceActivity.start(this);
                     break;
             }
         }
