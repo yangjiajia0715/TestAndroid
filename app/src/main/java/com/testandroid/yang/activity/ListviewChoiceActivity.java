@@ -3,6 +3,7 @@ package com.testandroid.yang.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -51,8 +52,19 @@ public class ListviewChoiceActivity extends BaseActivity implements AdapterView.
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.menu_list_choice, menu);
+        final MenuItem menuItem = menu.findItem(R.id.menu_print);
+        menuItem.getActionView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onCreateOptionsMenu: v =" + v);
+                onOptionsItemSelected(menuItem);
+            }
+        });
+        Log.d(TAG, "onCreateOptionsMenu: menu =" + menu);
+        MenuBuilder menuBuilder = (MenuBuilder) menu;
+        menuBuilder.setOptionalIconsVisible(false);//
         return true;
     }
 
@@ -61,9 +73,16 @@ public class ListviewChoiceActivity extends BaseActivity implements AdapterView.
         switch (item.getItemId()) {
             case R.id.menu_print:
                 Log.d(TAG, "onOptionsItemSelected: item=" + item.getTitle());
+//                请参考：http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/1105/1906.html
                 listview.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
+//                listview.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
+// Choice_mode_multiple 本身没有排斥性，
+//                因为一般情况下点击item是为了跳转到下个页面，所以当choice_mode时choice_mode_multiple时既实现多选也会跳转
+//                当然可以设置一个标记位，是多选还是跳转，更好的做法：choice_mode_multiple_modal,
+//                  进入该页面时怎么启动ActionMode:可以先选择再清除
                 listview.setItemChecked(0, true);
                 listview.clearChoices();
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -100,6 +119,7 @@ public class ListviewChoiceActivity extends BaseActivity implements AdapterView.
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
                 getMenuInflater().inflate(R.menu.menu_list_choice_action_mode, menu);
+                mode.setTitle("返回");
                 return true;
             }
 

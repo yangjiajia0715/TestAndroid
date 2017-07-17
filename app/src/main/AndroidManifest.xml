@@ -295,9 +295,11 @@
 
         <activity android:name=".activity.CheckTextViewNewActivity" />
 
+        <!--ActionModeTheme-->
+        <!--ActionBarOverlay-->
         <activity
             android:name=".activity.ListviewChoiceActivity"
-            android:theme="@style/ActionBarOverlay" />
+            android:theme="@style/ListviewChoice" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
