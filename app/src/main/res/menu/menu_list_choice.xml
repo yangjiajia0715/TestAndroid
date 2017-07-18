@@ -8,4 +8,40 @@
         android:title="打印"
         app:actionLayout="@layout/action_layout_list_choice"
         app:showAsAction="always|withText" />
+    <item
+        android:icon="@drawable/arrow_left_dart"
+        android:title="打印1"
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/arrow_left_dart"
+        android:title="打印2"
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/ic_mail_box"
+        android:title="打印3"
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/ic_mail_box"
+        android:title="打印4"
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/ic_mail_box"
+        android:title="打印5"
+        app:showAsAction="always" />
+    <item
+        android:icon="@drawable/ic_mail_box"
+        android:title="打印6"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@drawable/ic_mail_box"
+        android:title="打印7"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@drawable/ic_mail_box"
+        android:title="打印8"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@drawable/ic_mail_box"
+        android:title="打印9"
+        app:showAsAction="ifRoom" />
 </menu>

@@ -1,5 +1,6 @@
 package com.testandroid.yang.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +38,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         Log.d(TAG, "MainActivity--onCreate: getTaskId=" + getTaskId());
         Log.d(TAG, "MainActivity--onCreate: CCC.get=" + CCC.get());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.d(TAG, "MainActivity--onNewIntent: intent=" + intent);
     }
 
     @Override

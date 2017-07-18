@@ -3,6 +3,7 @@ package com.testandroid.yang.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -92,6 +93,10 @@ public class ListviewChoiceActivity extends BaseActivity implements AdapterView.
     @Override
     public void initView() {
         setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+//        actionBar.hide();
+
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 

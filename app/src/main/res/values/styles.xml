@@ -203,6 +203,7 @@
         <!--不放开也可以覆盖-->
         <!--<item name="android:windowActionModeOverlay" >true</item>-->
         <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowActionBarOverlay">false</item>
       <!--  <item name="android:actionModeBackground">@color/colorPrimary</item>
         <item name="actionModeStyle">@style/OverflowActionModeStyle</item>
         <item name="actionModeCloseDrawable">@drawable/arrow_left_dart</item>

@@ -1,9 +1,15 @@
 package com.testandroid.yang.activity;
 
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -124,6 +130,15 @@ public class MenuActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
 
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            Log.d(TAG, "initView: actionBar=" + actionBar);
+            actionBar.setDisplayHomeAsUpEnabled(false);//隐藏返回按钮
+            actionBar.setDisplayHomeAsUpEnabled(true);//需配合manifest.xml,
+
+        }
+
         if (tvContextMenu == null) {
             tvContextMenu = (TextView) findViewById(R.id.tv_context_menu);
         }
@@ -135,7 +150,6 @@ public class MenuActivity extends BaseActivity {
 
         listview = (ListView) findViewById(R.id.listview);
         listviewRight = (ListView) findViewById(R.id.listviewright);
-
     }
 
 
@@ -144,15 +158,45 @@ public class MenuActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.option_menu, menu);
         Log.d(TAG, "onCreateOptionsMenu: menu=" + menu);
-        return true;
+        MenuItem menuItem = menu.findItem(R.id.drop_down_answer);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+//        searchView.setIconifiedByDefault(false);
+        Log.d(TAG, "onCreateOptionsMenu: searchView=" + searchView);
+
+        MenuItem shareItem = menu.findItem(R.id.action_share);
+        ShareActionProvider actionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
+        actionProvider.setShareIntent(getDefaultIntent());
+
+        //注意配：app:showAsAction="ifRoom|collapseActionView"
+        MenuItemCompat.setOnActionExpandListener(menuItem, new MenuItemCompat.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                Log.d(TAG, "onMenuItemActionExpand: item=" + item);
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                Log.d(TAG, "onMenuItemActionCollapse: item=" + item);
+                return true;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    private Intent getDefaultIntent() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        return intent;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.add("动态添加");
         Log.d(TAG, "onPrepareOptionsMenu: menu=" + menu);
-        super.onPrepareOptionsMenu(menu);
-        return true;
+        return super.onPrepareOptionsMenu(menu);
+//        return true;
     }
 
     @Override
@@ -187,9 +231,9 @@ public class MenuActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.drop_down_answer:
-                Toast.makeText(this, "drop_down_answer", Toast.LENGTH_SHORT).show();
-                return true;
+//            case R.id.drop_down_answer:
+//                Toast.makeText(this, "drop_down_answer", Toast.LENGTH_SHORT).show();
+//                return true;
             case R.id.drop_down_setting:
                 Toast.makeText(this, "drop_down_setting", Toast.LENGTH_SHORT).show();
                 return true;
@@ -197,6 +241,17 @@ public class MenuActivity extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    @Nullable
+    @Override
+    public Intent getSupportParentActivityIntent() {
+        return super.getSupportParentActivityIntent();
+    }
+
+    @Override
+    public void onCreateNavigateUpTaskStack(TaskStackBuilder builder) {
+        super.onCreateNavigateUpTaskStack(builder);
     }
 
     @Override
@@ -328,8 +383,8 @@ public class MenuActivity extends BaseActivity {
     private void showPopMenu(View v) {
         if (popupMenu == null) {
 //            popupMenu = new PopupMenu(this, v, Gravity.END);
-            popupMenu = new PopupMenu(this,v,Gravity.END,R.attr.popupMenuStyle,R.style.PopmenuStyle);
-            popupMenu = new PopupMenu(this,v,Gravity.END,R.attr.popupMenuStyle,R.style.PopmenuStyle);
+            popupMenu = new PopupMenu(this, v, Gravity.END, R.attr.popupMenuStyle, R.style.PopmenuStyle);
+            popupMenu = new PopupMenu(this, v, Gravity.END, R.attr.popupMenuStyle, R.style.PopmenuStyle);
 //        popupMenu.inflate();
             popupMenu.getMenuInflater().inflate(R.menu.pop_menu, popupMenu.getMenu());
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

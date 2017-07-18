@@ -46,7 +46,9 @@
         android:theme="@style/AppTheme">
 
         <!--<activity android:name=".activity.MainActivity">-->
-        <activity android:name="com.testandroid.yang.activity.MainActivity">
+        <activity
+            android:name="com.testandroid.yang.activity.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -195,8 +197,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!--4.1之后 parentActivityName 之前：用meta-data -->
         <activity
             android:name="com.testandroid.yang.activity.MenuActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:theme="@style/ActionModeTheme" />
 
         <activity android:name="com.testandroid.yang.activity.ViewBigImageActivity" />
@@ -299,7 +303,8 @@
         <!--ActionBarOverlay-->
         <activity
             android:name=".activity.ListviewChoiceActivity"
-            android:theme="@style/ListviewChoice" />
+            android:theme="@style/ListviewChoice"
+            android:uiOptions="splitActionBarWhenNarrow" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
