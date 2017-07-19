@@ -189,7 +189,7 @@
         <item name="textColorAlertDialogListItem">@color/sample_blue</item>
         <item name="colorAccent">@color/app_color_normal</item>
         <item name="android:textColorPrimary">@color/green</item>
-      <!--  <item name="android:windowBackground">@drawable/ic_politics</item>-->
+        <!--  <item name="android:windowBackground">@drawable/ic_politics</item>-->
     </style>
 
     <style name="DatePickerDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -204,13 +204,18 @@
         <!--<item name="android:windowActionModeOverlay" >true</item>-->
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowActionBarOverlay">false</item>
-      <!--  <item name="android:actionModeBackground">@color/colorPrimary</item>
-        <item name="actionModeStyle">@style/OverflowActionModeStyle</item>
-        <item name="actionModeCloseDrawable">@drawable/arrow_left_dart</item>
-        <item name="android:actionBarStyle">@style/MyActionBar</item>-->
+        <!--  <item name="android:actionModeBackground">@color/colorPrimary</item>
+          <item name="actionModeStyle">@style/OverflowActionModeStyle</item>
+          <item name="actionModeCloseDrawable">@drawable/arrow_left_dart</item>
+          <item name="android:actionBarStyle">@style/MyActionBar</item>-->
 
     </style>
 
-
+    <!--dim：昏暗 1 黑 Theme.AppCompat.Light.Dialog.Alert -->
+    <style name="ProgressBar" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:backgroundDimAmount">0.7</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
 
 </resources>

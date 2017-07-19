@@ -33,6 +33,7 @@ import com.tencent.tinker.loader.shareutil.ShareConstants;
 import com.testandroid.yang.Log.MyLogImp;
 import com.testandroid.yang.util.SampleApplicationContext;
 import com.testandroid.yang.util.TinkerManager;
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * because you can not use any other class in your application, we need to
@@ -101,6 +102,8 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         //or you can put com.tencent.tinker.** to main dex
         TinkerManager.installTinker(this);
         Tinker tinker = Tinker.with(getApplication());
+
+        MobclickAgent.setDebugMode(true);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)

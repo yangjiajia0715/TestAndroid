@@ -45,6 +45,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
+        <meta-data android:value="" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="10002" android:name="UMENG_CHANNEL"/>
+
         <!--<activity android:name=".activity.MainActivity">-->
         <activity
             android:name="com.testandroid.yang.activity.MainActivity"
@@ -305,6 +308,10 @@
             android:name=".activity.ListviewChoiceActivity"
             android:theme="@style/ListviewChoice"
             android:uiOptions="splitActionBarWhenNarrow" />
+
+        <activity
+            android:name=".activity.DrawerLayoutActivity"
+            android:screenOrientation="portrait" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

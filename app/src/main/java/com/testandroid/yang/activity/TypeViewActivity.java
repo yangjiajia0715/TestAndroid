@@ -1,11 +1,17 @@
 package com.testandroid.yang.activity;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.testandroid.yang.ObservableScrollView.demo.ParallaxToolbarScrollViewActivity;
@@ -14,6 +20,11 @@ import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
 import com.testandroid.yang.common.HomeInfo;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +46,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
     private List<HomeInfo> infos = new ArrayList<>();
     private List<HomeInfo> items;
     private HomeRecyleViewAdapter adapter;
+    private ProgressDialog progressDialog;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, TypeViewActivity.class);
@@ -91,6 +103,8 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("tv_edittext", R.id.tv_edittext, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_Dialog", R.id.tv_dialog, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_listview_choice", R.id.tv_listview_choice, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_drawer_layout", R.id.tv_drawer_layout, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_clear_dialog", R.id.tv_clear_dialog, HomeInfo.HomeGroup.View));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -186,7 +200,122 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                 case R.id.tv_listview_choice:
                     ListviewChoiceActivity.start(this);
                     break;
+                case R.id.tv_drawer_layout:
+                    DrawerLayoutActivity.start(this);
+                    break;
+                case R.id.tv_clear_dialog:
+                    showClearCacheDialog(false);
+                    break;
             }
+        }
+    }
+
+
+    public static boolean checkPermission(Context context, String permission) {
+        boolean result = false;
+        if (Build.VERSION.SDK_INT >= 23) {
+            try {
+                Class<?> clazz = Class.forName("android.content.Context");
+                Method method = clazz.getMethod("checkSelfPermission", String.class);
+                int rest = (Integer) method.invoke(context, permission);
+                if (rest == PackageManager.PERMISSION_GRANTED) {
+                    result = true;
+                } else {
+                    result = false;
+                }
+            } catch (Exception e) {
+                result = false;
+            }
+        } else {
+            PackageManager pm = context.getPackageManager();
+            if (pm.checkPermission(permission, context.getPackageName()) == PackageManager.PERMISSION_GRANTED) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public static String getDeviceInfo(Context context) {
+        try {
+            org.json.JSONObject json = new org.json.JSONObject();
+            android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) context
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            String device_id = null;
+            if (checkPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+                device_id = tm.getDeviceId();
+            }
+            String mac = null;
+            FileReader fstream = null;
+            try {
+                fstream = new FileReader("/sys/class/net/wlan0/address");
+            } catch (FileNotFoundException e) {
+                fstream = new FileReader("/sys/class/net/eth0/address");
+            }
+            BufferedReader in = null;
+            if (fstream != null) {
+                try {
+                    in = new BufferedReader(fstream, 1024);
+                    mac = in.readLine();
+                } catch (IOException e) {
+                } finally {
+                    if (fstream != null) {
+                        try {
+                            fstream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (in != null) {
+                        try {
+                            in.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            json.put("mac", mac);
+            if (TextUtils.isEmpty(device_id)) {
+                device_id = mac;
+            }
+            if (TextUtils.isEmpty(device_id)) {
+                device_id = android.provider.Settings.Secure.getString(context.getContentResolver(),
+                        android.provider.Settings.Secure.ANDROID_ID);
+            }
+            json.put("device_id", device_id);
+            return json.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void showClearCacheDialog(boolean isProgress) {
+        if (isProgress) {
+            progressDialog = new ProgressDialog(this, R.style.ProgressBar);
+//            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.setTitle("请稍后");
+
+            progressDialog.show();
+        } else {
+            new ProgressDialog
+                    .Builder(this, R.style.ProgressBar)
+                    .setTitle("确定要清除缓存吗？")
+                    .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+//                        String deviceInfo = getDeviceInfo(TypeViewActivity.this);
+//                        Log.d(TAG, "onClick: de=" + deviceInfo);
+                            showClearCacheDialog(true);
+                        }
+                    })
+                    .setNegativeButton(R.string.text_canncel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .create()
+                    .show();
         }
     }
 }
