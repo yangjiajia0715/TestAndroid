@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.testandroid.yang.R;
 
@@ -23,6 +22,7 @@ import butterknife.ButterKnife;
  * Created by yangjiajia on 2017/2/24 0024.
  */
 
+//
 public class ActionBarActivity extends BaseActivity {
     private static final String TAG = "ActionBarActivity";
     @BindView(R.id.toolbar)
@@ -47,20 +47,28 @@ public class ActionBarActivity extends BaseActivity {
     public void initView() {
         Log.d(TAG, "initView: toolbar=" + toolbar);
 
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        Log.d(TAG, "initView: actionBar=" + actionBar);// android.support.v7.app.WindowDecorActionBar
+        if (actionBar != null) {
+            actionBar.setTitle("MyActionBar");
+//            actionBar.setIcon(R.drawable.ic_mail_box);
+//            actionBar.setHomeAsUpIndicator(R.drawable.ic_mail_box);
+            actionBar.setDisplayHomeAsUpEnabled(true);//貌似不起作用
+//            actionBar.setDisplayShowHomeEnabled(true);
+        }
 
         toolbar.setNavigationContentDescription("导航？");
         //需放到setSupportActionBar 后面 才生效？
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: setNavigationOnClickListener v=" + v);
-                finish();
-            }
-        });
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG, "onClick: setNavigationOnClickListener v=" + v);
+//                finish();
+//            }
+//        });
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("MyActionBar");
+
 //        actionBar.setElevation(0);
 //        actionBar.setLogo(R.drawable.ic_data);
 
@@ -68,16 +76,6 @@ public class ActionBarActivity extends BaseActivity {
 
         Log.d(TAG, "initView: actionBar=" + actionBar);
 
-//        actionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP);
-        //貌似不起作用
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
-//        deprecate
-//        actionBar.setNavigationMode();
-
-//        actionBar.newTab()
-
-//        ArrayAdapter.createFromResource()
     }
 
     @Nullable

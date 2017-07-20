@@ -12,9 +12,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -56,6 +58,7 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
     private String mDrawerTitle = "mDrawerTitle";
     private String mTitle = "Title";
     private ActionBarDrawerToggle mDrawerToggle;
+    private ActionBar actionBar;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, DrawerLayoutActivity.class);
@@ -76,6 +79,11 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
         toolbar.setTitle(mTitle);
         setSupportActionBar(toolbar);
 
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true);
+        View v = LayoutInflater.from(getApplicationContext()).inflate(R.layout.actionbar_main, null);
+        actionBar.setCustomView(v, new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT));
+
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.planets_array, android.R.layout.simple_list_item_1);
         listView.setAdapter(arrayAdapter);
 
@@ -94,14 +102,14 @@ public class DrawerLayoutActivity extends BaseActivity implements AdapterView.On
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mTitle);
+                actionBar.setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle(mDrawerTitle);
+                actionBar.setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };

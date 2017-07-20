@@ -122,9 +122,6 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
                 case R.id.tv_menu:
                     MenuActivity.start(this);
                     break;
-                case R.id.tv_action_bar:
-                    ActionBarActivity.start(this);
-                    break;
                 case R.id.tv_ok_http:
                     OkHttpActivity.start(this);
                     break;

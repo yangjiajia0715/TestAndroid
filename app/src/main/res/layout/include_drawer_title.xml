@@ -5,17 +5,16 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    app:titleMargin="0dp"
-    android:layout_margin="0dp"
+    style="@style/DrawerLayoutActionBar"
     app:layout_scrollFlags="scroll|enterAlways|snap">
 
     <!--参考：http://blog.csdn.net/zxt0601/article/details/50463319-->
     <!--16dp 修改actionbar的样式即可-->
-    <TextView
+<!--    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/sample_blue"
         android:gravity="center"
-        android:text="测试文本" />
+        android:text="测试文本" />-->
 
 </android.support.v7.widget.Toolbar>

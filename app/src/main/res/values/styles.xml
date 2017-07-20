@@ -218,4 +218,44 @@
         <item name="android:backgroundDimEnabled">true</item><!--模糊-->
     </style>
 
+    <style name="DrawerLayoutTheme" parent="AppTheme">
+        <!-- <item name="android:actionBarStyle">@style/DrawerLayoutActionBar</item>-->
+        <item name="toolbarStyle">@style/DrawerLayoutActionBar</item>
+    </style>
+
+    <!--直接设置给toolbar岂不更好-->
+    <style name="DrawerLayoutActionBar" parent="Widget.AppCompat.Toolbar">
+        <!-- 设置该属性解决空白部分-->
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">6dp</item>
+    </style>
+
+    <!--直接设置给toolbar岂不更好  Theme.AppCompat 兼容2.2   3.0以上可以用-->
+    <!--Also notice that this theme includes two definitions for the windowActionBarOverlay style:
+  one with the android: prefix and one without.
+  The one with the android: prefix is for versions of Android that include the style in the platform
+  and the one without the prefix is for older versions that read the style from the Support Library.-->
+    <!-- ActionBar styles Widget.AppCompat.Light.ActionBar.Solid.Inverse -->
+    <style name="Test001" parent="Theme.AppCompat.Light">
+        <item name="toolbarStyle">@style/TestToolBarStyle2</item>
+        <item name="windowActionBarOverlay">true</item>
+        <!--<item name="android:windowActionBarOverlay">true</item>-->
+    </style>
+
+    <style name="TestToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/app_color</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/green</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="TestToolBarStyle2" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">#44000000</item>
+        <!-- <item name="android:background">@color/transparent_black</item>-->
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/accentLight</item>
+    </style>
+
 </resources>
