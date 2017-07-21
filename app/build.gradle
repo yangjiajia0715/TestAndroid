@@ -205,6 +205,8 @@ dependencies {
 
 // 友盟统计
     compile 'com.umeng.analytics:analytics:latest.integration'
+
+    compile 'junit:junit:4.12'
 }
 
 // Iterable gets an each() method

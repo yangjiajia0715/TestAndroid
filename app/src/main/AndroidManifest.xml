@@ -325,6 +325,10 @@
             android:name=".activity.DrawerLayoutActivity"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".activity.ShareSimpleDateActivity"
+            android:theme="@style/ShareSimpleDateActionBar"/>
+
+
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->

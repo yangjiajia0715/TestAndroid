@@ -47,7 +47,7 @@ public class ActionBarActivity extends BaseActivity {
     public void initView() {
         Log.d(TAG, "initView: toolbar=" + toolbar);
 
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         Log.d(TAG, "initView: actionBar=" + actionBar);// android.support.v7.app.WindowDecorActionBar
         if (actionBar != null) {
