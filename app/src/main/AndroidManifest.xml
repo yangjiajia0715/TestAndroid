@@ -221,8 +221,8 @@
         <activity
             android:name="com.testandroid.yang.activity.ActionBarActivity"
             android:label="ActionbarActivity"
-            android:theme="@style/Test001"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/Test001">
 
             <meta-data
                 android:name="android.support.UI_OPTIONS"
@@ -325,9 +325,16 @@
             android:name=".activity.DrawerLayoutActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.ShareSimpleDateActivity"
-            android:theme="@style/ShareSimpleDateActionBar"/>
+        <activity
+            android:name=".activity.ShareSimpleDateActivity"
+            android:theme="@style/ShareSimpleDateActionBar">
 
+            <intent-filter android:label="Share哈哈">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
 
         <!-- android:permission="com."
             android:readPermission="rrr"
@@ -358,6 +365,12 @@
                  android:readPermission="string"
                  android:writePermission="string" />-->
         </provider>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.testandroid.yang.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" />
     </application>
 
 </manifest>

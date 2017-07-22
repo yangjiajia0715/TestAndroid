@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.ActionProvider;
+import android.support.v4.content.FileProvider;
+import android.support.v4.view.ActionProvider;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 
 import com.testandroid.yang.R;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -44,6 +48,7 @@ public class ShareSimpleDateActivity extends BaseActivity {
     TextView shareDate8;
     @BindView(R.id.share_date_9)
     TextView shareDate9;
+    private ShareActionProvider shareActionProvider;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, ShareSimpleDateActivity.class);
@@ -61,7 +66,9 @@ public class ShareSimpleDateActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.share_simple_date,menu);
+        getMenuInflater().inflate(R.menu.share_simple_date, menu);
+        MenuItem shareItem = menu.findItem(R.id.menu_item_share);
+        shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -134,8 +141,15 @@ public class ShareSimpleDateActivity extends BaseActivity {
             case R.id.share_date_5:
                 // Multiple attachment data
 //                ArrayList<Uri> uris = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+                Intent intent = new Intent(Intent.ACTION_SEND);
+//                intent.setData(Uri.parse("content://media/external/images/media/17039"));
+                intent.putExtra(Intent.EXTRA_STREAM, "content://media/external/images/media/17039");
+                intent.setType("image/*");
+                shareActionProvider.setShareIntent(intent);
                 break;
             case R.id.share_date_6:
+                File file = new File("");
+                Uri uriForFile = FileProvider.getUriForFile(this, "", file);
                 break;
             case R.id.share_date_7:
                 break;

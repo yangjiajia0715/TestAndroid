@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/share_date_4"
             style="@style/CommonButtonStyle"
-            android:text="ShareDate4--PutPacelableArrayListExtra(Intent.Extral_multiple,ArrayList<Uri>)" />
+            android:text="PutPacelableArrayListExtra" />
 
         <TextView
             android:id="@+id/share_date_5"
