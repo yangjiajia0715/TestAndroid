@@ -148,8 +148,13 @@ public class ShareSimpleDateActivity extends BaseActivity {
                 shareActionProvider.setShareIntent(intent);
                 break;
             case R.id.share_date_6:
+//                String schemeFile = ContentResolver.SCHEME_FILE;
                 File file = new File("");
                 Uri uriForFile = FileProvider.getUriForFile(this, "", file);
+                Intent resultIntent = new Intent();
+                resultIntent.setDataAndType(uriForFile, getContentResolver().getType(uriForFile));
+//                setResult(RESULT_CANCELED, null);
+
                 break;
             case R.id.share_date_7:
                 break;
