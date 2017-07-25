@@ -52,6 +52,7 @@
     <item name="tv_broadcastreceived" type="id" />
     <item name="tv_Reflect" type="id" />
     <item name="tv_share_date" type="id" />
+    <item name="tv_share_select_file" type="id" />
     <item name="tv_animation_materail_design" type="id" />
     <item name="tv_animation_trans" type="id" />
     <item name="tv_recycleview" type="id" />

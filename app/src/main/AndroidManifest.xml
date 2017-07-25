@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.testandroid.yang">
+
     <!-- 18 -->
     <!-- android:installLocation="preferExternal"-->
     <uses-sdk
@@ -336,6 +337,21 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.SelectFileActivity"
+            android:icon="@drawable/ic_done"
+            android:label="File Selector">
+
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->
@@ -370,8 +386,10 @@
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.testandroid.yang.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data android:name="ndroid.support.FILE_PROVIDER_PATHS"  android:value="@xml/file_paths"/>
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 
