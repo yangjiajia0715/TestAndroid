@@ -67,8 +67,8 @@ public class SelectFileActivity extends ListActivity {
             String pathSegment = Uri.fromFile(new File("")).getLastPathSegment();
             File tempFile = File.createTempFile(pathSegment, null, getCacheDir());
 
-            deleteFile("");
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                
             }
         } catch (Exception e) {
             e.printStackTrace();

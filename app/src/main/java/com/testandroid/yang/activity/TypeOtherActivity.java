@@ -82,6 +82,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         infos.add(new HomeInfo("反射相关", R.id.tv_Reflect, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("分享数据", R.id.tv_share_date, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("分享文件列表", R.id.tv_share_select_file, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("保存文件相关", R.id.tv_save_file, HomeInfo.HomeGroup.Other));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -126,6 +127,9 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                     break;
                 case R.id.tv_share_select_file:
                     SelectFileActivity.start(this);
+                    break;
+                case R.id.tv_save_file:
+                    SavingFileActivity.start(this);
                     break;
             }
         }

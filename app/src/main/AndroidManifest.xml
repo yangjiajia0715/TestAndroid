@@ -351,6 +351,7 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.SavingFileActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
