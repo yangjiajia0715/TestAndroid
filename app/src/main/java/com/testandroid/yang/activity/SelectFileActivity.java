@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
@@ -15,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.testandroid.yang.BuildConfig;
+import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.ImageAdapter;
 import com.testandroid.yang.common.ImageItem;
 
@@ -51,28 +51,29 @@ public class SelectFileActivity extends ListActivity {
         File filesDir = new File(getFilesDir(), "images");
         files = filesDir.listFiles();
 
-        for (File file : files) {
-            ImageItem imageItem = new ImageItem();
-            imageItem.setName(file.getName());
-            datas.add(imageItem);
-        }
-
-        datas.add(new ImageItem("撤销com.yang.thirdapp uri权限"));
-        datas.add(new ImageItem("保存"));
-
-        ImageAdapter imageAdapter = new ImageAdapter(datas);
-        listView.setAdapter(imageAdapter);
-
-        try {
-            String pathSegment = Uri.fromFile(new File("")).getLastPathSegment();
-            File tempFile = File.createTempFile(pathSegment, null, getCacheDir());
-
-            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                
+        if (files != null) {
+            for (File file : files) {
+                ImageItem imageItem = new ImageItem();
+                imageItem.setName(file.getName());
+                datas.add(imageItem);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+            datas.add(new ImageItem("撤销com.yang.thirdapp uri权限"));
+            datas.add(new ImageItem("保存"));
+
+            ImageAdapter imageAdapter = new ImageAdapter(datas);
+            listView.setAdapter(imageAdapter);
+
+            try {
+                String pathSegment = Uri.fromFile(new File("")).getLastPathSegment();
+                File tempFile = File.createTempFile(pathSegment, null, getCacheDir());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(this, R.string.no_date, Toast.LENGTH_SHORT).show();
+        } 
 
     }
 

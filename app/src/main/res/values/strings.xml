@@ -133,4 +133,9 @@ Quam libero nulla netus eu porta curae, ut nulla bibendum facilisis et urna sed,
     <string name="confirm">确认</string>
     <string name="text_canncel">取消</string>
     <string name="send_to">发送给</string>
+    <string name="no_date">暂无数据</string>
+    <string name="something_wrong">出错了</string>
+    <string name="no_app_open_it">找不到相应的应用</string>
+    <string name="fail">失败</string>
+    <string name="success">成功</string>
 </resources>
