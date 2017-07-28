@@ -375,6 +375,7 @@
             android:name=".activity.ControllingCameraActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.GraphicsAndAnimationActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

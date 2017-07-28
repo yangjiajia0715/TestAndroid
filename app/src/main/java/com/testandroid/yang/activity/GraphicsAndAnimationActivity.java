@@ -1,0 +1,180 @@
+package com.testandroid.yang.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.text.format.Formatter;
+import android.util.Log;
+import android.view.View;
+import android.webkit.MimeTypeMap;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.testandroid.yang.R;
+
+import java.io.FileNotFoundException;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+/**
+ * Created by yangjiajia on 2017/7/27.
+ * file:///D:/sdk/docs/training/building-graphics.html
+ */
+
+public class GraphicsAndAnimationActivity extends BaseActivity {
+    private static final String TAG = "GraphicsAndAnimationAct";
+
+    @BindView(R.id.btn_0)
+    TextView btn0;
+    @BindView(R.id.btn_1)
+    TextView btn1;
+    @BindView(R.id.btn_2)
+    TextView btn2;
+    @BindView(R.id.btn_3)
+    TextView btn3;
+    @BindView(R.id.btn_4)
+    TextView btn4;
+    @BindView(R.id.btn_5)
+    TextView btn5;
+    @BindView(R.id.btn_6)
+    TextView btn6;
+    @BindView(R.id.btn_7)
+    TextView btn7;
+    @BindView(R.id.btn_8)
+    TextView btn8;
+    @BindView(R.id.btn_9)
+    TextView btn9;
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, GraphicsAndAnimationActivity.class);
+        context.startActivity(starter);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_common);
+        ButterKnife.bind(this);
+        initView();
+        initData();
+    }
+
+    @Override
+    public void initView() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @OnClick({R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6,
+            R.id.btn_7, R.id.btn_8, R.id.btn_9})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_0:
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeResource(getResources(), R.drawable.liushishi, options);
+                int outWidth = options.outWidth;
+                int outHeight = options.outHeight;
+                String outMimeType = options.outMimeType;
+//                 outWidth=470,outHeight=300,outMimeType=image/jpeg
+                Log.d(TAG, "onViewClicked: outWidth=" + outWidth + ",outHeight=" + outHeight
+                        + ",outMimeType=" + outMimeType);
+                String fromMimeType = MimeTypeMap.getSingleton().getExtensionFromMimeType(outMimeType);
+//                 fromMimeType=jpeg
+                Log.d(TAG, "onViewClicked: fromMimeType=" + fromMimeType);
+                break;
+            case R.id.btn_1:
+                try {
+                    Bitmap bitmapOrigin = BitmapFactory.decodeResource(getResources(), R.drawable.liushishi);
+                    String fileSizeOri = Formatter.formatFileSize(this, bitmapOrigin.getByteCount());
+                    Log.d(TAG, "onViewClicked: fileSizeOri=" + fileSizeOri);
+
+                    Bitmap bitmap = decodeSampledBitmapFromResource(getResources(), R.drawable.liushishi, 100, 100);
+                    String fileSize = Formatter.formatFileSize(this, bitmap.getByteCount());
+
+                    Log.d(TAG, "onViewClicked: fileSize=" + fileSize);
+                    String filePre = DateUtils.formatDateTime(this, System.currentTimeMillis(),
+                            DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, openFileOutput(filePre + ".jpg", MODE_PRIVATE));
+
+                    Bitmap bitmap1 = BitmapFactory.decodeStream(openFileInput(filePre + ".jpg"));
+                    String fileSize1 = Formatter.formatFileSize(this, bitmap1.getByteCount());
+                    Log.d(TAG, "onViewClicked: fileSize1=" + fileSize1);
+                    Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.btn_2:
+
+                break;
+            case R.id.btn_3:
+
+                break;
+            case R.id.btn_4:
+                break;
+            case R.id.btn_5:
+                break;
+            case R.id.btn_6:
+                break;
+            case R.id.btn_7:
+                break;
+            case R.id.btn_8:
+                break;
+            case R.id.btn_9:
+                break;
+        }
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        Log.d(TAG, "decodeSampledBitmapFromResource: inSampleSize=" + options.inSampleSize);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
+
+}

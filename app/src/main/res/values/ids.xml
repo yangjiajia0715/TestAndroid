@@ -55,6 +55,7 @@
     <item name="tv_share_select_file" type="id" />
     <item name="tv_save_file" type="id" />
     <item name="tv_multimedia" type="id" />
+    <item name="tv_graphics_and_animation" type="id" />
     <item name="tv_animation_materail_design" type="id" />
     <item name="tv_animation_trans" type="id" />
     <item name="tv_recycleview" type="id" />
