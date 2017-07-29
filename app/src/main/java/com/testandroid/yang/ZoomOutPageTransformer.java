@@ -1,21 +1,19 @@
-package com.testandroid.yang.common;
+package com.testandroid.yang;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
 /**
- * author: yangjiajia
- * create time: 2016/8/16 0016
- * desc:
+ * ZoomOutPageTransformer
+ * Created by yangjiajia on 2017/7/28.
  */
+
 public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
-    private static final String TAG = "ZoomOutPageTran";
     private static final float MIN_SCALE = 0.85f;
     private static final float MIN_ALPHA = 0.5f;
 
     @Override
     public void transformPage(View view, float position) {
-
         int pageWidth = view.getWidth();
         int pageHeight = view.getHeight();
 

@@ -1,5 +1,7 @@
 package com.testandroid.yang.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,10 +13,13 @@ import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.util.Utility;
 
 import java.io.FileNotFoundException;
 
@@ -50,6 +55,12 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
     TextView btn8;
     @BindView(R.id.btn_9)
     TextView btn9;
+    @BindView(R.id.loading_spinner)
+    ProgressBar mLoadingView;
+    @BindView(R.id.mContentView)
+    View mContentView;
+    @BindView(R.id.liushishi)
+    ImageView liushishi;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, GraphicsAndAnimationActivity.class);
@@ -59,10 +70,17 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_common);
+        setContentView(R.layout.activity_common_graphics);
         ButterKnife.bind(this);
         initView();
         initData();
+
+        mContentView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                crossfade();
+            }
+        }, 200);
     }
 
     @Override
@@ -76,7 +94,7 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
     }
 
     @OnClick({R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6,
-            R.id.btn_7, R.id.btn_8, R.id.btn_9})
+            R.id.btn_7, R.id.btn_8, R.id.btn_9, R.id.liushishi})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_0:
@@ -128,10 +146,27 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
             case R.id.btn_6:
                 break;
             case R.id.btn_7:
+                liushishi.setTranslationY(-Utility.dp2px(100));
                 break;
             case R.id.btn_8:
+//                liushishi.animate()
+//                        .translationX(Utility.dp2px(100))
+//                        .translationY(Utility.dp2px(100))
+//                        .setDuration(1000)
+//                        .setListener(new AnimatorListenerAdapter() {
+//                            @Override
+//                            public void onAnimationEnd(Animator animation) {
+//                                super.onAnimationEnd(animation);
+//                            }
+//                        });
+
+                liushishi.setTranslationX(Utility.dp2px(100));
                 break;
             case R.id.btn_9:
+                liushishi.setAlpha(0.2f);
+                break;
+            case R.id.liushishi:
+                Toast.makeText(this, "刘诗诗", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -174,6 +209,42 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
         }
 
         return inSampleSize;
+    }
+
+    private void crossfade() {
+        int mShortAnimationDuration = 2000;
+
+        // Set the content view to 0% opacity but visible, so that it is visible
+        // (but fully transparent) during the animation.
+        mContentView.setAlpha(0f);
+        mContentView.setVisibility(View.VISIBLE);
+
+        // Animate the content view to 100% opacity, and clear any animation
+        // listener set on the view.
+        mContentView.animate()
+                .alpha(1f)
+                .setDuration(mShortAnimationDuration)
+                .setListener(null);
+
+        // Animate the loading view to 0% opacity. After the animation ends,
+        // set its visibility to GONE as an optimization step (it won't
+        // participate in layout passes, etc.)
+        mLoadingView.animate()
+                .alpha(0f)
+                .setDuration(mShortAnimationDuration)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mLoadingView.setVisibility(View.GONE);
+                    }
+                });
+//                .setListener(new AnimatorListenerAdapter() {
+//                    @Override
+//                    public void onAnimationEnd(Animator animation) {
+//                        mLoadingView.setVisibility(View.GONE);
+//                    }
+//                });
     }
 
 

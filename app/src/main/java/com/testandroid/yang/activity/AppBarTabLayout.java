@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.common.ZoomOutPageTransformer;
 import com.testandroid.yang.fragment.CheeseListFragment;
 
 import java.util.ArrayList;
@@ -57,9 +58,8 @@ public class AppBarTabLayout extends BaseActivity {
 //        }
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        if (viewPager != null) {
-            setupViewPager(viewPager);
-        }
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        setupViewPager(viewPager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
