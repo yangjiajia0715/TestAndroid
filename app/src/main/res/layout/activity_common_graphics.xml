@@ -36,7 +36,7 @@
             <TextView
                 android:id="@+id/btn_3"
                 style="@style/CommonButtonStyle"
-                android:text="按钮3" />
+                android:text="CardFlipActivity" />
 
             <TextView
                 android:id="@+id/btn_4"
@@ -51,7 +51,7 @@
             <TextView
                 android:id="@+id/btn_6"
                 style="@style/CommonButtonStyle"
-                android:text="按钮6" />
+                android:text="ObjectAnimator rotationY" />
 
             <TextView
                 android:id="@+id/btn_7"

@@ -2,6 +2,7 @@ package com.testandroid.yang.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,6 +13,7 @@ import android.text.format.DateUtils;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -137,13 +139,14 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
 
                 break;
             case R.id.btn_3:
-
+                CardFlipActivity.start(this);
                 break;
             case R.id.btn_4:
                 break;
             case R.id.btn_5:
                 break;
-            case R.id.btn_6:
+            case R.id.btn_6://ObjectAnimator rotationY
+                objectAnimator();
                 break;
             case R.id.btn_7:
                 liushishi.setTranslationY(-Utility.dp2px(100));
@@ -160,15 +163,30 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
 //                            }
 //                        });
 
-                liushishi.setTranslationX(Utility.dp2px(100));
+//                liushishi.setTranslationX(Utility.dp2px(100));
+                liushishi.animate()
+                        .scaleX(0.5f)
+                        .setDuration(3000);
                 break;
             case R.id.btn_9:
-                liushishi.setAlpha(0.2f);
+//                liushishi.setAlpha(0.2f);
+//                liushishi.setAlpha(0.2f);
+                liushishi.setScaleX(0.5f);
                 break;
             case R.id.liushishi:
                 Toast.makeText(this, "刘诗诗", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    private void objectAnimator() {
+//        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(liushishi, "rotationY", 0f, 60f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(liushishi, "rotationY", 180f, 0f);
+//        objectAnimator.setRepeatCount(1);
+        objectAnimator.setDuration(3000);
+        objectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        objectAnimator.start();
+
     }
 
     public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
@@ -212,7 +230,7 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
     }
 
     private void crossfade() {
-        int mShortAnimationDuration = 2000;
+        int mShortAnimationDuration = 1000;
 
         // Set the content view to 0% opacity but visible, so that it is visible
         // (but fully transparent) during the animation.

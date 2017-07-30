@@ -377,6 +377,10 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.GraphicsAndAnimationActivity" />
 
+        <activity
+            android:name=".activity.CardFlipActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->
