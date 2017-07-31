@@ -19,6 +19,7 @@ package com.testandroid.yang.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -38,6 +39,11 @@ import com.testandroid.yang.R;
  * animation.</p>
  */
 public class CrossfadeActivity extends Activity {
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, CrossfadeActivity.class);
+        context.startActivity(starter);
+    }
     /**
      * The flag indicating whether content is loaded (text is shown) or not (loading spinner is
      * shown).

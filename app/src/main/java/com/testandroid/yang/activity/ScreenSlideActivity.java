@@ -18,6 +18,7 @@ package com.testandroid.yang.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
@@ -42,6 +43,11 @@ import com.testandroid.yang.R;
  * @see ScreenSlidePageFragment
  */
 public class ScreenSlideActivity extends FragmentActivity {
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, ScreenSlideActivity.class);
+        context.startActivity(starter);
+    }
     /**
      * The number of pages (wizard steps) to show in this demo.
      */

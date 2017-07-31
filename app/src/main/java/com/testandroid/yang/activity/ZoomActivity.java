@@ -20,6 +20,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -42,6 +43,11 @@ import com.testandroid.yang.R;
  * the entire activity content area. Touching the zoomed-in image hides it.</p>
  */
 public class ZoomActivity extends FragmentActivity {
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, ZoomActivity.class);
+        context.startActivity(starter);
+    }
     /**
      * Hold a reference to the current animator, so that it can be canceled mid-way.
      */
@@ -167,6 +173,7 @@ public class ZoomActivity extends FragmentActivity {
 
         // Construct and run the parallel animation of the four translation and scale properties
         // (X, Y, SCALE_X, and SCALE_Y).
+        AnimatorSet animatorSet = new AnimatorSet();
         AnimatorSet set = new AnimatorSet();
         set
                 .play(ObjectAnimator.ofFloat(expandedImageView, View.X, startBounds.left,

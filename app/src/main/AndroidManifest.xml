@@ -380,6 +380,9 @@
         <activity
             android:name=".activity.CardFlipActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity android:name=".activity.CrossfadeActivity" />
+        <activity android:name=".activity.ZoomActivity" />
+        <activity android:name=".activity.ScreenSlideActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

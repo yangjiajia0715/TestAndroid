@@ -2,12 +2,15 @@ package com.testandroid.yang.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.text.format.Formatter;
@@ -136,14 +139,16 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
                 }
                 break;
             case R.id.btn_2:
-
+                CrossfadeActivity.start(this);
                 break;
             case R.id.btn_3:
                 CardFlipActivity.start(this);
                 break;
             case R.id.btn_4:
+                ZoomActivity.start(this);
                 break;
             case R.id.btn_5:
+                ScreenSlideActivity.start(this);
                 break;
             case R.id.btn_6://ObjectAnimator rotationY
                 objectAnimator();
@@ -169,9 +174,44 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
                         .setDuration(3000);
                 break;
             case R.id.btn_9:
+                final Rect startBounds = new Rect();
+                final Rect finalBounds = new Rect();
+                final Point globalOffset = new Point();
+
+                btn0.getGlobalVisibleRect(startBounds);
+                findViewById(R.id.container).getGlobalVisibleRect(finalBounds, globalOffset);
+                Log.d(TAG, "onViewClicked: startBounds=" + startBounds.toString());
+                Log.d(TAG, "onViewClicked: finalBounds=" + finalBounds.toString());
+                Log.d(TAG, "onViewClicked: globalOffset=" + globalOffset.toString());
+                startBounds.offset(-globalOffset.x, -globalOffset.y);
+                finalBounds.offset(-globalOffset.x, -globalOffset.y);
+                Log.d(TAG, "onViewClicked: ==========================");
+                Log.d(TAG, "onViewClicked: startBounds=" + startBounds.toString());
+                Log.d(TAG, "onViewClicked: finalBounds=" + finalBounds.toString());
+                Log.d(TAG, "onViewClicked: globalOffset=" + globalOffset.toString());
+                int[] location = new int[2];
+                btn0.getLocationOnScreen(location);
+                Log.d(TAG, "onViewClicked: location=" + location[0] + "::" + location[1]);
+                float startScale = 0.5f;
+//                startScale = (float) startBounds.width() / finalBounds.width();
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.play(ObjectAnimator.ofFloat(btn0, View.X, startBounds.left, finalBounds.left))
+                        .with(ObjectAnimator.ofFloat(btn0, View.Y, startBounds.top, finalBounds.top))
+                        .with(ObjectAnimator.ofFloat(btn0, View.SCALE_X, startScale, 1f))
+                        .with(ObjectAnimator.ofFloat(btn0, View.SCALE_Y, startScale, 1f));
+                animatorSet.setDuration(3000);
+                animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
+                animatorSet.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                    }
+                });
+                animatorSet.start();
+
 //                liushishi.setAlpha(0.2f);
 //                liushishi.setAlpha(0.2f);
-                liushishi.setScaleX(0.5f);
+//                liushishi.setScaleX(0.5f);
                 break;
             case R.id.liushishi:
                 Toast.makeText(this, "刘诗诗", Toast.LENGTH_SHORT).show();
@@ -180,8 +220,8 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
     }
 
     private void objectAnimator() {
-//        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(liushishi, "rotationY", 0f, 60f);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(liushishi, "rotationY", 180f, 0f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(liushishi, "rotationY", 0f, 60f);
+//        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(liushishi, "rotationY", 180f, 0f);
 //        objectAnimator.setRepeatCount(1);
         objectAnimator.setDuration(3000);
         objectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());

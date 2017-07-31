@@ -136,12 +136,17 @@ public class CardFlipActivity extends AppCompatActivity
                 // rotations when switching to the back of the card, as well as animator
                 // resources representing rotations when flipping back to the front (e.g. when
                 // the system Back button is pressed).
+                .setCustomAnimations(
+                        R.animator.card_flip_right_in, R.animator.card_flip_right_out,
+                        R.animator.card_flip_left_in, R.animator.card_flip_left_out)
 //                .setCustomAnimations(
 //                        R.animator.card_flip_right_in, R.animator.card_flip_right_out,
-//                        R.animator.card_flip_left_in, R.animator.card_flip_left_out)
-                .setCustomAnimations(
-                        R.animator.card_flip_right_in, 0,
-                        0, 0)
+//                        0, 0)
+//                .setCustomAnimations(0, 0,
+//                        R.animator.card_flip_left_in,  R.animator.card_flip_left_out)//liu 一半时间后  出
+//                .setCustomAnimations(
+//                        R.animator.card_flip_right_in, 0,
+//                        0, 0)
 
                 // Replace any fragments currently in the container view with a fragment
                 // representing the next page (indicated by the just-incremented currentPage
@@ -169,7 +174,7 @@ public class CardFlipActivity extends AppCompatActivity
     @Override
     public void onBackStackChanged() {
         mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
-        Log.d(TAG, "onBackStackChanged: mShowingBack =" + mShowingBack + " getBackStackEntryCount:"+ getFragmentManager().getBackStackEntryCount());
+        Log.d(TAG, "onBackStackChanged: mShowingBack =" + mShowingBack + " getBackStackEntryCount:" + getFragmentManager().getBackStackEntryCount());
 
         // When the back stack changes, invalidate the options menu (action bar).
         invalidateOptionsMenu();
