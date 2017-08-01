@@ -24,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.testandroid.yang.R;
-import com.testandroid.yang.util.Utility;
 
 import java.io.FileNotFoundException;
 
@@ -153,8 +152,9 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
             case R.id.btn_6://ObjectAnimator rotationY
                 objectAnimator();
                 break;
-            case R.id.btn_7:
-                liushishi.setTranslationY(-Utility.dp2px(100));
+            case R.id.btn_7://
+                LiushishiActivity.start(this);
+//                liushishi.setTranslationY(-Utility.dp2px(100));
                 break;
             case R.id.btn_8:
 //                liushishi.animate()

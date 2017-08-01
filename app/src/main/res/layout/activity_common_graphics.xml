@@ -57,7 +57,7 @@
             <TextView
                 android:id="@+id/btn_7"
                 style="@style/CommonButtonStyle"
-                android:text="按钮7" />
+                android:text="共享元素" />
 
             <TextView
                 android:id="@+id/btn_8"
@@ -73,6 +73,7 @@
                 android:id="@+id/liushishi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:transitionName="@string/transition_liu"
                 android:background="@drawable/selector_item_bg_common"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/liushishi" />

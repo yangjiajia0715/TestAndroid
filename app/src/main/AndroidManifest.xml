@@ -375,14 +375,23 @@
             android:name=".activity.ControllingCameraActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
             android:screenOrientation="portrait" />
+
         <activity android:name=".activity.GraphicsAndAnimationActivity" />
 
         <activity
             android:name=".activity.CardFlipActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
         <activity android:name=".activity.CrossfadeActivity" />
+
         <activity android:name=".activity.ZoomActivity" />
+
         <activity android:name=".activity.ScreenSlideActivity" />
+
+        <activity
+            android:name=".activity.LiushishiActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
+            android:screenOrientation="portrait" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
