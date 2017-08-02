@@ -116,26 +116,8 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
                 Log.d(TAG, "onViewClicked: fromMimeType=" + fromMimeType);
                 break;
             case R.id.btn_1:
-                try {
-                    Bitmap bitmapOrigin = BitmapFactory.decodeResource(getResources(), R.drawable.liushishi);
-                    String fileSizeOri = Formatter.formatFileSize(this, bitmapOrigin.getByteCount());
-                    Log.d(TAG, "onViewClicked: fileSizeOri=" + fileSizeOri);
+//                saveFile();
 
-                    Bitmap bitmap = decodeSampledBitmapFromResource(getResources(), R.drawable.liushishi, 100, 100);
-                    String fileSize = Formatter.formatFileSize(this, bitmap.getByteCount());
-
-                    Log.d(TAG, "onViewClicked: fileSize=" + fileSize);
-                    String filePre = DateUtils.formatDateTime(this, System.currentTimeMillis(),
-                            DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, openFileOutput(filePre + ".jpg", MODE_PRIVATE));
-
-                    Bitmap bitmap1 = BitmapFactory.decodeStream(openFileInput(filePre + ".jpg"));
-                    String fileSize1 = Formatter.formatFileSize(this, bitmap1.getByteCount());
-                    Log.d(TAG, "onViewClicked: fileSize1=" + fileSize1);
-                    Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
                 break;
             case R.id.btn_2:
                 CrossfadeActivity.start(this);
@@ -157,6 +139,8 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
 //                liushishi.setTranslationY(-Utility.dp2px(100));
                 break;
             case R.id.btn_8:
+                TransitonActivity.start(this);
+
 //                liushishi.animate()
 //                        .translationX(Utility.dp2px(100))
 //                        .translationY(Utility.dp2px(100))
@@ -169,9 +153,11 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
 //                        });
 
 //                liushishi.setTranslationX(Utility.dp2px(100));
-                liushishi.animate()
-                        .scaleX(0.5f)
-                        .setDuration(3000);
+
+//                liushishi.animate()
+//                        .scaleX(0.5f)
+//                        .setDuration(3000);
+
                 break;
             case R.id.btn_9:
                 final Rect startBounds = new Rect();
@@ -216,6 +202,29 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
             case R.id.liushishi:
                 Toast.makeText(this, "刘诗诗", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    private void saveFile() {
+        try {
+            Bitmap bitmapOrigin = BitmapFactory.decodeResource(getResources(), R.drawable.liushishi);
+            String fileSizeOri = Formatter.formatFileSize(this, bitmapOrigin.getByteCount());
+            Log.d(TAG, "onViewClicked: fileSizeOri=" + fileSizeOri);
+
+            Bitmap bitmap = decodeSampledBitmapFromResource(getResources(), R.drawable.liushishi, 100, 100);
+            String fileSize = Formatter.formatFileSize(this, bitmap.getByteCount());
+
+            Log.d(TAG, "onViewClicked: fileSize=" + fileSize);
+            String filePre = DateUtils.formatDateTime(this, System.currentTimeMillis(),
+                    DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, openFileOutput(filePre + ".jpg", MODE_PRIVATE));
+
+            Bitmap bitmap1 = BitmapFactory.decodeStream(openFileInput(filePre + ".jpg"));
+            String fileSize1 = Formatter.formatFileSize(this, bitmap1.getByteCount());
+            Log.d(TAG, "onViewClicked: fileSize1=" + fileSize1);
+            Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

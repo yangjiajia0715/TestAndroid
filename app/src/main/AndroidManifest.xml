@@ -393,6 +393,14 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.TransitonActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.RecycleViewCeilingActivity"
+            android:screenOrientation="portrait" />
+
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->
