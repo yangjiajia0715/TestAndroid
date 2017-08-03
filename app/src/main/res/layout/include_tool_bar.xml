@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/colorPrimary"
+    app:popupTheme="@style/ToolbarPopupTheme">
+<!-- app:navigationIcon="@drawable/arrow_left_dart"-->
+    <TextView
+        android:id="@+id/toolbar_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:background="@color/app_color"
+        android:maxLines="1"
+        android:visibility="gone"
+        android:text="编辑"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
-    <!--@android:drawable/checkbox_on_background-->
-    <!--@color/colorPrimary-->
-    <!--wrap_content-->
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        app:popupTheme="@style/ToolbarPopupTheme"
-        app:navigationIcon="@drawable/arrow_left_dart"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.Toolbar>
-</FrameLayout>
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/app_color"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        tools:text="标题" />
+
+</android.support.v7.widget.Toolbar>

@@ -30,6 +30,8 @@ public class TransitonActivity extends BaseActivity {
 //                TransitionManager.endTransitions();
         initView();
         initData();
+
+//        ViewAnimationUtils.createCircularReveal()
     }
 
     @Override

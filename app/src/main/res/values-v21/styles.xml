@@ -12,5 +12,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Transition" parent="AppBaseTheme">
+        <item name="android:windowEnterTransition">@android:transition/slide_bottom</item>
+        <item name="android:windowExitAnimation">@android:transition/slide_left</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
+        <item name="android:windowAllowReturnTransitionOverlap">false</item>
+        <item name="android:windowActivityTransitions">true</item>
+    </style>
+
 
 </resources>

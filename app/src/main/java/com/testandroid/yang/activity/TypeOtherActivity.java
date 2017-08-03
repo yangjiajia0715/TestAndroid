@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
@@ -90,6 +93,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         adapter = new HomeRecyleViewAdapter(this, items);
         recyclerView.setAdapter(adapter);
         adapter.setClickListener(this);
+
     }
 
     @Override
@@ -137,9 +141,44 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                     MutilMediaActivity.start(this);
                     break;
                 case R.id.tv_graphics_and_animation:
-                    GraphicsAndAnimationActivity.start(this);
+//                    GraphicsAndAnimationActivity.start(this);
+                    showDialog();
                     break;
             }
         }
+    }
+
+    private void showDialog() {
+//        AlertDialog alertDialog = new AlertDialog.Builder(this, R.style.AnalysisReport)
+//                .setSingleChoiceItems(R.array.sex, -1, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                })
+//                .create();
+//
+//        Window window = alertDialog.getWindow();
+//        if (window != null) {
+//            window.setGravity(Gravity.BOTTOM);
+//            WindowManager.LayoutParams params = window.getAttributes();
+////            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+//            window.setAttributes(params);
+//        }
+//
+//        alertDialog.show();
+
+        ListPopupWindow popupWindow = new ListPopupWindow(this);
+        List<String> dates = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            dates.add("数据" + i);
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dates);
+        popupWindow.setAdapter(adapter);
+        popupWindow.setModal(true);
+        popupWindow.setAnchorView(recyclerView);
+        popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.show();
     }
 }

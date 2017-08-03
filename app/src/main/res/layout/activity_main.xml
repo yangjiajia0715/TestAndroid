@@ -19,7 +19,6 @@
         android:background="#f0f0f0"
         android:orientation="vertical">
 
-
     </RelativeLayout>
     <!-- android:layout_centerInParent="true"-->
     <TextView

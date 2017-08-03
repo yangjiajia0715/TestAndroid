@@ -56,11 +56,13 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="" />
+
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="10002" />
 
         <!--<activity android:name=".activity.MainActivity">-->
+        <!--  android:icon="@drawable/ic_mail_box" 屏幕显示-->
         <activity
             android:name="com.testandroid.yang.activity.MainActivity"
             android:launchMode="singleTask">
@@ -395,7 +397,8 @@
 
         <activity
             android:name=".activity.TransitonActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Transition" />
 
         <activity
             android:name=".activity.RecycleViewCeilingActivity"

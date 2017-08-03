@@ -2,12 +2,14 @@ package com.testandroid.yang.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 import com.testandroid.yang.CCC;
 import com.testandroid.yang.R;
@@ -17,25 +19,44 @@ import com.testandroid.yang.common.HomeInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Main
  * Created by Administrator on 2016/7/27 0027.
  */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.recycleview)
+    RecyclerView recycleview;
+    @BindView(R.id.temp_trans_animation)
+    TextView tempTransAnimation;
+
     private List<HomeInfo> infos = new ArrayList<>();
     private List<HomeInfo> items;
-    private RecyclerView recyclerView;
-    private Toolbar toolbar;
     private HomeRecyleViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         initView();
         initData();
-
+//        toolbarTitle.setText("主页标题");
+        toolbar.setNavigationIcon(null);
+//        toolbar.setBackground( ContextCompat.getDrawable(this, R.drawable.my_bg));
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+//            actionBar.setDisplayShowHomeEnabled(true);
+//            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
+        }
         Log.d(TAG, "MainActivity--onCreate: getTaskId=" + getTaskId());
         Log.d(TAG, "MainActivity--onCreate: CCC.get=" + CCC.get());
     }
@@ -48,10 +69,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initView() {
-        recyclerView = (RecyclerView) findViewById(R.id.recycleview);
-//        RecyclerView.LayoutManager  layoutManager = new LinearLayoutManager(this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(layoutManager);
+        recycleview.setLayoutManager(layoutManager);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_main);
@@ -62,7 +81,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_search_bg_black);
+//        toolbar.setNavigationIcon(R.drawable.ic_search_bg_black);
 //        toolbar.setOnMenuItemClickListener(this);
     }
 
@@ -89,7 +108,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
-        recyclerView.setAdapter(adapter);
+        recycleview.setAdapter(adapter);
         adapter.setClickListener(this);
     }
 

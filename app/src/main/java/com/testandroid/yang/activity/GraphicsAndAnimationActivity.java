@@ -11,14 +11,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.text.format.Formatter;
+import android.transition.Explode;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -201,7 +205,19 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
                 break;
             case R.id.liushishi:
                 Toast.makeText(this, "刘诗诗", Toast.LENGTH_SHORT).show();
+                transition();
                 break;
+        }
+    }
+
+    private void transition() {
+        LinearLayout view = (LinearLayout) findViewById(R.id.aaaaaaaaa);
+        if (Build.VERSION.SDK_INT >= 21) {
+            TransitionManager.beginDelayedTransition(view,new Explode().setDuration(3000));
+            for (int i = 0; i < view.getChildCount(); i++) {
+                view.getChildAt(i).setVisibility(View.GONE);
+            }
+            findViewById(R.id.liushishi).setVisibility(View.VISIBLE);
         }
     }
 
