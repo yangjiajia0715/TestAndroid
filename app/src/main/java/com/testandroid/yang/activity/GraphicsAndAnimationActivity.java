@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.text.format.Formatter;
+import android.transition.ChangeBounds;
 import android.transition.Explode;
 import android.transition.TransitionManager;
 import android.util.Log;
@@ -89,6 +90,11 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
                 crossfade();
             }
         }, 200);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setSharedElementExitTransition(new ChangeBounds().setDuration(3000));
+            getWindow().setAllowEnterTransitionOverlap(false);
+        }
     }
 
     @Override
@@ -143,7 +149,12 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
 //                liushishi.setTranslationY(-Utility.dp2px(100));
                 break;
             case R.id.btn_8:
-                TransitonActivity.start(this);
+//                if (Build.VERSION.SDK_INT >= 21) {
+//                    ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this, liushishi, getString(R.string.transition_name_liu));
+//                    TransitonActivity.start(this, activityOptions);
+//                } else {
+                    TransitonActivity.start(this);
+//                }
 
 //                liushishi.animate()
 //                        .translationX(Utility.dp2px(100))
@@ -213,7 +224,7 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
     private void transition() {
         LinearLayout view = (LinearLayout) findViewById(R.id.aaaaaaaaa);
         if (Build.VERSION.SDK_INT >= 21) {
-            TransitionManager.beginDelayedTransition(view,new Explode().setDuration(3000));
+            TransitionManager.beginDelayedTransition(view, new Explode().setDuration(3000));
             for (int i = 0; i < view.getChildCount(); i++) {
                 view.getChildAt(i).setVisibility(View.GONE);
             }

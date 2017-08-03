@@ -141,8 +141,8 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                     MutilMediaActivity.start(this);
                     break;
                 case R.id.tv_graphics_and_animation:
-//                    GraphicsAndAnimationActivity.start(this);
-                    showDialog();
+                    GraphicsAndAnimationActivity.start(this);
+//                    showDialog();
                     break;
             }
         }
