@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -149,12 +150,12 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
 //                liushishi.setTranslationY(-Utility.dp2px(100));
                 break;
             case R.id.btn_8:
-//                if (Build.VERSION.SDK_INT >= 21) {
-//                    ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this, liushishi, getString(R.string.transition_name_liu));
-//                    TransitonActivity.start(this, activityOptions);
-//                } else {
+                if (Build.VERSION.SDK_INT >= 21) {
+                    ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this, liushishi, getString(R.string.transition_name_liu));
+                    TransitonActivity.start(this, activityOptions);
+                } else {
                     TransitonActivity.start(this);
-//                }
+                }
 
 //                liushishi.animate()
 //                        .translationX(Utility.dp2px(100))

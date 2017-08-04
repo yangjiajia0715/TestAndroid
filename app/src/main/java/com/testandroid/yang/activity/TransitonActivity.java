@@ -9,6 +9,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.transition.ChangeBounds;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.ViewAnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,6 +29,7 @@ import butterknife.ButterKnife;
  */
 
 public class TransitonActivity extends BaseActivity {
+    private static final String TAG = "TransitonActivity";
 
     @BindView(R.id.liushishi)
     ImageView liushishi;
@@ -45,26 +51,47 @@ public class TransitonActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transition);
         ButterKnife.bind(this);
-//                Scene.getSceneForLayout()
-
-//                TransitionManager.beginDelayedTransition();
-//                setEnterSharedElementCallback();
-//                TransitionManager.endTransitions();
         initView();
         initData();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            getWindow().setExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));
+//            getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide_exclude));
+
+//            getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));
+
             getWindow().setSharedElementEnterTransition(new ChangeBounds().setDuration(3000));
+            Slide slide = new Slide();
+            slide.setSlideEdge(Gravity.BOTTOM);
+            slide.setDuration(3000);
+
+            Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_exclude);
+            getWindow().setEnterTransition(transition);
+
+//            Slide slideExit = new Slide();
+//            slideExit.setSlideEdge(Gravity.RIGHT);
+//            slideExit.setDuration(3000);
+//            Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_exclude);
+//            getWindow().setExitTransition(transition);
         }
 
-        int centerX = liushishi.getWidth()/2;
-        int centerY = liushishi.getHeight()/2;
-        if (Build.VERSION.SDK_INT >= 21) {
-            Animator animator = ViewAnimationUtils.createCircularReveal(liushishi, centerX, centerY, 30, centerX);
-            animator.setStartDelay(1000);
-            animator.setDuration(3000);
-            animator.start();
-        }
+        liushishi.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (Build.VERSION.SDK_INT >= 21) {
+                    int centerX = liushishi.getWidth() / 2;
+                    int centerY = liushishi.getHeight() / 2;
+//                    Animator animator = ViewAnimationUtils.createCircularReveal(liushishi, centerX, centerY, 30, centerX);
+                    Log.d(TAG, "run: " + Math.sqrt(16));
+                    Log.d(TAG, "run: " + Math.hypot(3, 4));
+                    Animator animator = ViewAnimationUtils.createCircularReveal(liushishi, 0, 0, 100 * 3, (float) Math.hypot(liushishi.getWidth(), liushishi.getHeight()));
+                    animator.setDuration(5000);
+//                    animator.setDuration(300);
+                    animator.start();
+                }
+            }
+        }, 1000);
+
 
 //        ViewAnimationUtils.createCircularReveal()
     }
