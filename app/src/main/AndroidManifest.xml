@@ -403,6 +403,7 @@
         <activity
             android:name=".activity.RecycleViewCeilingActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.ViewOverlayActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

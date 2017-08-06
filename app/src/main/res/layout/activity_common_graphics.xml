@@ -76,6 +76,10 @@
                 android:id="@+id/btn_9"
                 style="@style/CommonButtonStyle"
                 android:text="按钮9" />
+            <TextView
+                android:id="@+id/btn_10"
+                style="@style/CommonButtonStyle"
+                android:text="ViewOverlay" />
 
             <ImageView
                 android:id="@+id/liushishi"

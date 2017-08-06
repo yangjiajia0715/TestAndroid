@@ -109,7 +109,7 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
     }
 
     @OnClick({R.id.btn_0, R.id.btn_1, R.id.btn_2, R.id.btn_3, R.id.btn_4, R.id.btn_5, R.id.btn_6,
-            R.id.btn_7, R.id.btn_8, R.id.btn_9, R.id.liushishi})
+            R.id.btn_7, R.id.btn_8, R.id.btn_9, R.id.liushishi, R.id.btn_10})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_0:
@@ -214,6 +214,9 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
 //                liushishi.setAlpha(0.2f);
 //                liushishi.setAlpha(0.2f);
 //                liushishi.setScaleX(0.5f);
+                break;
+            case R.id.btn_10:
+                ViewOverlayActivity.start(this);
                 break;
             case R.id.liushishi:
                 Toast.makeText(this, "刘诗诗", Toast.LENGTH_SHORT).show();
