@@ -286,6 +286,10 @@
             android:label="FitLabel"
             android:theme="@style/AppTheme.FitSystemWindown" />
 
+        <activity
+            android:name=".activity.FitSystemwindowActivity2"
+            android:theme="@style/AppTheme.FitSystemWindown2" />
+
         <activity android:name=".activity.SaveToDataBaseActivity" />
 
         <activity android:name=".activity.DisplayUserInfoActivity" />
@@ -404,6 +408,7 @@
             android:name=".activity.RecycleViewCeilingActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.ViewOverlayActivity" />
+
 
         <!-- android:permission="com."
             android:readPermission="rrr"
