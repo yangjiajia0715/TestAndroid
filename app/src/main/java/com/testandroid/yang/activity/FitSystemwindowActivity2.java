@@ -47,6 +47,9 @@ import butterknife.ButterKnife;
  *      mPrivateFlags3 &= ~PFLAG3_APPLYING_INSETS;
  * }
  * }
+ * ========================
+ * CTL 同步，一定消费，false偏移
+ * CollapsingToolbarLayout 一定消费，如果child fitSystemWindow false ，则偏移,并且：会同步AppBarLayout(if partent 是它的话)
  */
 
 public class FitSystemwindowActivity2 extends BaseActivity {
