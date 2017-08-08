@@ -12,10 +12,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.OnApplyWindowInsetsListener;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.WindowInsetsCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -34,6 +32,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 
 /**
+ * FitSystemWindowActivity
  * Created by yangjiajia on 2017/1/22 0022.
  */
 
@@ -86,13 +85,13 @@ public class FitSystemWindowActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ViewCompat.setOnApplyWindowInsetsListener(toolbar, new OnApplyWindowInsetsListener() {
-            @Override
-            public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
-                Log.d(TAG, "onApplyWindowInsets toolbar:isConsumed= " + insets.isConsumed());
-                return insets;
-            }
-        });
+//        ViewCompat.setOnApplyWindowInsetsListener(toolbar, new OnApplyWindowInsetsListener() {
+//            @Override
+//            public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+//                Log.d(TAG, "onApplyWindowInsets toolbar:isConsumed= " + insets.isConsumed());
+//                return insets;
+//            }
+//        });
 
 //        ViewCompat.offsetTopAndBottom(toolbar, 166);//没作用
 

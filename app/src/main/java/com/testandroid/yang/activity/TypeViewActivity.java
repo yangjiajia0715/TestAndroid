@@ -99,6 +99,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("tv_recycleview_ceiling", R.id.tv_recycleview_ceiling, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_vLayouot", R.id.tv_vLayouot, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_fitsystemwindow", R.id.tv_fitsystemwindow, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_fitsystemwindow2", R.id.tv_fitsystemwindow2, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_rotation_view", R.id.tv_rotation_view, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_customeview_view", R.id.tv_customeview_view, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_edittext", R.id.tv_edittext, HomeInfo.HomeGroup.View));
@@ -189,6 +190,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                     break;
                 case R.id.tv_fitsystemwindow:
                     FitSystemWindowActivity.start(this);
+                    break;
+                case R.id.tv_fitsystemwindow2:
+                    FitSystemwindowActivity2.start(this);
                     break;
                 case R.id.tv_rotation_view:
                     RotationActivity.start(this);
