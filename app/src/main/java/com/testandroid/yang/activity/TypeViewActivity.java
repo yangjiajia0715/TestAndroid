@@ -127,8 +127,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                     startActivity(intent);
                     break;
                 case R.id.tv_test_view_pager_11:
-                    intent = new Intent(this, ViewPagerActivity.class);
-                    startActivity(intent);
+                    ViewPagerActivity.start(this);
                     break;
                 case R.id.tv_parallax:
                     intent = new Intent(this, ParallaxActivity.class);
