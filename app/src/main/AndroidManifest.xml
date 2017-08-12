@@ -408,6 +408,7 @@
             android:name=".activity.RecycleViewCeilingActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.ViewOverlayActivity" />
+        <activity android:name=".activity.FragmentActivity" />
 
 
         <!-- android:permission="com."

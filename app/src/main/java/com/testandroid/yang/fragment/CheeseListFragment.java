@@ -38,6 +38,15 @@ import java.util.Random;
 
 public class CheeseListFragment extends Fragment {
 
+    public static CheeseListFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        CheeseListFragment fragment = new CheeseListFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

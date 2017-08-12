@@ -14,10 +14,15 @@
         android:paddingLeft="100dp"
         android:paddingRight="100dp">
 
-        <android.support.v4.view.PagerTitleStrip
+        <!--android:paddingLeft="100dp"
+        android:paddingRight="100dp"-->
+
+        <android.support.v4.view.PagerTabStrip
             android:id="@+id/pager_title_strip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/primary" />
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>

@@ -17,8 +17,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!--com.github.ksoichiro.android.observablescrollview.ObservableScrollView-->
-    <com.example.testandroid.ObservableScrollView.ObservableScrollView
+    <!--com.github.ksoichiro.android.observablescrollview.ObservableScrollView-->
+    <com.testandroid.yang.ObservableScrollView.ObservableScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,25 +54,24 @@
                 android:text="@string/lipsum" />
         </RelativeLayout>
 
-    </com.example.testandroid.ObservableScrollView.ObservableScrollView>
+    </com.testandroid.yang.ObservableScrollView.ObservableScrollView>
 
     <include layout="@layout/gradient_header" />
 
-   <!-- <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
-        app:theme="@style/Toolbar" />-->
+    <!-- <android.support.v7.widget.Toolbar
+         android:id="@+id/toolbar"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="?attr/colorPrimary"
+         android:minHeight="?attr/actionBarSize"
+         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+         app:theme="@style/Toolbar" />-->
     <TextView
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tool_bar_replace_temp_height"
-        android:text="本来是个toolbar"
-        android:gravity="center"
         android:background="@color/primary"
+        android:gravity="center"
         android:minHeight="@dimen/tool_bar_replace_temp_height"
-        />
+        android:text="本来是个toolbar" />
 </FrameLayout>

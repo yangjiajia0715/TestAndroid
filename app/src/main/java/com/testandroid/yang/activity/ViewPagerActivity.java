@@ -53,6 +53,8 @@ public class ViewPagerActivity extends Activity {
     private class MyPagerAdapter extends PagerAdapter {
         View[] views = new View[3];
         int[] ids = new int[]{R.drawable.img01, R.drawable.liutao_big_image, R.drawable.img02};
+//        View[] views = new View[2];
+//        int[] ids = new int[]{R.drawable.img01, R.drawable.img02};
         private Context mContext;
 
         @Override

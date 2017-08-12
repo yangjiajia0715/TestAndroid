@@ -85,7 +85,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         items = new ArrayList<>();
 
         infos.add(new HomeInfo("tv_zoom_image", R.id.tv_zoom_image, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_test_view_pager_11", R.id.tv_test_view_pager_11, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("tv_view_pager_11", R.id.tv_test_view_pager_11, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_parallax", R.id.tv_parallax, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_test_listview_clip", R.id.tv_test_listview_clip, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_test_scrollview_clip", R.id.tv_test_scrollview_clip, HomeInfo.HomeGroup.View));
@@ -108,6 +108,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("tv_drawer_layout", R.id.tv_drawer_layout, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("tv_clear_dialog", R.id.tv_clear_dialog, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("ActionBar相关", R.id.tv_action_bar, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("fragment相关", R.id.tv_fragment, HomeInfo.HomeGroup.View));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -216,6 +217,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                     break;
                 case R.id.tv_action_bar:
                     ActionBarActivity.start(this);
+                    break;
+                case R.id.tv_fragment:
+                    FragmentActivity.start(this);
                     break;
             }
         }

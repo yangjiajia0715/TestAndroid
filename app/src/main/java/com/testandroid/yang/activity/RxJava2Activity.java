@@ -67,39 +67,41 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_test_RxJava:
-                Observable.create(new ObservableOnSubscribe<String>() {
-                    @Override
-                    public void subscribe(ObservableEmitter<String> e) throws Exception {
+                Observable
+                        .create(new ObservableOnSubscribe<String>() {
+                            @Override
+                            public void subscribe(ObservableEmitter<String> e) throws Exception {
 
-                        for (int i = 0; i < 1000; i++) {
-                            e.onNext("错题会" + i);
-                        }
+                                for (int i = 0; i < 1000; i++) {
+                                    e.onNext("错题会" + i);
+                                }
 
-                        Log.d(TAG, "RxJava2Activity--1--subscribe=" + Thread.currentThread().getName());
-                        e.onComplete();
-                    }
-                }).subscribe(new Observer<String>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
+                                Log.d(TAG, "RxJava2Activity--1--subscribe=" + Thread.currentThread().getName());
+                                e.onComplete();
+                            }
+                        })
+                        .subscribe(new Observer<String>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
 
-                        Log.d(TAG, "RxJava2Activity--1--onSubscribe--d=" + d.toString());
-                    }
+                                Log.d(TAG, "RxJava2Activity--1--onSubscribe--d=" + d.toString());
+                            }
 
-                    @Override
-                    public void onNext(String s) {
-                        Log.d(TAG, "RxJava2Activity--1--onNext--s=" + s);
-                    }
+                            @Override
+                            public void onNext(String s) {
+                                Log.d(TAG, "RxJava2Activity--1--onNext--s=" + s);
+                            }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(TAG, "RxJava2Activity--1--onError--e=" + e);
-                    }
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.d(TAG, "RxJava2Activity--1--onError--e=" + e);
+                            }
 
-                    @Override
-                    public void onComplete() {
-                        Log.d(TAG, "RxJava2Activity--1--onComplete--");
-                    }
-                });
+                            @Override
+                            public void onComplete() {
+                                Log.d(TAG, "RxJava2Activity--1--onComplete--");
+                            }
+                        });
                 break;
             case R.id.tv_test_RxJava1:
 
@@ -323,7 +325,6 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
 
                     }
                 });
-
 
 
     }
