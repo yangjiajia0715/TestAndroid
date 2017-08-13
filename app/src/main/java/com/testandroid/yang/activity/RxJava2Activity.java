@@ -1,6 +1,8 @@
 package com.testandroid.yang.activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +41,11 @@ import io.reactivex.schedulers.Schedulers;
 public class RxJava2Activity extends Activity implements View.OnClickListener {
 
     private static final String TAG = "RxJava2Activity";
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, RxJava2Activity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -257,19 +264,21 @@ public class RxJava2Activity extends Activity implements View.OnClickListener {
                     }
                 });
 
-                Observable.zip(observable1, observable2, new BiFunction<String, Integer, HomeInfo>() {
-                    @Override
-                    public HomeInfo apply(@NonNull String s, @NonNull Integer integer) throws Exception {
-                        HomeInfo info = new HomeInfo(s, integer);
-                        Log.d(TAG, "accept: zip---apply---s=" + s + ",integer=" + integer + ",currentThread=" + Thread.currentThread().getName());
-                        return info;
-                    }
-                }).subscribe(new Consumer<HomeInfo>() {
-                    @Override
-                    public void accept(@NonNull HomeInfo homeInfo) throws Exception {
-                        Log.d(TAG, "accept: zip---result---homeInfo=" + homeInfo + ",currentThread=" + Thread.currentThread().getName());
-                    }
-                });
+                Observable
+                        .zip(observable1, observable2, new BiFunction<String, Integer, HomeInfo>() {
+                            @Override
+                            public HomeInfo apply(@NonNull String s, @NonNull Integer integer) throws Exception {
+                                HomeInfo info = new HomeInfo(s, integer);
+                                Log.d(TAG, "accept: zip---apply---s=" + s + ",integer=" + integer + ",currentThread=" + Thread.currentThread().getName());
+                                return info;
+                            }
+                        })
+                        .subscribe(new Consumer<HomeInfo>() {
+                            @Override
+                            public void accept(@NonNull HomeInfo homeInfo) throws Exception {
+                                Log.d(TAG, "accept: zip---result---homeInfo=" + homeInfo + ",currentThread=" + Thread.currentThread().getName());
+                            }
+                        });
 
 
 //                Observable.zip()

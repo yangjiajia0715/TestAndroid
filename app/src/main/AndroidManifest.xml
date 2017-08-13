@@ -409,6 +409,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.ViewOverlayActivity" />
         <activity android:name=".activity.FragmentActivity" />
+        <activity android:name=".activity.Rxjava2NewActivity" />
 
 
         <!-- android:permission="com."

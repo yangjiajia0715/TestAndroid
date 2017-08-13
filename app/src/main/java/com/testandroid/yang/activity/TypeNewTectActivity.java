@@ -70,8 +70,9 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
         items = new ArrayList<>();
 
         infos.add(new HomeInfo("tv_test_tinker", R.id.tv_test_tinker, HomeInfo.HomeGroup.NewTech));
-        infos.add(new HomeInfo("tv_test_RxJava_main", R.id.tv_test_RxJava_main, HomeInfo.HomeGroup.NewTech));
-        infos.add(new HomeInfo("tv_test_RxJava_operate", R.id.tv_test_RxJava_operate, HomeInfo.HomeGroup.NewTech));
+        infos.add(new HomeInfo("tv_test_RxJava2_main", R.id.tv_test_RxJava_main, HomeInfo.HomeGroup.NewTech));
+        infos.add(new HomeInfo("Rxjava2_2017年8月", R.id.tv_test_RxJava_new, HomeInfo.HomeGroup.NewTech));
+        infos.add(new HomeInfo("tv_test_RxJava2_operate", R.id.tv_test_RxJava_operate, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_Data_Binding", R.id.tv_Data_Binding, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_CoordinatorLayout", R.id.tv_CoordinatorLayout, HomeInfo.HomeGroup.NewTech));
         infos.add(new HomeInfo("tv_CoordinatorLayout_appbar", R.id.tv_CoordinatorLayout_appbar, HomeInfo.HomeGroup.NewTech));
@@ -98,8 +99,10 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
                     startActivity(intent);
                     break;
                 case R.id.tv_test_RxJava_main:
-                    intent = new Intent(this, RxJava2Activity.class);
-                    startActivity(intent);
+                    RxJava2Activity.start(this);
+                    break;
+                case R.id.tv_test_RxJava_new:
+                    Rxjava2NewActivity.start(this);
                     break;
                 case R.id.tv_test_RxJava_operate:
                     RxJavaOperateActivity.start(this);
