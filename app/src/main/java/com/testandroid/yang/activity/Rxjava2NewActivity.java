@@ -10,22 +10,34 @@ import android.widget.TextView;
 import com.testandroid.yang.R;
 import com.testandroid.yang.observer.SchedulerTransform;
 
+import org.reactivestreams.Subscription;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.FlowableSubscriber;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableOperator;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
+import io.reactivex.observables.GroupedObservable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -108,8 +120,10 @@ public class Rxjava2NewActivity extends BaseActivity {
                 testNew5();
                 break;
             case R.id.rxjava2_new_6:
+                testNew6();
                 break;
             case R.id.rxjava2_new_7:
+                testNew7();
                 break;
             case R.id.rxjava2_new_8:
                 break;
@@ -118,32 +132,248 @@ public class Rxjava2NewActivity extends BaseActivity {
         }
     }
 
-    private void testNew5() {
+    private void testNew7() {
+        List<String> dates = new ArrayList<>();
+        dates.add("aaa");
+        dates.add("bbb");
+        dates.add("ccc");
+        dates.add("a");
+        dates.add("b");
+        dates.add("c");
+        dates.add("aaaaaa");
+        Observable<GroupedObservable<Integer, String>> groupBy = Observable.fromIterable(dates)
+                .groupBy(new Function<String, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull String s) throws Exception {
+                        Log.d(TAG, "length=" + s.length());
+                        return s.length();
+                    }
+                });
+
+        groupBy.flatMap(new Function<GroupedObservable<Integer, String>, ObservableSource<String>>() {
+            @Override
+            public ObservableSource<String> apply(@NonNull GroupedObservable<Integer, String> groupedObservable) throws Exception {
+                Integer key = groupedObservable.getKey();
+                return groupedObservable;
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+
+            }
+        });
+        Observable.concat(groupBy)
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.d(TAG, "accept: s=" + s);
+                    }
+                });
+
+//        Observable.just(1, 2, 3, 4)
+//                .scan(new BiFunction<Integer, Integer, Integer>() {
+//                    @Override
+//                    public Integer apply(@NonNull Integer integer, @NonNull Integer integer2) throws Exception {
+//                        Log.d(TAG, "apply: integer=" + integer);
+//                        Log.d(TAG, "apply: integer2=" + integer2);
+//                        return integer + integer2;
+//                    }
+//                });
+
+        Observable<String> observable = Observable.fromIterable(dates);
+        observable.switchMap(new Function<String, ObservableSource<?>>() {
+            @Override
+            public ObservableSource<?> apply(@NonNull String s) throws Exception {
+                return null;
+            }
+        });
+        observable.concatMap(new Function<String, ObservableSource<?>>() {
+            @Override
+            public ObservableSource<?> apply(@NonNull String s) throws Exception {
+                return null;
+            }
+        });
+
+        observable.flatMapIterable(new Function<String, Iterable<Integer>>() {
+            @Override
+            public Iterable<Integer> apply(@NonNull String s) throws Exception {
+                return null;
+            }
+        });
+
+
+    }
+
+    private void testNew6() {
         List<String> dates = new ArrayList<>();
         dates.add("aaa");
         dates.add("bbb");
         dates.add("ccc");
         Observable.fromIterable(dates)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .doOnNext(new Consumer<String>() {
+                .filter(new Predicate<String>() {
                     @Override
-                    public void accept(@NonNull String s) throws Exception {
-                        Log.d(TAG, "accept: s=" + s + ",currentThread=" + Thread.currentThread().getName());
+                    public boolean test(@NonNull String s) throws Exception {
+                        return false;
                     }
                 })
-                .doOnSubscribe(new Consumer<Disposable>() {
+                .subscribe(new Observer<String>() {
                     @Override
-                    public void accept(@NonNull Disposable disposable) throws Exception {
-                        Log.d(TAG, "accept: disposable " + disposable + ",currentThread=" + Thread.currentThread().getName());
+                    public void onSubscribe(@NonNull Disposable d) {
+
                     }
-                })
-                .subscribe(new Consumer<String>() {
+
                     @Override
-                    public void accept(@NonNull String s) throws Exception {
-                        Log.d(TAG, "accept:subscribe---s=" + s + ",currentThread=" + Thread.currentThread().getName());
+                    public void onNext(@NonNull String s) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
+
+        Flowable.interval(1, TimeUnit.MILLISECONDS);
+
+        Flowable.create(new FlowableOnSubscribe<String>() {
+            @Override
+            public void subscribe(@NonNull FlowableEmitter<String> e) throws Exception {
+                long requested = e.requested();
+
+            }
+        }, BackpressureStrategy.BUFFER)
+                .subscribe(new FlowableSubscriber<String>() {
+                    @Override
+                    public void onSubscribe(@NonNull Subscription s) {
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    private void testNew5() {
+        List<String> dates = new ArrayList<>();
+        dates.add("aaa");
+        dates.add("bbb");
+        dates.add("ccc");
+
+        Observable<String> observable1 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+                Log.d(TAG, "observable1----subscribe:emitter: aa" + "currentThread=" + Thread.currentThread().getName());
+                e.onNext("a");
+                Thread.sleep(1000);
+
+                Log.d(TAG, "observable1----subscribe:emitter: bb");
+                Thread.sleep(1000);
+
+                e.onNext("bb");
+                Thread.sleep(1000);
+
+                Log.d(TAG, "observable1----subscribe:emitter: cc");
+                Thread.sleep(1000);
+                e.onNext("ccc");
+
+                Thread.sleep(1000);
+                Log.d(TAG, "observable1----subscribe:emitter: dddd");
+                e.onNext("dddd");
+            }
+        }).subscribeOn(Schedulers.io());
+
+        Observable<String> observable2 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+                Log.d(TAG, "observable2----subscribe:emitter: 1 currentThread=" + Thread.currentThread().getName());
+                e.onNext("1");
+                Log.d(TAG, "observable2----subscribe:emitter: 22");
+                e.onNext("22");
+                Log.d(TAG, "observable2----subscribe:emitter: 333");
+                e.onNext("333");
+            }
+        }).subscribeOn(Schedulers.io());
+
+        Observable
+                .zip(observable1, observable2, new BiFunction<String, String, Long>() {
+                    @Override
+                    public Long apply(@NonNull String s, @NonNull String s2) throws Exception {
+                        long length = s.length();
+                        long length2 = s2.length();
+                        return length + length2;
+                    }
+                })
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        Log.d(TAG, "accept---aLong=" + aLong + "currentThread=" + Thread.currentThread().getName());
+                    }
+                });
+//        Observable.fromIterable(dates)
+//                .flatMap(new Function<String, ObservableSource<Integer>>() {
+//                    @Override
+//                    public ObservableSource<Integer> apply(@NonNull String s) throws Exception {
+//
+//                        return null;
+//                    }
+//                })
+//                .subscribe(new Consumer<Integer>() {
+//                    @Override
+//                    public void accept(Integer integer) throws Exception {
+//
+//                    }
+//                });
+
+//        new Observable<String>() {
+//            @Override
+//            protected void subscribeActual(Observer<? super String> observer) {
+//                Log.d(TAG, "ggggg-subscribe:currentThread= " + Thread.currentThread().getName());
+//                observer.onNext("1111");
+//                observer.onComplete();
+//
+//            }
+//        }.subscribeOn(Schedulers.io())
+//                .subscribe(new Consumer<String>() {
+//                    @Override
+//                    public void accept(String s) throws Exception {
+//                        Log.d(TAG, "gggggg-accept:currentThread= " + Thread.currentThread().getName());
+//                    }
+//                });
+//
+//        Observable
+//                .create(new ObservableOnSubscribe<String>() {
+//                    @Override
+//                    public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+//                        Log.d(TAG, "subscribe:currentThread= " + Thread.currentThread().getName());
+//                        e.onNext("1111");
+//                        e.isDisposed();
+//                        e.onComplete();
+//                    }
+//                })
+//                .subscribeOn(Schedulers.io())
+//                .subscribe(new Consumer<String>() {
+//                    @Override
+//                    public void accept(String s) throws Exception {
+//                        Log.d(TAG, "accept:currentThread= " + Thread.currentThread().getName());
+//                    }
+//                });
+
     }
 
     private void testNew4() {
