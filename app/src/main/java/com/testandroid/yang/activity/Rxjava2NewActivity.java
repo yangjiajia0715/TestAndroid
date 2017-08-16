@@ -1,8 +1,11 @@
 package com.testandroid.yang.activity;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -71,6 +74,7 @@ public class Rxjava2NewActivity extends BaseActivity {
     TextView rxjava2New8;
     @BindView(R.id.rxjava2_new_9)
     TextView rxjava2New9;
+    private Handler mHandler = new Handler();
 
     public static void start(Context context) {
         Intent starter = new Intent(context, Rxjava2NewActivity.class);
@@ -128,6 +132,20 @@ public class Rxjava2NewActivity extends BaseActivity {
             case R.id.rxjava2_new_8:
                 break;
             case R.id.rxjava2_new_9:
+                AccountManager accountManager = AccountManager.get(this);
+                Account[] accounts = accountManager.getAccounts();
+//                accountManager.invalidateAuthToken("","");
+//                accountManager.getAuthToken(accounts[0], "", null, this, new AccountManagerCallback<Bundle>() {
+//                    @Override
+//                    public void run(AccountManagerFuture<Bundle> future) {
+//
+//                    }
+//                },mHandler);
+                for (Account account : accounts) {
+                    Log.d(TAG, "onViewClicked: account=" + account);
+                    Log.d(TAG, "onViewClicked: account=" + account.name);
+                    Log.d(TAG, "onViewClicked: account=" + account.type);
+                }
                 break;
         }
     }
