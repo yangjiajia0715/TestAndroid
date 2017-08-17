@@ -143,8 +143,8 @@ public class Rxjava2NewActivity extends BaseActivity {
 //                },mHandler);
                 for (Account account : accounts) {
                     Log.d(TAG, "onViewClicked: account=" + account);
-                    Log.d(TAG, "onViewClicked: account=" + account.name);
-                    Log.d(TAG, "onViewClicked: account=" + account.type);
+                    Log.d(TAG, "onViewClicked: name account=" + account.name);
+                    Log.d(TAG, "onViewClicked: type account=" + account.type);
                 }
                 break;
         }

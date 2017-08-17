@@ -16,6 +16,7 @@ import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
 import com.testandroid.yang.common.HomeInfo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +52,26 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         initView();
         initData();
         Log.d(TAG, "TypeOtherActivity--onCreate: getTaskId=" + getTaskId());
+        cal();
+    }
+
+    private void cal() {
+        float f = 100.26f;
+        float f1 = 60f;
+        float f2 = 60.1f;
+        float f3 = 5.234f;
+        float f4 = 150f;
+        float f5 = 99f;
+        DecimalFormat decimalFormat = new DecimalFormat("#.0");
+        Log.d(TAG, "cal: " + decimalFormat.format(f));
+        Log.d(TAG, "cal: " + decimalFormat.format(f1));
+        Log.d(TAG, "cal: " + decimalFormat.format(f2));
+        Log.d(TAG, "cal: " + decimalFormat.format(f3));
+        Log.d(TAG, "cal: " + decimalFormat.format(f4));
+        Log.d(TAG, "cal: " + decimalFormat.format(f5));
+
+// java.lang.IllegalArgumentException: Bad class: class java.lang.String
+//        Log.d(TAG, "cal 6: " + decimalFormat.format("88.82"));
     }
 
     @Override
@@ -95,6 +116,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         adapter.setClickListener(this);
 
     }
+
 
     @Override
     public void onClick(View v) {

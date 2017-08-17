@@ -35,6 +35,15 @@
     <!-- name MultiDexAppcation -->
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
 
+    <!-- client -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+
+    <!-- Authenticator -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
     <!--<uses-feature />-->
     <!--不能通过@string/ 方式获取 -->
     <permission android:name="com.testandroid.yang.provider.pppp" />
