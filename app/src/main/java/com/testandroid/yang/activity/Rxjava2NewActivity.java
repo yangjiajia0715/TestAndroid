@@ -130,22 +130,40 @@ public class Rxjava2NewActivity extends BaseActivity {
                 testNew7();
                 break;
             case R.id.rxjava2_new_8:
+                Observable.create(new ObservableOnSubscribe<String>() {
+                    @Override
+                    public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+
+                    }
+                }).compose(new ObservableTransformer<String, Integer>() {
+                    @Override
+                    public ObservableSource<Integer> apply(@NonNull Observable<String> upstream) {
+                        return null;
+                    }
+                }).subscribe(new Observer<Integer>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull Integer integer) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
                 break;
             case R.id.rxjava2_new_9:
-                AccountManager accountManager = AccountManager.get(this);
-                Account[] accounts = accountManager.getAccounts();
-//                accountManager.invalidateAuthToken("","");
-//                accountManager.getAuthToken(accounts[0], "", null, this, new AccountManagerCallback<Bundle>() {
-//                    @Override
-//                    public void run(AccountManagerFuture<Bundle> future) {
-//
-//                    }
-//                },mHandler);
-                for (Account account : accounts) {
-                    Log.d(TAG, "onViewClicked: account=" + account);
-                    Log.d(TAG, "onViewClicked: name account=" + account.name);
-                    Log.d(TAG, "onViewClicked: type account=" + account.type);
-                }
+
                 break;
         }
     }

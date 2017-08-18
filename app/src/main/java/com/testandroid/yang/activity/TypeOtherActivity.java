@@ -109,6 +109,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         infos.add(new HomeInfo("保存文件相关", R.id.tv_save_file, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("多媒体相关", R.id.tv_multimedia, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("图形和动画", R.id.tv_graphics_and_animation, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("account_manage", R.id.tv_account_manage, HomeInfo.HomeGroup.Other));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -165,6 +166,9 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                 case R.id.tv_graphics_and_animation:
                     GraphicsAndAnimationActivity.start(this);
 //                    showDialog();
+                    break;
+                case R.id.tv_account_manage:
+                    AccountManagerActivity.start(this);
                     break;
             }
         }

@@ -416,10 +416,22 @@
         <activity
             android:name=".activity.RecycleViewCeilingActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.ViewOverlayActivity" />
-        <activity android:name=".activity.FragmentActivity" />
-        <activity android:name=".activity.Rxjava2NewActivity" />
 
+        <activity
+            android:name=".activity.ViewOverlayActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.FragmentActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.Rxjava2NewActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AccountManagerActivity"
+            android:screenOrientation="portrait" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
