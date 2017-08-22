@@ -53,7 +53,6 @@ public class AccountManagerActivity extends BaseActivity {
         Account[] accountsByType = accountManager.getAccountsByType(Constants.ACCOUNT_TYPE);
         Log.d(TAG, "initData: accountsByType=" + accountsByType.length);
 
-
         Bundle options = new Bundle();
         Account account1 = new Account("", "");
         accountManager.getAuthToken(
@@ -70,5 +69,6 @@ public class AccountManagerActivity extends BaseActivity {
             Log.d(TAG, "onViewClicked: name account=" + account.name);
             Log.d(TAG, "onViewClicked: type account=" + account.type);
         }
+
     }
 }
