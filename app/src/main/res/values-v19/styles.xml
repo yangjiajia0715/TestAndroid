@@ -13,11 +13,16 @@
     </style>
 
 
-    <style name="AppTheme.FitSystemWindown" >
-        <item name="android:windowTranslucentStatus" >true</item>
+    <style name="AppTheme.FitSystemWindown">
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
-    <style name="AppTheme.FitSystemWindown2" >
-        <item name="android:windowTranslucentStatus" >true</item>
+    <style name="AppTheme.FitSystemWindown2">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="TranslucentStatus" parent="AppBaseTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--<item name="android:fitsSystemWindows">true</item>-->
     </style>
 </resources>

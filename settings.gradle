@@ -4,3 +4,4 @@ include ':MyJavaProgrammer', ':app', ':uikit', ':zoomlibrary', ':imagejoint'
 println "-------setting----project  ,hasProperty--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
 println "-------setting----project  ,systemProp.--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";
 //System.properties['system']
+rootProject.name = "TestAndroid"

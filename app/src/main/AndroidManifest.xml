@@ -421,7 +421,9 @@
             android:name=".activity.ViewOverlayActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.FragmentActivity" />
+        <activity
+            android:name=".activity.FragmentActivity"
+            android:theme="@style/TranslucentStatus" />
 
         <activity
             android:name=".activity.Rxjava2NewActivity"
