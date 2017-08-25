@@ -136,7 +136,6 @@ public class MenuActivity extends BaseActivity {
             Log.d(TAG, "initView: actionBar=" + actionBar);
             actionBar.setDisplayHomeAsUpEnabled(false);//隐藏返回按钮
             actionBar.setDisplayHomeAsUpEnabled(true);//需配合manifest.xml,
-
         }
 
         if (tvContextMenu == null) {

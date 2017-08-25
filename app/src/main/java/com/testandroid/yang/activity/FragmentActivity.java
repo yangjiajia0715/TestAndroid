@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.fragment.Answer2Fragment;
 import com.testandroid.yang.fragment.AnswerFragment;
 
 import butterknife.BindView;
@@ -24,6 +25,7 @@ public class FragmentActivity extends BaseActivity {
 
     @BindView(R.id.container)
     FrameLayout container;
+    private boolean loader;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, FragmentActivity.class);
@@ -47,12 +49,18 @@ public class FragmentActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        if (!loader) {
+            loader = true;
 //        Fragment fragment = CheeseListFragment.instantiate(this, "ff");
 //        Fragment fragment = CheeseListFragment.newInstance();
-        AnswerFragment answerFragment = AnswerFragment.newInstance();
-        getFragmentManager().beginTransaction()
-                .add(R.id.container, answerFragment, container.getClass().getSimpleName())
-                .commit();
+            AnswerFragment answerFragment = AnswerFragment.newInstance();
+            Answer2Fragment answer2Fragment = Answer2Fragment.newInstance();
+            getFragmentManager().beginTransaction()
+                    .add(R.id.container, answer2Fragment, answer2Fragment.getClass().getSimpleName())
+                    .hide(answer2Fragment)
+                    .add(R.id.container, answerFragment, answerFragment.getClass().getSimpleName())
+                    .commit();
+        }
     }
 
     @Override

@@ -271,18 +271,42 @@
 
     <style name="AnalysisReport" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <!--listChoiceBackgroundIndicator-->
-        <item name="android:listChoiceIndicatorSingle" >?android:attr/listChoiceIndicatorMultiple</item>
-        <item name="android:windowEnterAnimation" >@anim/anim_dialog_fade_in</item>
-        <item name="android:layout_gravity" >bottom</item>
-        <item name="android:backgroundDimEnabled" >true</item>
-        <item name="android:backgroundDimAmount" >0.1</item>
-      <!--  <item name="android:windowBackground" >@drawable/my_bg</item>-->
-        <item name="android:gravity" >bottom</item>
-        <item name="android:divider" >@color/app_color</item>
-        <item name="android:dividerHeight" >10dp</item>
-        <item name="android:dividerPadding" >10dp</item>
-        <item name="android:listDivider" >@color/app_color_pressed</item>
-        <item name="android:textSize" >12sp</item>
+        <item name="android:listChoiceIndicatorSingle">?android:attr/listChoiceIndicatorMultiple
+        </item>
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_fade_in</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.1</item>
+        <!--  <item name="android:windowBackground" >@drawable/my_bg</item>-->
+        <item name="android:gravity">bottom</item>
+        <item name="android:divider">@color/app_color</item>
+        <item name="android:dividerHeight">10dp</item>
+        <item name="android:dividerPadding">10dp</item>
+        <item name="android:listDivider">@color/app_color_pressed</item>
+        <item name="android:textSize">12sp</item>
+
+    </style>
+
+    <style name="MainActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- the theme applied to the application or activity -->
+        <item name="android:windowActionBarOverlay">false</item>
+
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">false</item>
+
+        <item name="android:actionBarStyle">@style/MainActivityActionBar</item>
+
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/MainActivityActionBar</item>
+
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MainActivityActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/app_color</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/sample_blue</item>
 
     </style>
 

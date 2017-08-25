@@ -433,6 +433,9 @@
             android:name=".activity.AccountManagerActivity"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".activity.MenuToolBarActivity"
+            android:theme="@style/MainActivityTheme"/>
+
         <!-- android:permission="com."
             android:readPermission="rrr"
             android:writePermission="www"-->

@@ -3,18 +3,19 @@ package com.testandroid.yang.fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.common.Cheeses;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,16 +26,16 @@ import butterknife.Unbinder;
  * Created by yangjiajia on 2017/8/22.
  */
 
-public class AnswerFragment extends Fragment {
+public class Answer2Fragment extends Fragment {
     private static final String TAG = "AnswerFragment";
 
     @BindView(R.id.listview)
     ListView listview;
     Unbinder unbinder;
 
-    public static AnswerFragment newInstance() {
+    public static Answer2Fragment newInstance() {
         Bundle bundle = new Bundle();
-        AnswerFragment fragment = new AnswerFragment();
+        Answer2Fragment fragment = new Answer2Fragment();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -52,35 +53,19 @@ public class AnswerFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Log.d(TAG, "onActivityCreated: ");
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.letter_list, android.R.layout.simple_list_item_1);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.letter_list, android.R.layout.simple_list_item_1);
+        List<String> strings = getRandomSublist(Cheeses.sCheeseStrings, 30);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, strings);
         listview.setAdapter(adapter);
-        setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.list_select_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        android.support.v7.app.ActionBar supportActionBar = appCompatActivity.getSupportActionBar();
-        switch (item.getItemId()) {
-            case R.id.drop_down_answer_action_mode:
-                if (supportActionBar != null) {
-                    supportActionBar.hide();
-                }
-                return true;
-            case R.id.drop_down_setting_action_mode:
-                if (supportActionBar != null) {
-                    supportActionBar.show();
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+    private List<String> getRandomSublist(String[] array, int amount) {
+        ArrayList<String> list = new ArrayList<>(amount);
+        Random random = new Random();
+        while (list.size() < amount) {
+            list.add(array[random.nextInt(array.length)]);
         }
+        return list;
     }
 
     @Override

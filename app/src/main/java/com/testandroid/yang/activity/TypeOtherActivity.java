@@ -99,6 +99,7 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
         infos.add(new HomeInfo("tv_buildconfig_field", R.id.tv_buildconfig_field, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("tv_temp", R.id.tv_temp, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("三种菜单", R.id.tv_menu, HomeInfo.HomeGroup.Other));
+        infos.add(new HomeInfo("菜单&ToolBar", R.id.tv_menu_toolbar, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("pdf相关", R.id.tv_pdf, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("Overview Screen", R.id.tv_overview_screen, HomeInfo.HomeGroup.Other));
         infos.add(new HomeInfo("Notification", R.id.tv_notification, HomeInfo.HomeGroup.Other));
@@ -134,6 +135,9 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
                     break;
                 case R.id.tv_menu:
                     MenuActivity.start(this);
+                    break;
+                case R.id.tv_menu_toolbar:
+                    MenuToolBarActivity.start(this);
                     break;
                 case R.id.tv_pdf:
                     PDFCreateActivity.start(this);
