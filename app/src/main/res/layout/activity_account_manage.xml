@@ -6,4 +6,18 @@
 
     <include layout="@layout/include_tool_bar" />
 
+    <TextView
+        android:id="@+id/add_account_0"
+        style="@style/Home_text_style2"
+        android:text="添加账户" />
+
+    <TextView
+        android:id="@+id/add_account_1"
+        style="@style/Home_text_style2"
+        android:text="添加账户1" />
+
+    <TextView
+        android:id="@+id/add_account_2"
+        style="@style/Home_text_style2"
+        android:text="添加账户2" />
 </LinearLayout>
