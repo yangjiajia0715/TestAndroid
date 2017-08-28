@@ -1,9 +1,13 @@
 package com.testandroid.yang.activity;
 
 import android.accounts.Account;
+import android.accounts.AccountAuthenticatorResponse;
 import android.accounts.AccountManager;
 import android.accounts.AccountManagerCallback;
 import android.accounts.AccountManagerFuture;
+import android.accounts.AuthenticatorException;
+import android.accounts.OnAccountsUpdateListener;
+import android.accounts.OperationCanceledException;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +21,8 @@ import android.widget.TextView;
 import com.testandroid.yang.R;
 import com.testandroid.yang.util.Constants;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,6 +30,8 @@ import butterknife.OnClick;
 /**
  * AccountManagerActivity
  * Created by yangjiajia on 2017/8/18.
+ *
+ * http://zhenzxie.iteye.com/blog/1470022
  */
 
 public class AccountManagerActivity extends BaseActivity {
@@ -65,14 +73,18 @@ public class AccountManagerActivity extends BaseActivity {
 
     @Override
     public void initView() {
-
+        Account account = new Account("", "");
+        AccountAuthenticatorResponse response;
     }
 
     @Override
     public void initData() {
         accountManager = AccountManager.get(this);
 
-
+//        ServiceManager.addService(Context.ACCOUNT_SERVICE,new AccountManagerService(context));
+//        AccountAuthenticatorCache cache
+//        账户验证中心
+        
     }
 
     @OnClick({R.id.add_account_0, R.id.add_account_1, R.id.add_account_2})
@@ -95,12 +107,32 @@ public class AccountManagerActivity extends BaseActivity {
             case R.id.add_account_1:
                 String accountType = getString(R.string.account_type);
                 String authTokenType = getString(R.string.auth_token_type);
-                accountManager.addAccount(accountType, authTokenType, null, null, this, new AccountManagerCallback<Bundle>() {
+
+                OnAccountsUpdateListener onAccountsUpdateListener = new OnAccountsUpdateListener() {
+                    @Override
+                    public void onAccountsUpdated(Account[] accounts) {
+
+                    }
+                };
+
+                String actionAuthenticatorIntent = AccountManager.ACTION_AUTHENTICATOR_INTENT;
+
+                AccountManagerFuture<Bundle> managerFuture = accountManager.addAccount(accountType, authTokenType, null, null, this, new AccountManagerCallback<Bundle>() {
                     @Override
                     public void run(AccountManagerFuture<Bundle> future) {
+                        try {
+                            Bundle result = future.getResult();
+                        } catch (OperationCanceledException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (AuthenticatorException e) {
+                            e.printStackTrace();
+                        }
                         Log.d(TAG, "run: future=" + future);
                     }
                 }, new Handler());
+//                managerFuture.getResult();
                 break;
             case R.id.add_account_2:
                 Account[] accounts = accountManager.getAccounts();
