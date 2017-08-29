@@ -435,6 +435,7 @@
         <activity
             android:name=".activity.MenuToolBarActivity"
             android:theme="@style/MainActivityTheme" />
+        <activity android:name=".activity.AuthenticatorActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

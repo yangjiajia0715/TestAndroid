@@ -41,16 +41,10 @@ public class Authenticator extends AbstractAccountAuthenticator {
                              String authTokenType, String[] requiredFeatures, Bundle options)
             throws NetworkErrorException {
         Log.d(TAG, "addAccount: response=" + response);
-//        final Intent intent = new Intent(context, AuthenticatorActivity.class);
-//        intent.putExtra(AuthenticatorActivity.ARG_ACCOUNT_TYPE, accountType);
-//        intent.putExtra(AuthenticatorActivity.ARG_AUTH_TYPE, authTokenType);
-//        intent.putExtra(AuthenticatorActivity.ARG_IS_ADDING_NEW_ACCOUNT, true);
-//        intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
-//        final Bundle bundle = new Bundle();
-//        bundle.putParcelable(AccountManager.KEY_INTENT, intent);
-//        return bundle;
+
         Intent intent = new Intent(mContext, AuthenticatorActivity.class);
         intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
+
         Bundle bundle = new Bundle();
         bundle.putParcelable(AccountManager.KEY_INTENT, intent);
         return bundle;
@@ -64,7 +58,7 @@ public class Authenticator extends AbstractAccountAuthenticator {
     @Override
     public Bundle getAuthToken(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle options) throws NetworkErrorException {
         //可以请求服务器获取token,这里为了简单直接返回
-        Log.d(TAG, "getAuthToken: ");
+        Log.d(TAG, "getAuthToken: account=" + account);
         Bundle bundle;
         if (!authTokenType.equals(Constants.AUTH_TOKEN_TYPE)) {
             bundle = new Bundle();
@@ -76,6 +70,8 @@ public class Authenticator extends AbstractAccountAuthenticator {
 
         AccountManager am = AccountManager.get(mContext);
         String psw = am.getPassword(account);
+
+        Log.d(TAG, "getAuthToken: psw=" + psw);
         if (!TextUtils.isEmpty(psw)) {
             //链接服务器获取token
             Random random = new Random();
@@ -86,7 +82,6 @@ public class Authenticator extends AbstractAccountAuthenticator {
             bundle.putString(AccountManager.KEY_ACCOUNT_NAME, account.name);
             return bundle;
         }
-
 
         bundle = new Bundle();
         Intent intent = new Intent(mContext, AuthenticatorActivity.class);

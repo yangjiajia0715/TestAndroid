@@ -20,4 +20,8 @@
         android:id="@+id/add_account_2"
         style="@style/Home_text_style2"
         android:text="添加账户2" />
+    <TextView
+        android:id="@+id/add_account_3"
+        style="@style/Home_text_style2"
+        android:text="清除账户" />
 </LinearLayout>

@@ -1,8 +1,13 @@
 package com.testandroid.yang.activity;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
@@ -172,7 +178,33 @@ public class TypeOtherActivity extends BaseActivity implements View.OnClickListe
 //                    showDialog();
                     break;
                 case R.id.tv_account_manage:
-                    AccountManagerActivity.start(this);
+                    AccountManager manager = AccountManager.get(this);
+                    Account[] accounts = manager.getAccountsByType(getString(R.string.account_type));
+                    if (accounts.length == 0) {
+                        String accountType = getString(R.string.account_type);
+                        String authTokenType = getString(R.string.auth_token_type);
+                        Log.d(TAG, "run: accountType=" + accountType);
+
+                        manager.addAccount(accountType, authTokenType, null, null, this, new AccountManagerCallback<Bundle>() {
+                            @Override
+                            public void run(AccountManagerFuture<Bundle> future) {
+                                try {
+                                    Log.d(TAG, "run: currentThread=" + Thread.currentThread().getName());
+                                    Log.d(TAG, "run: getResult=" + future.getResult());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    Log.d(TAG, "run: e=" + e.getMessage());
+                                }
+                            }
+                        }, new Handler());
+                    } else {
+                        Account curaccount = accounts[0];
+                        for (Account account : accounts) {
+                            Log.d(TAG, "onClick: account=" + account);
+                            Toast.makeText(this, "onClick: account=" + account, Toast.LENGTH_SHORT).show();
+                        }
+                        AccountManagerActivity.start(this);
+                    }
                     break;
             }
         }
