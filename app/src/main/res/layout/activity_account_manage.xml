@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/add_account_0"
         style="@style/Home_text_style2"
-        android:text="添加账户" />
+        android:text="显示添加账户" />
 
     <TextView
         android:id="@+id/add_account_1"
@@ -19,7 +19,7 @@
     <TextView
         android:id="@+id/add_account_2"
         style="@style/Home_text_style2"
-        android:text="添加账户2" />
+        android:text="账户列表" />
     <TextView
         android:id="@+id/add_account_3"
         style="@style/Home_text_style2"

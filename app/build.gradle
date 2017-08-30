@@ -24,6 +24,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.tencent.tinker.patch'
 apply from: file('utils.gradle')
 apply plugin: 'com.antfortune.freeline'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 
 //apply plugin: 'com.android.databinding'
 
@@ -208,6 +209,8 @@ dependencies {
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile group: 'commons-io', name: 'commons-io', version: "${rootProject.ext.commonIoVersion}"
     compile 'junit:junit:4.12'
+    compile 'org.greenrobot:greendao:3.2.2' // add library
+
 }
 
 // Iterable gets an each() method
@@ -702,4 +705,11 @@ task testConfig {
         println configurations.compile.name
         println configurations['compile'].name
     }
+}
+
+greendao {
+    schemaVersion 1
+
+    daoPackage 'com.koma.greendao.gen'
+    targetGenDir 'src/main/java'
 }

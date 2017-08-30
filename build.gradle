@@ -12,7 +12,7 @@ buildscript {
         // in the individual module build.gradle files
         classpath 'com.antfortune.freeline:gradle:0.8.5'
         classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
-
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
     }
 }
 

@@ -33,6 +33,7 @@ public class Authenticator extends AbstractAccountAuthenticator {
 
     @Override
     public Bundle editProperties(AccountAuthenticatorResponse response, String accountType) {
+        Log.d(TAG, "editProperties: ");
         return null;
     }
 
@@ -52,6 +53,7 @@ public class Authenticator extends AbstractAccountAuthenticator {
 
     @Override
     public Bundle confirmCredentials(AccountAuthenticatorResponse response, Account account, Bundle options) throws NetworkErrorException {
+        Log.d(TAG, "confirmCredentials: ");
         return null;
     }
 
@@ -94,16 +96,19 @@ public class Authenticator extends AbstractAccountAuthenticator {
 
     @Override
     public String getAuthTokenLabel(String authTokenType) {
+        Log.d(TAG, "getAuthTokenLabel: ");
         return null;
     }
 
     @Override
     public Bundle updateCredentials(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle options) throws NetworkErrorException {
+        Log.d(TAG, "updateCredentials: ");
         return null;
     }
 
     @Override
     public Bundle hasFeatures(AccountAuthenticatorResponse response, Account account, String[] features) throws NetworkErrorException {
+        Log.d(TAG, "hasFeatures: ");
         return null;
     }
 }

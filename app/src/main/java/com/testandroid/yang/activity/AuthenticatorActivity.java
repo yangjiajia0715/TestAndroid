@@ -79,6 +79,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
                     data.putString(AccountManager.KEY_ACCOUNT_NAME, userName);
                     data.putString(AccountManager.KEY_ACCOUNT_TYPE, accountType);
                     data.putString(AccountManager.KEY_AUTHTOKEN, authtoken);
+                    //not null
+                    data.putString(AccountManager.KEY_AUTHENTICATOR_TYPES, getString(R.string.auth_token_type));
                     data.putString(PARAM_USER_PASS, userPass);
 
                 } catch (Exception e) {
@@ -116,6 +118,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         if (getIntent().getBooleanExtra(ARG_IS_ADDING_NEW_ACCOUNT, true)) {
             String authtoken = intent.getStringExtra(AccountManager.KEY_AUTHTOKEN);
 //            String authtokenType = mAuthTokenType;
+            if (TextUtils.isEmpty(authtoken)) {
+            }
             String authtokenType = intent.getStringExtra(AccountManager.KEY_AUTHENTICATOR_TYPES);
 
             // Creating the account on the device and setting the auth token we got

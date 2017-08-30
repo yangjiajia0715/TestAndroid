@@ -435,7 +435,10 @@
         <activity
             android:name=".activity.MenuToolBarActivity"
             android:theme="@style/MainActivityTheme" />
-        <activity android:name=".activity.AuthenticatorActivity" />
+
+        <activity
+            android:name=".activity.AuthenticatorActivity"
+            android:exported="true" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
@@ -477,7 +480,10 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <service android:name=".service.AuthenricatorService">
+        <service
+            android:name=".service.AuthenricatorService"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
