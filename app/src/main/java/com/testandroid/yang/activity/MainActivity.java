@@ -2,14 +2,18 @@ package com.testandroid.yang.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.testandroid.yang.CCC;
 import com.testandroid.yang.R;
@@ -36,6 +40,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RecyclerView recycleview;
     @BindView(R.id.temp_trans_animation)
     TextView tempTransAnimation;
+    @BindView(R.id.bottom_navigation_view)
+    BottomNavigationView bottomNavigationView;
 
     private List<HomeInfo> infos = new ArrayList<>();
     private List<HomeInfo> items;
@@ -44,7 +50,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_main);
         ButterKnife.bind(this);
         initView();
         initData();
@@ -83,6 +89,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 //        toolbar.setNavigationIcon(R.drawable.ic_search_bg_black);
 //        toolbar.setOnMenuItemClickListener(this);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Toast.makeText(MainActivity.this, "底部按钮=" + item.getTitle(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+
     }
 
     @Override

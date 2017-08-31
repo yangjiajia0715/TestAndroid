@@ -302,7 +302,15 @@ task taskX(dependsOn: 'task'){
 
 }
 
-
+group "myJava"
+version 1.0
+println "=========================="
+println project.name
+println project.buildDir
+println project.buildFile
+println project.rootDir
+println project.group
+println project.version
 
 
 

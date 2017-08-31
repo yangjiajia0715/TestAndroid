@@ -10,7 +10,8 @@ ext {
             versionName      : "1.17"
     ]
 
-    supportVersion = "25.3.0"
+//    supportVersion = "25.3.1"
+    supportVersion = "26.0.0-alpha1"//2017-8-31 BottomNavigationView
     multidexVersion = "1.0.1"
 
     rxjavaVersion = "2.1.2"//2017-3-16,2017-8-13：2.0.7-->2.1.2

@@ -46,6 +46,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         manager = AccountManager.get(this);
         Log.d(TAG, "onCreate: getIntent=" + getIntent());
         Log.d(TAG, "onCreate: getExtras=" + getIntent().getExtras());
+
     }
 
     @OnClick(R.id.ok)
@@ -119,13 +120,16 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
             String authtoken = intent.getStringExtra(AccountManager.KEY_AUTHTOKEN);
 //            String authtokenType = mAuthTokenType;
             if (TextUtils.isEmpty(authtoken)) {
+
             }
             String authtokenType = intent.getStringExtra(AccountManager.KEY_AUTHENTICATOR_TYPES);
 
             // Creating the account on the device and setting the auth token we got
             // (Not setting the auth token will cause another call to the server to authenticate the user)
             manager.addAccountExplicitly(account, accountPassword, null);
+
             manager.setAuthToken(account, authtokenType, authtoken);
+
         } else {
             manager.setPassword(account, accountPassword);
         }
