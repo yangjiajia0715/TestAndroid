@@ -312,5 +312,61 @@ println project.rootDir
 println project.group
 println project.version
 
+//===============2017年8月31日begin========================
 
+task(defTask){
+    doLast{
+        println "defTaskkkkkkk"
+    }
+}
+
+task(defCopy,type:Copy){
+    from file("srcDst")
+    into buildDir
+}
+
+tasks.create(name:"defCreate",type:Copy){
+    doLast{
+        println("defccccccc")
+    }
+}
+//访问task
+//任务名就是属性名
+println project.defTask.name
+println tasks["defTask"].name
+//
+//project(':proA'){
+//    task hhhhh
+//}
+//
+//task hhhhh
+//
+////访问任务
+//println tasks.getByPath("").path
+//
+////任务依赖
+//task taskA(dependsOn: ':projectB:taskX'){
+//
+//}
+//
+////依赖执行顺序
+//taskA.mustRunAfter taskB
+////循环
+//taskA.shouldRunAfter taskB
+//
+////覆盖任务
+//task taskB(overwrite:true){
+//
+//}
+//
+////只有满足一定条件时才执行 ：SKIPPED，
+//taskB.onlyIf {
+//    !project.hasProperty("mmmmm")
+//}
+////如果onlyif 不能满足需求可以用,该任务之后的action不再执行
+////throw new StopExecutionException()
+////predicate
+//
+//
+//disableMe.enabled = false
 

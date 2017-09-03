@@ -13,6 +13,9 @@ buildscript {
         classpath 'com.antfortune.freeline:gradle:0.8.5'
         classpath "com.tencent.tinker:tinker-patch-gradle-plugin:${TINKER_VERSION}"
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
+
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -21,6 +24,8 @@ allprojects {
         jcenter()
     }
 }
+
+
 
 //task clean(type: Delete) {
 //    delete rootProject.buildDir

@@ -208,8 +208,14 @@ dependencies {
     compile 'junit:junit:4.12'
     compile 'org.greenrobot:greendao:3.2.2' // add library
 
+
 }
 
+task listJars {
+    doLast {
+        configurations.compile.each { File file -> println file.name }
+    }
+}
 // Iterable gets an each() method
 //configurations.compile.each {File f ->
 //    println "configurations.compile f =" + f.name
