@@ -38,8 +38,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     Toolbar toolbar;
     @BindView(R.id.recycleview)
     RecyclerView recycleview;
-    @BindView(R.id.temp_trans_animation)
-    TextView tempTransAnimation;
     @BindView(R.id.bottom_navigation_view)
     BottomNavigationView bottomNavigationView;
 
