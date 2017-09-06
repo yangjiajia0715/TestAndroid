@@ -6,14 +6,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.testandroid.yang.BuildConfig;
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.ImageAdapter;
 import com.testandroid.yang.common.ImageItem;
@@ -92,15 +90,15 @@ public class SelectFileActivity extends ListActivity {
                 Toast.makeText(this, "撤销权限成功", Toast.LENGTH_SHORT).show();
             }
         } else {
-            uri = FileProvider.getUriForFile(this, BuildConfig.FILE_PROVIDER_AUTHORITIES, files[position]);
-            Intent intent = new Intent();
-            //使用该方法授权 如果客户app不在需要该权限，需要通过revokeUriPermission撤销，或者系统重启(reboot)
-//            测试 好用！
-//            grantUriPermission("com.yang.thirdapp", uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.setDataAndType(uri, getContentResolver().getType(uri));
-            setResult(RESULT_OK, intent);
+//            uri = FileProvider.getUriForFile(this, BuildConfig.FILE_PROVIDER_AUTHORITIES, files[position]);
+//            Intent intent = new Intent();
+//            //使用该方法授权 如果客户app不在需要该权限，需要通过revokeUriPermission撤销，或者系统重启(reboot)
+////            测试 好用！
+////            grantUriPermission("com.yang.thirdapp", uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//
+//            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//            intent.setDataAndType(uri, getContentResolver().getType(uri));
+//            setResult(RESULT_OK, intent);
         }
     }
 

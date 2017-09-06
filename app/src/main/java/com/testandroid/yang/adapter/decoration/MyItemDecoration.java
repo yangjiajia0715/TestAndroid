@@ -1,5 +1,6 @@
 package com.testandroid.yang.adapter.decoration;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -15,8 +16,6 @@ import android.view.View;
 import com.testandroid.yang.R;
 import com.testandroid.yang.util.Utility;
 
-import static com.testandroid.yang.util.SampleApplicationContext.context;
-
 /**
  * MyItemDecoration
  * Created by yangjiajia on 2017/8/2.
@@ -30,7 +29,7 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
     private int alignBottom;
     private Paint.FontMetrics fontMetrics;
 
-    public MyItemDecoration() {
+    public MyItemDecoration(Context context) {
         //设置悬浮栏的画笔
         paint = new Paint();
         paint.setColor(ContextCompat.getColor(context, R.color.colorPrimary));
@@ -49,6 +48,7 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
         alignBottom = 10;
 //        alignBottom = resources.getDimensionPixelSize(R.dimen.sectioned_alignBottom);
     }
+
 
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {

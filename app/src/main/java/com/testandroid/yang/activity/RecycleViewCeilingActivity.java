@@ -54,7 +54,7 @@ public class RecycleViewCeilingActivity extends BaseActivity {
         }
         AnalysisReportListAdapter adapter = new AnalysisReportListAdapter(dates);
         recycleview.setAdapter(adapter);
-        MyItemDecoration decoration = new MyItemDecoration();
+        MyItemDecoration decoration = new MyItemDecoration(this);
 //        SectionIndexer
         recycleview.addItemDecoration(decoration);
     }

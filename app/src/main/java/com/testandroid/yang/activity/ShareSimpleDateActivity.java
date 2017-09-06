@@ -2,14 +2,9 @@ package com.testandroid.yang.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v4.view.ActionProvider;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.ShareActionProvider;
@@ -19,11 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.testandroid.yang.BuildConfig;
 import com.testandroid.yang.R;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.ByteArrayOutputStream;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -161,64 +154,6 @@ public class ShareSimpleDateActivity extends BaseActivity {
                 shareActionProvider.setShareIntent(intent);
                 break;
             case R.id.share_date_6:
-//                String schemeFile = ContentResolver.SCHEME_FILE;
-//                /data/data/com.testandroid.yang/files
-                File filesDir = getFilesDir();
-//                /data/data/com.testandroid.yang/cache
-                File cacheDir = getCacheDir();
-//                /storage/emulated/0/Android/data/com.testandroid.yang/cache
-//                Environment.D
-                File externalCacheDir = getExternalCacheDir();
-//                /storage/emulated/0/Android/data/com.testandroid.yang/files
-                File externalFilesDir = getExternalFilesDir(null);
-//                /storage/emulated/0
-                File storageDirectory = Environment.getExternalStorageDirectory();
-
-                try {
-                    Drawable drawable = ContextCompat.getDrawable(this, R.drawable.liushishi);
-                    BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-                    Bitmap bitmap = bitmapDrawable.getBitmap();
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-
-                    FileOutputStream fileOutput = openFileOutput("text.txt", Context.MODE_PRIVATE);
-                    fileOutput.write("这是测试文本".getBytes());
-                    fileOutput.flush();
-                    fileOutput.close();
-
-                    File file = new File(getFilesDir(), "images");
-                    if (!file.exists()) {
-                        file.mkdirs();
-                    }
-
-                    File text11 = new File(file, "text111.txt");
-                    FileOutputStream fileOutputStream = new FileOutputStream(text11);
-                    fileOutputStream.write("牛牛".getBytes());
-                    fileOutputStream.flush();
-                    fileOutputStream.close();
-
-                    Uri uriForFile = FileProvider.getUriForFile(this, BuildConfig.FILE_PROVIDER_AUTHORITIES, text11);
-                    Log.d(TAG, "onViewClicked: uriForFile=" + uriForFile);//=content://com.testandroid.yang.fileprovider/my_images/text111.txt
-//                    grantUriPermission("", uriForFile, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                    revokeUriPermission(uriForFile, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-                    Intent resultIntent = new Intent();
-                    resultIntent.setDataAndType(uriForFile, getContentResolver().getType(uriForFile));
-                    resultIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    resultIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-                    setResult(RESULT_OK, resultIntent);
-
-                    File file1 = new File(getFilesDir(), "aaaaaa");
-                    // Grant temporary read permission to the content URI
-
-                    Log.d(TAG, "onViewClicked: getType=" + getContentResolver().getType(uriForFile));
-//                    IOUtils.copy(, outputStream);
-//                    setResult(Activity.RESULT_CANCELED,null);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
                 break;
             case R.id.share_date_7:
                 Uri uri1 = Uri.fromFile(new File(""));

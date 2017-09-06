@@ -95,8 +95,6 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
             HomeInfo info = (HomeInfo) v.getTag(R.id.tag_first);
             switch (info.id) {
                 case R.id.tv_test_tinker:
-                    intent = new Intent(this, TestTinkerActivity.class);
-                    startActivity(intent);
                     break;
                 case R.id.tv_test_RxJava_main:
                     RxJava2Activity.start(this);

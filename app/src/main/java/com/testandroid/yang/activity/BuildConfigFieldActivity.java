@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.testandroid.yang.BuildConfig;
 import com.testandroid.yang.R;
 
 
@@ -30,14 +29,5 @@ public class BuildConfigFieldActivity extends Activity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("\n APPLICATION_ID=" + BuildConfig.APPLICATION_ID);
-        builder.append("\n BUILD_TYPE=" + BuildConfig.BUILD_TYPE);
-        builder.append("\n FLAVOR=" + BuildConfig.FLAVOR);
-//        builder.append("\n FLAVOR_abc=" + BuildConfig.FLAVOR_abc);
-        builder.append("\n VERSION_NAME=" + BuildConfig.VERSION_NAME);
-        builder.append("\n DEBUG=" + BuildConfig.DEBUG);
-        builder.append("\n Message=" + BuildConfig.Message);
-        textView.setText("BuildConfig=" + builder.toString());
     }
 }

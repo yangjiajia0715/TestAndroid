@@ -55,7 +55,6 @@
         android:protectionLevel="dangerous" />
 
     <application
-        android:name="com.testandroid.yang.tinker.SampleApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -143,10 +142,6 @@
 
         <activity
             android:name=".activity.BuildConfigFieldActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar" />
-
-        <activity
-            android:name=".activity.TestTinkerActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
 
         <activity
@@ -439,6 +434,7 @@
         <activity
             android:name=".activity.AuthenticatorActivity"
             android:exported="true" />
+        <activity android:name=".activity.ConstraintLayoutActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
