@@ -1,7 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/input_score_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="8dp"
+        android:text="录入成绩和评价"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/look_score"
+        app:layout_constraintTop_toTopOf="@+id/look_score" />
+
+    <TextView
+        android:id="@+id/input_report_tile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="批量录入学情分析报告批量录入学情分析报告"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/input_score_title"
+        app:layout_constraintRight_toRightOf="@+id/input_score_title"
+        app:layout_constraintTop_toTopOf="@+id/look_report" />
+
+    <TextView
+        android:id="@+id/look_score"
+        style="@style/AnalysisReportTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="查看"
+        app:layout_constraintRight_toLeftOf="@+id/input_report"
+        app:layout_constraintTop_toTopOf="@+id/input_report" />
+
+    <TextView
+        android:id="@+id/input_score"
+        style="@style/AnalysisReportTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/add_report"
+        android:text="添加"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/look_report"
+        style="@style/AnalysisReportTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/look_score"
+        android:text="查看"
+        tools:layout_editor_absoluteY="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/input_score"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:id="@+id/input_report"
+        style="@style/AnalysisReportTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/look_score"
+        android:layout_marginTop="22dp"
+        android:drawableLeft="@drawable/add_report"
+        android:text="添加"
+        app:layout_constraintLeft_toLeftOf="@+id/input_score"
+        app:layout_constraintRight_toRightOf="@+id/input_score"
+        app:layout_constraintTop_toBottomOf="@+id/input_score" />
+
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline2"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.19" />
+</android.support.constraint.ConstraintLayout>

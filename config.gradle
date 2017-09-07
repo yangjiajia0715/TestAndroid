@@ -4,7 +4,7 @@ ext {
             compileSdkVersion: 25,
             buildToolsVersion: "25.0.2",
             applicationId    : "com.testandroid.yang",
-            minSdkVersion    : 16,
+            minSdkVersion    : 17,//16-->17,layout_marginEnd min17 2017-9-6
             targetSdkVersion : 21,//24-->21
             versionCode      : 17,
             versionName      : "1.17"
@@ -34,5 +34,6 @@ ext {
     vlayoutVersion = "1.0.5";
 
     commonIoVersion = "2.5";
+    constraintVersion = "1.0.2";
 
 }
