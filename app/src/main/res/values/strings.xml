@@ -176,5 +176,6 @@ Quam libero nulla netus eu porta curae, ut nulla bibendum facilisis et urna sed,
 
     <string name="account_type">com.testandroid.yang.account</string>
     <string name="auth_token_type">com.testandroid.yang.auth_token</string>
+    <string name="search">搜索</string>
 
 </resources>

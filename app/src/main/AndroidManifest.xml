@@ -435,6 +435,7 @@
             android:name=".activity.AuthenticatorActivity"
             android:exported="true" />
         <activity android:name=".activity.ConstraintLayoutActivity" />
+        <activity android:name=".activity.SearchViewActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

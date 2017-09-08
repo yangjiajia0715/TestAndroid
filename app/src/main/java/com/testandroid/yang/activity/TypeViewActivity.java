@@ -110,6 +110,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
         infos.add(new HomeInfo("ActionBar相关", R.id.tv_action_bar, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("fragment相关", R.id.tv_fragment, HomeInfo.HomeGroup.View));
         infos.add(new HomeInfo("constraint_layout相关", R.id.tv_constraint_layout, HomeInfo.HomeGroup.View));
+        infos.add(new HomeInfo("SearchView", R.id.tv_search_view, HomeInfo.HomeGroup.View));
 
         items.addAll(infos);
         adapter = new HomeRecyleViewAdapter(this, items);
@@ -224,6 +225,9 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                     break;
                 case R.id.tv_constraint_layout:
                     ConstraintLayoutActivity.start(this);
+                    break;
+                case R.id.tv_search_view:
+                    SearchViewActivity.start(this);
                     break;
             }
         }

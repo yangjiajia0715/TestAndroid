@@ -50,6 +50,7 @@
     <item name="tv_action_bar" type="id" />
     <item name="tv_fragment" type="id" />
     <item name="tv_constraint_layout" type="id" />
+    <item name="tv_search_view" type="id" />
     <item name="tv_pdf" type="id" />
     <item name="tv_overview_screen" type="id" />
     <item name="tv_notification" type="id" />
