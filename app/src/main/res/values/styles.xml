@@ -323,7 +323,24 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="MySearchView" parent="Widget.AppCompat.SearchView" >
+    <style name="MySearchView" parent="@style/Widget.AppCompat.Light.SearchView">
+        <item name="layout">@layout/search_view</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 
+    <style name="SearchActionBtn" parent="@style/Widget.AppCompat.ActionButton">
+        <item name="paddingStart">2dp</item>
+        <item name="paddingEnd">2dp</item>
+    </style>
+
+    <style name="SearchTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- <item name="actionButtonStyle">@style/SearchActionBtn</item>
+         <item name="searchViewStyle">@style/MySearchView</item>
+         <item name="overlapAnchor">false</item>-->
+        <item name="actionBarStyle">@style/SearchActionBarStyle</item>
+    </style>
+
+    <style name="SearchActionBarStyle" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/white</item>
     </style>
 </resources>

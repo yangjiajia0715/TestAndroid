@@ -434,8 +434,16 @@
         <activity
             android:name=".activity.AuthenticatorActivity"
             android:exported="true" />
+
         <activity android:name=".activity.ConstraintLayoutActivity" />
-        <activity android:name=".activity.SearchViewActivity" />
+
+        <activity
+            android:name=".activity.SearchViewActivity"
+            android:theme="@style/SearchTheme">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".activity.SearchableActivity" />
+        </activity>
 
         <activity android:name=".activity.SearchableActivity">
             <intent-filter>
@@ -476,6 +484,10 @@
                  android:readPermission="string"
                  android:writePermission="string" />-->
         </provider>
+
+        <provider
+            android:name="com.testandroid.yang.provider.SearchRecentProvider"
+            android:authorities="com.yang.SearchRecentProvider" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
