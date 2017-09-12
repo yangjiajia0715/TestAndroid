@@ -13,13 +13,19 @@ import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.testandroid.yang.R;
 
@@ -33,7 +39,7 @@ import butterknife.OnClick;
  * Created by yangjiajia on 2017/9/8.
  */
 
-public class SearchViewActivity extends BaseActivity {
+public class SearchViewActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "SearchViewActivity";
     @BindView(R.id.listview)
     ListView listview;
@@ -70,7 +76,7 @@ public class SearchViewActivity extends BaseActivity {
             actionBar.setDisplayShowTitleEnabled(false);
         }
 
-        searchView.setSubmitButtonEnabled(true);
+//        searchView.setSubmitButtonEnabled(true);
         EditText srcText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
         srcText.setTextSize(13);
         srcText.setTextColor(Color.BLUE);
@@ -82,28 +88,17 @@ public class SearchViewActivity extends BaseActivity {
         // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
+//        searchView.setQueryRefinementEnabled(true);
+
         searchView.postDelayed(new Runnable() {
             @Override
             public void run() {
                 CursorAdapter suggestionsAdapter = searchView.getSuggestionsAdapter();
                 listview.setAdapter(suggestionsAdapter);
             }
-        },1000);
+        }, 1000);
 
         Log.d(TAG, "initView: getComponentName=" + getComponentName());
-
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                Toast.makeText(SearchViewActivity.this, "查询：" + query, Toast.LENGTH_SHORT).show();
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
 
         searchManager.setOnDismissListener(new SearchManager.OnDismissListener() {
             @Override
@@ -119,6 +114,22 @@ public class SearchViewActivity extends BaseActivity {
             }
         });
 
+        ImageView mag_icon = (ImageView) findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+        mag_icon.setPadding(0, 0, 0, 0);
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        layoutParams.set
+        layoutParams.gravity = Gravity.CENTER_VERTICAL;
+        mag_icon.setLayoutParams(layoutParams);
+//        ViewGroup.LayoutParams layoutParams = mag_icon.getLayoutParams();
+
+        ImageView closebtn = (ImageView) findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+        closebtn.setPadding(0, 0, 0, 0);
+
+        ImageView goBtn = (ImageView) findViewById(android.support.v7.appcompat.R.id.search_go_btn);
+        goBtn.setPadding(0, 0, 0, 0);
+
+        btnSearch.setOnClickListener(this);
     }
 
     @Override
@@ -136,11 +147,29 @@ public class SearchViewActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_search:
+                CharSequence query = searchView.getQuery();
+                Log.d(TAG, "onViewClicked: query=" + query);
+                if (query == null || TextUtils.getTrimmedLength(query) == 0) {
+                    Toast.makeText(this, "输入不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+//                searchView.setAppSearchData();
+                searchView.setQuery(query, true);
+
+                Log.d(TAG, "onViewClicked: query 2=" + searchView.getQuery());
+                break;
+        }
+    }
+
     @OnClick(R.id.req_btn)
     public void onViewClicked() {
         boolean requested = onSearchRequested();
         Log.d(TAG, "onViewClicked: requested=" + requested);
-
     }
 
     @Override
@@ -226,4 +255,5 @@ public class SearchViewActivity extends BaseActivity {
         // finally, make the query
         return getContentResolver().query(uri, null, selection, selArgs, null);
     }
+
 }

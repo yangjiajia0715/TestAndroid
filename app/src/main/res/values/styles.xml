@@ -334,9 +334,9 @@
     </style>
 
     <style name="SearchTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- <item name="actionButtonStyle">@style/SearchActionBtn</item>
-         <item name="searchViewStyle">@style/MySearchView</item>
-         <item name="overlapAnchor">false</item>-->
+         <item name="actionButtonStyle">@style/SearchActionBtn</item>
+         <!--<item name="searchViewStyle">@style/MySearchView</item>-->
+         <item name="overlapAnchor">false</item>
         <item name="actionBarStyle">@style/SearchActionBarStyle</item>
     </style>
 

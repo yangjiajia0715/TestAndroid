@@ -17,6 +17,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="45dp">
 
         <ImageButton
@@ -33,13 +34,15 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@color/white"
             android:gravity="center"
             android:padding="10dp"
+            android:textColor="@color/text_color_4a4a4a"
+
             android:text="@string/search" />
 
         <!-- android:layout="@layout/search_view"-->
         <!---->
+        <!--app:commitIcon="@drawable/iv_search"-->
         <android.support.v7.widget.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
@@ -48,14 +51,10 @@
             android:layout_toLeftOf="@id/btn_search"
             android:layout_toRightOf="@id/back_arrow"
             android:background="@drawable/bg_search_vew"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:paddingStart="0dp"
-            app:commitIcon="@drawable/iv_search"
             app:iconifiedByDefault="false"
-            app:queryBackground="@color/white"
-            app:searchIcon="@drawable/iv_search"
-            app:submitBackground="@null" />
+            app:submitBackground="@null"
+            app:queryBackground="@null"
+            app:searchIcon="@drawable/iv_search"/>
 
     </RelativeLayout>
 

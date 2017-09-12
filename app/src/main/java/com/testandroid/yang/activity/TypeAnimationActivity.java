@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.SearchView;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
@@ -50,6 +51,7 @@ public class TypeAnimationActivity extends BaseActivity implements View.OnClickL
         ButterKnife.bind(this);
         initView();
         initData();
+        SearchView searchView;
     }
 
     @Override

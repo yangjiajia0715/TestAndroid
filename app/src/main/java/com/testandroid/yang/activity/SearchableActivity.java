@@ -49,7 +49,6 @@ public class SearchableActivity extends BaseActivity {
 
         }
 
-
         content.append("\ngetTaskId=" + getTaskId());
         Log.d(TAG, "onCreate: ");
     }
