@@ -46,11 +46,11 @@ public class SearchableActivity extends BaseActivity {
             if (bundle != null) {
                 content.append("\nbundle=" + bundle.getBoolean("nb",false));
             }
-
         }
 
         content.append("\ngetTaskId=" + getTaskId());
         Log.d(TAG, "onCreate: ");
+
     }
 
     @Override

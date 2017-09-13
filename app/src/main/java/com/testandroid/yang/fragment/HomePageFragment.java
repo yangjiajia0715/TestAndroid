@@ -1,4 +1,4 @@
-package com.testandroid.yang.activity;
+package com.testandroid.yang.fragment;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -8,16 +8,41 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.testandroid.yang.ObservableScrollView.demo.ParallaxToolbarScrollViewActivity;
 import com.testandroid.yang.ObservableScrollView.viewpager.ViewPagerTabActivity;
 import com.testandroid.yang.R;
-import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
+import com.testandroid.yang.activity.ActionBarActivity;
+import com.testandroid.yang.activity.BuildConfigFieldActivity;
+import com.testandroid.yang.activity.CheckTextViewActivity;
+import com.testandroid.yang.activity.CheckTextViewNewActivity;
+import com.testandroid.yang.activity.ConstraintLayoutActivity;
+import com.testandroid.yang.activity.CustomViewActivity;
+import com.testandroid.yang.activity.DexClassLoadTestActivity;
+import com.testandroid.yang.activity.DialogListActivity;
+import com.testandroid.yang.activity.DrawerLayoutActivity;
+import com.testandroid.yang.activity.EditTextActivity;
+import com.testandroid.yang.activity.FitSystemWindowActivity;
+import com.testandroid.yang.activity.FitSystemwindowActivity2;
+import com.testandroid.yang.activity.FragmentActivity;
+import com.testandroid.yang.activity.FrgStatePagerAdaperActivity;
+import com.testandroid.yang.activity.ItemTypeListViewActivity;
+import com.testandroid.yang.activity.ListViewClipActivity;
+import com.testandroid.yang.activity.ListviewChoiceActivity;
+import com.testandroid.yang.activity.ParallaxActivity;
+import com.testandroid.yang.activity.PhotoViewActivity;
+import com.testandroid.yang.activity.RecycleViewActivity;
+import com.testandroid.yang.activity.RecycleViewCeilingActivity;
+import com.testandroid.yang.activity.RotationActivity;
+import com.testandroid.yang.activity.ScrollViewClipActivity;
+import com.testandroid.yang.activity.SearchViewActivity;
+import com.testandroid.yang.activity.SearchViewSecondActivity;
+import com.testandroid.yang.activity.VLayoutActivity;
+import com.testandroid.yang.activity.ViewPagerActivity;
+import com.testandroid.yang.activity.ViewPagerAllActivity;
+import com.testandroid.yang.activity.ZoomImageActivity;
 import com.testandroid.yang.common.HomeInfo;
 
 import java.io.BufferedReader;
@@ -25,214 +50,186 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
- * View相关
- * Created by yangjiajia on 2017/3/1 0001.
+ * 主页
+ * Created by yangjiajia on 2017/9/13.
  */
-@Deprecated
-public class TypeViewActivity extends BaseActivity implements View.OnClickListener {
-    private static final String TAG = "TypeViewActivity";
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.recycleview)
-    RecyclerView recyclerView;
 
-    private List<HomeInfo> infos = new ArrayList<>();
-    private List<HomeInfo> items;
-    private HomeRecyleViewAdapter adapter;
+public class HomePageFragment extends HomeBaseFragment {
     private ProgressDialog progressDialog;
+    private Context context;
 
-    public static void start(Context context) {
-        Intent starter = new Intent(context, TypeViewActivity.class);
-        context.startActivity(starter);
+    public static HomePageFragment newInstance() {
+        Bundle bundle = new Bundle();
+        HomePageFragment fragment = new HomePageFragment();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        initView();
-        initData();
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override
     public void initView() {
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(layoutManager);
 
-        toolbar.setTitle(R.string.title_view);
-
-        setSupportActionBar(toolbar);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        items.add(new HomeInfo("tv_zoom_image", R.id.tv_zoom_image, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_view_pager_11", R.id.tv_test_view_pager_11, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_parallax", R.id.tv_parallax, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_test_listview_clip", R.id.tv_test_listview_clip, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_test_scrollview_clip", R.id.tv_test_scrollview_clip, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_test_viewpager_all", R.id.tv_test_viewpager_all, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_parallaxtoolbar_scrollview_activity", R.id.tv_parallaxtoolbar_scrollview_activity, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_fragement_pager_adapter", R.id.tv_fragement_pager_adapter, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_item_type_listview", R.id.tv_item_type_listview, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_CheckedTextView", R.id.tv_CheckedTextView, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_CheckedTextView_new", R.id.tv_CheckedTextView_new, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_recycleview", R.id.tv_recycleview, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_recycleview_ceiling", R.id.tv_recycleview_ceiling, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_vLayouot", R.id.tv_vLayouot, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_fitsystemwindow", R.id.tv_fitsystemwindow, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_fitsystemwindow2", R.id.tv_fitsystemwindow2, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_rotation_view", R.id.tv_rotation_view, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_customeview_view", R.id.tv_customeview_view, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_edittext", R.id.tv_edittext, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_Dialog", R.id.tv_dialog, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_listview_choice", R.id.tv_listview_choice, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_drawer_layout", R.id.tv_drawer_layout, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_clear_dialog", R.id.tv_clear_dialog, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("ActionBar相关", R.id.tv_action_bar, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("fragment相关", R.id.tv_fragment, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("constraint_layout相关", R.id.tv_constraint_layout, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("SearchView", R.id.tv_search_view, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("SearchView2", R.id.tv_search_view_2, HomeInfo.HomeGroup.View));
 
     }
 
     @Override
     public void initData() {
-        items = new ArrayList<>();
 
-        infos.add(new HomeInfo("tv_zoom_image", R.id.tv_zoom_image, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_view_pager_11", R.id.tv_test_view_pager_11, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_parallax", R.id.tv_parallax, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_test_listview_clip", R.id.tv_test_listview_clip, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_test_scrollview_clip", R.id.tv_test_scrollview_clip, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_test_viewpager_all", R.id.tv_test_viewpager_all, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_parallaxtoolbar_scrollview_activity", R.id.tv_parallaxtoolbar_scrollview_activity, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_fragement_pager_adapter", R.id.tv_fragement_pager_adapter, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_item_type_listview", R.id.tv_item_type_listview, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_CheckedTextView", R.id.tv_CheckedTextView, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_CheckedTextView_new", R.id.tv_CheckedTextView_new, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_recycleview", R.id.tv_recycleview, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_recycleview_ceiling", R.id.tv_recycleview_ceiling, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_vLayouot", R.id.tv_vLayouot, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_fitsystemwindow", R.id.tv_fitsystemwindow, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_fitsystemwindow2", R.id.tv_fitsystemwindow2, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_rotation_view", R.id.tv_rotation_view, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_customeview_view", R.id.tv_customeview_view, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_edittext", R.id.tv_edittext, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_Dialog", R.id.tv_dialog, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_listview_choice", R.id.tv_listview_choice, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_drawer_layout", R.id.tv_drawer_layout, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("tv_clear_dialog", R.id.tv_clear_dialog, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("ActionBar相关", R.id.tv_action_bar, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("fragment相关", R.id.tv_fragment, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("constraint_layout相关", R.id.tv_constraint_layout, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("SearchView", R.id.tv_search_view, HomeInfo.HomeGroup.View));
-
-        items.addAll(infos);
-        adapter = new HomeRecyleViewAdapter(this, items);
-        recyclerView.setAdapter(adapter);
-        adapter.setClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         Intent intent;
         Object tag = v.getTag(R.id.tag_first);
         if (tag instanceof HomeInfo) {
             HomeInfo info = (HomeInfo) tag;
             switch (info.id) {
                 case R.id.tv_zoom_image:
-                    intent = new Intent(this, ZoomImageActivity.class);
+                    intent = new Intent(context, ZoomImageActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_test_view_pager_11:
-                    ViewPagerActivity.start(this);
+                    ViewPagerActivity.start(context);
                     break;
                 case R.id.tv_parallax:
-                    intent = new Intent(this, ParallaxActivity.class);
+                    intent = new Intent(context, ParallaxActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_test_listview_clip:
-                    intent = new Intent(this, ListViewClipActivity.class);
+                    intent = new Intent(context, ListViewClipActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_test_scrollview_clip:
-                    intent = new Intent(this, ScrollViewClipActivity.class);
+                    intent = new Intent(context, ScrollViewClipActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_test_viewpager_all:
-                    intent = new Intent(this, ViewPagerAllActivity.class);
+                    intent = new Intent(context, ViewPagerAllActivity.class);
                     startActivity(intent);
                 case R.id.tv_parallaxtoolbar_scrollview_activity:
-                    intent = new Intent(this, ParallaxToolbarScrollViewActivity.class);
+                    intent = new Intent(context, ParallaxToolbarScrollViewActivity.class);
                     startActivity(intent);
                 case R.id.tv_test_view_pager_tab_dif:
-                    intent = new Intent(this, ViewPagerTabActivity.class);
+                    intent = new Intent(context, ViewPagerTabActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_fragement_pager_adapter:
-                    intent = new Intent(this, FrgStatePagerAdaperActivity.class);
+                    intent = new Intent(context, FrgStatePagerAdaperActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_item_type_listview:
-                    intent = new Intent(this, ItemTypeListViewActivity.class);
+                    intent = new Intent(context, ItemTypeListViewActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_CheckedTextView:
-                    intent = new Intent(this, CheckTextViewActivity.class);
+                    intent = new Intent(context, CheckTextViewActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_CheckedTextView_new:
-                    CheckTextViewNewActivity.start(this);
+                    CheckTextViewNewActivity.start(context);
                     break;
                 case R.id.tv_Dex_ClassLoader:
-                    intent = new Intent(this, DexClassLoadTestActivity.class);
+                    intent = new Intent(context, DexClassLoadTestActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_photo_view:
-                    intent = new Intent(this, PhotoViewActivity.class);
+                    intent = new Intent(context, PhotoViewActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_buildconfig_field:
-                    intent = new Intent(this, BuildConfigFieldActivity.class);
+                    intent = new Intent(context, BuildConfigFieldActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.tv_recycleview:
-                    RecycleViewActivity.start(this);
+                    RecycleViewActivity.start(context);
                     break;
                 case R.id.tv_recycleview_ceiling:
-                    RecycleViewCeilingActivity.start(this);
+                    RecycleViewCeilingActivity.start(context);
                     break;
                 case R.id.tv_vLayouot:
-                    VLayoutActivity.start(this);
+                    VLayoutActivity.start(context);
                     break;
                 case R.id.tv_fitsystemwindow:
-                    FitSystemWindowActivity.start(this);
+                    FitSystemWindowActivity.start(context);
                     break;
                 case R.id.tv_fitsystemwindow2:
-                    FitSystemwindowActivity2.start(this);
+                    FitSystemwindowActivity2.start(context);
                     break;
                 case R.id.tv_rotation_view:
-                    RotationActivity.start(this);
+                    RotationActivity.start(context);
                     break;
                 case R.id.tv_customeview_view:
-                    CustomViewActivity.start(this);
+                    CustomViewActivity.start(context);
                     break;
                 case R.id.tv_edittext:
-                    EditTextActivity.start(this);
+                    EditTextActivity.start(context);
                     break;
                 case R.id.tv_dialog:
-                    DialogListActivity.start(this);
+                    DialogListActivity.start(context);
                     break;
                 case R.id.tv_listview_choice:
-                    ListviewChoiceActivity.start(this);
+                    ListviewChoiceActivity.start(context);
                     break;
                 case R.id.tv_drawer_layout:
-                    DrawerLayoutActivity.start(this);
+                    DrawerLayoutActivity.start(context);
                     break;
                 case R.id.tv_clear_dialog:
                     showClearCacheDialog(false);
                     break;
                 case R.id.tv_action_bar:
-                    ActionBarActivity.start(this);
+                    ActionBarActivity.start(context);
                     break;
                 case R.id.tv_fragment:
-                    FragmentActivity.start(this);
+                    FragmentActivity.start(context);
                     break;
                 case R.id.tv_constraint_layout:
-                    ConstraintLayoutActivity.start(this);
+                    ConstraintLayoutActivity.start(context);
                     break;
                 case R.id.tv_search_view:
-                    SearchViewActivity.start(this);
+                    SearchViewActivity.start(context);
+                    break;
+                case R.id.tv_search_view_2:
+                    SearchViewSecondActivity.start(context);
                     break;
             }
         }
     }
-
 
     public static boolean checkPermission(Context context, String permission) {
         boolean result = false;
@@ -315,18 +312,18 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
 
     private void showClearCacheDialog(boolean isProgress) {
         if (isProgress) {
-            progressDialog = new ProgressDialog(this);
+            progressDialog = new ProgressDialog(context);
 //            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             progressDialog.setMessage("请稍后");
             progressDialog.show();
         } else {
             new ProgressDialog
-                    .Builder(this, R.style.ProgressBar)
+                    .Builder(context, R.style.ProgressBar)
                     .setTitle("确定要清除缓存吗？")
                     .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-//                        String deviceInfo = getDeviceInfo(TypeViewActivity.this);
+//                        String deviceInfo = getDeviceInfo(TypeViewActivity.context);
 //                        Log.d(TAG, "onClick: de=" + deviceInfo);
                             showClearCacheDialog(true);
                         }
@@ -335,7 +332,7 @@ public class TypeViewActivity extends BaseActivity implements View.OnClickListen
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //格式化很方便 eg. 12.23MB
-//                            Formatter.formatFileSize(TypeViewActivity.this,1234L);
+//                            Formatter.formatFileSize(TypeViewActivity.context,1234L);
                         }
                     })
                     .create()

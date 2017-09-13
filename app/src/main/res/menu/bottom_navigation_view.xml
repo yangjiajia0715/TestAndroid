@@ -3,24 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_item_1"
-        android:icon="@drawable/ic_mail_box"
-        android:title="Item" />
+        android:id="@+id/menu_item_home"
+        android:icon="@drawable/icon_home"
+        android:title="主页" />
+
     <item
-        android:id="@+id/menu_item_2"
-        android:icon="@drawable/ic_mail_box"
-        android:title="Item" />
+        android:id="@+id/menu_item_new_tech"
+        android:icon="@drawable/icon_new_technology"
+        android:title="新技术" />
+
     <item
-        android:id="@+id/menu_item_3"
-        android:icon="@drawable/ic_mail_box"
-        android:title="Item" />
+        android:id="@+id/menu_item_animation"
+        android:icon="@drawable/icon_animation"
+        android:title="动画" />
+
     <item
-        android:id="@+id/menu_item_4"
-        android:icon="@drawable/ic_mail_box"
-        android:title="Item" />
+        android:id="@+id/menu_item_database"
+        android:icon="@drawable/icon_db"
+        android:title="数据库" />
+
     <item
-        android:id="@+id/menu_item_5"
-        android:icon="@drawable/ic_mail_box"
-        android:title="Item" />
+        android:id="@+id/menu_item_other"
+        android:icon="@drawable/icon_other"
+        android:title="其他" />
 
 </menu>

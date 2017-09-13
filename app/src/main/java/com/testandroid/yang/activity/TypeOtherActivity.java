@@ -34,6 +34,7 @@ import butterknife.ButterKnife;
  * Created by yangjiajia on 2017/3/1 0001.
  */
 
+@Deprecated
 public class TypeOtherActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "TypeOther";
     @BindView(R.id.toolbar)

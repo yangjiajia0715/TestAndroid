@@ -252,6 +252,8 @@ public class SearchViewActivity extends BaseActivity implements View.OnClickList
 
         Uri uri = uriBuilder.build();
 
+//        content://com.yang.SearchRecentProvider/search_suggest_query?limit=10
+        Log.d(TAG, "getSearchManagerSuggestions: uri " + uri);
         // finally, make the query
         return getContentResolver().query(uri, null, selection, selArgs, null);
     }

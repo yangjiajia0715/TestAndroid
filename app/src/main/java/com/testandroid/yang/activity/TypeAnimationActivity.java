@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * 动画相关
  * Created by yangjiajia on 2017/3/1 0001.
  */
-
+@Deprecated
 public class TypeAnimationActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "TypeAnimation";
     @BindView(R.id.toolbar)

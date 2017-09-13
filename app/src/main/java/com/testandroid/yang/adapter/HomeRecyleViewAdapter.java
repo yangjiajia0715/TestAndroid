@@ -13,6 +13,7 @@ import com.testandroid.yang.common.HomeInfo;
 import java.util.List;
 
 /**
+ * HomeRecyleViewAdapter
  * Created by yangjiajia on 2017/1/17 0017.
  */
 

@@ -165,7 +165,7 @@ dependencies {
     compile 'com.alibaba:fastjson:1.1.59.android'
 
 // 友盟统计
-    compile 'com.umeng.analytics:analytics:latest.integration'
+//    compile 'com.umeng.analytics:analytics:latest.integration'
     compile group: 'commons-io', name: 'commons-io', version: "${rootProject.ext.commonIoVersion}"
     compile 'junit:junit:4.12'
     compile 'org.greenrobot:greendao:3.2.2' // add library

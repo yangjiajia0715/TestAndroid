@@ -4,21 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.testandroid.yang.CCC;
 import com.testandroid.yang.R;
 import com.testandroid.yang.adapter.HomeRecyleViewAdapter;
 import com.testandroid.yang.common.HomeInfo;
+import com.testandroid.yang.fragment.AnimationFragment;
+import com.testandroid.yang.fragment.DataBaseFragment;
+import com.testandroid.yang.fragment.HomePageFragment;
+import com.testandroid.yang.fragment.NewTechFragment;
+import com.testandroid.yang.fragment.OtherFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +41,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView toolbarTitle;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.recycleview)
-    RecyclerView recycleview;
     @BindView(R.id.bottom_navigation_view)
     BottomNavigationView bottomNavigationView;
+    @BindView(R.id.toolbar_left)
+    TextView toolbarLeft;
+    @BindView(R.id.viewpager)
+    ViewPager viewpager;
 
     private List<HomeInfo> infos = new ArrayList<>();
     private List<HomeInfo> items;
@@ -52,9 +59,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         ButterKnife.bind(this);
         initView();
         initData();
-//        toolbarTitle.setText("主页标题");
         toolbar.setNavigationIcon(null);
-//        toolbar.setBackground( ContextCompat.getDrawable(this, R.drawable.my_bg));
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
 //            actionBar.setDisplayShowHomeEnabled(true);
@@ -62,7 +67,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             actionBar.setDisplayShowTitleEnabled(true);
         }
         Log.d(TAG, "MainActivity--onCreate: getTaskId=" + getTaskId());
-        Log.d(TAG, "MainActivity--onCreate: CCC.get=" + CCC.get());
     }
 
     @Override
@@ -73,11 +77,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initView() {
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
-        recycleview.setLayoutManager(layoutManager);
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_main);
+
+        viewpager.setOffscreenPageLimit(4);
+        final HomePageAdapter adapter = new HomePageAdapter(getSupportFragmentManager());
+        viewpager.setAdapter(adapter);
 
 //        toolbar.setLogo(R.mipmap.ic_launcher);
 
@@ -88,10 +93,59 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        toolbar.setNavigationIcon(R.drawable.ic_search_bg_black);
 //        toolbar.setOnMenuItemClickListener(this);
 
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        bottomNavigationView.setSelectedItemId(R.id.menu_item_home);
+                        break;
+                    case 1:
+                        bottomNavigationView.setSelectedItemId(R.id.menu_item_new_tech);
+                        break;
+                    case 2:
+                        bottomNavigationView.setSelectedItemId(R.id.menu_item_animation);
+                        break;
+                    case 3:
+                        bottomNavigationView.setSelectedItemId(R.id.menu_item_database);
+                        break;
+                    case 4:
+                        bottomNavigationView.setSelectedItemId(R.id.menu_item_other);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Toast.makeText(MainActivity.this, "底部按钮=" + item.getTitle(), Toast.LENGTH_SHORT).show();
+                switch (item.getItemId()) {
+                    case R.id.menu_item_home:
+                        viewpager.setCurrentItem(0);
+                        break;
+                    case R.id.menu_item_new_tech:
+                        viewpager.setCurrentItem(1);
+                        break;
+                    case R.id.menu_item_animation:
+                        viewpager.setCurrentItem(2);
+                        break;
+                    case R.id.menu_item_database:
+                        viewpager.setCurrentItem(3);
+                        break;
+                    case R.id.menu_item_other:
+                        viewpager.setCurrentItem(4);
+                        break;
+                }
                 return true;
             }
         });
@@ -111,43 +165,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void initData() {
-        items = new ArrayList<>();
 
-        infos.add(new HomeInfo("动画类", R.id.type_animation, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("数据库", R.id.type_data_base, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("新技术", R.id.type_new_tech, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("View类", R.id.type_view, HomeInfo.HomeGroup.View));
-        infos.add(new HomeInfo("其他", R.id.type_other, HomeInfo.HomeGroup.View));
-
-        items.addAll(infos);
-        adapter = new HomeRecyleViewAdapter(this, items);
-        recycleview.setAdapter(adapter);
-        adapter.setClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getTag(R.id.tag_first) instanceof HomeInfo) {
-            HomeInfo info = (HomeInfo) v.getTag(R.id.tag_first);
-            switch (info.id) {
-                case R.id.type_animation:
-                    TypeAnimationActivity.start(this);
-                    break;
-                case R.id.type_data_base:
-                    TypeDataBaseActivity.start(this);
-                    break;
-                case R.id.type_new_tech:
-                    TypeNewTectActivity.start(this);
-                    break;
-                case R.id.type_view:
-                    TypeViewActivity.start(this);
-                    break;
-                case R.id.type_other:
-                    TypeOtherActivity.start(this);
-                    break;
-            }
-            return;
-        }
 
     }
 
@@ -156,4 +178,29 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onDestroy();
         Log.d(TAG, "MainActivity--onDestroy: getTaskId=" + getTaskId());
     }
+
+    private class HomePageAdapter extends FragmentPagerAdapter {
+        private List<Fragment> fragments = new ArrayList<>(5);
+
+        public HomePageAdapter(FragmentManager fm) {
+            super(fm);
+
+            fragments.add(HomePageFragment.newInstance());
+            fragments.add(NewTechFragment.newInstance());
+            fragments.add(AnimationFragment.newInstance());
+            fragments.add(DataBaseFragment.newInstance());
+            fragments.add(OtherFragment.newInstance());
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+    }
+
 }

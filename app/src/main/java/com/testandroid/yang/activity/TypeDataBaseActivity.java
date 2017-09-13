@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  * 数据库相关
  * Created by yangjiajia on 2017/3/1 0001.
  */
-
+@Deprecated
 public class TypeDataBaseActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "TypeDataBase";
     @BindView(R.id.toolbar)
