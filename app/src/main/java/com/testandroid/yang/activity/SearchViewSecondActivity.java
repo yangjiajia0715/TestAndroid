@@ -72,6 +72,8 @@ public class SearchViewSecondActivity extends BaseActivity implements LoaderMana
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Log.d(TAG, "onQueryTextSubmit: query=" + query);
+                SearchViewSecondActivity.this.query = null;
+                getLoaderManager().restartLoader(0, null, SearchViewSecondActivity.this);
                 return false;
             }
 
@@ -79,7 +81,8 @@ public class SearchViewSecondActivity extends BaseActivity implements LoaderMana
             public boolean onQueryTextChange(String newText) {
                 Log.d(TAG, "onQueryTextChange: newText=" + newText);
                 query = newText;
-                adapter.getFilter().filter(newText);
+//                adapter.getFilter().filter(newText);
+                getLoaderManager().restartLoader(0, null, SearchViewSecondActivity.this);
                 return false;
             }
         });
@@ -213,9 +216,6 @@ public class SearchViewSecondActivity extends BaseActivity implements LoaderMana
         Log.d(TAG, "onViewClicked: dateTime=" + dateTime);
         SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this, SearchRecentProvider.AUTHORITY, SearchRecentProvider.MODE);
         suggestions.saveRecentQuery(dateTime, null);
-//        SearchRecentSuggestionsProvider
-
-//        getLoaderManager().restartLoader(0, null, this);
     }
 
     @Override
