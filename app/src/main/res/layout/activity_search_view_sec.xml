@@ -9,13 +9,15 @@
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:iconifiedByDefault="false" />
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null"
+        app:submitBackground="@null" />
 
     <Button
         android:id="@+id/add"
         android:layout_width="match_parent"
-        android:text="添加日期 测试更新"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="添加日期 测试更新" />
 
     <ListView
         android:id="@+id/listview"
