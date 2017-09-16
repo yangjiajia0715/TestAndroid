@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.activity.ContentProviderActivity;
 import com.testandroid.yang.activity.CursorLoadActivity;
 import com.testandroid.yang.activity.DexClassLoadTestActivity;
 import com.testandroid.yang.activity.DexClassLoaderActivity;
@@ -49,6 +50,7 @@ public class DataBaseFragment extends HomeBaseFragment {
         items.add(new HomeInfo("tv_test_CursorLoader", R.id.tv_test_CursorLoader, HomeInfo.HomeGroup.DataBase));
         items.add(new HomeInfo("tv_save_userinfo_to_database", R.id.tv_save_userinfo_to_database, HomeInfo.HomeGroup.DataBase));
         items.add(new HomeInfo("数据展示页--内部&外部", R.id.tv_save_data_display, HomeInfo.HomeGroup.DataBase));
+        items.add(new HomeInfo("ContentProvider", R.id.tv_content_provider, HomeInfo.HomeGroup.DataBase));
     }
 
     @Override
@@ -86,6 +88,9 @@ public class DataBaseFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_save_data_display:
                     DisplayUserInfoActivity.start(context);
+                    break;
+                case R.id.tv_content_provider:
+                    ContentProviderActivity.start(context);
                     break;
             }
         }
