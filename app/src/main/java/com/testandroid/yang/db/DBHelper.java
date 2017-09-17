@@ -34,11 +34,6 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, DB_VERSION);
         Log.d(TAG, "DBHelper: ");
     }
-//
-//    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-//        super(context, name, factory, version);
-//        Log.d(TAG, "DBHelper: ");
-//    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
