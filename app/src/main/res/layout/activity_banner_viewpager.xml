@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+<!--
+    <com.testandroid.yang.view.BannerViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:visibility="gone"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp" />-->
+
+    <com.testandroid.yang.banner.Banner
+        android:id="@+id/banner"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"/>
+
+
+</LinearLayout>

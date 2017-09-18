@@ -15,6 +15,7 @@ import com.testandroid.yang.ObservableScrollView.demo.ParallaxToolbarScrollViewA
 import com.testandroid.yang.ObservableScrollView.viewpager.ViewPagerTabActivity;
 import com.testandroid.yang.R;
 import com.testandroid.yang.activity.ActionBarActivity;
+import com.testandroid.yang.activity.BannerViewPagerActivity;
 import com.testandroid.yang.activity.BuildConfigFieldActivity;
 import com.testandroid.yang.activity.CheckTextViewActivity;
 import com.testandroid.yang.activity.CheckTextViewNewActivity;
@@ -104,6 +105,7 @@ public class HomePageFragment extends HomeBaseFragment {
         items.add(new HomeInfo("constraint_layout相关", R.id.tv_constraint_layout, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("SearchView", R.id.tv_search_view, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("SearchView2", R.id.tv_search_view_2, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("Banner_viewpager", R.id.tv_banner_viewpager, HomeInfo.HomeGroup.View));
 
     }
 
@@ -226,6 +228,9 @@ public class HomePageFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_search_view_2:
                     SearchViewSecondActivity.start(context);
+                    break;
+                case R.id.tv_banner_viewpager:
+                    BannerViewPagerActivity.start(context);
                     break;
             }
         }

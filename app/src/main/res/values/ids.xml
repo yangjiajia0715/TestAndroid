@@ -53,6 +53,7 @@
     <item name="tv_constraint_layout" type="id" />
     <item name="tv_search_view" type="id" />
     <item name="tv_search_view_2" type="id" />
+    <item name="tv_banner_viewpager" type="id" />
     <item name="tv_pdf" type="id" />
     <item name="tv_overview_screen" type="id" />
     <item name="tv_notification" type="id" />
@@ -90,4 +91,13 @@
     <item type="id" name="action_next" />
     <item type="id" name="action_flip" />
 
+    <item name="bannerContainer" type="id"/>
+    <item name="bannerViewPager" type="id"/>
+    <item name="circleIndicator" type="id"/>
+    <item name="numIndicator" type="id"/>
+    <item name="titleView" type="id"/>
+    <item name="bannerTitle" type="id"/>
+    <item name="numIndicatorInside" type="id"/>
+    <item name="indicatorInside" type="id"/>
+    <item name="bannerDefaultImage" type="id"/>
 </resources>

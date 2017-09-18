@@ -457,6 +457,7 @@
                 android:value=".activity.SearchableActivity" />
         </activity>
         <activity android:name=".activity.ContentProviderActivity" />
+        <activity android:name=".activity.BannerViewPagerActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
@@ -500,6 +501,12 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
+        </provider>
+
+        <provider
+            android:authorities="com.yangjia.contenttemp"
+            android:grantUriPermissions="false"
+            android:name="com.testandroid.yang.provider.ContentProviderTmp" >
         </provider>
 
         <service
