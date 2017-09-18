@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.testandroid.yang.R;
-import com.testandroid.yang.common.ZoomOutPageTransformer;
+import com.testandroid.yang.banner.transform.ZoomOutPageTransformer;
 import com.testandroid.yang.util.Utility;
 
 
@@ -33,7 +33,12 @@ public class AnimationActivity extends Activity {
     private void initView() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.animtion_viewpager);
         viewPager.setAdapter(new MyPagerAdapter(this));
+//        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+//        viewPager.setPageTransformer(true, new ZoomOutSlideTransformer());
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+
+//        viewPager.setPageMargin(Utility.dp2px(10));
+        viewPager.setOffscreenPageLimit(3);
 
         View anitrionTran = findViewById(R.id.animation_tran);
         anitrionTran.setOnClickListener(new View.OnClickListener() {
