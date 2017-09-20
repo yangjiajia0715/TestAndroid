@@ -13,6 +13,7 @@ import com.testandroid.yang.R;
 import com.testandroid.yang.activity.AccountManagerActivity;
 import com.testandroid.yang.activity.BroadcastReceiverActivity;
 import com.testandroid.yang.activity.BuildConfigFieldActivity;
+import com.testandroid.yang.activity.DateUtilActivity;
 import com.testandroid.yang.activity.GraphicsAndAnimationActivity;
 import com.testandroid.yang.activity.MenuActivity;
 import com.testandroid.yang.activity.MenuToolBarActivity;
@@ -67,6 +68,7 @@ public class OtherFragment extends HomeBaseFragment {
         items.add(new HomeInfo("多媒体相关", R.id.tv_multimedia, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("图形和动画", R.id.tv_graphics_and_animation, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("account_manage", R.id.tv_account_manage, HomeInfo.HomeGroup.Other));
+        items.add(new HomeInfo("DateUtil", R.id.tv_date_util, HomeInfo.HomeGroup.Other));
     }
 
     @Override
@@ -154,6 +156,9 @@ public class OtherFragment extends HomeBaseFragment {
                         }
                         AccountManagerActivity.start(context);
                     }
+                    break;
+                case R.id.tv_date_util:
+                    DateUtilActivity.start(getActivity());
                     break;
             }
         }
