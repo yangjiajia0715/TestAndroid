@@ -43,6 +43,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
     <!--<uses-feature />-->
     <!--不能通过@string/ 方式获取 -->
     <permission android:name="com.testandroid.yang.provider.pppp" />
