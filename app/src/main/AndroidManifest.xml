@@ -508,10 +508,9 @@
         </provider>
 
         <provider
+            android:name="com.testandroid.yang.provider.ContentProviderTmp"
             android:authorities="com.yangjia.contenttemp"
-            android:grantUriPermissions="false"
-            android:name="com.testandroid.yang.provider.ContentProviderTmp" >
-        </provider>
+            android:grantUriPermissions="false"></provider>
 
         <service
             android:name=".service.AuthenricatorService"
@@ -525,6 +524,12 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
 
+        </service>
+        
+        <service android:name=".sync.SyncService">
+            <meta-data
+                android:name=""
+                android:value="@xml/syncadapter" />
         </service>
     </application>
 
