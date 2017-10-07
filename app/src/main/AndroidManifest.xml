@@ -510,7 +510,7 @@
         <provider
             android:name="com.testandroid.yang.provider.ContentProviderTmp"
             android:authorities="com.yangjia.contenttemp"
-            android:grantUriPermissions="false"></provider>
+            android:grantUriPermissions="false"/>
 
         <service
             android:name=".service.AuthenricatorService"
@@ -523,14 +523,13 @@
             <meta-data
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
-
         </service>
-        
+        <!--
         <service android:name=".sync.SyncService">
             <meta-data
                 android:name=""
                 android:value="@xml/syncadapter" />
-        </service>
+        </service>-->
     </application>
 
 </manifest>

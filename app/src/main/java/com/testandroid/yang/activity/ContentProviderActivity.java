@@ -4,6 +4,7 @@ import android.content.ContentProviderOperation;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -39,6 +40,9 @@ public class ContentProviderActivity extends BaseActivity {
     public void initView() {
 //        CursorLoader loader = new CursorLoader()
         String authority = "com.yang.hhhh";
+
+        Cursor cursor;
+//        cursor.gett
 
 //        new ContentProviderOperation.Builder().withValueBackReference("", "");
         ArrayList<ContentProviderOperation> ops = new ArrayList<>();
