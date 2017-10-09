@@ -19,6 +19,7 @@ public class ContentProviderTmp extends ContentProvider {
 
     static {
 //        sUriMatcher.add
+//        sUriMatcher.addURI("","",1);
     }
 
     @Override
