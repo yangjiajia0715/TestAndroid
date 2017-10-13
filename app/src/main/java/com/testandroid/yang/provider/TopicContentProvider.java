@@ -1,6 +1,7 @@
 package com.testandroid.yang.provider;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -74,6 +75,13 @@ public class TopicContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        Log.d(TAG, "insert: uri=" + uri);
+        SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase();
+        long rowid = db.insert(TopicContract.TABLE_NAME, null, values);
+        Log.d(TAG, "insert: rowid=" + rowid);
+        if (rowid >= 0) {
+            return ContentUris.withAppendedId(uri, rowid);
+        }
         return null;
     }
 

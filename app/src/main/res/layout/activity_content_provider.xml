@@ -7,8 +7,29 @@
     <TextView
         android:id="@+id/content_temp"
         android:layout_width="match_parent"
-        android:text="联系人"
+        android:layout_height="wrap_content"
         android:padding="10dp"
+        android:text="联系人" />
+
+    <EditText
+        android:id="@+id/topic_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/topic_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加错题" />
+
+    <TextView
+        android:id="@+id/topic_retrive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查看所有" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

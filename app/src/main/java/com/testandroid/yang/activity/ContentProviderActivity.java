@@ -7,11 +7,21 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.provider.TopicContract;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * ContentProviderActivity
@@ -20,6 +30,16 @@ import java.util.ArrayList;
 
 public class ContentProviderActivity extends BaseActivity {
     private static final String TAG = "ContentProviderActivity";
+    @BindView(R.id.content_temp)
+    TextView contentTemp;
+    @BindView(R.id.topic_name)
+    EditText topicName;
+    @BindView(R.id.topic_add)
+    TextView topicAdd;
+    @BindView(R.id.topic_retrive)
+    TextView topicRetrive;
+    @BindView(R.id.listview)
+    ListView listview;
 
     private int posTemp;
 
@@ -32,6 +52,7 @@ public class ContentProviderActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_provider);
+        ButterKnife.bind(this);
         initView();
         initData();
     }
@@ -179,5 +200,24 @@ public class ContentProviderActivity extends BaseActivity {
 
 // Send out the intent to start the device's contacts app in its add contact activity.
         startActivity(insertIntent);
+    }
+
+    @OnClick({R.id.topic_add, R.id.topic_retrive})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.topic_add:
+                String name = topicName.getText().toString().trim();
+                if (TextUtils.isEmpty(name)) {
+                    Toast.makeText(this, "输入不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(TopicContract.Topic.NAME, name);
+                getContentResolver().insert(TopicContract.CONTENT_URI, contentValues);
+                break;
+            case R.id.topic_retrive:
+
+                break;
+        }
     }
 }

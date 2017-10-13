@@ -530,6 +530,11 @@
                 android:name=""
                 android:value="@xml/syncadapter" />
         </service>-->
+
+        <provider
+            android:name="com.testandroid.yang.provider.TopicContentProvider"
+            android:authorities="com.yang.TopicContentProvider"/>
+
     </application>
 
 </manifest>
