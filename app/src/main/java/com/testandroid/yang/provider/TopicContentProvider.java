@@ -39,9 +39,9 @@ public class TopicContentProvider extends ContentProvider {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            Log.d(TAG, "onCreate: db" + db);
+            Log.d(TAG, "onCreate: db=" + db);
             db.execSQL("CREATE TABLE " + TopicContract.TABLE_NAME + "("
-                    + TopicContract.Topic._ID + " INTEGER AUTO_INCREMENT,"
+                    + TopicContract.Topic._ID + " INTEGER PRIMARY KEY AUTO_INCREMENT,"
                     + TopicContract.Topic.NAME + " TEXT,"
                     + TopicContract.Topic.TOPIC_ID + " INTEGER"
                     + ");");
@@ -75,7 +75,7 @@ public class TopicContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        Log.d(TAG, "insert: uri=" + uri);
+        Log.d(TAG, "insert: uri=" + uri);//content://com.yang.TopicContentProvider/topic
         SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase();
         long rowid = db.insert(TopicContract.TABLE_NAME, null, values);
         Log.d(TAG, "insert: rowid=" + rowid);

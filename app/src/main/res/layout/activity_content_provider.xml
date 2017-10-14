@@ -19,6 +19,8 @@
     <TextView
         android:id="@+id/topic_add"
         android:layout_width="match_parent"
+        android:padding="10dp"
+        android:textSize="16sp"
         android:layout_height="wrap_content"
         android:text="添加错题" />
 
@@ -26,6 +28,8 @@
         android:id="@+id/topic_retrive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="16sp"
         android:text="查看所有" />
 
     <ListView

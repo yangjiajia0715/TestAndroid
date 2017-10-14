@@ -1,10 +1,8 @@
 package com.testandroid.yang.activity;
 
-import android.content.ContentProviderOperation;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
@@ -60,26 +58,26 @@ public class ContentProviderActivity extends BaseActivity {
     @Override
     public void initView() {
 //        CursorLoader loader = new CursorLoader()
-        String authority = "com.yang.hhhh";
-
-        Cursor cursor;
+//        String authority = "com.yang.hhhh";
+//
+//        Cursor cursor;
 //        cursor.gett
 
 //        new ContentProviderOperation.Builder().withValueBackReference("", "");
-        ArrayList<ContentProviderOperation> ops = new ArrayList<>();
+//        ArrayList<ContentProviderOperation> ops = new ArrayList<>();
 
     /*
      * Creates a new raw contact with its account type (server type) and account name
      * (user's account). Remember that the display name is not stored in this row, but in a
      * StructuredName data row. No other data is required.
      */
-        ContentProviderOperation.Builder op =
-                ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
-                        .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, "yang_type")
-                        .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, "yang_name");
-
-        // Builds the operation and adds it to the array of operations
-        ops.add(op.build());
+//        ContentProviderOperation.Builder op =
+//                ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
+//                        .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, "yang_type")
+//                        .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, "yang_name");
+//
+//        // Builds the operation and adds it to the array of operations
+//        ops.add(op.build());
 //        try {
 //            getContentResolver().applyBatch(authority, ops);
 //        } catch (RemoteException e) {
