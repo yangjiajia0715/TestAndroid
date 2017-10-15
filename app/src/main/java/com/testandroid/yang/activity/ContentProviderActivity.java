@@ -1,14 +1,23 @@
 package com.testandroid.yang.activity;
 
+import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +35,7 @@ import butterknife.OnClick;
  * Created by yangjiajia on 2017/9/15.
  */
 
-public class ContentProviderActivity extends BaseActivity {
+public class ContentProviderActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "ContentProviderActivity";
     @BindView(R.id.content_temp)
     TextView contentTemp;
@@ -40,6 +49,7 @@ public class ContentProviderActivity extends BaseActivity {
     ListView listview;
 
     private int posTemp;
+    private SimpleCursorAdapter adapter;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, ContentProviderActivity.class);
@@ -104,6 +114,36 @@ public class ContentProviderActivity extends BaseActivity {
 //                startActivity(intent);
 //                posTemp++;
                 insertContact();
+            }
+        });
+
+        String[] from = {TopicContract.Topic.NAME};
+        int[] to = {android.R.id.text1};
+        adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, null, from, to,
+                SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        listview.setAdapter(adapter);
+        adapter.registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                Log.d(TAG, "onChanged:SimpleCursorAdapter ");
+//                getLoaderManager().restartLoader(1, null, ContentProviderActivity.this);
+            }
+        });
+
+        getLoaderManager().initLoader(1, null, this);
+        getContentResolver().registerContentObserver(TopicContract.CONTENT_URI, true, new ContentObserver(new Handler()) {
+
+            @Override
+            public boolean deliverSelfNotifications() {
+                return super.deliverSelfNotifications();
+            }
+
+            @Override
+            public void onChange(boolean selfChange) {
+                super.onChange(selfChange);
+                Log.d(TAG, "onChange: getContentResolver-重新加载-selfChange=" + selfChange + "currentThread=" + Thread.currentThread());
+                getLoaderManager().restartLoader(1, null, ContentProviderActivity.this);
             }
         });
     }
@@ -214,8 +254,26 @@ public class ContentProviderActivity extends BaseActivity {
                 getContentResolver().insert(TopicContract.CONTENT_URI, contentValues);
                 break;
             case R.id.topic_retrive:
-
+                getLoaderManager().restartLoader(1, null, this);
                 break;
         }
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        Log.d(TAG, "onCreateLoader: ");
+        return new CursorLoader(this, TopicContract.CONTENT_URI, null, null, null, null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        Log.d(TAG, "onLoadFinished: ");
+        adapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        Log.d(TAG, "onLoaderReset: ");
+        adapter.swapCursor(null);
     }
 }

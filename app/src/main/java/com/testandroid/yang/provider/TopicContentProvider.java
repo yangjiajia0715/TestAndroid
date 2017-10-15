@@ -41,7 +41,7 @@ public class TopicContentProvider extends ContentProvider {
         public void onCreate(SQLiteDatabase db) {
             Log.d(TAG, "onCreate: db=" + db);
             db.execSQL("CREATE TABLE " + TopicContract.TABLE_NAME + "("
-                    + TopicContract.Topic._ID + " INTEGER PRIMARY KEY AUTO_INCREMENT,"
+                    + TopicContract.Topic._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + TopicContract.Topic.NAME + " TEXT,"
                     + TopicContract.Topic.TOPIC_ID + " INTEGER"
                     + ");");
@@ -63,7 +63,13 @@ public class TopicContentProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        return null;
+        SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase();
+        Cursor cursor = db.query(TopicContract.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
+
+//        if (getContext() != null) {
+//            cursor.setNotificationUri(getContext().getContentResolver(),uri);
+//        }
+        return cursor;
     }
 
     @Nullable
@@ -77,12 +83,27 @@ public class TopicContentProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         Log.d(TAG, "insert: uri=" + uri);//content://com.yang.TopicContentProvider/topic
         SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase();
-        long rowid = db.insert(TopicContract.TABLE_NAME, null, values);
-        Log.d(TAG, "insert: rowid=" + rowid);
-        if (rowid >= 0) {
-            return ContentUris.withAppendedId(uri, rowid);
+        long rowID = -1;
+        rowID = db.insert(TopicContract.TABLE_NAME, null, values);
+        Uri newUri = null;
+        Log.d(TAG, "insert: rowID=" + rowID);
+        if (rowID > 0) {
+//            newUri =  ContentUris.withAppendedId(uri, rowID);
+            //content://com.yang.TopicContentProvider/topic/4
+            Log.d(TAG, "insert: withAppendedId=" + ContentUris.withAppendedId(uri, rowID));
+            newUri = Uri.withAppendedPath(uri, String.valueOf(rowID));
+            //content://com.yang.TopicContentProvider/topic/4
+            Log.d(TAG, "insert: withAppendedPath=" + newUri);
         }
-        return null;
+        if (rowID < 0) {
+            throw new IllegalArgumentException("Unknown Uri");
+        }
+//        getContext().getContentResolver().notifyChange(newUri, null);
+        Context context = getContext();
+        if (context != null) {
+            context.getContentResolver().notifyChange(newUri, null);
+        }
+        return newUri;
     }
 
     @Override
