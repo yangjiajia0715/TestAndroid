@@ -66,9 +66,9 @@ public class TopicContentProvider extends ContentProvider {
         SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase();
         Cursor cursor = db.query(TopicContract.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
 
-//        if (getContext() != null) {
-//            cursor.setNotificationUri(getContext().getContentResolver(),uri);
-//        }
+        if (getContext() != null) {
+            cursor.setNotificationUri(getContext().getContentResolver(),uri);
+        }
         return cursor;
     }
 
