@@ -98,6 +98,17 @@ public class ContentProviderActivity extends BaseActivity implements LoaderManag
 
     @Override
     public void initData() {
+        String[] origin = {"aaa", "ccc", "bbb", "dddd"};
+        String[] desc = new String[3];
+        System.arraycopy(origin, 0, desc, 0, 3);
+        for (String s : desc) {
+            Log.d(TAG, "initData: s=" + s);
+        }
+        String[] desc2 = new String[3];
+        System.arraycopy(origin, 1, desc2, 0, 2);
+        for (String s : desc2) {
+            Log.d(TAG, "initData: desc2=" + s + ",isEmpty=" + TextUtils.isEmpty(s));
+        }
         ContentObserver contentObserver;
         findViewById(R.id.content_temp).setOnClickListener(new View.OnClickListener() {
             @Override
