@@ -4,15 +4,19 @@ import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -34,7 +38,8 @@ import butterknife.OnClick;
  * Created by yangjiajia on 2017/9/15.
  */
 
-public class ContentProviderActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class ContentProviderActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor>,
+        AdapterView.OnItemLongClickListener {
     private static final String TAG = "ContentProviderActivity";
     @BindView(R.id.content_temp)
     TextView contentTemp;
@@ -66,6 +71,7 @@ public class ContentProviderActivity extends BaseActivity implements LoaderManag
 
     @Override
     public void initView() {
+        listview.setOnItemLongClickListener(this);
 //        CursorLoader loader = new CursorLoader()
 //        String authority = "com.yang.hhhh";
 //
@@ -98,17 +104,30 @@ public class ContentProviderActivity extends BaseActivity implements LoaderManag
 
     @Override
     public void initData() {
-        String[] origin = {"aaa", "ccc", "bbb", "dddd"};
-        String[] desc = new String[3];
-        System.arraycopy(origin, 0, desc, 0, 3);
-        for (String s : desc) {
-            Log.d(TAG, "initData: s=" + s);
-        }
-        String[] desc2 = new String[3];
-        System.arraycopy(origin, 1, desc2, 0, 2);
-        for (String s : desc2) {
-            Log.d(TAG, "initData: desc2=" + s + ",isEmpty=" + TextUtils.isEmpty(s));
-        }
+//        String[] origin = {"aaa", "ccc", "bbb", "dddd"};
+//        String[] desc = new String[3];
+//        System.arraycopy(origin, 0, desc, 0, 3);
+//        for (String s : desc) {
+//            Log.d(TAG, "initData: s=" + s);
+//        }
+//        String[] desc2 = new String[3];
+//        System.arraycopy(origin, 1, desc2, 0, 2);
+//        for (String s : desc2) {
+//            Log.d(TAG, "initData: desc2=" + s + ",isEmpty=" + TextUtils.isEmpty(s));
+//        }
+
+//        getContentResolver().registerContentObserver(TopicContract.CONTENT_URI, true, new ContentObserver(new Handler()) {
+//            @Override
+//            public boolean deliverSelfNotifications() {
+//                return super.deliverSelfNotifications();
+//            }
+//
+//            @Override
+//            public void onChange(boolean selfChange) {
+//                super.onChange(selfChange);
+//                Log.d(TAG, "registerContentObserver---onChange: ");
+//            }
+//        });
         ContentObserver contentObserver;
         findViewById(R.id.content_temp).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,13 +297,61 @@ public class ContentProviderActivity extends BaseActivity implements LoaderManag
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        Log.d(TAG, "onLoadFinished: ");
-        adapter.swapCursor(data);
+        Log.d(TAG, "onLoadFinished: " + data);
+        data.registerContentObserver(new ContentObserver(new Handler()) {
+            @Override
+            public boolean deliverSelfNotifications() {
+                Log.d(TAG, "onLoadFinished--deliverSelfNotifications: ");
+                return super.deliverSelfNotifications();
+            }
+
+            @Override
+            public void onChange(boolean selfChange) {
+                Log.d(TAG, "onLoadFinished--onChange: selfChange=" + selfChange);
+            }
+        });
+        adapter.changeCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         Log.d(TAG, "onLoaderReset: ");
         adapter.swapCursor(null);
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        Object item = adapter.getItem(position);
+        if (item != null) {
+            Cursor cursor = (Cursor) item;
+            Log.d(TAG, "onItemLongClick: cursor=" + cursor);
+            showDelDialog(cursor);
+        }
+        return false;
+    }
+
+    private void showDelDialog(final Cursor cursor) {
+
+        new AlertDialog.Builder(this)
+                .setTitle("警告")
+                .setMessage("确认删除")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String cursorString = cursor.getString(cursor.getColumnIndex(TopicContract.Topic.NAME));
+                        Log.d(TAG, "onClick: cursorString=" + cursorString);
+                        if (TextUtils.isEmpty(cursorString)) {
+                            Toast.makeText(ContentProviderActivity.this, "空", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        getContentResolver().delete(TopicContract.CONTENT_URI,
+                                TopicContract.Topic.NAME + "= ?",
+//                                TopicContract.Topic.NAME + "= ？",
+                                new String[]{cursorString});
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show();
     }
 }

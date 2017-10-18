@@ -12,6 +12,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.util.List;
+
 /**
  * 添加错题
  * 考虑是否需要provider
@@ -62,12 +64,14 @@ public class TopicContentProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection,
+                        @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase();
-        Cursor cursor = db.query(TopicContract.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
+        Cursor cursor = db.query(TopicContract.TABLE_NAME, projection, selection, selectionArgs,
+                null, null, sortOrder);
 
         if (getContext() != null) {
-            cursor.setNotificationUri(getContext().getContentResolver(),uri);
+            cursor.setNotificationUri(getContext().getContentResolver(), uri);
         }
         return cursor;
     }
@@ -108,7 +112,17 @@ public class TopicContentProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+        SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase();
+        int count = 0;
+        List<String> pathSegments = uri.getPathSegments();
+        String encodedPath = uri.getEncodedPath();
+        Log.d(TAG, "delete: pathSegments=" + pathSegments);
+        Log.d(TAG, "delete: encodedPath=" + encodedPath);
+        Log.d(TAG, "delete: selection=" + selection);
+        Log.d(TAG, "delete: selectionArgs=" + selectionArgs);
+        count = db.delete(TopicContract.TABLE_NAME, selection, selectionArgs);
+        getContext().getContentResolver().notifyChange(TopicContract.CONTENT_URI, null);
+        return count;
     }
 
     @Override
