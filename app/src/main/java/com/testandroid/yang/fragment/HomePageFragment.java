@@ -29,6 +29,7 @@ import com.testandroid.yang.activity.FitSystemWindowActivity;
 import com.testandroid.yang.activity.FitSystemwindowActivity2;
 import com.testandroid.yang.activity.FragmentActivity;
 import com.testandroid.yang.activity.FrgStatePagerAdaperActivity;
+import com.testandroid.yang.activity.FullScreenActivity;
 import com.testandroid.yang.activity.ItemTypeListViewActivity;
 import com.testandroid.yang.activity.ListViewClipActivity;
 import com.testandroid.yang.activity.ListviewChoiceActivity;
@@ -91,6 +92,7 @@ public class HomePageFragment extends HomeBaseFragment {
         items.add(new HomeInfo("tv_recycleview", R.id.tv_recycleview, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("tv_recycleview_ceiling", R.id.tv_recycleview_ceiling, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("tv_vLayouot", R.id.tv_vLayouot, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("tv_full_screen", R.id.tv_full_screen, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("tv_fitsystemwindow", R.id.tv_fitsystemwindow, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("tv_fitsystemwindow2", R.id.tv_fitsystemwindow2, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("tv_rotation_view", R.id.tv_rotation_view, HomeInfo.HomeGroup.View));
@@ -144,9 +146,11 @@ public class HomePageFragment extends HomeBaseFragment {
                 case R.id.tv_test_viewpager_all:
                     intent = new Intent(context, ViewPagerAllActivity.class);
                     startActivity(intent);
+                    break;
                 case R.id.tv_parallaxtoolbar_scrollview_activity:
                     intent = new Intent(context, ParallaxToolbarScrollViewActivity.class);
                     startActivity(intent);
+                    break;
                 case R.id.tv_test_view_pager_tab_dif:
                     intent = new Intent(context, ViewPagerTabActivity.class);
                     startActivity(intent);
@@ -186,6 +190,9 @@ public class HomePageFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_vLayouot:
                     VLayoutActivity.start(context);
+                    break;
+                case R.id.tv_full_screen:
+                    FullScreenActivity.start(context);
                     break;
                 case R.id.tv_fitsystemwindow:
                     FitSystemWindowActivity.start(context);

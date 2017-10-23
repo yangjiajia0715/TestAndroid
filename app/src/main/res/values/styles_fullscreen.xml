@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+       <!-- <item name="toolbarStyle">@style/TestToolBarStyleFull</item>
+        <item name="windowActionBarOverlay">true</item>-->
+        <!--<item name="android:windowActionBarOverlay">true</item>-->
+    </style>
+
+    <style name="FullScreenToolBar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/app_color</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/green</item>
+        <item name="android:popupMenuStyle">@color/green</item>
+    </style>
+</resources>

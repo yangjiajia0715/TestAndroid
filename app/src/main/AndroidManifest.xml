@@ -462,6 +462,8 @@
         <activity android:name=".activity.ContentProviderActivity" />
         <activity android:name=".activity.BannerViewPagerActivity" />
         <activity android:name=".activity.DateUtilActivity" />
+        <activity android:name=".activity.FullScreenActivity"
+            android:theme="@style/FullScreen"/>
 
         <!-- android:permission="com."
             android:readPermission="rrr"

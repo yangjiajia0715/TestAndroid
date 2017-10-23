@@ -28,6 +28,15 @@ public class ListViewFragment extends Fragment implements SwipeRefreshLayout.OnR
     private ListView mListView;
     private SwipeRefreshLayout swipeLayout;
 
+    public static ListViewFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        ListViewFragment fragment = new ListViewFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return mMainView = inflater.inflate(R.layout.fragment_listview_a, null, false);

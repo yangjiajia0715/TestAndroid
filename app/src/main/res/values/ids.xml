@@ -72,6 +72,7 @@
     <item name="tv_recycleview_ceiling" type="id" />
     <item name="tv_vLayouot" type="id" />
     <item name="tv_fitsystemwindow" type="id" />
+    <item name="tv_full_screen" type="id" />
     <item name="tv_fitsystemwindow2" type="id" />
     <item name="tv_rotation_view" type="id" />
     <item name="tv_customeview_view" type="id" />
