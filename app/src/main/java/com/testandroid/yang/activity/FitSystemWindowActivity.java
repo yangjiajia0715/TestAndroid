@@ -100,7 +100,7 @@ public class FitSystemWindowActivity extends BaseActivity {
 //        actionBar.setDisplayShowTitleEnabled(true);
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingtoolbarlayout);
-        collapsingToolbarLayout.setTitle("代码标题");
+        collapsingToolbarLayout.setTitle("代码标题修改");
         collapsingToolbarLayout.setCollapsedTitleGravity(Gravity.CENTER);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.BLUE);
         collapsingToolbarLayout.setExpandedTitleColor(Color.RED);
@@ -136,11 +136,10 @@ public class FitSystemWindowActivity extends BaseActivity {
 
         Log.d(TAG, "initView: fitsSystemWindows=" + fitsSystemWindows);
         Log.d(TAG, "initView: getFitsSystemWindows=" + appBarLayout.getFitsSystemWindows());
-
-
+        Log.d(TAG, "initView: getTop=" + toolbar.getTop());
+        Log.d(TAG, "initView: collapsingToolbarLayout getTop=" + collapsingToolbarLayout.getTop());
 
     }
-
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());

@@ -3,30 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    app:statusBarBackground="@color/light_grey"
     android:layout_height="match_parent"
-    android:background="@color/green">
+    android:background="@color/green"
+    app:statusBarBackground="@color/light_grey">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
-        android:background="#f00"
-        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#f00"
+        android:fitsSystemWindows="true">
 
+        <!--会同步 AppBarLayout 如果AppBarLayout fitsSystemWindows=true 一定消费-->
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbarlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="#fea73d"
-            app:statusBarScrim="@color/accent"
-            app:collapsedTitleGravity="center"
-            android:fitsSystemWindows="false"
-            app:titleEnabled="true"
             android:background="#88f"
+            android:fitsSystemWindows="false"
+            app:collapsedTitleGravity="center"
+            app:contentScrim="#fea73d"
             app:expandedTitleMarginStart="10dp"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:statusBarScrim="@color/accent"
+            app:titleEnabled="true">
 
+            <!--默认false-->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -41,22 +43,22 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                app:title="HHHHH"
-                android:fitsSystemWindows="false"
                 android:background="#99000000"
+                android:fitsSystemWindows="false"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="HHHHH">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="临时40dp"
                     android:layout_gravity="center"
                     android:background="@color/accent"
-                    android:visibility="visible"
                     android:gravity="center"
+                    android:text="临时40dp"
                     android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:visibility="visible" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
