@@ -60,6 +60,7 @@ public class FullScreenActivity extends BaseActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            actionBar.setShowHideAnimationEnabled(true);
 //            actionBar.hide();
         }
     }

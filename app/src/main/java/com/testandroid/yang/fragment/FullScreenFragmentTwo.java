@@ -36,7 +36,7 @@ public class FullScreenFragmentTwo extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.error_numbers,
-                android.R.layout.simple_list_item_1);
+                R.layout.simple_list_item_color_red_color);
         setListAdapter(arrayAdapter);
     }
 }

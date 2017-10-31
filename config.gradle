@@ -2,7 +2,7 @@ ext {
 
     android = [
             compileSdkVersion: 25,
-            buildToolsVersion: "25.0.2",
+            buildToolsVersion: "26.0.2",//25.0.2-->26.0.2 2017-10-30 AS升级到3.0
             applicationId    : "com.testandroid.yang",
             minSdkVersion    : 17,//16-->17,layout_marginEnd min17 2017-9-6
             targetSdkVersion : 21,//24-->21

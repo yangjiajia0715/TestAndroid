@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
@@ -81,6 +81,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
 
+        flavorDimensions "fee"
 //        String fileUploadAddress = hasProperty("FILE_UPLOAD_ADDRESS") ? getProperty("FILE_UPLOAD_ADDRESS") : "未配置";
         //调用的是闭包的属性，不是脚本
         String fileUploadAddress = (project.hasProperty("FILE_UPLOAD_ADDRESS") ? project.getProperty("FILE_UPLOAD_ADDRESS") : "未配置")
