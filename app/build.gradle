@@ -173,6 +173,13 @@ dependencies {
 
     compile "com.github.bumptech.glide:glide:3.7.0"
 
+    //add on 2017-10-31 一个一个测试
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'rongi.rotate-layout:rotate-layout:3.0.0'
+    compile 'com.github.hotchemi:permissionsdispatcher:2.4.0'
+    compile 'com.contrarywind:Android-PickerView:3.2.5'
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
+
 }
 
 task listJars {

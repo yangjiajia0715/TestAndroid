@@ -5,7 +5,7 @@ ext {
             buildToolsVersion: "26.0.2",//25.0.2-->26.0.2 2017-10-30 AS升级到3.0
             applicationId    : "com.testandroid.yang",
             minSdkVersion    : 17,//16-->17,layout_marginEnd min17 2017-9-6
-            targetSdkVersion : 21,//24-->21
+            targetSdkVersion : 24,//24-->21, 21-->23 2017-10-31 测试运行时权限问题
             versionCode      : 17,
             versionName      : "1.17"
     ]
@@ -31,9 +31,9 @@ ext {
 
     butterknifeVersion = "8.5.1"
 
-    vlayoutVersion = "1.0.5";
+    vlayoutVersion = "1.0.5"
 
-    commonIoVersion = "2.5";
-    constraintVersion = "1.0.2";
+    commonIoVersion = "2.5"
+    constraintVersion = "1.0.2"
 
 }

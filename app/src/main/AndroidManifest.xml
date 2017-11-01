@@ -25,6 +25,7 @@
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" /><!--默认没提示-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
 
@@ -464,6 +465,8 @@
         <activity android:name=".activity.DateUtilActivity" />
         <activity android:name=".activity.FullScreenActivity"
             android:theme="@style/FullScreen"/>
+
+        <activity android:name=".activity.PermissiondispatcherActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"
