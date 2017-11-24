@@ -467,6 +467,7 @@
             android:theme="@style/FullScreen"/>
 
         <activity android:name=".activity.PermissiondispatcherActivity" />
+        <activity android:name=".activity.GlideActivity" />
 
         <!-- android:permission="com."
             android:readPermission="rrr"

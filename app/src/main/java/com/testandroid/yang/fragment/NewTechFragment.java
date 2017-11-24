@@ -11,6 +11,7 @@ import com.testandroid.yang.activity.BottomSheetActivity;
 import com.testandroid.yang.activity.CoordinatorAppBarActivity;
 import com.testandroid.yang.activity.CoordinatorLayoutActivity;
 import com.testandroid.yang.activity.DataBindingActivity;
+import com.testandroid.yang.activity.GlideActivity;
 import com.testandroid.yang.activity.MenuActivity;
 import com.testandroid.yang.activity.OkHttpActivity;
 import com.testandroid.yang.activity.PermissiondispatcherActivity;
@@ -56,6 +57,7 @@ public class NewTechFragment extends HomeBaseFragment {
         items.add(new HomeInfo("OkHttp3", R.id.tv_ok_http, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("BottomSheet", R.id.tv_bottomsheet, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("Permissionsdispatcher", R.id.tv_permissionsdispatcher, HomeInfo.HomeGroup.NewTech));
+        items.add(new HomeInfo("Glide", R.id.tv_glide, HomeInfo.HomeGroup.NewTech));
     }
 
     @Override
@@ -107,6 +109,9 @@ public class NewTechFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_permissionsdispatcher:
                     PermissiondispatcherActivity.start(context);
+                    break;
+                case R.id.tv_glide:
+                    GlideActivity.start(context);
                     break;
             }
         }
