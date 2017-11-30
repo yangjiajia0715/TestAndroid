@@ -50,6 +50,7 @@
     <item name="tv_glide" type="id" />
     <item name="tv_menu" type="id" />
     <item name="tv_date_util" type="id" />
+    <item name="tv_java" type="id" />
     <item name="tv_menu_toolbar" type="id" />
     <item name="tv_action_bar" type="id" />
     <item name="tv_fragment" type="id" />

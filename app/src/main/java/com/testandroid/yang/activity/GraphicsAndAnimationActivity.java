@@ -163,7 +163,7 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
 //                        .setDuration(1000)
 //                        .setListener(new AnimatorListenerAdapter() {
 //                            @Override
-//                            public void onAnimationEnd(Animator animation) {
+//                            public void onAnimationEnd(Animal animation) {
 //                                super.onAnimationEnd(animation);
 //                            }
 //                        });
@@ -339,7 +339,7 @@ public class GraphicsAndAnimationActivity extends BaseActivity {
                 });
 //                .setListener(new AnimatorListenerAdapter() {
 //                    @Override
-//                    public void onAnimationEnd(Animator animation) {
+//                    public void onAnimationEnd(Animal animation) {
 //                        mLoadingView.setVisibility(View.GONE);
 //                    }
 //                });

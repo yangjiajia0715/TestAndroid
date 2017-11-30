@@ -81,7 +81,7 @@ public class TransitonActivity extends BaseActivity {
                 if (Build.VERSION.SDK_INT >= 21) {
                     int centerX = liushishi.getWidth() / 2;
                     int centerY = liushishi.getHeight() / 2;
-//                    Animator animator = ViewAnimationUtils.createCircularReveal(liushishi, centerX, centerY, 30, centerX);
+//                    Animal animator = ViewAnimationUtils.createCircularReveal(liushishi, centerX, centerY, 30, centerX);
                     Log.d(TAG, "run: " + Math.sqrt(16));
                     Log.d(TAG, "run: " + Math.hypot(3, 4));
                     Animator animator = ViewAnimationUtils.createCircularReveal(liushishi, 0, 0, 100 * 3, (float) Math.hypot(liushishi.getWidth(), liushishi.getHeight()));

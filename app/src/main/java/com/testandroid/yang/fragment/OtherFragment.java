@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.activity.AJavaActivity;
 import com.testandroid.yang.activity.AccountManagerActivity;
 import com.testandroid.yang.activity.BroadcastReceiverActivity;
 import com.testandroid.yang.activity.BuildConfigFieldActivity;
@@ -69,6 +70,7 @@ public class OtherFragment extends HomeBaseFragment {
         items.add(new HomeInfo("图形和动画", R.id.tv_graphics_and_animation, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("account_manage", R.id.tv_account_manage, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("DateUtil", R.id.tv_date_util, HomeInfo.HomeGroup.Other));
+        items.add(new HomeInfo("Java", R.id.tv_java, HomeInfo.HomeGroup.Other));
     }
 
     @Override
@@ -159,6 +161,9 @@ public class OtherFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_date_util:
                     DateUtilActivity.start(getActivity());
+                    break;
+                case R.id.tv_java:
+                    AJavaActivity.start(getActivity());
                     break;
             }
         }
