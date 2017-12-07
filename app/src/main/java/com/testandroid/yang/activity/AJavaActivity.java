@@ -32,6 +32,8 @@ public class AJavaActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        //变量隐藏：如果子类和父类的变量名一样，忽略类型 那么父类的变量会被隐藏，如果想显示需要强转下！
+        //方法覆盖
         Tiger tiger = new Tiger();
         Animal animal = new Tiger();
         Log.d(TAG, "initView: name=" + ((Animal)tiger).name + ",look=" + tiger.look());
