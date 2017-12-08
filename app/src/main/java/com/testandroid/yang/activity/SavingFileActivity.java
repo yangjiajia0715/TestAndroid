@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.v4.math.MathUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -59,6 +60,28 @@ public class SavingFileActivity extends ListActivity {
 
         //测试请放开
         ioUtils();
+
+        other();
+    }
+
+    /**
+     * https://github.com/jingle1267/android-utils
+     */
+    private void other() {
+//        URLUtil.guessFileName("", "", "");
+//        DatabaseUtils.
+//        CommonTimeUtils
+        int clamp = MathUtils.clamp(2, 1, 4);//固定 约束范围
+        Log.d(TAG, "other: clamp=" + clamp);
+//        TimeUtils.
+//        DebugUtils.isObjectSelected(3);
+//        DrmUtils.
+//        PhoneNumberUtils.compare()
+
+//        ItemTouchUIUtil.
+//        AsyncListUtil
+//        NavUtils.getParentActivityName()
+
     }
 
     private void ioUtils() {
@@ -101,6 +124,7 @@ public class SavingFileActivity extends ListActivity {
 //            }
 //        };
 //        ioTestFile.listFiles(fileFilter);
+
     }
 
     private void getInternalDir() {
