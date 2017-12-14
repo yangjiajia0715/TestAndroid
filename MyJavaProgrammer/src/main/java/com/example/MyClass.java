@@ -53,6 +53,7 @@ public class MyClass {
 //        String url = bundle.getString("url");
 //        System.out.print("--------url=" + url);
 
+        HashMap<String, String> map;
         sort();
     }
 
