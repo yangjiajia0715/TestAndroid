@@ -7,4 +7,9 @@
         android:icon="@drawable/arrow_left_dart"
         android:title="加密"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_file_decode"
+        android:icon="@drawable/arrow_left_dart"
+        android:title="解密"
+        app:showAsAction="never" />
 </menu>
