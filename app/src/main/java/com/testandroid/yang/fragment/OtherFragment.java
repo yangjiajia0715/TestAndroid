@@ -15,6 +15,7 @@ import com.testandroid.yang.activity.AccountManagerActivity;
 import com.testandroid.yang.activity.BroadcastReceiverActivity;
 import com.testandroid.yang.activity.BuildConfigFieldActivity;
 import com.testandroid.yang.activity.DateUtilActivity;
+import com.testandroid.yang.activity.FileEncryptActivity;
 import com.testandroid.yang.activity.GraphicsAndAnimationActivity;
 import com.testandroid.yang.activity.MenuActivity;
 import com.testandroid.yang.activity.MenuToolBarActivity;
@@ -66,6 +67,7 @@ public class OtherFragment extends HomeBaseFragment {
         items.add(new HomeInfo("分享数据", R.id.tv_share_date, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("分享文件列表", R.id.tv_share_select_file, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("保存文件相关", R.id.tv_save_file, HomeInfo.HomeGroup.Other));
+        items.add(new HomeInfo("文件加密", R.id.tv_file_jiami, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("多媒体相关", R.id.tv_multimedia, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("图形和动画", R.id.tv_graphics_and_animation, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("account_manage", R.id.tv_account_manage, HomeInfo.HomeGroup.Other));
@@ -164,6 +166,9 @@ public class OtherFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_java:
                     AJavaActivity.start(getActivity());
+                    break;
+                case R.id.tv_file_jiami:
+                    FileEncryptActivity.start(getActivity());
                     break;
             }
         }
