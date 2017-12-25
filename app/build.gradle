@@ -172,7 +172,9 @@ dependencies {
     compile 'junit:junit:4.12'
     compile 'org.greenrobot:greendao:3.2.2' // add library
 
-    compile "com.github.bumptech.glide:glide:3.7.0"
+//    compile "com.github.bumptech.glide:glide:3.7.0"//2017-12-25 11:50:45 以前
+    implementation 'com.github.bumptech.glide:glide:4.4.0'//2017-12-25 11:50:57
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
 
     //add on 2017-10-31 一个一个测试
     compile 'org.greenrobot:eventbus:3.1.1'

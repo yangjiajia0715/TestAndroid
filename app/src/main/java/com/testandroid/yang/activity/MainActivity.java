@@ -1,5 +1,6 @@
 package com.testandroid.yang.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -30,11 +32,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * Main
  * Created by Administrator on 2016/7/27 0027.
  */
+@RuntimePermissions
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     @BindView(R.id.toolbar_title)
@@ -67,6 +74,39 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             actionBar.setDisplayShowTitleEnabled(true);
         }
         Log.d(TAG, "MainActivity--onCreate: getTaskId=" + getTaskId());
+        MainActivityPermissionsDispatcher.doSomeThingWithCheck(this);
+    }
+
+    @NeedsPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    public void doSomeThing() {
+        Log.d(TAG, "MainActivity--onCreate 已授权----");
+    }
+
+    @OnShowRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    public void showRational(final PermissionRequest request) {
+        new AlertDialog.Builder(this)
+                .setTitle("理由")
+                .setMessage("文件相关时需要写权限")
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        request.cancel();
+                    }
+                })
+                .setPositiveButton("好的", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        request.proceed();
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        MainActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     @Override

@@ -51,10 +51,11 @@ public class GlideActivity extends BaseActivity {
         String url = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2146927009,3405641870&fm=173&s=8E734D805C1202D6C6F52815030050C2&w=640&h=360&img.JPG";
 
         Glide.with(this).load(url).into(imageview1);
-        Glide.with(this).load(url).placeholder(R.drawable.banner01).into(imageview2);
-        Glide.with(this).load(url).placeholder(R.drawable.banner01).error(R.drawable.ic_done).into(imageview3);
-        Glide.with(this).load(url).asGif().into(imageview4);
-        Glide.with(this).load(url).asGif().placeholder(R.drawable.banner01).into(imageview5);
+//        Glide.with(this).load(url).placeholder(R.drawable.banner01).into(imageview2);
+//        Glide.with(this).load(url).placeholder(R.drawable.banner01).error(R.drawable.ic_done).into(imageview3);
+//        Glide.with(this).load(url).asGif().into(imageview4);
+//        Glide.with(this).load(url).asGif().placeholder(R.drawable.banner01).into(imageview5);
+//        minSdk <= targetSdk <= compileSdk,最好后两个一样
     }
 
     @Override
