@@ -14,6 +14,7 @@ import com.testandroid.yang.activity.CursorLoadActivity;
 import com.testandroid.yang.activity.DexClassLoadTestActivity;
 import com.testandroid.yang.activity.DexClassLoaderActivity;
 import com.testandroid.yang.activity.DisplayUserInfoActivity;
+import com.testandroid.yang.activity.DownloadActivity;
 import com.testandroid.yang.activity.SaveToDataBaseActivity;
 import com.testandroid.yang.common.HomeInfo;
 
@@ -51,6 +52,7 @@ public class DataBaseFragment extends HomeBaseFragment {
         items.add(new HomeInfo("tv_save_userinfo_to_database", R.id.tv_save_userinfo_to_database, HomeInfo.HomeGroup.DataBase));
         items.add(new HomeInfo("数据展示页--内部&外部", R.id.tv_save_data_display, HomeInfo.HomeGroup.DataBase));
         items.add(new HomeInfo("ContentProvider", R.id.tv_content_provider, HomeInfo.HomeGroup.DataBase));
+        items.add(new HomeInfo("下载相关", R.id.tv_download, HomeInfo.HomeGroup.DataBase));
     }
 
     @Override
@@ -91,6 +93,9 @@ public class DataBaseFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_content_provider:
                     ContentProviderActivity.start(context);
+                    break;
+                case R.id.tv_download:
+                    DownloadActivity.start(context);
                     break;
             }
         }

@@ -36,6 +36,7 @@
     <item name="tv_save_userinfo_to_database" type="id" />
     <item name="tv_save_data_display" type="id" />
     <item name="tv_content_provider" type="id" />
+    <item name="tv_download" type="id" />
     <item name="tv_Data_Binding" type="id" />
     <item name="tv_temp" type="id" />
     <item name="tv_CoordinatorLayout" type="id" />

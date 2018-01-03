@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.testandroid.yang">
-
-    <!-- 18 -->
-    <!-- android:installLocation="preferExternal"-->
+    package="com.testandroid.yang"> <!-- 18 -->
+    <!-- android:installLocation="preferExternal" -->
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="24"
@@ -14,7 +12,7 @@
     <permission android:name="com.testandroid.yang.provider.Reader" />
     <permission android:name="com.testandroid.yang.provider.Write" />
 
-    <!--详见：MutilMediaActivity-->
+    <!-- 详见：MutilMediaActivity -->
     <uses-feature
         android:name="android.hardware.camera2"
         android:required="true" />
@@ -22,13 +20,12 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" /><!--默认没提示-->
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" /> <!-- 默认没提示 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
-
     <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- name MultiDexAppcation -->
@@ -41,19 +38,17 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
-    <!--<uses-feature />-->
-    <!--不能通过@string/ 方式获取 -->
+    <!-- <uses-feature /> -->
+    <!-- 不能通过@string/ 方式获取 -->
     <permission android:name="com.testandroid.yang.provider.pppp" />
 
     <permission-group android:name="group666" />
 
-    <!-- android:permissionGroup="group11"-->
+    <!-- android:permissionGroup="group11" -->
     <permission
         android:name="com.testandroid.yang.provider.READ_USER"
         android:protectionLevel="dangerous" />
@@ -63,19 +58,17 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="" />
-
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="10002" />
 
-        <!--<activity android:name=".activity.MainActivity">-->
-        <!--  android:icon="@drawable/ic_mail_box" 屏幕显示-->
+        <!-- <activity android:name=".activity.MainActivity"> -->
+        <!-- android:icon="@drawable/ic_mail_box" 屏幕显示 -->
         <activity
-            android:name="com.testandroid.yang.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -83,7 +76,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.ZoomImageActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
@@ -109,24 +101,19 @@
             android:name=".activity.ViewPagerAllActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
-            android:name="com.testandroid.yang.ObservableScrollView.demo.ParallaxToolbarScrollViewActivity"
+            android:name=".ObservableScrollView.demo.ParallaxToolbarScrollViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity android:name=".ObservableScrollView.viewpager.ViewPagerTabActivity" />
-
         <activity
             android:name=".activity.AnimationActivity"
             android:launchMode="standard"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity
             android:name=".activity.FrgStatePagerAdaperActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity
             android:name=".activity.ItemTypeListViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity
             android:name=".activity.DexClassLoaderActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
@@ -139,19 +126,15 @@
         <activity
             android:name=".activity.DexClassLoadTestActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity
             android:name=".activity.PhotoViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity
             android:name=".activity.BuildConfigFieldActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity
             android:name=".activity.RxJava2Activity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity
             android:name=".activity.CursorLoadActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
@@ -159,31 +142,23 @@
         <receiver
             android:name=".receiver.TestReceiverPriorityHigh"
             android:exported="false">
-
             <intent-filter android:priority="100">
                 <action android:name="action_test_broadcastreceiver" />
             </intent-filter>
-
         </receiver>
-
         <receiver
             android:name=".receiver.TestReceiverPriorityMiddle"
             android:exported="false">
-
             <intent-filter android:priority="90">
                 <action android:name="action_test_broadcastreceiver" />
             </intent-filter>
-
         </receiver>
-
         <receiver
             android:name=".receiver.TestReceiverPriorityLow"
             android:exported="false">
-
             <intent-filter android:priority="80">
                 <action android:name="action_test_broadcastreceiver" />
             </intent-filter>
-
         </receiver>
         <receiver android:name=".service.RemoteControlReceiver">
             <intent-filter>
@@ -194,175 +169,145 @@
         <activity
             android:name=".activity.DataBindingActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
         <activity
             android:name=".activity.TempE"
             android:label="@string/title_activity_temp_e" />
-
         <activity
             android:name=".activity.TempActivity"
             android:label="@string/title_activity_temp_e" />
-
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" />
-
-        <activity android:name="com.testandroid.yang.activity.CoordinatorLayoutActivity" />
-
-        <activity android:name="com.testandroid.yang.activity.CoordinatorAppBarActivity" />
-
+        <activity android:name=".activity.CoordinatorLayoutActivity" />
+        <activity android:name=".activity.CoordinatorAppBarActivity" />
         <activity
-            android:name="com.testandroid.yang.activity.AppBarTabLayout"
+            android:name=".activity.AppBarTabLayout"
             android:theme="@style/AppTheme.FitSystemWindown" />
-
         <activity
-            android:name="com.testandroid.yang.activity.TestAppBar"
+            android:name=".activity.TestAppBar"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <!--4.1之后 parentActivityName 之前：用meta-data -->
+        <!-- 4.1之后 parentActivityName 之前：用meta-data -->
         <activity
-            android:name="com.testandroid.yang.activity.MenuActivity"
+            android:name=".activity.MenuActivity"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/ActionModeTheme" />
+        <activity android:name=".activity.ViewBigImageActivity" />
+        <activity android:name=".activity.RecycleViewActivity" />
 
-        <activity android:name="com.testandroid.yang.activity.ViewBigImageActivity" />
-
-        <activity android:name="com.testandroid.yang.activity.RecycleViewActivity" />
-
-        <!--splitActionBarWhenNarrow 不起作用？？？？-->
-        <!-- android:parentActivityName="com.testandroid.yang.activity.ParallaxActivity"-->
-        <!--   /MyActionBarTheme-->
-        <!--android:theme="@style/MyActionBarTheme"-->
+        <!-- splitActionBarWhenNarrow 不起作用？？？？ -->
+        <!-- android:parentActivityName="com.testandroid.yang.activity.ParallaxActivity" -->
+        <!-- /MyActionBarTheme -->
+        <!-- android:theme="@style/MyActionBarTheme" -->
         <activity
-            android:name="com.testandroid.yang.activity.ActionBarActivity"
+            android:name=".activity.ActionBarActivity"
             android:label="ActionbarActivity"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/Test001">
-
             <meta-data
                 android:name="android.support.UI_OPTIONS"
                 android:value="splitActionBarWhenNarrow" />
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
-
         </activity>
-
-        <activity android:name="com.testandroid.yang.activity.MDAnimationAnimationActivity" />
-        <activity android:name="com.testandroid.yang.activity.TypeAnimationActivity" />
-        <activity android:name="com.testandroid.yang.activity.TypeDataBaseActivity" />
-        <activity android:name="com.testandroid.yang.activity.TypeNewTectActivity" />
-        <activity android:name="com.testandroid.yang.activity.TypeOtherActivity" />
-        <activity android:name="com.testandroid.yang.activity.TypeViewActivity" />
-        <activity android:name="com.testandroid.yang.activity.PDFCreateActivity" />
-        <activity android:name="com.testandroid.yang.activity.RxJavaOperateActivity" />
-
-        <activity android:name="com.testandroid.yang.activity.OkHttpActivity" />
-        <activity android:name="com.testandroid.yang.activity.BroadcastReceiverActivity" />
+        <activity android:name=".activity.MDAnimationAnimationActivity" />
+        <activity android:name=".activity.TypeAnimationActivity" />
+        <activity android:name=".activity.TypeDataBaseActivity" />
+        <activity android:name=".activity.TypeNewTectActivity" />
+        <activity android:name=".activity.TypeOtherActivity" />
+        <activity android:name=".activity.TypeViewActivity" />
+        <activity android:name=".activity.PDFCreateActivity" />
+        <activity android:name=".activity.RxJavaOperateActivity" />
+        <activity android:name=".activity.OkHttpActivity" />
+        <activity android:name=".activity.BroadcastReceiverActivity" />
         <activity
-            android:name="com.testandroid.yang.activity.BottomSheetActivity"
+            android:name=".activity.BottomSheetActivity"
             android:theme="@style/AppTheme.ActiomMode" />
 
-        <!-- android:excludeFromRecents="true"-->
-        <!-- android:maxRecents="3"
+        <!-- android:excludeFromRecents="true" -->
+        <!--
+             android:maxRecents="3"
             android:autoRemoveFromRecents="false"
-            android:documentLaunchMode="none"-->
+            android:documentLaunchMode="none"
+        -->
         <activity
-            android:name="com.testandroid.yang.activity.OverviewScreen01Activity"
+            android:name=".activity.OverviewScreen01Activity"
             android:launchMode="singleTask" />
-
         <activity
-            android:name="com.testandroid.yang.activity.NotificationActivity"
+            android:name=".activity.NotificationActivity"
             android:parentActivityName=".activity.TypeAnimationActivity" />
-
-        <activity android:name="com.testandroid.yang.activity.ReflectActivity" />
-
+        <activity android:name=".activity.ReflectActivity" />
         <activity android:name=".activity.VLayoutActivity" />
 
-        <!--android:theme="@style/AppTheme.FitSystemWindown"-->
+        <!-- android:theme="@style/AppTheme.FitSystemWindown" -->
         <activity
             android:name=".activity.FitSystemWindowActivity"
             android:label="FitLabel"
             android:theme="@style/AppTheme.FitSystemWindown" />
-
         <activity
             android:name=".activity.FitSystemwindowActivity2"
             android:theme="@style/AppTheme.FitSystemWindown2" />
-
         <activity android:name=".activity.SaveToDataBaseActivity" />
-
         <activity android:name=".activity.DisplayUserInfoActivity" />
-
         <activity android:name=".activity.RotationActivity" />
-
         <activity android:name=".activity.CustomViewActivity" />
-
         <activity android:name=".activity.CustomView0Activity" />
-
         <activity android:name=".activity.CustomViewLevelListActivity" />
-
         <activity
             android:name=".activity.EditTextActivity"
             android:windowSoftInputMode="adjustResize" />
-
         <activity android:name=".activity.LaunchModeBaseActivity" />
-
         <activity android:name=".activity.LaunchModeA_Activity" />
-
         <activity android:name=".activity.LaunchModeB_Activity" />
 
-        <!--android:clearTaskOnLaunch="true"
-            android:taskAffinity="com.hhhhhhhh" -->
+        <!--
+            android:clearTaskOnLaunch="true"
+            android:taskAffinity="com.hhhhhhhh"
+        -->
         <activity
             android:name=".activity.LaunchModeC_Activity"
             android:finishOnTaskLaunch="true"
             android:launchMode="standard" />
-
         <activity
             android:name=".activity.LaunchModeD_Activity"
             android:launchMode="singleInstance" />
-
         <activity android:name=".activity.LaunchModeE_Activity" />
-
         <activity android:name=".activity.CustomViewCanvasActivity" />
 
-        <!--android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"-->
+        <!-- android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" -->
         <activity android:name=".activity.DialogListActivity" />
-
         <activity android:name=".activity.CheckTextViewNewActivity" />
 
-        <!--ActionModeTheme-->
-        <!--ActionBarOverlay-->
+        <!-- ActionModeTheme -->
+        <!-- ActionBarOverlay -->
         <activity
             android:name=".activity.ListviewChoiceActivity"
             android:theme="@style/ListviewChoice"
             android:uiOptions="splitActionBarWhenNarrow" />
 
-        <!--android:theme="@style/DrawerLayoutTheme" -->
+        <!-- android:theme="@style/DrawerLayoutTheme" -->
         <activity
             android:name=".activity.DrawerLayoutActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.ShareSimpleDateActivity"
             android:theme="@style/ShareSimpleDateActionBar">
-
             <intent-filter android:label="Share哈哈">
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.SelectFileActivity"
             android:icon="@drawable/ic_done"
             android:label="File Selector">
-
             <intent-filter>
                 <action android:name="android.intent.action.PICK" />
 
@@ -372,71 +317,52 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.SavingFileActivity" />
-
         <activity
             android:name=".activity.MutilMediaActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.ControllingCameraActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
             android:screenOrientation="portrait" />
-
         <activity android:name=".activity.GraphicsAndAnimationActivity" />
-
         <activity
             android:name=".activity.CardFlipActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-
         <activity android:name=".activity.CrossfadeActivity" />
-
         <activity android:name=".activity.ZoomActivity" />
-
         <activity android:name=".activity.ScreenSlideActivity" />
-
         <activity
             android:name=".activity.LiushishiActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.TransitonActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Transition" />
-
         <activity
             android:name=".activity.RecycleViewCeilingActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.ViewOverlayActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.FragmentActivity"
             android:theme="@style/TranslucentStatus" />
-
         <activity
             android:name=".activity.Rxjava2NewActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.AccountManagerActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.MenuToolBarActivity"
             android:theme="@style/MainActivityTheme" />
-
         <activity
             android:name=".activity.AuthenticatorActivity"
             android:exported="true" />
-
         <activity android:name=".activity.ConstraintLayoutActivity" />
-
         <activity
             android:name=".activity.SearchViewActivity"
             android:theme="@style/SearchTheme">
@@ -444,7 +370,6 @@
                 android:name="android.app.default_searchable"
                 android:value=".activity.SearchableActivity" />
         </activity>
-
         <activity android:name=".activity.SearchableActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -454,7 +379,6 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
         <activity android:name=".activity.SearchViewSecondActivity">
             <meta-data
                 android:name="android.app.default_searchable"
@@ -463,25 +387,28 @@
         <activity android:name=".activity.ContentProviderActivity" />
         <activity android:name=".activity.BannerViewPagerActivity" />
         <activity android:name=".activity.DateUtilActivity" />
-        <activity android:name=".activity.FullScreenActivity"
-            android:theme="@style/FullScreen"/>
-
+        <activity
+            android:name=".activity.FullScreenActivity"
+            android:theme="@style/FullScreen" />
         <activity android:name=".activity.PermissiondispatcherActivity" />
         <activity android:name=".activity.GlideActivity" />
         <activity android:name=".activity.AJavaActivity" />
         <activity android:name=".activity.FileEncryptActivity" />
 
-        <!-- android:permission="com."
+        <!--
+             android:permission="com."
             android:readPermission="rrr"
-            android:writePermission="www"-->
-        <!--android:grantUriPermissions="true" 临时权限-->
-        <!--authorities ; ; ;-->
-        <!--android:enabled="true" 确定是否实例化 application 也有该属性 控制所有组件-->
-        <!--android:exported="true" android:minSdkVersion or android:targetSdkVersion to "16" api 16(含)之前默认是true,16之后默认false-->
+            android:writePermission="www"
+        -->
+        <!-- android:grantUriPermissions="true" 临时权限 -->
+        <!-- authorities ; ; ; -->
+        <!-- android:enabled="true" 确定是否实例化 application 也有该属性 控制所有组件 -->
+        <!-- android:exported="true" android:minSdkVersion or android:targetSdkVersion to "16" api 16(含)之前默认是true,16之后默认false -->
 
-        <!--android:permission="@string/provider_permisssion"-->
-        <!--注意，permission 该权限需要 定义-->
-        <!-- android:readPermission="com.testandroid.yang.provider.READ_USER"-->
+
+        <!-- android:permission="@string/provider_permisssion" -->
+        <!-- 注意，permission 该权限需要 定义 -->
+        <!-- android:readPermission="com.testandroid.yang.provider.READ_USER" -->
         <provider
             android:name=".db.ApplicationContentProvider"
             android:authorities="com.testandroid.yang.provider.user"
@@ -490,21 +417,23 @@
             android:permission="@string/provider_permisssion"
             android:readPermission="com.testandroid.yang.provider.READ_USER">
 
-            <!-- <grant-uri-permission android:path="/attachments/" />-->
-            <!-- <grant-uri-permission >
-             </grant-uri-permission>-->
-            <!-- <path-permission android:path="string"
+            <!-- <grant-uri-permission android:path="/attachments/" /> -->
+            <!--
+             <grant-uri-permission >
+             </grant-uri-permission>
+            -->
+            <!--
+                 <path-permission android:path="string"
                  android:pathPrefix="string"
                  android:pathPattern="string"
                  android:permission="string"
                  android:readPermission="string"
-                 android:writePermission="string" />-->
+                 android:writePermission="string" />
+            -->
         </provider>
-
         <provider
-            android:name="com.testandroid.yang.provider.SearchRecentProvider"
+            android:name=".provider.SearchRecentProvider"
             android:authorities="com.yang.SearchRecentProvider" />
-
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.testandroid.yang.fileprovider"
@@ -514,11 +443,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
         <provider
-            android:name="com.testandroid.yang.provider.ContentProviderTmp"
+            android:name=".provider.ContentProviderTmp"
             android:authorities="com.yangjia.contenttemp"
-            android:grantUriPermissions="false"/>
+            android:grantUriPermissions="false" />
 
         <service
             android:name=".service.AuthenricatorService"
@@ -537,12 +465,18 @@
             <meta-data
                 android:name=""
                 android:value="@xml/syncadapter" />
-        </service>-->
+        </service>
+        -->
 
         <provider
-            android:name="com.testandroid.yang.provider.TopicContentProvider"
-            android:authorities="com.yang.TopicContentProvider"/>
+            android:name=".provider.TopicContentProvider"
+            android:authorities="com.yang.TopicContentProvider" />
 
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <activity android:name=".activity.SettingIpActivity" />
+        <activity android:name=".activity.DownloadActivity" />
     </application>
 
 </manifest>

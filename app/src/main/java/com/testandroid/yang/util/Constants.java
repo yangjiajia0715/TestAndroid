@@ -10,4 +10,6 @@ import com.testandroid.yang.BuildConfig;
 public interface Constants {
     String ACCOUNT_TYPE = BuildConfig.APPLICATION_ID + ".account";
     String AUTH_TOKEN_TYPE = BuildConfig.APPLICATION_ID + ".auth_token_type";
+    String SHARE_PREFERENCE_NAME = "common_setting";
+    String IP_ADDRESS = "ip_address";
 }

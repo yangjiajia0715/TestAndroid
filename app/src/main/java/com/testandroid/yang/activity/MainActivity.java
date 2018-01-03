@@ -199,6 +199,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.setting:
+                SettingsActivity.start(this);
+                return true;
+            case R.id.setting_ip:
+                SettingIpActivity.start(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onUserLeaveHint() {
         super.onUserLeaveHint();
     }
