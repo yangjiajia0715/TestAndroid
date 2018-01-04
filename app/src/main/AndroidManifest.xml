@@ -477,6 +477,7 @@
             android:label="@string/title_activity_settings"></activity>
         <activity android:name=".activity.SettingIpActivity" />
         <activity android:name=".activity.DownloadActivity" />
+        <activity android:name=".activity.WebActivity" />
     </application>
 
 </manifest>

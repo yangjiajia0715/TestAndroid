@@ -48,7 +48,11 @@ public class SettingIpActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        String string = getSharedPreferences(Constants.SHARE_PREFERENCE_NAME, MODE_PRIVATE)
+                .getString(Constants.IP_ADDRESS, "");
+        if (!TextUtils.isEmpty(string)) {
+            mIpAddress.setText(string);
+        }
     }
 
     @OnClick(R.id.save)

@@ -2,6 +2,7 @@ package com.testandroid.yang.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -59,6 +60,8 @@ public class DownloadActivity extends BaseActivity {
         Log.d(TAG, "onCreate: mIpAddress=" + mIpAddress);
         if (TextUtils.isEmpty(mIpAddress)) {
             Toast.makeText(this, "请设置IP", Toast.LENGTH_SHORT).show();
+        } else {
+            mToolbarTitle.setText(mIpAddress);
         }
 
         initView();
@@ -87,6 +90,19 @@ public class DownloadActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.download_1:
+//                http://192.168.1.112:8080/d27/index.html
+//                ContentUris.appendId()
+                Uri.Builder builder = new Uri.Builder()
+                        .scheme("http")
+                        .encodedAuthority(mIpAddress + ":8080")//=http://192.169.1.112:8080/d27/index.html
+//                        .authority(mIpAddress + ":8080")//=http://192.169.1.112%3A8080/d27/index.html
+                        .path("/d27/index.html");
+
+                Uri uri = builder.build();
+                String url = uri.toString();
+                Log.d(TAG, "onViewClicked: url=" + url);
+
+                WebActivity.start(this, url);
                 break;
             case R.id.download_2:
                 break;
