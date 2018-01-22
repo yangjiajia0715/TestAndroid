@@ -98,6 +98,13 @@ public class SavingFileActivity extends ListActivity {
             e.printStackTrace();
         }
 
+//        FileUtils.cleanDirectory(null);
+        String s = FileUtils.byteCountToDisplaySize(1028000);
+        Log.d(TAG, "ioUtils--displaySize: " + s);//1003KB
+        String displaySize = FileUtils.byteCountToDisplaySize(1028);
+        Log.d(TAG, "ioUtils--displaySize: " + displaySize);//1KB
+        String displaySize3 = FileUtils.byteCountToDisplaySize(128_000_000_000L);
+        Log.d(TAG, "ioUtils--displaySize3: " + displaySize3);//119 GB
         InputStream inputStream = getResources().openRawResource(R.raw.liushishi);
         File externalFilesDir1 = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File file = new File(externalFilesDir1, "liushishi_copy.jpg");
