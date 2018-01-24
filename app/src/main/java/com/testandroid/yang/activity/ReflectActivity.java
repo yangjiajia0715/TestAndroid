@@ -200,12 +200,19 @@ public class ReflectActivity extends BaseActivity {
         Plate<? extends Fruit> plate1 = new Plate<>(new Apple());
         Fruit fruit = plate1.get();
 
+
+        //通配符
+        Plate<? super Fruit> plate2;
+//        plate2 = new Plate<>(new Apple());
+        plate2 = new Plate<>(new Object());
         //========================================================
 
         Plate<? super Apple> plateaa = new Plate<>(new Apple());
         plateaa.set(new RedApple());
         plateaa.set(new Apple());
         Object object1 = plateaa.get();
+
+        Object object2 = plateaa.get();
 
 //        plateaa.set(new Object());//error
         //pecs
