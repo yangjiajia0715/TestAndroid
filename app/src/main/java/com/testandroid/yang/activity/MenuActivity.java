@@ -167,19 +167,19 @@ public class MenuActivity extends BaseActivity {
         actionProvider.setShareIntent(getDefaultIntent());
 
         //注意配：app:showAsAction="ifRoom|collapseActionView"
-        MenuItemCompat.setOnActionExpandListener(menuItem, new MenuItemCompat.OnActionExpandListener() {
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                Log.d(TAG, "onMenuItemActionExpand: item=" + item);
-                return true;
-            }
-
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                Log.d(TAG, "onMenuItemActionCollapse: item=" + item);
-                return true;
-            }
-        });
+//        MenuItemCompat.setOnActionExpandListener(menuItem, new MenuItemCompat.OnActionExpandListener() {
+//            @Override
+//            public boolean onMenuItemActionExpand(MenuItem item) {
+//                Log.d(TAG, "onMenuItemActionExpand: item=" + item);
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onMenuItemActionCollapse(MenuItem item) {
+//                Log.d(TAG, "onMenuItemActionCollapse: item=" + item);
+//                return true;
+//            }
+//        });
         return super.onCreateOptionsMenu(menu);
 
     }
