@@ -14,11 +14,21 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片1" />
+
             <ImageView
                 android:id="@+id/imageview1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 tools:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片2" />
 
             <ImageView
                 android:id="@+id/imageview2"
@@ -26,17 +36,32 @@
                 android:layout_height="100dp"
                 tools:src="@drawable/ic_launcher" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片3" />
+
             <ImageView
                 android:id="@+id/imageview3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 tools:src="@drawable/ic_launcher" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片4" />
+
             <ImageView
                 android:id="@+id/imageview4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 tools:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片5" />
 
             <ImageView
                 android:id="@+id/imageview5"

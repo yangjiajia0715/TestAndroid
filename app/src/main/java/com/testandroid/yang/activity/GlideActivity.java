@@ -2,11 +2,17 @@ package com.testandroid.yang.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.testandroid.yang.R;
 
 import butterknife.BindView;
@@ -50,12 +56,36 @@ public class GlideActivity extends BaseActivity {
 
         String url = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2146927009,3405641870&fm=173&s=8E734D805C1202D6C6F52815030050C2&w=640&h=360&img.JPG";
 
-        Glide.with(this).load(url).into(imageview1);
+        String urlXiZang = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519907833264&di=a6c33ff2a2b3a21348f49629cf8767a9&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01975e55470a000000002b014adbc6.jpg%401280w_1l_2o_100sh.jpg";
+
+        Glide.with(this).load(urlXiZang).into(imageview1);
 //        Glide.with(this).load(url).placeholder(R.drawable.banner01).into(imageview2);
 //        Glide.with(this).load(url).placeholder(R.drawable.banner01).error(R.drawable.ic_done).into(imageview3);
 //        Glide.with(this).load(url).asGif().into(imageview4);
 //        Glide.with(this).load(url).asGif().placeholder(R.drawable.banner01).into(imageview5);
 //        minSdk <= targetSdk <= compileSdk,最好后两个一样
+
+        RequestOptions options = new RequestOptions()
+                .placeholder(R.drawable.image_loading)
+                .override(300 * 3, 300 * 3)
+                .error(R.drawable.img_default);
+
+//        GenericTransitionOptions<Object> transitionOptions = GenericTransitionOptions.with(R.anim.module_zoom_in);
+        BitmapTransitionOptions bitmapTransitionOptions = BitmapTransitionOptions.withCrossFade(5000);
+        DrawableTransitionOptions drawableTransitionOptions = DrawableTransitionOptions.withCrossFade(5000);
+
+//        GlideApp.with(this);
+        Glide.with(this)
+                .load(url)
+                .apply(options)
+//                .transition(transitionOptions)
+//                .transition(bitmapTransitionOptions)
+                .into(imageview2);
+
+        RequestManager manager = Glide.with(this);
+
+        RequestBuilder<Drawable> load = manager.load(url);
+
     }
 
     @Override

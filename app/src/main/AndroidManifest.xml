@@ -478,6 +478,7 @@
         <activity android:name=".activity.SettingIpActivity" />
         <activity android:name=".activity.DownloadActivity" />
         <activity android:name=".activity.WebActivity" />
+        <activity android:name=".activity.OkIOActivity" />
     </application>
 
 </manifest>
