@@ -9,11 +9,12 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.testandroid.yang.R;
+import com.testandroid.yang.glide.GlideApp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,7 +59,20 @@ public class GlideActivity extends BaseActivity {
 
         String urlXiZang = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519907833264&di=a6c33ff2a2b3a21348f49629cf8767a9&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01975e55470a000000002b014adbc6.jpg%401280w_1l_2o_100sh.jpg";
 
-        Glide.with(this).load(urlXiZang).into(imageview1);
+//        Glide.with(this)
+//                .load(urlXiZang)
+//                .into(imageview1);
+
+        Glide.with(this)
+                .load(urlXiZang)
+                .apply(new RequestOptions().override(900, 900).diskCacheStrategy(DiskCacheStrategy.ALL))
+                .into(imageview1);
+
+//        GlideApp.with(this)
+//                .load(urlXiZang)
+//                .override(900,900)
+//                .into(imageview1);
+
 //        Glide.with(this).load(url).placeholder(R.drawable.banner01).into(imageview2);
 //        Glide.with(this).load(url).placeholder(R.drawable.banner01).error(R.drawable.ic_done).into(imageview3);
 //        Glide.with(this).load(url).asGif().into(imageview4);
@@ -82,9 +96,18 @@ public class GlideActivity extends BaseActivity {
 //                .transition(bitmapTransitionOptions)
                 .into(imageview2);
 
-        RequestManager manager = Glide.with(this);
+        //v4 取消加载，其实并不需要手动加载 ，因为Glide with方法传入的Activity fragmeng 销毁的时候，
+        // Glide会自动取消加载 并且回收所有加载过程中的所使用的资源
+//        Glide.with(this).clear(imageview3);
 
-        RequestBuilder<Drawable> load = manager.load(url);
+        GlideApp.with(this)
+                .load(urlXiZang)
+                .mineThumb()
+                .into(imageview5);
+
+        RequestBuilder<Drawable> requestBuilder = Glide.with(this).load(url);
+        requestBuilder.transition(DrawableTransitionOptions.withCrossFade());
+
 
     }
 
