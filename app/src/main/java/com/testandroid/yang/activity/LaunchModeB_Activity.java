@@ -10,6 +10,7 @@ import android.content.Intent;
 public class LaunchModeB_Activity extends LaunchModeBaseActivity {
     public static void start(Context context) {
         Intent starter = new Intent(context, LaunchModeB_Activity.class);
+//        starter.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(starter);
     }
 }

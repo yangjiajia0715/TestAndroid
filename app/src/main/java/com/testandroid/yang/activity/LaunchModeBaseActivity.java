@@ -41,6 +41,7 @@ public class LaunchModeBaseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch_mode_base);
         ButterKnife.bind(this);
+        Log.d(TAG, "onCreate: "+ getClass().getSimpleName() + ",getTaskId=" + getTaskId());
         initView();
         initData();
     }
@@ -61,7 +62,6 @@ public class LaunchModeBaseActivity extends BaseActivity {
         if (getParent() != null) {
             taskId.append(" parent taskId=" + getParent().getTaskId());
         }
-
 
     }
 

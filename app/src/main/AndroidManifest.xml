@@ -257,25 +257,33 @@
         <activity android:name=".activity.CustomViewActivity" />
         <activity android:name=".activity.CustomView0Activity" />
         <activity android:name=".activity.CustomViewLevelListActivity" />
+
         <activity
             android:name=".activity.EditTextActivity"
             android:windowSoftInputMode="adjustResize" />
+
         <activity android:name=".activity.LaunchModeBaseActivity" />
+
         <activity android:name=".activity.LaunchModeA_Activity" />
-        <activity android:name=".activity.LaunchModeB_Activity" />
+
+        <activity
+            android:name=".activity.LaunchModeB_Activity"
+            android:launchMode="standard" />
 
         <!--
             android:clearTaskOnLaunch="true"
             android:taskAffinity="com.hhhhhhhh"
+             android:finishOnTaskLaunch="true"
         -->
         <activity
             android:name=".activity.LaunchModeC_Activity"
-            android:finishOnTaskLaunch="true"
-            android:launchMode="standard" />
-        <activity
-            android:name=".activity.LaunchModeD_Activity"
             android:launchMode="singleInstance" />
+
+        <!--android:launchMode="singleInstance"-->
+        <activity android:name=".activity.LaunchModeD_Activity" />
+
         <activity android:name=".activity.LaunchModeE_Activity" />
+
         <activity android:name=".activity.CustomViewCanvasActivity" />
 
         <!-- android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" -->
@@ -362,7 +370,9 @@
         <activity
             android:name=".activity.AuthenticatorActivity"
             android:exported="true" />
+
         <activity android:name=".activity.ConstraintLayoutActivity" />
+
         <activity
             android:name=".activity.SearchViewActivity"
             android:theme="@style/SearchTheme">
@@ -370,6 +380,7 @@
                 android:name="android.app.default_searchable"
                 android:value=".activity.SearchableActivity" />
         </activity>
+
         <activity android:name=".activity.SearchableActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -379,17 +390,21 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+
         <activity android:name=".activity.SearchViewSecondActivity">
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".activity.SearchableActivity" />
         </activity>
+
         <activity android:name=".activity.ContentProviderActivity" />
         <activity android:name=".activity.BannerViewPagerActivity" />
         <activity android:name=".activity.DateUtilActivity" />
+
         <activity
             android:name=".activity.FullScreenActivity"
             android:theme="@style/FullScreen" />
+
         <activity android:name=".activity.PermissiondispatcherActivity" />
         <activity android:name=".activity.GlideActivity" />
         <activity android:name=".activity.AJavaActivity" />
@@ -431,9 +446,11 @@
                  android:writePermission="string" />
             -->
         </provider>
+
         <provider
             android:name=".provider.SearchRecentProvider"
             android:authorities="com.yang.SearchRecentProvider" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.testandroid.yang.fileprovider"
@@ -443,6 +460,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
         <provider
             android:name=".provider.ContentProviderTmp"
             android:authorities="com.yangjia.contenttemp"
@@ -474,7 +492,8 @@
 
         <activity
             android:name=".activity.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+
         <activity android:name=".activity.SettingIpActivity" />
         <activity android:name=".activity.DownloadActivity" />
         <activity android:name=".activity.WebActivity" />

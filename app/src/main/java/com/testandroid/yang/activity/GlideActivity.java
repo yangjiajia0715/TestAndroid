@@ -4,17 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.testandroid.yang.R;
 import com.testandroid.yang.glide.GlideApp;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,11 +78,26 @@ public class GlideActivity extends BaseActivity {
 //                .override(900,900)
 //                .into(imageview1);
 
+        DiskLruCache diskLruCache;
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("", "");
+        String aa;
+        if (TextUtils.equals("","")) {
+
+        }
+
+        Object object;
 //        Glide.with(this).load(url).placeholder(R.drawable.banner01).into(imageview2);
 //        Glide.with(this).load(url).placeholder(R.drawable.banner01).error(R.drawable.ic_done).into(imageview3);
 //        Glide.with(this).load(url).asGif().into(imageview4);
 //        Glide.with(this).load(url).asGif().placeholder(R.drawable.banner01).into(imageview5);
 //        minSdk <= targetSdk <= compileSdk,最好后两个一样
+
+        ImageLoader.getInstance();
+
+//        BroadcastReceiver
+//        ContentProvider
 
         RequestOptions options = new RequestOptions()
                 .placeholder(R.drawable.image_loading)
