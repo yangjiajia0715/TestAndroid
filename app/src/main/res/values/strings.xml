@@ -253,5 +253,6 @@ Quam libero nulla netus eu porta curae, ut nulla bibendum facilisis et urna sed,
 
     <string name="pref_title_vibrate">振动</string>
     <string name="download">下载</string>
+    <string name="taskAffinity_test">com.affinity</string>
 
 </resources>

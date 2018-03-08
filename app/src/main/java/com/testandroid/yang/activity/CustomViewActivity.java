@@ -1,5 +1,6 @@
 package com.testandroid.yang.activity;
 
+import android.app.Activity;
 import android.app.MediaRouteButton;
 import android.content.Context;
 import android.content.Intent;
@@ -79,6 +80,7 @@ public class CustomViewActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         initData();
+        view9.setText("---------任务栈："+ getTaskId());
     }
 
     @Override
@@ -152,6 +154,7 @@ public class CustomViewActivity extends BaseActivity {
                 break;
             case R.id.view4:
                 LaunchModeA_Activity.start(this);
+//                LaunchModeA_Activity.startForResult(this,11);//
                 break;
             case R.id.view5:
                 break;
@@ -165,6 +168,19 @@ public class CustomViewActivity extends BaseActivity {
                 break;
             case R.id.view10:
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: resultCode=" + resultCode);
+        if (resultCode == Activity.RESULT_OK) {
+            Log.d(TAG, "onActivityResult: RESULT_OK");
+            if (data != null) {
+                String stringExtra = data.getStringExtra(Intent.EXTRA_SUBJECT);
+                Log.d(TAG, "onActivityResult: stringExtra=" + stringExtra);
+            }
         }
     }
 

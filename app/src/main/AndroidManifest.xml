@@ -237,10 +237,13 @@
         <activity
             android:name=".activity.OverviewScreen01Activity"
             android:launchMode="singleTask" />
+
         <activity
             android:name=".activity.NotificationActivity"
             android:parentActivityName=".activity.TypeAnimationActivity" />
+
         <activity android:name=".activity.ReflectActivity" />
+
         <activity android:name=".activity.VLayoutActivity" />
 
         <!-- android:theme="@style/AppTheme.FitSystemWindown" -->
@@ -248,14 +251,23 @@
             android:name=".activity.FitSystemWindowActivity"
             android:label="FitLabel"
             android:theme="@style/AppTheme.FitSystemWindown" />
+
         <activity
             android:name=".activity.FitSystemwindowActivity2"
             android:theme="@style/AppTheme.FitSystemWindown2" />
+
         <activity android:name=".activity.SaveToDataBaseActivity" />
+
         <activity android:name=".activity.DisplayUserInfoActivity" />
+
         <activity android:name=".activity.RotationActivity" />
-        <activity android:name=".activity.CustomViewActivity" />
+
+        <activity
+            android:name=".activity.CustomViewActivity"
+            android:launchMode="standard" />
+
         <activity android:name=".activity.CustomView0Activity" />
+
         <activity android:name=".activity.CustomViewLevelListActivity" />
 
         <activity
@@ -264,20 +276,23 @@
 
         <activity android:name=".activity.LaunchModeBaseActivity" />
 
-        <activity android:name=".activity.LaunchModeA_Activity" />
+        <!--android:finishOnTaskLaunch="true"-->
+        <activity
+            android:name=".activity.LaunchModeA_Activity"
+            android:launchMode="standard" />
 
+        <!-- android:taskAffinity="@string/taskAffinity_test"-->
         <activity
             android:name=".activity.LaunchModeB_Activity"
             android:launchMode="standard" />
 
         <!--
+        android:alwaysRetainTaskState="true"
             android:clearTaskOnLaunch="true"
-            android:taskAffinity="com.hhhhhhhh"
-             android:finishOnTaskLaunch="true"
+            android:finishOnTaskLaunch="true"
+            android:launchMode="singleInstance"
         -->
-        <activity
-            android:name=".activity.LaunchModeC_Activity"
-            android:launchMode="singleInstance" />
+        <activity android:name=".activity.LaunchModeC_Activity" />
 
         <!--android:launchMode="singleInstance"-->
         <activity android:name=".activity.LaunchModeD_Activity" />
