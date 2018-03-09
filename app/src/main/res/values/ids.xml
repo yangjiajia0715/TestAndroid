@@ -38,6 +38,7 @@
     <item name="tv_content_provider" type="id" />
     <item name="tv_download" type="id" />
     <item name="tv_ok_io" type="id" />
+    <item name="tv_sort" type="id" />
     <item name="tv_Data_Binding" type="id" />
     <item name="tv_temp" type="id" />
     <item name="tv_CoordinatorLayout" type="id" />

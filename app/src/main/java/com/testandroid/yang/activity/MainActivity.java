@@ -67,12 +67,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         initView();
         initData();
         toolbar.setNavigationIcon(null);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
 //            actionBar.setDisplayShowHomeEnabled(true);
 //            actionBar.setDisplayShowTitleEnabled(false);
             actionBar.setDisplayShowTitleEnabled(true);
         }
+
         Log.d(TAG, "MainActivity--onCreate: getTaskId=" + getTaskId());
         MainActivityPermissionsDispatcher.doSomeThingWithCheck(this);
     }
