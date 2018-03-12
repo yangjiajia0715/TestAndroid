@@ -104,12 +104,21 @@ public class ReflectActivity extends BaseActivity {
                 typeAll();
                 break;
             case R.id.reflect_06:
+                loadClass();
                 break;
             case R.id.reflect_07:
                 break;
             case R.id.reflect_08:
                 break;
         }
+    }
+
+    private void loadClass() {
+//        Fruit fruit = new Fruit();
+        Fruit fruit = new Apple();
+        Log.d(TAG, "loadClass: ");
+        fruit = new Apple();
+        //f s   a s     f c     a c
     }
 
     // 泛型介绍：http://loveshisong.cn/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/2016-02-16-Type%E8%AF%A6%E8%A7%A3.html

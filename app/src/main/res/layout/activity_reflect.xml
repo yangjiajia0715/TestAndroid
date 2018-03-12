@@ -55,7 +55,7 @@
                 style="@style/CommonButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="reflect_01" />
+                android:text="类加载过程" />
             <TextView
                 android:id="@+id/reflect_07"
                 style="@style/CommonButtonStyle"
