@@ -72,14 +72,18 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.ZoomImageActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
 
+            <intent-filter>
+                <action android:name="com.dddd" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <!--
  ATTENTION: This intent was auto-generated. Follow instructions at
   https://g.co/AppIndexing/AndroidStudio to publish your URLs.

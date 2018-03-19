@@ -1,8 +1,18 @@
 package com.testandroid.yang.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.TaskStackBuilder;
@@ -12,7 +22,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.bumptech.glide.Glide;
 import com.testandroid.yang.R;
+
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,12 +44,34 @@ public class ActionBarActivity extends BaseActivity {
     private static final String TAG = "ActionBarActivity";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    private Messenger mMessenger;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, ActionBarActivity.class);
 //        starter.putExtra();
         context.startActivity(starter);
     }
+
+    BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            getResultData();
+            setResultData("");
+            Bundle bundle = new Bundle();
+        }
+    };
+
+    ServiceConnection mCon = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mMessenger = new Messenger(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +80,50 @@ public class ActionBarActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         initData();
+//        sendOrderedBroadcast();
+//        sendOrderedBroadcast();
+
+//        HttpURLConnection connection = Uri.parse("").
+
+        Intent intent = new Intent("");
+        bindService(intent, mCon, Context.BIND_AUTO_CREATE);
+
+        HttpURLConnection connection;
+        HttpClient httpClient ;
+        DefaultHttpClient defaultHttpClient;
+        AndroidHttpClient androidHttpClient;
+
+        Glide.with(this);
+
+        Message msgFromClient = Message.obtain(null, 11, 22, 3);
+        msgFromClient.replyTo = mMessenger;
+
+        //往服务端发送消息
+        try {
+            mMessenger.send(msgFromClient);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        HandlerThread handlerThread;
+        try {
+            //区别
+//            Uri.
+            URL url = new URL("");
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+//            startForegroundService()
+//            Intent.AcConn
+//            Intent.AcNew
+            Handler handler = new Handler();
+
+//            message1.replyTo.send();
+            Messenger messenger;
+//            messenger.getBinder();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -67,7 +150,6 @@ public class ActionBarActivity extends BaseActivity {
 //                finish();
 //            }
 //        });
-
 
 //        actionBar.setElevation(0);
 //        actionBar.setLogo(R.drawable.ic_data);
@@ -180,5 +262,11 @@ public class ActionBarActivity extends BaseActivity {
         //返回true,actionView不会自动展开？，为啥还是展开了
 //        return true;
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(mCon);
     }
 }

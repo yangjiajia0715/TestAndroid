@@ -73,6 +73,7 @@ public class OtherFragment extends HomeBaseFragment {
         items.add(new HomeInfo("account_manage", R.id.tv_account_manage, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("DateUtil", R.id.tv_date_util, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("Java", R.id.tv_java, HomeInfo.HomeGroup.Other));
+        items.add(new HomeInfo("Handler", R.id.tv_handler, HomeInfo.HomeGroup.Other));
     }
 
     @Override

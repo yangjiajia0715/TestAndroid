@@ -27,6 +27,8 @@ android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
 
+    useLibrary 'org.apache.http.legacy'
+
 //    freeline {
 //        hack true
 //    }

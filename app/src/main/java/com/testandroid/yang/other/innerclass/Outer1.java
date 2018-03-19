@@ -12,6 +12,10 @@ public class Outer1 implements IFly{
 
     }
 
+//    static class Inner3{
+//        static void getI3(){};
+//    }
+
     /**
      * 成员内部类：
      * 不能声明静态的变量和方法

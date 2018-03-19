@@ -7,7 +7,6 @@ package com.testandroid.yang.other.innerclass;
 public class Test {
 //    private static final String TAG = "Test";
 
-    @org.junit.Test
     public void main(){
         System.out.print("mmmmmmmmmmm");
 //        Log.d("yang", "main: ");
