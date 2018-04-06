@@ -1,18 +1,19 @@
 buildscript {
     repositories {
-        mavenCentral()
-        mavenLocal()
+        //mavenCentral()
+        //mavenLocal(
+        google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.0'
     }
 }
 
 allprojects {
     repositories {
-        mavenLocal()
+        //mavenLocal()
         jcenter()
         google()
     }
@@ -121,6 +122,7 @@ android {
     packagingOptions {
         exclude 'META-INF/rxjava.properties'
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -128,64 +130,64 @@ dependencies {
     implementation 'com.android.support:support-vector-drawable:26.1.0'
     compile fileTree(include: '*.jar', exclude: 'BDAutoUpdateSDK_20150605_V1.2.0.jar', dir: 'libs')
 
-    compile project(':zoomlibrary')
-//    compile project(':uikit')
+    implementation project(':zoomlibrary')
+//    implementation project(':uikit')
 
-    compile "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
-    compile "com.android.support:design:${rootProject.ext.supportVersion}"
-    compile "com.android.support:support-v13:${rootProject.ext.supportVersion}"
-    compile "com.android.support:recyclerview-v7:${rootProject.ext.supportVersion}"
-    compile "com.android.support:cardview-v7:${rootProject.ext.supportVersion}"
-    compile "com.android.support:multidex:${rootProject.ext.multidexVersion}"
-    compile "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintVersion}"
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:design:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:support-v13:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:cardview-v7:${rootProject.ext.supportVersion}"
+    implementation "com.android.support:multidex:${rootProject.ext.multidexVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${rootProject.ext.constraintVersion}"
 
-    compile "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroidVersion}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroidVersion}"
     //Because RxAndroid releases are few and far between, it is recommended you also
     //explicitly depend on RxJava's latest version for bug fixes and new features.
-    compile "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjavaVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjavaVersion}"
 
-    compile "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3Version}"
-    compile "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3Version}"
+    implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3Version}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3Version}"
 
-    compile "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
-    compile "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofit2AdapterRxjava2Version}"
-    compile "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofit2ConverterGsonVersion}"
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofit2AdapterRxjava2Version}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofit2ConverterGsonVersion}"
 
-    compile "com.nineoldandroids:library:${rootProject.ext.nineoldandroidsVersion}"
+    implementation "com.nineoldandroids:library:${rootProject.ext.nineoldandroidsVersion}"
 
-    compile "com.jakewharton:butterknife:${rootProject.ext.butterknifeVersion}"
+    implementation "com.jakewharton:butterknife:${rootProject.ext.butterknifeVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.butterknifeVersion}"
 
-    compile("com.alibaba.android:vlayout:${rootProject.ext.vlayoutVersion}@aar") {
+    implementation("com.alibaba.android:vlayout:${rootProject.ext.vlayoutVersion}@aar") {
         transitive = true
     }
 
-    compile "com.trello.rxlifecycle2:rxlifecycle:${rootProject.ext.rxlifecycleVersion}"
+    implementation "com.trello.rxlifecycle2:rxlifecycle:${rootProject.ext.rxlifecycleVersion}"
     // If you want to bind to Android-specific lifecycles
-    compile "com.trello.rxlifecycle2:rxlifecycle-android:${rootProject.ext.rxlifecycleVersion}"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-android:${rootProject.ext.rxlifecycleVersion}"
 
 // If you want pre-written Activities and Fragments you can subclass as providers
-    compile "com.trello.rxlifecycle2:rxlifecycle-components:${rootProject.ext.rxlifecycleVersion}"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-components:${rootProject.ext.rxlifecycleVersion}"
 
-    compile 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
+    implementation 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
 
-    compile 'com.alibaba:fastjson:1.1.59.android'
+    implementation 'com.alibaba:fastjson:1.1.59.android'
 
 // 友盟统计
-//    compile 'com.umeng.analytics:analytics:latest.integration'
-    compile group: 'commons-io', name: 'commons-io', version: "${rootProject.ext.commonIoVersion}"
-    compile 'junit:junit:4.12'
-    compile 'org.greenrobot:greendao:3.2.2' // add library
+//    implementation 'com.umeng.analytics:analytics:latest.integration'
+    implementation group: 'commons-io', name: 'commons-io', version: "${rootProject.ext.commonIoVersion}"
+    implementation 'junit:junit:4.12'
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
 
-//    compile "com.github.bumptech.glide:glide:3.7.0"//2017-12-25 11:50:45 以前
+//    implementation "com.github.bumptech.glide:glide:3.7.0"//2017-12-25 11:50:45 以前
     implementation 'com.github.bumptech.glide:glide:4.4.0'//2017-12-25 11:50:57
     annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
 
     //add on 2017-10-31 一个一个测试
-    compile 'org.greenrobot:eventbus:3.1.1'
-    compile 'rongi.rotate-layout:rotate-layout:3.0.0'
-    compile 'com.github.hotchemi:permissionsdispatcher:2.4.0'
-    compile 'com.contrarywind:Android-PickerView:3.2.5'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'rongi.rotate-layout:rotate-layout:3.0.0'
+    implementation 'com.github.hotchemi:permissionsdispatcher:2.4.0'
+    implementation 'com.contrarywind:Android-PickerView:3.2.5'
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
 
 }
@@ -285,19 +287,19 @@ println "----------------GString-----------------"
 //println "----------------Closure----------------isOdd=" + isOdd(3)
 //println "----------------Closure----------------isOdd=" + idOdd.call()
 
-configurations {
-    compile
-}
+//configurations {
+//    compile
+//}
 
 
 println "------------configurations-----------------"
 
-task testConfig {
-    doLast {
-        println configurations.compile.name
-        println configurations['compile'].name
-    }
-}
+//task testConfig {
+//    doLast {
+//        println configurations.compile.name
+//        println configurations['compile'].name
+//    }
+//}
 
 greendao {
     schemaVersion 1

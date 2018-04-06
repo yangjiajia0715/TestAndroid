@@ -4,7 +4,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+   // buildToolsVersion '26.0.2'
 
     sourceSets {
         main {
@@ -21,9 +21,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support:design:25.3.0'
-    compile fileTree(dir: 'libs', include: '*.jar')
-    compile 'com.alibaba:fastjson:1.1.59.android'
+    implementation 'com.android.support:appcompat-v7:25.3.0'
+    implementation 'com.android.support:design:25.3.0'
+    implementation fileTree(dir: 'libs', include: '*.jar')
+    implementation 'com.alibaba:fastjson:1.1.59.android'
 
 }

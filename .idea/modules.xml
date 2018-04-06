@@ -3,12 +3,19 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyJavaProgrammer/MyJavaProgrammer.iml" filepath="$PROJECT_DIR$/MyJavaProgrammer/MyJavaProgrammer.iml" />
+      <module fileurl="file://E:\workspace\TestAndroid\MyJavaProgrammer\MyJavaProgrammer.iml" filepath="E:\workspace\TestAndroid\MyJavaProgrammer\MyJavaProgrammer.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestAndroid.iml" filepath="$PROJECT_DIR$/TestAndroid.iml" />
+      <module fileurl="file://E:\workspace\TestAndroid\TestAndroid.iml" filepath="E:\workspace\TestAndroid\TestAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\workspace\TestAndroid\app\app.iml" filepath="E:\workspace\TestAndroid\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bean/bean.iml" filepath="$PROJECT_DIR$/bean/bean.iml" />
+      <module fileurl="file://E:\workspace\TestAndroid\bean\bean.iml" filepath="E:\workspace\TestAndroid\bean\bean.iml" />
       <module fileurl="file://$PROJECT_DIR$/imagejoint/imagejoint.iml" filepath="$PROJECT_DIR$/imagejoint/imagejoint.iml" />
+      <module fileurl="file://E:\workspace\TestAndroid\imagejoint\imagejoint.iml" filepath="E:\workspace\TestAndroid\imagejoint\imagejoint.iml" />
       <module fileurl="file://$PROJECT_DIR$/uikit/uikit.iml" filepath="$PROJECT_DIR$/uikit/uikit.iml" />
+      <module fileurl="file://E:\workspace\TestAndroid\uikit\uikit.iml" filepath="E:\workspace\TestAndroid\uikit\uikit.iml" />
       <module fileurl="file://$PROJECT_DIR$/zoomlibrary/zoomlibrary.iml" filepath="$PROJECT_DIR$/zoomlibrary/zoomlibrary.iml" />
+      <module fileurl="file://E:\workspace\TestAndroid\zoomlibrary\zoomlibrary.iml" filepath="E:\workspace\TestAndroid\zoomlibrary\zoomlibrary.iml" />
     </modules>
   </component>
 </project>
