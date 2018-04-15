@@ -3,4 +3,8 @@
     <files-path
         name="my_images"
         path="images" />
+
+    <external-files-path
+        name="my_apk_download"
+        path="apk_donwn" />
 </paths>

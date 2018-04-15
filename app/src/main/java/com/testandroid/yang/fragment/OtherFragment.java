@@ -4,7 +4,9 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -29,6 +31,8 @@ import com.testandroid.yang.activity.SelectFileActivity;
 import com.testandroid.yang.activity.ShareSimpleDateActivity;
 import com.testandroid.yang.activity.TempActivity;
 import com.testandroid.yang.common.HomeInfo;
+
+import java.io.File;
 
 import static com.netease.nimlib.sdk.media.player.AudioPlayer.TAG;
 
@@ -74,6 +78,7 @@ public class OtherFragment extends HomeBaseFragment {
         items.add(new HomeInfo("DateUtil", R.id.tv_date_util, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("Java", R.id.tv_java, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("Handler", R.id.tv_handler, HomeInfo.HomeGroup.Other));
+        items.add(new HomeInfo("安装应用", R.id.tv_install_apk, HomeInfo.HomeGroup.Other));
     }
 
     @Override
@@ -170,6 +175,38 @@ public class OtherFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_file_jiami:
                     FileEncryptActivity.start(getActivity());
+                    break;
+                case R.id.tv_install_apk:
+
+//                    File fileSource = new File(Environment.getExternalStorageDirectory(), "ws.apk");
+                    File fileOut = new File(getActivity().getExternalFilesDir("apk_donwn"), "wsa.apk");
+
+                    try {
+//                        FileUtils.copyFile(fileSource, fileOut);
+//
+//                        if (!fileOut.exists()) {
+//                            Toast.makeText(getActivity(), "文件不存在", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(getActivity(), "存在", Toast.LENGTH_SHORT).show();
+//
+//                        }
+                        Uri uriForFile = FileProvider.getUriForFile(getActivity(), "com.testandroid.yang.fileprovider", fileOut);
+
+                        Log.d("OtherFragment", "OtherFragment----" + fileOut.exists());
+                        Log.d("OtherFragment", "OtherFragment----uriForFile=" + uriForFile);
+//                        File apk = new File(Environment.getExternalStorageDirectory(), "ttt.apk");
+
+                        Intent intentApk = new Intent(Intent.ACTION_VIEW);
+//                        intentApk.setDataAndType(Uri.fromFile(fileOut), "application/vnd.android.package-archive");
+//                        intentApk.setDataAndType(Uri.fromFile(fileSource), "application/vnd.android.package-archive");
+                        intentApk.setDataAndType(uriForFile, "application/vnd.android.package-archive");
+                        startActivity(intentApk);
+
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "复制出错", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+
                     break;
             }
         }
