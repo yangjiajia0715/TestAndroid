@@ -199,6 +199,8 @@ public class OtherFragment extends HomeBaseFragment {
                         Intent intentApk = new Intent(Intent.ACTION_VIEW);
 //                        intentApk.setDataAndType(Uri.fromFile(fileOut), "application/vnd.android.package-archive");
 //                        intentApk.setDataAndType(Uri.fromFile(fileSource), "application/vnd.android.package-archive");
+                        intentApk.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intentApk.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         intentApk.setDataAndType(uriForFile, "application/vnd.android.package-archive");
                         startActivity(intentApk);
 
