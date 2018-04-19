@@ -23,6 +23,7 @@ apply plugin: 'com.android.application'
 apply from: file('utils.gradle')
 apply plugin: 'com.antfortune.freeline'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
+apply plugin: 'io.objectbox'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -189,6 +190,8 @@ dependencies {
     implementation 'com.github.hotchemi:permissionsdispatcher:2.4.0'
     implementation 'com.contrarywind:Android-PickerView:3.2.5'
     annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:2.4.0'
+
+
 
 }
 

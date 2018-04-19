@@ -55,6 +55,7 @@ public class TransitonActivity extends BaseActivity {
         initData();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
 //            getWindow().setExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));
 //            getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide_exclude));
 

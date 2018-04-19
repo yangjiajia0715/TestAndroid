@@ -122,7 +122,6 @@ public class GlideActivity extends BaseActivity {
 
         GlideApp.with(this)
                 .load(urlXiZang)
-                .mineThumb()
                 .into(imageview5);
 
         RequestBuilder<Drawable> requestBuilder = Glide.with(this).load(url);
