@@ -1,4 +1,4 @@
-include ':MyJavaProgrammer', ':app', ':uikit', ':zoomlibrary', ':imagejoint', ':bean'
+include ':MyJavaProgrammer', ':app', ':zoomlibrary'
 
 //println "project name = $project.name ,projectDir= $project.projectDir"
 println "-------setting----project  ,hasProperty--yangjiajia=" + hasProperty("yangjiajia") ? getProperty("yangjiajia") : "";

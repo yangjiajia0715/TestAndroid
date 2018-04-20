@@ -85,9 +85,6 @@ public class ActionBarActivity extends BaseActivity {
 
 //        HttpURLConnection connection = Uri.parse("").
 
-        Intent intent = new Intent("");
-        bindService(intent, mCon, Context.BIND_AUTO_CREATE);
-
         HttpURLConnection connection;
         HttpClient httpClient ;
         DefaultHttpClient defaultHttpClient;

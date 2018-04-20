@@ -24,4 +24,9 @@
         <item name="android:windowTranslucentStatus" >true</item>
     </style>-->
 
+    <style name="Transition5" parent="android:Theme.Material">
+        <item name="android:windowActivityTransitions">true</item>
+
+    </style>
+
 </resources>
