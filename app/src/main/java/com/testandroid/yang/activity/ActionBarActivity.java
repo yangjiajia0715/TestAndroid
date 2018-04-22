@@ -86,7 +86,7 @@ public class ActionBarActivity extends BaseActivity {
 //        HttpURLConnection connection = Uri.parse("").
 
         HttpURLConnection connection;
-        HttpClient httpClient ;
+        HttpClient httpClient;
         DefaultHttpClient defaultHttpClient;
         AndroidHttpClient androidHttpClient;
 
@@ -97,7 +97,9 @@ public class ActionBarActivity extends BaseActivity {
 
         //往服务端发送消息
         try {
-            mMessenger.send(msgFromClient);
+            if (mMessenger != null) {
+                mMessenger.send(msgFromClient);
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -230,7 +232,8 @@ public class ActionBarActivity extends BaseActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    /** Defines a default (dummy) share intent to initialize the action provider.
+    /**
+     * Defines a default (dummy) share intent to initialize the action provider.
      * However, as soon as the actual content to be used in the intent
      * is known or changes, you must update the share intent by again calling
      * mShareActionProvider.setShareIntent()

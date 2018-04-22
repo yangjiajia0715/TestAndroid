@@ -8,6 +8,7 @@ import android.view.View;
 import com.testandroid.yang.R;
 import com.testandroid.yang.activity.ActionBarActivity;
 import com.testandroid.yang.activity.AnimationActivity;
+import com.testandroid.yang.activity.SceneActivity;
 import com.testandroid.yang.activity.ViewAnimatorActivity;
 import com.testandroid.yang.common.HomeInfo;
 
@@ -37,6 +38,7 @@ public class AnimationFragment extends HomeBaseFragment {
         items.add(new HomeInfo("tv_ViewAnimator", R.id.tv_ViewAnimator, HomeInfo.HomeGroup.Animator));
         items.add(new HomeInfo("MD Animation", R.id.tv_animation_materail_design, HomeInfo.HomeGroup.Animator));
         items.add(new HomeInfo("Trans Animation", R.id.tv_animation_trans, HomeInfo.HomeGroup.Animator));
+        items.add(new HomeInfo("Trans Animation 2", R.id.tv_trans_scene, HomeInfo.HomeGroup.Animator));
     }
 
     @Override
@@ -65,8 +67,15 @@ public class AnimationFragment extends HomeBaseFragment {
                 case R.id.tv_animation_trans:
                     trans();
                     break;
+                case R.id.tv_trans_scene:
+//                    trans2();
+                    SceneActivity.start(context);
+                    break;
             }
         }
+    }
+
+    private void trans2() {
     }
 
     private void trans() {

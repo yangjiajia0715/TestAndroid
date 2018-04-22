@@ -519,6 +519,7 @@
         <activity android:name=".activity.OkIOActivity" />
         <activity android:name=".activity.SortActivity" />
         <activity android:name=".activity.PanelActivity" />
+        <activity android:name=".activity.SceneActivity" />
     </application>
 
 </manifest>
