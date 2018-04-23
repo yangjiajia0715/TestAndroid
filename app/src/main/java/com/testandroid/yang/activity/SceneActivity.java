@@ -58,8 +58,13 @@ public class SceneActivity extends BaseActivity {
             TransitionManager.go(sceneForLayout);
 
             AutoTransition autoTransition;
-            Transition transition;
+//            Transition transition = new Slide();
+//            Transition transitionE = new Explode();
+//            Transition transition = new Slide();
+            Transition transitionF = new Fade();
+//            transitionF.removeTarget(3);
 
+//            TransitionManager.beginDelayedTransition();
 //            TransitionManager.go(sceneForLayout,transition);
 
             Fade fade;
