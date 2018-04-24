@@ -53,7 +53,7 @@ public class TypeNewTectActivity extends BaseActivity implements View.OnClickLis
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        toolbar.setTitle(R.string.title_new_tect);
+        toolbar.setTitle(R.string.title_new_tech);
 
         setSupportActionBar(toolbar);
 

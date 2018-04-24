@@ -170,6 +170,13 @@
             </intent-filter>
         </receiver>
 
+        <!--7.0及以上收不到广播-->
+        <receiver android:name=".receiver.ConnectionReceiver" >
+            <intent-filter >
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".activity.DataBindingActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
@@ -520,6 +527,8 @@
         <activity android:name=".activity.SortActivity" />
         <activity android:name=".activity.PanelActivity" />
         <activity android:name=".activity.SceneActivity" />
+        <activity android:name=".activity.AndroidChangeActivity" />
+
     </application>
 
 </manifest>

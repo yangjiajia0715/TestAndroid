@@ -52,6 +52,7 @@
     <item name="tv_panel" type="id" />
     <item name="tv_permissionsdispatcher" type="id" />
     <item name="tv_glide" type="id" />
+    <item name="tv_android_change" type="id" />
     <item name="tv_menu" type="id" />
     <item name="tv_date_util" type="id" />
     <item name="tv_java" type="id" />

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.activity.AndroidChangeActivity;
 import com.testandroid.yang.activity.AppBarTabLayout;
 import com.testandroid.yang.activity.BottomSheetActivity;
 import com.testandroid.yang.activity.CoordinatorAppBarActivity;
@@ -60,6 +61,7 @@ public class NewTechFragment extends HomeBaseFragment {
         items.add(new HomeInfo("tv_panel", R.id.tv_panel, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("Permissionsdispatcher", R.id.tv_permissionsdispatcher, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("Glide", R.id.tv_glide, HomeInfo.HomeGroup.NewTech));
+        items.add(new HomeInfo("系统行为变更", R.id.tv_android_change, HomeInfo.HomeGroup.NewTech));
     }
 
     @Override
@@ -117,6 +119,9 @@ public class NewTechFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_glide:
                     GlideActivity.start(context);
+                    break;
+                case R.id.tv_android_change:
+                    AndroidChangeActivity.start(context);
                     break;
             }
         }

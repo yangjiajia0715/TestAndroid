@@ -145,18 +145,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
+                        toolbar.setTitle(R.string.title_main);
                         bottomNavigationView.setSelectedItemId(R.id.menu_item_home);
                         break;
                     case 1:
+                        toolbar.setTitle(R.string.title_new_tech);
                         bottomNavigationView.setSelectedItemId(R.id.menu_item_new_tech);
                         break;
                     case 2:
+                        toolbar.setTitle(R.string.title_animtion);
                         bottomNavigationView.setSelectedItemId(R.id.menu_item_animation);
                         break;
                     case 3:
+                        toolbar.setTitle(R.string.title_data_base);
                         bottomNavigationView.setSelectedItemId(R.id.menu_item_database);
                         break;
                     case 4:
+                        toolbar.setTitle(R.string.title_other);
                         bottomNavigationView.setSelectedItemId(R.id.menu_item_other);
                         break;
                 }
