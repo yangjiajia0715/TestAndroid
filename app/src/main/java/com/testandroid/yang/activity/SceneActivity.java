@@ -140,6 +140,7 @@ public class SceneActivity extends BaseActivity {
 
                         }
                     });
+
                     TransitionManager.beginDelayedTransition(mSceneRoot, transition);
                     mSceneRoot.findViewById(R.id.scene_image_liu).setVisibility(View.GONE);
                 }
