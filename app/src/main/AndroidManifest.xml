@@ -176,10 +176,16 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".receiver.DownloadReceiver" >
+            <intent-filter >
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".activity.DataBindingActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+
         <activity
             android:name=".activity.TempE"
             android:label="@string/title_activity_temp_e" />

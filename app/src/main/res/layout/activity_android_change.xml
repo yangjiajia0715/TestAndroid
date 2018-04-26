@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/android_change1"
+        style="@style/Home_text_style2"
+        android:text="android 行为变更" />
+
+    <TextView
+        android:id="@+id/android_change2"
+        style="@style/Home_text_style2"
+        android:text="android 行为变更" />
+
+    <TextView
+        android:id="@+id/android_change3"
+        style="@style/Home_text_style2"
+        android:text="android 行为变更" />
+
+    <TextView
+        android:id="@+id/android_change4"
+        style="@style/Home_text_style2"
+        android:text="下载apk" />
+
+    <TextView
+        android:id="@+id/android_change5"
+        style="@style/Home_text_style2"
+        android:text="DownloadManager.ACTION_VIEW_DOWNLOADS" />
 </LinearLayout>
