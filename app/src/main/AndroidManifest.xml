@@ -534,6 +534,7 @@
         <activity android:name=".activity.PanelActivity" />
         <activity android:name=".activity.SceneActivity" />
         <activity android:name=".activity.AndroidChangeActivity" />
+        <activity android:name=".activity.MediaProjectActivity" />
 
     </application>
 

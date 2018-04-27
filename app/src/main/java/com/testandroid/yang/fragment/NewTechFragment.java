@@ -13,6 +13,7 @@ import com.testandroid.yang.activity.CoordinatorAppBarActivity;
 import com.testandroid.yang.activity.CoordinatorLayoutActivity;
 import com.testandroid.yang.activity.DataBindingActivity;
 import com.testandroid.yang.activity.GlideActivity;
+import com.testandroid.yang.activity.MediaProjectActivity;
 import com.testandroid.yang.activity.MenuActivity;
 import com.testandroid.yang.activity.OkHttpActivity;
 import com.testandroid.yang.activity.PanelActivity;
@@ -62,6 +63,7 @@ public class NewTechFragment extends HomeBaseFragment {
         items.add(new HomeInfo("Permissionsdispatcher", R.id.tv_permissionsdispatcher, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("Glide", R.id.tv_glide, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("系统行为变更", R.id.tv_android_change, HomeInfo.HomeGroup.NewTech));
+        items.add(new HomeInfo("MediaProjection", R.id.tv_media_projection, HomeInfo.HomeGroup.NewTech));
     }
 
     @Override
@@ -122,6 +124,9 @@ public class NewTechFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_android_change:
                     AndroidChangeActivity.start(context);
+                    break;
+                case R.id.tv_media_projection:
+                    MediaProjectActivity.start(context);
                     break;
             }
         }
