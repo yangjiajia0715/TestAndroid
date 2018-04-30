@@ -88,6 +88,10 @@ public class MediaProjectActivity extends BaseActivity {
                 media1();
                 break;
             case R.id.meida_2:
+                if (Build.VERSION.SDK_INT >= 21 && mMediaProjection != null) {
+//                    float density = getResources().getDisplayMetrics().density;
+//                    mMediaProjection.createVirtualDisplay("",100,100,)
+                }
                 break;
             case R.id.meida_3:
                 break;
