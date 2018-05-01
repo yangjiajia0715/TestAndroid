@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -89,8 +90,14 @@ public class MediaProjectActivity extends BaseActivity {
                 break;
             case R.id.meida_2:
                 if (Build.VERSION.SDK_INT >= 21 && mMediaProjection != null) {
+                    DisplayMetrics displayMetrics = new DisplayMetrics();
+                    getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+//                    new Surface();
 //                    float density = getResources().getDisplayMetrics().density;
-//                    mMediaProjection.createVirtualDisplay("",100,100,)
+//                    SurfaceTexture surfaceTexture = new SurfaceTexture();
+
+//                    mMediaProjection.createVirtualDisplay("virtual",100,100,
+//                            3,0,new Surface(surfaceTexture),null,null);
                 }
                 break;
             case R.id.meida_3:
