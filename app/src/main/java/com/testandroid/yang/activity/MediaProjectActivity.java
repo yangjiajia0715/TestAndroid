@@ -156,9 +156,10 @@ public class MediaProjectActivity extends BaseActivity implements SurfaceTexture
             case R.id.meida_2:
                 if (Build.VERSION.SDK_INT >= 21 && mMediaProjection != null) {
                     mSurfaceTexture = new SurfaceTexture(GlUtil.createOESTextureObject());
-//                    mSurfaceTexture.setDefaultBufferSize(mWidth, mHeight);
-                    mSurface = new Surface(mSurfaceTexture);
+                    mSurfaceTexture.setDefaultBufferSize(mWidth, mHeight);
                     mSurfaceTexture.setOnFrameAvailableListener(this);
+
+                    mSurface = new Surface(mSurfaceTexture);
 
                     DisplayMetrics displayMetrics = new DisplayMetrics();
                     getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -167,6 +168,7 @@ public class MediaProjectActivity extends BaseActivity implements SurfaceTexture
                             displayMetrics.densityDpi, DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC,
                             mSurface, null, null);
 
+                    //显示在surfaceView上，initView()获取
 //                    mVirtualDisplay = mMediaProjection.createVirtualDisplay("Virtual"
 //                            , displayMetrics.widthPixels, displayMetrics.heightPixels,
 //                            displayMetrics.densityDpi, DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC,
