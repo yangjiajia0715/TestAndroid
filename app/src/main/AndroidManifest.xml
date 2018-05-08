@@ -537,6 +537,7 @@
         <activity android:name=".activity.SceneActivity" />
         <activity android:name=".activity.AndroidChangeActivity" />
         <activity android:name=".activity.MediaProjectActivity" />
+        <activity android:name=".activity.EmptyActivity" />
 
     </application>
 

@@ -129,6 +129,7 @@ public class MediaProjectActivity extends BaseActivity implements SurfaceTexture
                     new String[]{Manifest.permission.RECORD_AUDIO},
                     PERMISSION_REQ_ID_RECORD_AUDIO);
         }
+//        2018-5-6 23:33:28 save appinfo 获取size=0
 
         setContentView(R.layout.activity_mediaprojection);
         ButterKnife.bind(this);
@@ -182,6 +183,7 @@ public class MediaProjectActivity extends BaseActivity implements SurfaceTexture
             case R.id.meida_4:
                 break;
             case R.id.meida_5:
+                EmptyActivity.start(this);
                 break;
         }
     }
