@@ -21,6 +21,7 @@ import com.testandroid.yang.activity.PermissiondispatcherActivity;
 import com.testandroid.yang.activity.RxJava2Activity;
 import com.testandroid.yang.activity.RxJavaOperateActivity;
 import com.testandroid.yang.activity.Rxjava2NewActivity;
+import com.testandroid.yang.activity.ServiceActivity;
 import com.testandroid.yang.activity.TestAppBar;
 import com.testandroid.yang.common.HomeInfo;
 
@@ -127,6 +128,9 @@ public class NewTechFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_media_projection:
                     MediaProjectActivity.start(context);
+                    break;
+                case R.id.tv_service:
+                    ServiceActivity.start(context);
                     break;
             }
         }

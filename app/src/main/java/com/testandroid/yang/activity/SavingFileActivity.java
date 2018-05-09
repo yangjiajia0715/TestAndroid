@@ -30,6 +30,7 @@ import java.util.List;
  * 保存文件
  * Created by yangjiajia on 2017/7/25.
  * file:///D:/sdk/docs/training/basics/data-storage/files.html
+ * 外部私有目录是否权限？
  */
 
 public class SavingFileActivity extends ListActivity {
@@ -86,7 +87,11 @@ public class SavingFileActivity extends ListActivity {
         HashMap<String, String> map;
     }
 
+    /**
+     * 系统提供的格式化类： Formatter.formatFileSize(this, 100000);
+     */
     private void ioUtils() {
+
         File ioTestFile = null;
         try {
             ioTestFile = new File(getExternalFilesDir(null), "ioutils.txt");
