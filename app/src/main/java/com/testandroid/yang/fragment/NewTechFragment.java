@@ -65,6 +65,7 @@ public class NewTechFragment extends HomeBaseFragment {
         items.add(new HomeInfo("Glide", R.id.tv_glide, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("系统行为变更", R.id.tv_android_change, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("MediaProjection", R.id.tv_media_projection, HomeInfo.HomeGroup.NewTech));
+        items.add(new HomeInfo("Service相关", R.id.tv_service, HomeInfo.HomeGroup.NewTech));
     }
 
     @Override

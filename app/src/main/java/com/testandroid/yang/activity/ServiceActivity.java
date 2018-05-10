@@ -57,6 +57,8 @@ public class ServiceActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
         ButterKnife.bind(this);
+        initView();
+        initData();
     }
 
     @Override
@@ -95,6 +97,7 @@ public class ServiceActivity extends BaseActivity {
 
     private void startScreenCaptureService() {
         Intent intent = new Intent(this, ScreenCaptureService.class);
+        intent.putExtra(ScreenCaptureService.CHANNEL, "startScreenCaptureService");
         startService(intent);
     }
 

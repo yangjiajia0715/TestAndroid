@@ -13,7 +13,7 @@ import android.util.Log;
  */
 public class ScreenCaptureService extends Service {
     private static final String TAG = "ScreenCaptureService";
-    private static final String CHANNEL = "CHANNEL";
+    public static final String CHANNEL = "CHANNEL";
 
     @Override
     public void onCreate() {
