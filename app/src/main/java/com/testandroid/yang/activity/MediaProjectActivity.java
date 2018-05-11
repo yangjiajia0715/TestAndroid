@@ -36,6 +36,7 @@ import butterknife.OnClick;
 
 /**
  * Created by yangjiajia on 2018/4/27.
+ * @see OpenGLActivity
  */
 public class MediaProjectActivity extends BaseActivity implements SurfaceTexture.OnFrameAvailableListener {
     @BindView(R.id.surfaceview)
@@ -135,6 +136,7 @@ public class MediaProjectActivity extends BaseActivity implements SurfaceTexture
         ButterKnife.bind(this);
         initView();
         initData();
+
     }
 
     @Override
@@ -179,6 +181,9 @@ public class MediaProjectActivity extends BaseActivity implements SurfaceTexture
                 }
                 break;
             case R.id.meida_3:
+                if (Build.VERSION.SDK_INT >= 21) {
+                    mMediaProjection.stop();
+                }
                 break;
             case R.id.meida_4:
                 break;
@@ -190,7 +195,7 @@ public class MediaProjectActivity extends BaseActivity implements SurfaceTexture
 
     private void media1() {
         if (Build.VERSION.SDK_INT >= 21) {
-            Toast.makeText(this, "5.0以后才可录屏", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "5.0以后才可录屏", Toast.LENGTH_SHORT).show();
             mProjectionManager = (MediaProjectionManager) getSystemService(MEDIA_PROJECTION_SERVICE);
             Intent captureIntent = mProjectionManager.createScreenCaptureIntent();
             startActivityForResult(captureIntent, REQ_CODE_MEDIA);
@@ -247,8 +252,8 @@ public class MediaProjectActivity extends BaseActivity implements SurfaceTexture
     public void onFrameAvailable(SurfaceTexture surfaceTexture) {
         Log.d("onFrameAvailable--surfaceTexture--" + surfaceTexture);
         if (mMainHandler != null) {
-//            mMainHandler.removeCallbacks(mFillFrameRunnable);
-//            mMainHandler.postDelayed(mFillFrameRunnable, 1000);
+            mMainHandler.removeCallbacks(mFillFrameRunnable);
+            mMainHandler.postDelayed(mFillFrameRunnable, 1000);
         }
     }
 

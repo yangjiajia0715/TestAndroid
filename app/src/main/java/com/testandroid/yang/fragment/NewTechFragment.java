@@ -16,6 +16,7 @@ import com.testandroid.yang.activity.GlideActivity;
 import com.testandroid.yang.activity.MediaProjectActivity;
 import com.testandroid.yang.activity.MenuActivity;
 import com.testandroid.yang.activity.OkHttpActivity;
+import com.testandroid.yang.activity.OpenGLActivity;
 import com.testandroid.yang.activity.PanelActivity;
 import com.testandroid.yang.activity.PermissiondispatcherActivity;
 import com.testandroid.yang.activity.RxJava2Activity;
@@ -66,6 +67,7 @@ public class NewTechFragment extends HomeBaseFragment {
         items.add(new HomeInfo("系统行为变更", R.id.tv_android_change, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("MediaProjection", R.id.tv_media_projection, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("Service相关", R.id.tv_service, HomeInfo.HomeGroup.NewTech));
+        items.add(new HomeInfo("OpenGL相关", R.id.tv_open_gl, HomeInfo.HomeGroup.NewTech));
     }
 
     @Override
@@ -132,6 +134,9 @@ public class NewTechFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_service:
                     ServiceActivity.start(context);
+                    break;
+                case R.id.tv_open_gl:
+                    OpenGLActivity.start(context);
                     break;
             }
         }

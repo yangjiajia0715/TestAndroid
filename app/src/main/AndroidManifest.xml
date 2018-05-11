@@ -26,7 +26,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
-    <uses-permission android:name="android.permission.CAMERA" /> />
+    <uses-permission android:name="android.permission.CAMERA" />
+    />
 
     <!-- name MultiDexAppcation -->
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
@@ -173,13 +174,13 @@
         </receiver>
 
         <!--7.0及以上收不到广播-->
-        <receiver android:name=".receiver.ConnectionReceiver" >
-            <intent-filter >
+        <receiver android:name=".receiver.ConnectionReceiver">
+            <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.DownloadReceiver" >
-            <intent-filter >
+        <receiver android:name=".receiver.DownloadReceiver">
+            <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />
             </intent-filter>
         </receiver>
@@ -512,7 +513,9 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-        <service android:name=".service.ScreenCaptureService" />
+        <service
+            android:name=".service.ScreenCaptureService"
+            android:process=":screen" />
         <!--
         <service android:name=".sync.SyncService">
             <meta-data
@@ -540,6 +543,7 @@
         <activity android:name=".activity.MediaProjectActivity" />
         <activity android:name=".activity.EmptyActivity" />
         <activity android:name=".activity.ServiceActivity" />
+        <activity android:name=".activity.OpenGLActivity" />
 
     </application>
 
