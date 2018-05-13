@@ -77,7 +77,7 @@ public class OpenGLActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        mGlSurfaceview.setRenderer(renderer);
     }
 
     private void media1() {
