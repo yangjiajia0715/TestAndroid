@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
+import android.net.TrafficStats;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.testandroid.yang.R;
@@ -93,8 +96,20 @@ public class OpenGLActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_gl_1:
+                WindowManager wm = (WindowManager) getApplicationContext()
+                        .getSystemService(Context.WINDOW_SERVICE);
+                int screenWidth = wm.getDefaultDisplay().getWidth();
+                int screenHeight = wm.getDefaultDisplay().getHeight();
+
+                DisplayMetrics metrics = getResources().getDisplayMetrics();
+                int densityDpi = metrics.densityDpi;
+                int widthPixels = metrics.widthPixels;
+                int heightPixels = metrics.heightPixels;
+
                 break;
             case R.id.btn_gl_2:
+                TrafficStats trafficStats;
+                TrafficStats.getTotalRxBytes();
                 break;
             case R.id.btn_gl_3:
                 break;

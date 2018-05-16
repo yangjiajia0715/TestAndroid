@@ -338,13 +338,28 @@
     </style>
 
     <style name="SearchTheme" parent="Theme.AppCompat.Light.NoActionBar">
-         <item name="actionButtonStyle">@style/SearchActionBtn</item>
-         <!--<item name="searchViewStyle">@style/MySearchView</item>-->
-         <item name="overlapAnchor">false</item>
+        <item name="actionButtonStyle">@style/SearchActionBtn</item>
+        <!--<item name="searchViewStyle">@style/MySearchView</item>-->
+        <item name="overlapAnchor">false</item>
         <item name="actionBarStyle">@style/SearchActionBarStyle</item>
     </style>
 
     <style name="SearchActionBarStyle" parent="@style/Widget.AppCompat.ActionBar">
         <item name="background">@color/white</item>
     </style>
+
+    <!--plugin 安装超时：system settings ,udpates,取消 use secure connect 2018-5-16-->
+    <!--Android Styler-->
+
+    <!--Usage:
+        a. copy lines with future style from your layout.xml file
+        b. paste it to styles.xml file with Ctrl+Shift+D (or context menu)
+        c. enter name of new style in the modal window
+        d. your style is prepared!-->
+
+    <style name="V1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>
