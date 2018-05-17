@@ -15,6 +15,7 @@ import android.widget.Button;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.log.Log;
+import com.testandroid.yang.provider.ScreenCaptureBroadcastReceiver;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -112,6 +113,9 @@ public class OpenGLActivity extends BaseActivity {
                 TrafficStats.getTotalRxBytes();
                 break;
             case R.id.btn_gl_3:
+                Intent intent = new Intent();
+                intent.setAction(ScreenCaptureBroadcastReceiver.ACTION_SCREEN_CAPTION);
+                sendBroadcast(intent);
                 break;
         }
     }

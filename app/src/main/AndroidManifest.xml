@@ -516,6 +516,14 @@
         <service
             android:name=".service.ScreenCaptureService"
             android:process=":screen" />
+
+        <receiver
+            android:name=".provider.ScreenCaptureBroadcastReceiver"
+            android:process=":screen">
+            <intent-filter>
+                <action android:name="com.kidle.learning.screencapture" />
+            </intent-filter>
+        </receiver>
         <!--
         <service android:name=".sync.SyncService">
             <meta-data

@@ -3,11 +3,7 @@ package com.testandroid.yang.provider;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.Process;
-
-import com.kidle.learning.util.DeviceUtil;
-import com.kidle.learning.util.ToastUtil;
 
 /**
  * 主进程异常时 kill录屏进程
@@ -20,18 +16,16 @@ public class ScreenCaptureBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (ACTION_SCREEN_CAPTION.equals(intent.getAction())) {
 
-            String currentProcessName = DeviceUtil.getCurrentProcessName(context);
+            ToastUtil.showLengthDebug(context,"收到广播 myPid=" + Process.myPid()
+            + ",context=" + context);
 
-            ToastUtil.showShortDebug(context,"收到广播 myPid=" + Process.myPid()
-                    + ",currentProcessName" + currentProcessName);
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    System.exit(0);
-//                    Process.killProcess(Process.myPid());
-                }
-            }, 3000);
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    System.exit(0);
+////                    Process.killProcess(Process.myPid());
+//                }
+//            }, 3000);
         }
     }
 }
