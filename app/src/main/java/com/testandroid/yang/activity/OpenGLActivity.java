@@ -109,10 +109,12 @@ public class OpenGLActivity extends BaseActivity {
 
                 break;
             case R.id.btn_gl_2:
+                //dev
                 TrafficStats trafficStats;
                 TrafficStats.getTotalRxBytes();
                 break;
             case R.id.btn_gl_3:
+                //devLocal add
                 Intent intent = new Intent();
                 intent.setAction(ScreenCaptureBroadcastReceiver.ACTION_SCREEN_CAPTION);
                 sendBroadcast(intent);
