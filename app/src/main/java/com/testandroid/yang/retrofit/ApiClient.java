@@ -5,9 +5,9 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.testandroid.yang.BuildConfig;
-import com.testandroid.yang.common.ResultBeanInfo;
 import com.testandroid.yang.common.FileUploadInfo;
 import com.testandroid.yang.common.MicroCourseInfo;
+import com.testandroid.yang.common.ResultBeanInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +45,7 @@ public class ApiClient {
 
     private static ApiClient INSTANCE;
     private final ApiServer apiServer;
+    private final ApiQiBu mApiQiBu;
 
     public static ApiClient getInstance() {
         if (INSTANCE == null)
@@ -53,18 +54,23 @@ public class ApiClient {
     }
 
     private ApiClient() {
-        okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new TestIntercept())
-                .addInterceptor(new Test2Intercept())
-                .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
-                .build();
-
+        OkHttpClient.Builder okhttpBuilder = new OkHttpClient.Builder()
+//                .addInterceptor(new TestIntercept())
+//                .addInterceptor(new Test2Intercept())
+                .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS);
         if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            Log.d(TAG, "ApiClient-------httpLoggingInterceptor=" + httpLoggingInterceptor);
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            okHttpClient.networkInterceptors().add(httpLoggingInterceptor);//异常
+            // 2018-5-17 21:17:38
+//            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+//            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//            okHttpClient.networkInterceptors().add(httpLoggingInterceptor);//异常
+
+            //2018-5-17 21:18:34 之后
+            //日志拦截器
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            okhttpBuilder.addInterceptor(logging);
         }
+        okHttpClient = okhttpBuilder.build();
 
         retrofit = new Retrofit.Builder()
                 .callFactory(okHttpClient)
@@ -72,6 +78,7 @@ public class ApiClient {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         apiServer = retrofit.create(ApiServer.class);
+        mApiQiBu = retrofit.create(ApiQiBu.class);
     }
 
     public Observable<List<MicroCourseInfo>> getMicInfos(String stuId) {
@@ -122,5 +129,11 @@ public class ApiClient {
                 .observeOn(AndroidSchedulers.mainThread())//doOnndext
                 ;
 
+    }
+
+    public Observable<ResponseBody> listAll() {
+        return mApiQiBu.listAll()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

@@ -12,10 +12,13 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.log.Log;
-import com.testandroid.yang.provider.ScreenCaptureBroadcastReceiver;
+import com.testandroid.yang.retrofit.ApiClient;
+
+import java.io.IOException;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -23,13 +26,18 @@ import javax.microedition.khronos.opengles.GL10;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import okhttp3.ResponseBody;
 
 /**
  * Created by yangjiajia on 2018/5/11.
+ *
  * @see MediaProjectActivity
  */
 public class OpenGLActivity extends BaseActivity {
     private static final int REQ_CODE_MEDIA = 302;
+    private static final String TAG = "OpenGLActivity";
 
     @BindView(R.id.btn_gl_1)
     Button mBtnGl1;
@@ -76,7 +84,7 @@ public class OpenGLActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        media1();
+//        media1();
     }
 
     @Override
@@ -106,7 +114,7 @@ public class OpenGLActivity extends BaseActivity {
                 int densityDpi = metrics.densityDpi;
                 int widthPixels = metrics.widthPixels;
                 int heightPixels = metrics.heightPixels;
-
+                //dev local 提交后 dev add
                 break;
             case R.id.btn_gl_2:
                 //dev
@@ -115,9 +123,38 @@ public class OpenGLActivity extends BaseActivity {
                 break;
             case R.id.btn_gl_3:
                 //devLocal add
-                Intent intent = new Intent();
-                intent.setAction(ScreenCaptureBroadcastReceiver.ACTION_SCREEN_CAPTION);
-                sendBroadcast(intent);
+//                Intent intent = new Intent();
+//                intent.setAction(ScreenCaptureBroadcastReceiver.ACTION_SCREEN_CAPTION);
+//                sendBroadcast(intent);
+                Toast.makeText(this, "btn_gl_3", Toast.LENGTH_SHORT).show();
+                ApiClient.getInstance()
+                        .listAll()
+                        .subscribe(new Observer<ResponseBody>() {
+
+                            @Override
+                            public void onSubscribe(Disposable d) {
+                                android.util.Log.d(TAG, "onSubscribe: ");
+                            }
+
+                            @Override
+                            public void onNext(ResponseBody responseBody) {
+                                try {
+                                    android.util.Log.d(TAG, "onNext: " + responseBody.string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                android.util.Log.d(TAG, "onError: e=" + e.getMessage());
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                android.util.Log.d(TAG, "onComplete: ");
+                            }
+                        });
                 break;
         }
     }

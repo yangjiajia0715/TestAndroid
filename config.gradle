@@ -19,7 +19,11 @@ ext {
 
     rxlifecycleVersion = "2.0.1"//同rxlifecycle-components
 
-    okhttp3Version = "3.6.0"
+    //3.6.0-->3.8.0 2018-5-17 21:17:38，日志拦截器报错
+    //java.lang.UnsupportedOperationException
+//    at java.util.Collections$UnmodifiableCollection.add(Collections.java:1128)
+//    at com.testandroid.yang.retrofit.ApiClient.<init>(ApiClient.java:66)
+    okhttp3Version = "3.8.0"
 //    okhttp3InterceptorVersion = "3.0.1"
 
     retrofitVersion = "2.2.0"

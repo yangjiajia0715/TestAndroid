@@ -92,7 +92,6 @@ android {
         String fileUploadAddress = (project.hasProperty("FILE_UPLOAD_ADDRESS") ? project.getProperty("FILE_UPLOAD_ADDRESS") : "未配置")
         System.out.println("文件上传地址-------fileUploadAddress=" + fileUploadAddress)
         def ip = project.hasProperty("IP_DEBUG") ? project.getProperty("IP_DEBUG") : "\"\""
-        buildConfigField "String", "IP_ADDRESS", ip
         buildConfigField("String", "FILE_UPLOAD_ADDRESS", getFileUploadAddress())
         buildConfigField("String", "FILE_UPLOAD_ADDRESS_ORC", getFileUploadAddressOcr())
         vectorDrawables.useSupportLibrary = true
@@ -100,18 +99,19 @@ android {
 
     buildTypes {
         release {
-
             minifyEnabled true
             proguardFile 'proguard.flags'
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.yang
             buildConfigField "String", "HHH", "\"releasereleasereleaserelease\""
+            buildConfigField "String", "IP_ADDRESS", ip_address_release
         }
 
         debug {
             debuggable true
             minifyEnabled false
 //            signingConfig signingConfigs.debug
+            buildConfigField "String", "IP_ADDRESS", ip_address_debug
         }
     }
 
