@@ -552,6 +552,7 @@
         <activity android:name=".activity.EmptyActivity" />
         <activity android:name=".activity.ServiceActivity" />
         <activity android:name=".activity.OpenGLActivity" />
+        <activity android:name=".activity.ClassNameActivity" />
 
     </application>
 

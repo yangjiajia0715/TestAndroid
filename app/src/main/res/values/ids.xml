@@ -61,6 +61,7 @@
     <item name="tv_java" type="id" />
     <item name="tv_handler" type="id" />
     <item name="tv_install_apk" type="id" />
+    <item name="tv_class_name" type="id" />
     <item name="tv_file_jiami" type="id" />
     <item name="tv_menu_toolbar" type="id" />
     <item name="tv_action_bar" type="id" />

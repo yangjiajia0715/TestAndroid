@@ -19,6 +19,7 @@ import com.testandroid.yang.log.Log;
 import com.testandroid.yang.retrofit.ApiClient;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -120,6 +121,10 @@ public class OpenGLActivity extends BaseActivity {
                 //dev
                 TrafficStats trafficStats;
                 TrafficStats.getTotalRxBytes();
+                Timestamp timestamp;
+                //
+                //br 2018-5-21 12:45:20
+
                 break;
             case R.id.btn_gl_3:
                 //devLocal add

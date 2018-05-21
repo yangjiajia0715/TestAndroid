@@ -16,6 +16,7 @@ import com.testandroid.yang.activity.AJavaActivity;
 import com.testandroid.yang.activity.AccountManagerActivity;
 import com.testandroid.yang.activity.BroadcastReceiverActivity;
 import com.testandroid.yang.activity.BuildConfigFieldActivity;
+import com.testandroid.yang.activity.ClassNameActivity;
 import com.testandroid.yang.activity.DateUtilActivity;
 import com.testandroid.yang.activity.FileEncryptActivity;
 import com.testandroid.yang.activity.GraphicsAndAnimationActivity;
@@ -79,6 +80,7 @@ public class OtherFragment extends HomeBaseFragment {
         items.add(new HomeInfo("Java", R.id.tv_java, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("Handler", R.id.tv_handler, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("安装应用", R.id.tv_install_apk, HomeInfo.HomeGroup.Other));
+        items.add(new HomeInfo("特殊类", R.id.tv_class_name, HomeInfo.HomeGroup.Other));
     }
 
     @Override
@@ -209,6 +211,9 @@ public class OtherFragment extends HomeBaseFragment {
                         e.printStackTrace();
                     }
 
+                    break;
+                case R.id.tv_class_name:
+                    ClassNameActivity.start(getActivity());
                     break;
             }
         }

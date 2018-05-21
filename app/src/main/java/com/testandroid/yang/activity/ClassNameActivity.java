@@ -1,0 +1,36 @@
+package com.testandroid.yang.activity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
+import java.sql.Timestamp;
+
+/**
+ * 记录一个特殊类
+ * Created by yangjiajia on 2018/5/21.
+ */
+public class ClassNameActivity extends BaseActivity {
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, ClassNameActivity.class);
+        context.startActivity(starter);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    @Override
+    public void initView() {
+        Timestamp timestamp;
+    }
+
+    @Override
+    public void initData() {
+
+    }
+}
