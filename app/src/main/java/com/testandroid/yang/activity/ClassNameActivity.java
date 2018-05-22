@@ -33,5 +33,6 @@ public class ClassNameActivity extends BaseActivity {
     @Override
     public void initData() {
 
+        //2018年5月22日21:14:54 git co v0.2.2
     }
 }
