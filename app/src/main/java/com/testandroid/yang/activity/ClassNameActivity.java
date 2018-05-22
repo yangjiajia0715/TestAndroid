@@ -22,6 +22,7 @@ public class ClassNameActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         initView();
         initData();
+        //2018-5-22 19:54:42 tag
     }
 
     @Override
