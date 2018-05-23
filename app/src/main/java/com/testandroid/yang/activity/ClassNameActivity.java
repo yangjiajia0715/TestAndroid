@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import java.sql.Timestamp;
+import java.util.stream.Stream;
 
 /**
  * 记录一个特殊类
@@ -28,6 +29,7 @@ public class ClassNameActivity extends BaseActivity {
     @Override
     public void initView() {
         Timestamp timestamp;
+        Stream stream;
     }
 
     @Override
