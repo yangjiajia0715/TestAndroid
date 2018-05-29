@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**
@@ -30,6 +31,11 @@ public class ClassNameActivity extends BaseActivity {
     public void initView() {
         Timestamp timestamp;
         Stream stream;
+
+//        Stream.Builder()
+//        new Stream.Builder<>();
+        String[] arr = {"a","c","d"};
+//        Arrays.stream(arr);
     }
 
     @Override
