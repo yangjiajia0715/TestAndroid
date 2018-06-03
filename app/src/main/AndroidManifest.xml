@@ -553,6 +553,7 @@
         <activity android:name=".activity.ServiceActivity" />
         <activity android:name=".activity.OpenGLActivity" />
         <activity android:name=".activity.ClassNameActivity" />
+        <activity android:name=".activity.FlexLayoutActivity" />
 
     </application>
 

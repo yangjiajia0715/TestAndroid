@@ -70,6 +70,7 @@
     <item name="tv_search_view" type="id" />
     <item name="tv_search_view_2" type="id" />
     <item name="tv_banner_viewpager" type="id" />
+    <item name="tv_flex_layout" type="id" />
     <item name="tv_pdf" type="id" />
     <item name="tv_overview_screen" type="id" />
     <item name="tv_notification" type="id" />

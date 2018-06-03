@@ -3,6 +3,7 @@ package com.testandroid.yang.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -26,6 +27,7 @@ import butterknife.ButterKnife;
  * RecycleViewActivity
  * {@link RecycleviewAdapter}
  * {@link AutoLineLayoutManage}
+ * {@link FlexLayoutActivity}
  * Created by yangjiajia on 2017/4/11.
  */
 
@@ -70,6 +72,9 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
 
         recyclerView.setLayoutManager(flowLayoutManager);
 
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, true));
+//        recycleviewAdapter.setHasStableIds(true);
+
         initAdapter();
 
 //        recyclerView.setRecycledViewPool(new CusPool());
@@ -102,7 +107,7 @@ public class RecycleViewActivity extends BaseActivity implements View.OnClickLis
     private void initAdapter() {
         Random random = new Random();
         List<Student> students = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 41; i++) {
             int nextInt = random.nextInt();
             switch (nextInt % 4) {
                 case 0:

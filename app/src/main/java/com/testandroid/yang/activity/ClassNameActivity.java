@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**

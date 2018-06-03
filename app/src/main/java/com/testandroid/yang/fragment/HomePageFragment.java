@@ -27,6 +27,7 @@ import com.testandroid.yang.activity.DrawerLayoutActivity;
 import com.testandroid.yang.activity.EditTextActivity;
 import com.testandroid.yang.activity.FitSystemWindowActivity;
 import com.testandroid.yang.activity.FitSystemwindowActivity2;
+import com.testandroid.yang.activity.FlexLayoutActivity;
 import com.testandroid.yang.activity.FragmentActivity;
 import com.testandroid.yang.activity.FrgStatePagerAdaperActivity;
 import com.testandroid.yang.activity.FullScreenActivity;
@@ -108,6 +109,7 @@ public class HomePageFragment extends HomeBaseFragment {
         items.add(new HomeInfo("SearchView", R.id.tv_search_view, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("SearchView2", R.id.tv_search_view_2, HomeInfo.HomeGroup.View));
         items.add(new HomeInfo("Banner_viewpager", R.id.tv_banner_viewpager, HomeInfo.HomeGroup.View));
+        items.add(new HomeInfo("FlexLayout", R.id.tv_flex_layout, HomeInfo.HomeGroup.View));
 
     }
 
@@ -238,6 +240,9 @@ public class HomePageFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_banner_viewpager:
                     BannerViewPagerActivity.start(context);
+                    break;
+                case R.id.tv_flex_layout:
+                    FlexLayoutActivity.start(context);
                     break;
             }
         }
