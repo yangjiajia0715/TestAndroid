@@ -554,6 +554,7 @@
         <activity android:name=".activity.OpenGLActivity" />
         <activity android:name=".activity.ClassNameActivity" />
         <activity android:name=".activity.FlexLayoutActivity" />
+        <activity android:name=".activity.ProcessedAndThreadsActivity" />
 
     </application>
 

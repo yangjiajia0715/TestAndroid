@@ -26,6 +26,7 @@ import com.testandroid.yang.activity.MutilMediaActivity;
 import com.testandroid.yang.activity.NotificationActivity;
 import com.testandroid.yang.activity.OverviewScreen01Activity;
 import com.testandroid.yang.activity.PDFCreateActivity;
+import com.testandroid.yang.activity.ProcessedAndThreadsActivity;
 import com.testandroid.yang.activity.ReflectActivity;
 import com.testandroid.yang.activity.SavingFileActivity;
 import com.testandroid.yang.activity.SelectFileActivity;
@@ -81,6 +82,7 @@ public class OtherFragment extends HomeBaseFragment {
         items.add(new HomeInfo("Handler", R.id.tv_handler, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("安装应用", R.id.tv_install_apk, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("特殊类", R.id.tv_class_name, HomeInfo.HomeGroup.Other));
+        items.add(new HomeInfo("进程和线程", R.id.tv_processed_threads, HomeInfo.HomeGroup.Other));
     }
 
     @Override
@@ -214,6 +216,9 @@ public class OtherFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_class_name:
                     ClassNameActivity.start(getActivity());
+                    break;
+                case R.id.tv_processed_threads:
+                    ProcessedAndThreadsActivity.start(getActivity());
                     break;
             }
         }

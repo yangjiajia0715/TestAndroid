@@ -11,6 +11,11 @@ import android.support.annotation.Nullable;
 /**
  * ContentProviderTmp
  * Created by yangjiajia on 2017/9/17.
+ * Similarly, a content provider can receive data requests that originate in other processes.
+ * Although the ContentResolver and ContentProvider classes hide the details of how the interprocess communication is managed,
+ * ContentProvider methods that respond to those requests—the methods query(), insert(), delete(), update(), and getType()
+ * —are called from a pool of threads in the content provider's process, not the UI thread for the process.
+ * Because these methods might be called from any number of threads at the same time, they too must be implemented to be thread-safe.
  */
 
 public class ContentProviderTmp extends ContentProvider {
