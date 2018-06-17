@@ -11,7 +11,6 @@ import android.widget.Button;
 
 import com.testandroid.yang.R;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -86,16 +85,16 @@ public class ProcessedAndThreadsActivity extends BaseActivity {
         }, 1);
 
         MyAysncTask myAysncTask = new MyAysncTask();
-        try {
-            Bitmap bitmap = myAysncTask.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Bitmap bitmap = myAysncTask.get();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
         AsyncTask.Status status = myAysncTask.getStatus();
 //        myAysncTask.
-        AsyncTask<String, Integer, Bitmap> execute = myAysncTask.execute("");
+//        AsyncTask<String, Integer, Bitmap> execute = myAysncTask.execute("");
 //        execute.cancel(true);
 //        myAysncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "");
 

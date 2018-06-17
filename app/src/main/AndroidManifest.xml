@@ -555,6 +555,7 @@
         <activity android:name=".activity.ClassNameActivity" />
         <activity android:name=".activity.FlexLayoutActivity" />
         <activity android:name=".activity.ProcessedAndThreadsActivity" />
+        <activity android:name=".activity.MediaProject2Activity" />
 
     </application>
 

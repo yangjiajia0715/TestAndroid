@@ -1,5 +1,6 @@
 package com.example;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -53,8 +54,19 @@ public class MyClass {
 //        String url = bundle.getString("url");
 //        System.out.print("--------url=" + url);
 
-        HashMap<String, String> map;
-        sort();
+//        HashMap<String, String> map;
+//        sort();
+        delete("E:/aaWorking/aa superword/word sound");
+    }
+
+    static void delete(String path){
+        File file = new File(path);
+        File[] files = file.listFiles();
+        for (File file1 : files) {
+            System.out.print("delete=" + file1.getName());
+        }
+
+//        String.valueOf()
     }
 
     //全部是 java.sql 下的

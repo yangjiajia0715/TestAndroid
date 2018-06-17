@@ -54,6 +54,7 @@
     <item name="tv_glide" type="id" />
     <item name="tv_android_change" type="id" />
     <item name="tv_media_projection" type="id" />
+    <item name="tv_media_projection_2" type="id" />
     <item name="tv_service" type="id" />
     <item name="tv_open_gl" type="id" />
     <item name="tv_menu" type="id" />
