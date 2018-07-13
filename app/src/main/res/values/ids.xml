@@ -30,6 +30,7 @@
     <item name="tv_test_tinker" type="id" />
     <item name="tv_test_RxJava_main" type="id" />
     <item name="tv_test_RxJava_new" type="id" />
+    <item name="tv_test_RxJava_new_2" type="id" />
     <item name="tv_test_RxJava_operate" type="id" />
     <item name="tv_test_DatabaseUtil" type="id" />
     <item name="tv_test_CursorLoader" type="id" />

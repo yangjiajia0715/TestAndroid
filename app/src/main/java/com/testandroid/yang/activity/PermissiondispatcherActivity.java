@@ -157,6 +157,8 @@ public class PermissiondispatcherActivity extends BaseActivity {
 //                    pickImageByCapture();
 //                }
                 break;
+            default:
+                break;
         }
     }
 
@@ -172,6 +174,8 @@ public class PermissiondispatcherActivity extends BaseActivity {
                 } else {
                     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
+                break;
+            default:
                 break;
         }
     }
