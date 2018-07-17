@@ -3,10 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.testandroid.yang"> <!-- 18 -->
     <!-- android:installLocation="preferExternal" -->
+    <!--android:sharedUserId="1"-->
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="24"
         tools:overrideLibrary="uk.co.senab.photoview" />
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <permission android:name="com.testandroid.yang.provider" />
     <permission android:name="com.testandroid.yang.provider.Reader" />
@@ -27,7 +30,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.CAMERA" />
-    />
 
     <!-- name MultiDexAppcation -->
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />

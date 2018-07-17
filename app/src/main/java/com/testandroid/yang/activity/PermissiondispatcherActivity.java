@@ -84,6 +84,12 @@ public class PermissiondispatcherActivity extends BaseActivity {
 
         int i = getPackageManager().checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, "com.mmmm");
 
+        getSharedPreferences("", Context.MODE_PRIVATE);
+//        FileOutputStream quanxian = openFileOutput("quanxian", Context.MODE_WORLD_WRITEABLE);
+        openOrCreateDatabase("", Context.MODE_PRIVATE, null);
+
+        checkCallingPermission("");
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_CONTACTS)
                     != PackageManager.PERMISSION_GRANTED) {
