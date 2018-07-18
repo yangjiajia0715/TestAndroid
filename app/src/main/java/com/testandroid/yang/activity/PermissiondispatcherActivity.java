@@ -88,7 +88,7 @@ public class PermissiondispatcherActivity extends BaseActivity {
 //        FileOutputStream quanxian = openFileOutput("quanxian", Context.MODE_WORLD_WRITEABLE);
         openOrCreateDatabase("", Context.MODE_PRIVATE, null);
 
-        checkCallingPermission("");
+//        ActivityCompat.requestPermissions(this,);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_CONTACTS)
