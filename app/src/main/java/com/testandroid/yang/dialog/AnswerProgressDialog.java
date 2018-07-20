@@ -19,9 +19,8 @@ public class AnswerProgressDialog extends Dialog {
 
     private final FillableLoader mFillableLoader;
 
-
-    public AnswerProgressDialog(@NonNull Context context) {
-        super(context);
+    public AnswerProgressDialog(@NonNull Context context, int themeResId) {
+        super(context, themeResId);
         setContentView(R.layout.dialog_answer_progress);
         Window window = getWindow();
         if (window != null) {

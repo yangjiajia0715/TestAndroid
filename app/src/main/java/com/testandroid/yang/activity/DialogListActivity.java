@@ -249,7 +249,7 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
     }
 
     private void showGithubProgressDialog() {
-        AnswerProgressDialog answerProgressDialog = new AnswerProgressDialog(this);
+        AnswerProgressDialog answerProgressDialog = new AnswerProgressDialog(this, R.style.AnswerDialog);
         answerProgressDialog.start(10);
     }
 

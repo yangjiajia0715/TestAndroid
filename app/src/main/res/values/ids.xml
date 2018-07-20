@@ -85,6 +85,7 @@
     <item name="tv_account_manage" type="id" />
     <item name="tv_animation_materail_design" type="id" />
     <item name="tv_animation_trans" type="id" />
+    <item name="tv_view_flipper_dialog" type="id" />
     <item name="tv_trans_scene" type="id" />
     <item name="tv_recycleview" type="id" />
     <item name="tv_recycleview_ceiling" type="id" />

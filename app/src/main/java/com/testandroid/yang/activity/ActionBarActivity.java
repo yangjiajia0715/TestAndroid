@@ -267,6 +267,6 @@ public class ActionBarActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(mCon);
+//        unbindService(mCon);
     }
 }
