@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.TextSwitcher;
-import android.widget.TextView;
 
 import com.testandroid.yang.R;
 
@@ -57,13 +56,13 @@ public class NumberFlyTextDialog extends Dialog {
 
         show();
 
-        TextView textViewOne = (TextView) mTextSwitcher.getChildAt(0);
-        textViewOne.setText(String.valueOf(mSecond));
+//        TextView textViewOne = (TextView) mTextSwitcher.getChildAt(0);
+//        textViewOne.setText(String.valueOf(mSecond));
 
 //        TextView textViewTwo = (TextView) mTextSwitcher.getChildAt(1);
 //        textViewTwo.setText(String.valueOf(mSecond - 1));
 
-        mTextSwitcher.postDelayed(mRunnable, 1000);
+        mTextSwitcher.postDelayed(mRunnable, 100);
 //        Animation animation = mTextSwitcher.getAnimation();
 //        if (animation != null) {
 //            animation.setAnimationListener(new Animation.AnimationListener() {
