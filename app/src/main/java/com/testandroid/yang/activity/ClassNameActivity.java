@@ -9,7 +9,9 @@ import java.util.stream.Stream;
 
 /**
  * 记录一个特殊类
- * Created by yangjiajia on 2018/5/21.
+ *
+ * @author yangjiajia
+ * @date 2018/5/21
  */
 public class ClassNameActivity extends BaseActivity {
 

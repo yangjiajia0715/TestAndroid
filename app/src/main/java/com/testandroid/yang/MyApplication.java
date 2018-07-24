@@ -6,19 +6,47 @@ import android.os.Bundle;
 import android.util.Log;
 
 /**
- * Created by yangjiajia on 2018/5/8.
+ *
+ * @author yangjiajia
+ * @date 2018/5/8
  */
 public class MyApplication extends Application {
 
     private static final String TAG = "MyApplication";
+    Thread.UncaughtExceptionHandler uncaughtExceptionHandler = new Thread.UncaughtExceptionHandler() {
+        @Override
+        public void uncaughtException(Thread t, Throwable e) {
+
+            Log.d(TAG, "线程对象的uncaughtExceptionHandler: e=" + e.getMessage());
+
+        }
+    };
+
+    Thread.UncaughtExceptionHandler sUncaughtExceptionHandler = new Thread.UncaughtExceptionHandler() {
+        @Override
+        public void uncaughtException(Thread t, Throwable e) {
+            Log.d(TAG, "全局的uncaughtExceptionHandler: e=" + e.getMessage());
+        }
+    };
 
     @Override
     public void onCreate() {
         super.onCreate();
 
+//        setUnCaughtExceptionHandler();
+
         if (BuildConfig.DEBUG) {
             registerCallbacks();
         }
+
+    }
+
+    private void setUnCaughtExceptionHandler() {
+        Thread currentThread = Thread.currentThread();
+        Log.d(TAG, "Application---onCreate currentThread: " + currentThread.getName());
+        currentThread.setUncaughtExceptionHandler(uncaughtExceptionHandler);
+
+        Thread.setDefaultUncaughtExceptionHandler(sUncaughtExceptionHandler);
     }
 
     /**

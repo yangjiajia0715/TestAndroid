@@ -36,5 +36,6 @@ public class BlueToothActivity extends BaseActivity {
     @Override
     public void initData() {
 
+
     }
 }
