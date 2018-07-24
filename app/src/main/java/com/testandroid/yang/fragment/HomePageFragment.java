@@ -244,6 +244,8 @@ public class HomePageFragment extends HomeBaseFragment {
                 case R.id.tv_flex_layout:
                     FlexLayoutActivity.start(context);
                     break;
+                default:
+                    break;
             }
         }
     }

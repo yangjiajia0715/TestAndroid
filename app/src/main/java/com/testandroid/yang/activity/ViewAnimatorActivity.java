@@ -44,19 +44,20 @@ public class ViewAnimatorActivity extends Activity implements View.OnClickListen
 
     private void initView() {
 
-        viewAnimator = (ViewAnimator) findViewById(R.id.viewanimator);
+        viewAnimator = findViewById(R.id.viewanimator);
         viewAnimator.setInAnimation(this, R.anim.view_animator_in);
         viewAnimator.setOutAnimation(this, R.anim.view_animator_out);
 
-        textSwitcher = (TextSwitcher) findViewById(R.id.text_switcher_animator);
+        textSwitcher = findViewById(R.id.text_switcher_animator);
         textSwitcher.setInAnimation(this, R.anim.view_animator_in);
         textSwitcher.setOutAnimation(this, R.anim.view_animator_out);
 
-        imageSwitcher = (ImageSwitcher) findViewById(R.id.image_switcher_animator);
+
+        imageSwitcher = findViewById(R.id.image_switcher_animator);
         imageSwitcher.setInAnimation(this, R.anim.view_animator_in);
         imageSwitcher.setOutAnimation(this, R.anim.view_animator_out);
 
-        viewFlipper = (ViewFlipper) findViewById(R.id.view_flipper_container);
+        viewFlipper = findViewById(R.id.view_flipper_container);
         viewFlipper.setInAnimation(this, R.anim.view_animator_in);
         viewFlipper.setOutAnimation(this, R.anim.view_animator_out);
 
@@ -116,7 +117,8 @@ public class ViewAnimatorActivity extends Activity implements View.OnClickListen
                     viewFlipper.stopFlipping();
                 }
                 break;
-
+            default:
+                break;
         }
     }
 }

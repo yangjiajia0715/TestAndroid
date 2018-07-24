@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/include_toolbar_layout"
-        layout="@layout/include_tool_bar" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/ToolbarPopupTheme" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomLayout"
-        android:layout_below="@+id/include_toolbar_layout">
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,10 +45,10 @@
 
             <Spinner
                 android:id="@+id/planets_spinner"
-                android:spinnerMode="dialog"
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/text_color_4a4a4a"
-                android:layout_height="wrap_content" />
+                android:spinnerMode="dialog" />
 
             <TextView
                 android:id="@+id/dialog4"
@@ -74,7 +78,7 @@
             <TextView
                 android:id="@+id/dialog9"
                 style="@style/CommonButtonStyle"
-                android:text="Dialog" />
+                android:text="Path github 进度 Dialog" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

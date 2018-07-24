@@ -28,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.testandroid.yang.R;
+import com.testandroid.yang.dialog.AnswerProgressDialog;
 import com.testandroid.yang.fragment.ClearCacheFragment;
 import com.testandroid.yang.fragment.DatePickerFragment;
 import com.testandroid.yang.fragment.EmbeddableFragment;
@@ -48,8 +49,6 @@ import butterknife.OnClick;
 public class DialogListActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener {
     private static final String TAG = "DialogListActivity";
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.dialog0)
     TextView dialog0;
     @BindView(R.id.dialog1)
@@ -76,6 +75,8 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
     LinearLayout bottomLayout;
     @BindView(R.id.planets_spinner)
     Spinner planetsSpinner;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
     private PopupWindow popupWindow2;
     private ListView listView;
 
@@ -95,7 +96,7 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
 
     @Override
     public void initView() {
-        toolbar.setTitle("对话框相关");
+        mToolbar.setTitle("对话框相关");
     }
 
     @Override
@@ -237,12 +238,19 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
                 showClassListPopupwindow2();
                 break;
             case R.id.dialog9:
-
+                showGithubProgressDialog();
                 break;
             case R.id.bottom_btn:
 
                 break;
+            default:
+                break;
         }
+    }
+
+    private void showGithubProgressDialog() {
+        AnswerProgressDialog answerProgressDialog = new AnswerProgressDialog(this, R.style.AnswerDialog);
+        answerProgressDialog.start(10);
     }
 
     private void showPopupWindow() {
@@ -274,7 +282,7 @@ public class DialogListActivity extends BaseActivity implements DatePickerDialog
 //            }
 //        });
 
-        popupWindow2.showAsDropDown(toolbar);
+        popupWindow2.showAsDropDown(mToolbar);
     }
 
     @Override

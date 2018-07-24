@@ -198,6 +198,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     implementation 'com.google.android:flexbox:1.0.0'
 
+    implementation 'com.github.jorgecastilloprz:fillableloaders:1.03@aar'
+
+
 }
 
 task listJars {

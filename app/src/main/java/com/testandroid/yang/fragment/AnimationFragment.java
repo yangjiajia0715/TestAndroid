@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ViewFlipper;
 
 import com.testandroid.yang.R;
 import com.testandroid.yang.activity.ActionBarActivity;
@@ -11,6 +12,7 @@ import com.testandroid.yang.activity.AnimationActivity;
 import com.testandroid.yang.activity.SceneActivity;
 import com.testandroid.yang.activity.ViewAnimatorActivity;
 import com.testandroid.yang.common.HomeInfo;
+import com.testandroid.yang.dialog.NumberFlyTextDialog;
 
 /**
  * Created by yangjiajia on 2017/9/13.
@@ -38,7 +40,9 @@ public class AnimationFragment extends HomeBaseFragment {
         items.add(new HomeInfo("tv_ViewAnimator", R.id.tv_ViewAnimator, HomeInfo.HomeGroup.Animator));
         items.add(new HomeInfo("MD Animation", R.id.tv_animation_materail_design, HomeInfo.HomeGroup.Animator));
         items.add(new HomeInfo("Trans Animation", R.id.tv_animation_trans, HomeInfo.HomeGroup.Animator));
-        items.add(new HomeInfo("Trans Animation 2", R.id.tv_trans_scene, HomeInfo.HomeGroup.Animator));
+        items.add(new HomeInfo("ViewFlipperDialog", R.id.tv_view_flipper_dialog, HomeInfo.HomeGroup.Animator));
+//        items.add(new HomeInfo("Trans Animation 2", R.id.tv_f, HomeInfo.HomeGroup.Animator));
+        ViewFlipper viewFlipper;
     }
 
     @Override
@@ -68,11 +72,28 @@ public class AnimationFragment extends HomeBaseFragment {
                     trans();
                     break;
                 case R.id.tv_trans_scene:
-//                    trans2();
                     SceneActivity.start(context);
+                    break;
+                case R.id.tv_view_flipper_dialog:
+                    showNumberFlyDialog();
+                    break;
+                default:
                     break;
             }
         }
+    }
+
+    private void showNumberFlyDialog() {
+        Context context = getContext();
+        if (context == null) {
+            return;
+        }
+
+        NumberFlyTextDialog flyTextDialog = new NumberFlyTextDialog(context, R.style.AnswerDialog);
+        flyTextDialog.show(10);
+
+//        NumberFlyDialog numberFlyDialog = new NumberFlyDialog(context, R.style.AnswerDialog);
+//        numberFlyDialog.show();
     }
 
     private void trans2() {

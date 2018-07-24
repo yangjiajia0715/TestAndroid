@@ -30,6 +30,7 @@
     <item name="tv_test_tinker" type="id" />
     <item name="tv_test_RxJava_main" type="id" />
     <item name="tv_test_RxJava_new" type="id" />
+    <item name="tv_test_RxJava_new_2" type="id" />
     <item name="tv_test_RxJava_operate" type="id" />
     <item name="tv_test_DatabaseUtil" type="id" />
     <item name="tv_test_CursorLoader" type="id" />
@@ -57,11 +58,13 @@
     <item name="tv_media_projection_2" type="id" />
     <item name="tv_service" type="id" />
     <item name="tv_open_gl" type="id" />
+    <item name="tv_bluetooth" type="id" />
     <item name="tv_menu" type="id" />
     <item name="tv_date_util" type="id" />
     <item name="tv_java" type="id" />
     <item name="tv_handler" type="id" />
     <item name="tv_install_apk" type="id" />
+    <item name="tv_uncaught_exception_handler" type="id" />
     <item name="tv_class_name" type="id" />
     <item name="tv_processed_threads" type="id" />
     <item name="tv_file_jiami" type="id" />
@@ -86,6 +89,7 @@
     <item name="tv_account_manage" type="id" />
     <item name="tv_animation_materail_design" type="id" />
     <item name="tv_animation_trans" type="id" />
+    <item name="tv_view_flipper_dialog" type="id" />
     <item name="tv_trans_scene" type="id" />
     <item name="tv_recycleview" type="id" />
     <item name="tv_recycleview_ceiling" type="id" />

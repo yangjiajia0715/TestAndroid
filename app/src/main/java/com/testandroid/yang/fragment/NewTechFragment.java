@@ -8,6 +8,7 @@ import android.view.View;
 import com.testandroid.yang.R;
 import com.testandroid.yang.activity.AndroidChangeActivity;
 import com.testandroid.yang.activity.AppBarTabLayout;
+import com.testandroid.yang.activity.BlueToothActivity;
 import com.testandroid.yang.activity.BottomSheetActivity;
 import com.testandroid.yang.activity.CoordinatorAppBarActivity;
 import com.testandroid.yang.activity.CoordinatorLayoutActivity;
@@ -22,6 +23,7 @@ import com.testandroid.yang.activity.PanelActivity;
 import com.testandroid.yang.activity.PermissiondispatcherActivity;
 import com.testandroid.yang.activity.RxJava2Activity;
 import com.testandroid.yang.activity.RxJavaOperateActivity;
+import com.testandroid.yang.activity.Rxjava2New2Activity;
 import com.testandroid.yang.activity.Rxjava2NewActivity;
 import com.testandroid.yang.activity.ServiceActivity;
 import com.testandroid.yang.activity.TestAppBar;
@@ -53,6 +55,7 @@ public class NewTechFragment extends HomeBaseFragment {
         items.add(new HomeInfo("tv_test_tinker", R.id.tv_test_tinker, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("tv_test_RxJava2_main", R.id.tv_test_RxJava_main, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("Rxjava2_2017年8月", R.id.tv_test_RxJava_new, HomeInfo.HomeGroup.NewTech));
+        items.add(new HomeInfo("Rxjava2_2018年6月", R.id.tv_test_RxJava_new_2, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("tv_test_RxJava2_operate", R.id.tv_test_RxJava_operate, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("tv_Data_Binding", R.id.tv_Data_Binding, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("tv_CoordinatorLayout", R.id.tv_CoordinatorLayout, HomeInfo.HomeGroup.NewTech));
@@ -70,6 +73,7 @@ public class NewTechFragment extends HomeBaseFragment {
         items.add(new HomeInfo("MediaProjection2", R.id.tv_media_projection_2, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("Service相关", R.id.tv_service, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("OpenGL相关", R.id.tv_open_gl, HomeInfo.HomeGroup.NewTech));
+        items.add(new HomeInfo("蓝牙相关", R.id.tv_bluetooth, HomeInfo.HomeGroup.NewTech));
     }
 
     @Override
@@ -91,6 +95,9 @@ public class NewTechFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_test_RxJava_new:
                     Rxjava2NewActivity.start(context);
+                    break;
+                case R.id.tv_test_RxJava_new_2:
+                    Rxjava2New2Activity.start(context);
                     break;
                 case R.id.tv_test_RxJava_operate:
                     RxJavaOperateActivity.start(context);
@@ -143,6 +150,12 @@ public class NewTechFragment extends HomeBaseFragment {
                 case R.id.tv_open_gl:
                     OpenGLActivity.start(context);
                     break;
+                case R.id.tv_bluetooth:
+                    BlueToothActivity.start(context);
+                    break;
+                default:
+                    break;
+
             }
         }
     }

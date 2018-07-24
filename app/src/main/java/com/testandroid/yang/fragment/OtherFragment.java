@@ -32,6 +32,7 @@ import com.testandroid.yang.activity.SavingFileActivity;
 import com.testandroid.yang.activity.SelectFileActivity;
 import com.testandroid.yang.activity.ShareSimpleDateActivity;
 import com.testandroid.yang.activity.TempActivity;
+import com.testandroid.yang.activity.UnCaughtExceptionHandlerActivity;
 import com.testandroid.yang.common.HomeInfo;
 
 import java.io.File;
@@ -82,6 +83,7 @@ public class OtherFragment extends HomeBaseFragment {
         items.add(new HomeInfo("Handler", R.id.tv_handler, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("安装应用", R.id.tv_install_apk, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("特殊类", R.id.tv_class_name, HomeInfo.HomeGroup.Other));
+        items.add(new HomeInfo("Thread.UncaughtExceptionHandler", R.id.tv_uncaught_exception_handler, HomeInfo.HomeGroup.Other));
         items.add(new HomeInfo("进程和线程", R.id.tv_processed_threads, HomeInfo.HomeGroup.Other));
     }
 
@@ -217,8 +219,14 @@ public class OtherFragment extends HomeBaseFragment {
                 case R.id.tv_class_name:
                     ClassNameActivity.start(getActivity());
                     break;
+                case R.id.tv_uncaught_exception_handler:
+                    UnCaughtExceptionHandlerActivity.start(getActivity());
+                    break;
+
                 case R.id.tv_processed_threads:
                     ProcessedAndThreadsActivity.start(getActivity());
+                    break;
+                default:
                     break;
             }
         }

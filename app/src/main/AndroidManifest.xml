@@ -3,10 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.testandroid.yang"> <!-- 18 -->
     <!-- android:installLocation="preferExternal" -->
+    <!--android:sharedUserId="1"-->
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="24"
         tools:overrideLibrary="uk.co.senab.photoview" />
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <permission android:name="com.testandroid.yang.provider" />
     <permission android:name="com.testandroid.yang.provider.Reader" />
@@ -27,7 +30,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.CAMERA" />
-    />
 
     <!-- name MultiDexAppcation -->
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
@@ -57,6 +59,7 @@
         android:protectionLevel="dangerous" />
 
     <application
+        android:name="com.testandroid.yang.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -554,6 +557,9 @@
         <activity android:name=".activity.OpenGLActivity" />
         <activity android:name=".activity.ClassNameActivity" />
         <activity android:name=".activity.FlexLayoutActivity" />
+        <activity android:name=".activity.Rxjava2New2Activity" />
+        <activity android:name=".activity.BlueToothActivity" />
+        <activity android:name=".activity.UnCaughtExceptionHandlerActivity" />
         <activity android:name=".activity.ProcessedAndThreadsActivity" />
         <activity android:name=".activity.MediaProject2Activity" />
 

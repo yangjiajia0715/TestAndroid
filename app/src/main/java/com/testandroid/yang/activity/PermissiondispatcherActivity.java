@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Process;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -62,7 +63,32 @@ public class PermissiondispatcherActivity extends BaseActivity {
         initData();
     }
 
+    /**
+     * 在调用service的过程中可以设置更加细化的许可。这是通过Context.checkCallingPermission()方法来完成的。
+     * 调用的时候使用一个想得到的permission string，返回给调用方一个整数判断是否具有相关权限。
+     * 需要注意的是这种情况只能发生在来自另一个进程的调用，通常是一个service发布的IDL接口或者是其他方式提供给其他的进程。
+     *
+     */
     private void showContacts() {
+
+        ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_SETTINGS);
+
+        //Android提供了很多其他有效的方法用于检查许可。
+        // 如果有另一个进程的pid，可以通过Context.checkPermission(String, int, int)去检查该进程的权限设置。
+        // 如果有另一个应用程序的包名，
+        // 可以直接用PackageManager.checkPermission(String, String)来确定该包是否已经拥有了相应的权限。
+
+        int checkPermission = checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Process.myPid(), Process.myUid());
+
+        int permission = checkCallingPermission("");
+
+        int i = getPackageManager().checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE, "com.mmmm");
+
+        getSharedPreferences("", Context.MODE_PRIVATE);
+//        FileOutputStream quanxian = openFileOutput("quanxian", Context.MODE_WORLD_WRITEABLE);
+        openOrCreateDatabase("", Context.MODE_PRIVATE, null);
+
+//        ActivityCompat.requestPermissions(this,);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_CONTACTS)
@@ -92,6 +118,9 @@ public class PermissiondispatcherActivity extends BaseActivity {
     @Override
     public void initData() {
 
+        sendBroadcast(new Intent(),"my permission!");
+
+        sendOrderedBroadcast(new Intent(),"mmm");
     }
 
 //    @Override
@@ -157,6 +186,8 @@ public class PermissiondispatcherActivity extends BaseActivity {
 //                    pickImageByCapture();
 //                }
                 break;
+            default:
+                break;
         }
     }
 
@@ -172,6 +203,8 @@ public class PermissiondispatcherActivity extends BaseActivity {
                 } else {
                     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
+                break;
+            default:
                 break;
         }
     }
