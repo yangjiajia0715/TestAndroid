@@ -8,6 +8,7 @@ import android.view.View;
 import com.testandroid.yang.R;
 import com.testandroid.yang.activity.AndroidChangeActivity;
 import com.testandroid.yang.activity.AppBarTabLayout;
+import com.testandroid.yang.activity.BlueToothActivity;
 import com.testandroid.yang.activity.BottomSheetActivity;
 import com.testandroid.yang.activity.CoordinatorAppBarActivity;
 import com.testandroid.yang.activity.CoordinatorLayoutActivity;
@@ -70,6 +71,7 @@ public class NewTechFragment extends HomeBaseFragment {
         items.add(new HomeInfo("MediaProjection", R.id.tv_media_projection, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("Service相关", R.id.tv_service, HomeInfo.HomeGroup.NewTech));
         items.add(new HomeInfo("OpenGL相关", R.id.tv_open_gl, HomeInfo.HomeGroup.NewTech));
+        items.add(new HomeInfo("蓝牙相关", R.id.tv_bluetooth, HomeInfo.HomeGroup.NewTech));
     }
 
     @Override
@@ -142,6 +144,9 @@ public class NewTechFragment extends HomeBaseFragment {
                     break;
                 case R.id.tv_open_gl:
                     OpenGLActivity.start(context);
+                    break;
+                case R.id.tv_bluetooth:
+                    BlueToothActivity.start(context);
                     break;
                 default:
                     break;

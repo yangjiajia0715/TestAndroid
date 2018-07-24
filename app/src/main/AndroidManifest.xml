@@ -557,6 +557,7 @@
         <activity android:name=".activity.ClassNameActivity" />
         <activity android:name=".activity.FlexLayoutActivity" />
         <activity android:name=".activity.Rxjava2New2Activity" />
+        <activity android:name=".activity.BlueToothActivity" />
 
     </application>
 

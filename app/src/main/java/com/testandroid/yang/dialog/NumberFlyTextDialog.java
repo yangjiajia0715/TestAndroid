@@ -41,6 +41,29 @@ public class NumberFlyTextDialog extends Dialog {
 //        mTextSwitcher.setAnimateFirstView(false);
         mTextSwitcher.setInAnimation(context, R.anim.number_scale_in);
         mTextSwitcher.setOutAnimation(context, R.anim.number_scale_out);
+
+//        final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+//
+//        Runnable tmpRunable = new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        };
+//
+//        final ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate(tmpRunable, 0, 1, TimeUnit.SECONDS);
+//
+//        scheduler.schedule(new Runnable() {
+//            @Override
+//            public void run() {
+//                scheduledFuture.cancel(true);
+//            }
+//        },60* 60,TimeUnit.SECONDS);
+//      final ScheduledFuture<?> beeperHandle =
+//       scheduler.scheduleAtFixedRate(beeper, 10, 10, SECONDS);
+//     scheduler.schedule(new Runnable() {
+//       public void run() { beeperHandle.cancel(true); }
+//     }, 60 * 60, SECONDS);
     }
 
     public void show(int second) {

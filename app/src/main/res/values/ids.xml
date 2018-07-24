@@ -57,6 +57,7 @@
     <item name="tv_media_projection" type="id" />
     <item name="tv_service" type="id" />
     <item name="tv_open_gl" type="id" />
+    <item name="tv_bluetooth" type="id" />
     <item name="tv_menu" type="id" />
     <item name="tv_date_util" type="id" />
     <item name="tv_java" type="id" />
