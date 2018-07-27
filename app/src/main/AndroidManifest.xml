@@ -560,6 +560,7 @@
         <activity android:name=".activity.Rxjava2New2Activity" />
         <activity android:name=".activity.BlueToothActivity" />
         <activity android:name=".activity.UnCaughtExceptionHandlerActivity" />
+        <activity android:name=".activity.ExecutorActivity" />
 
     </application>
 

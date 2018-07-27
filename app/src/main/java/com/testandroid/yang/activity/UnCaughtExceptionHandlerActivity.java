@@ -83,6 +83,7 @@ public class UnCaughtExceptionHandlerActivity extends BaseActivity {
 //
         Thread.setDefaultUncaughtExceptionHandler(sUncaughtExceptionHandler);
 
+
     }
 
     @OnClick({R.id.btn_uncaught_1, R.id.btn_uncaught_2, R.id.btn_uncaught_3,

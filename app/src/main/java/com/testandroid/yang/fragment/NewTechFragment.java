@@ -30,7 +30,9 @@ import com.testandroid.yang.common.HomeInfo;
 
 /**
  * 新技术
- * Created by yangjiajia on 2017/9/13.
+ *
+ * @author yangjiajia
+ * @date 2017/9/13
  */
 
 public class NewTechFragment extends HomeBaseFragment {

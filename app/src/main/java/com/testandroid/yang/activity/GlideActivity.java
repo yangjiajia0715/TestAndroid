@@ -2,9 +2,11 @@ package com.testandroid.yang.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -14,7 +16,13 @@ import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.BaseTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.ViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.testandroid.yang.R;
 import com.testandroid.yang.glide.GlideApp;
@@ -27,10 +35,13 @@ import butterknife.OnClick;
 
 /**
  * GlideActivity
- * Created by yangjiajia on 2017/11/24.
+ *
+ * @author yangjiajia
+ * @date 2017/11/24
  */
 
 public class GlideActivity extends BaseActivity {
+    private static final String TAG = "GlideActivity";
 
     @BindView(R.id.imageview1)
     ImageView imageview1;
@@ -42,6 +53,7 @@ public class GlideActivity extends BaseActivity {
     ImageView imageview4;
     @BindView(R.id.imageview5)
     ImageView imageview5;
+    private String mUrl;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, GlideActivity.class);
@@ -60,57 +72,36 @@ public class GlideActivity extends BaseActivity {
     @Override
     public void initView() {
 
-        String url = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2146927009,3405641870&fm=173&s=8E734D805C1202D6C6F52815030050C2&w=640&h=360&img.JPG";
+        mUrl = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2146927009,3405641870&fm=173&s=8E734D805C1202D6C6F52815030050C2&w=640&h=360&img.JPG";
 
         String urlXiZang = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519907833264&di=a6c33ff2a2b3a21348f49629cf8767a9&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01975e55470a000000002b014adbc6.jpg%401280w_1l_2o_100sh.jpg";
-
-//        Glide.with(this)
-//                .load(urlXiZang)
-//                .into(imageview1);
 
         Glide.with(this)
                 .load(urlXiZang)
                 .apply(new RequestOptions().override(900, 900).diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(imageview1);
 
-//        GlideApp.with(this)
-//                .load(urlXiZang)
-//                .override(900,900)
-//                .into(imageview1);
-
         DiskLruCache diskLruCache;
 
-        HashMap<String, String> hashMap = new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>(10);
         hashMap.put("", "");
         String aa;
-        if (TextUtils.equals("","")) {
+        if (TextUtils.equals("", "")) {
 
         }
 
-        Object object;
-//        Glide.with(this).load(url).placeholder(R.drawable.banner01).into(imageview2);
-//        Glide.with(this).load(url).placeholder(R.drawable.banner01).error(R.drawable.ic_done).into(imageview3);
-//        Glide.with(this).load(url).asGif().into(imageview4);
-//        Glide.with(this).load(url).asGif().placeholder(R.drawable.banner01).into(imageview5);
-//        minSdk <= targetSdk <= compileSdk,最好后两个一样
-
         ImageLoader.getInstance();
-
-//        BroadcastReceiver
-//        ContentProvider
 
         RequestOptions options = new RequestOptions()
                 .placeholder(R.drawable.image_loading)
                 .override(300 * 3, 300 * 3)
                 .error(R.drawable.img_default);
 
-//        GenericTransitionOptions<Object> transitionOptions = GenericTransitionOptions.with(R.anim.module_zoom_in);
         BitmapTransitionOptions bitmapTransitionOptions = BitmapTransitionOptions.withCrossFade(5000);
         DrawableTransitionOptions drawableTransitionOptions = DrawableTransitionOptions.withCrossFade(5000);
 
-//        GlideApp.with(this);
         Glide.with(this)
-                .load(url)
+                .load(mUrl)
                 .apply(options)
 //                .transition(transitionOptions)
 //                .transition(bitmapTransitionOptions)
@@ -124,7 +115,7 @@ public class GlideActivity extends BaseActivity {
                 .load(urlXiZang)
                 .into(imageview5);
 
-        RequestBuilder<Drawable> requestBuilder = Glide.with(this).load(url);
+        RequestBuilder<Drawable> requestBuilder = Glide.with(this).load(mUrl);
         requestBuilder.transition(DrawableTransitionOptions.withCrossFade());
 
 
@@ -139,15 +130,83 @@ public class GlideActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imageview1:
+                ImageView.ScaleType scaleType = imageview1.getScaleType();
+                Log.d(TAG, "onViewClicked: " + scaleType);
                 break;
             case R.id.imageview2:
                 break;
             case R.id.imageview3:
                 break;
             case R.id.imageview4:
+                RequestOptions requestOptions = new RequestOptions()
+                        .dontTransform()
+                        .override(100, 100);
+
+                Glide.with(this)
+                        .load(mUrl)
+                        .apply(requestOptions)
+                        .into(imageview3);
+
                 break;
             case R.id.imageview5:
+                preload();
+                break;
+            default:
                 break;
         }
+    }
+
+    private void preload() {
+
+        FutureTarget<Bitmap> futureTarget =
+                Glide.with(this)
+                        .asBitmap()
+                        .load(mUrl)
+                        .submit(100, 100);
+
+//        Bitmap bitmap = futureTarget.get();
+
+// Do something with the Bitmap and then when you're done with it:
+//        Glide.with(this).clear(futureTarget);
+
+        Glide.with(this)
+                .load(mUrl)
+                .into(new BaseTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+//                        transition.transition()
+//                        resource.
+                    }
+
+                    @Override
+                    public void getSize(SizeReadyCallback cb) {
+
+                    }
+
+                    @Override
+                    public void removeCallback(SizeReadyCallback cb) {
+
+                    }
+                });
+
+        Glide.with(this)
+                .load(mUrl)
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+
+                    }
+                });
+
+        ViewTarget<ImageView, Drawable> viewTarget = Glide.with(this)
+//                .asBitmap()
+                .load(mUrl)
+                .into(imageview1);
+
+        Glide.with(this).clear(viewTarget);
+
+//        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+//        imageview1.setLayoutParams(layoutParams);
     }
 }
